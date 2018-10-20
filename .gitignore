@@ -2,3 +2,6 @@
 /application/config/config.php
 /application/config/database.php
 /photos/
+/.idea/
+/application/config/facebook.php
+/application/config/google.php
