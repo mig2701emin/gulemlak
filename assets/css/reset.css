@@ -1,0 +1,48 @@
+/ * http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   Lisans: yok (herkese açık alan)
+* /
+
+html, body, div, span, applet, nesne, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, öncesi,
+a, abbr, kısaltma, adres, büyük, alıntı, kod,
+del, dfn, em, img, ins, kbd, q, s, samp,
+küçük, grev, güçlü, alt, sup, tt, var,
+b, ben, merkezim.
+dl, dt, dd, ol, ul, li,
+fieldet, form, etiket, gösterge,
+tablo, altyazı, tbody, tfoot, thead, tr, th, td,
+makale, kenara, tuval, ayrıntılar, embed,
+şekil, figcaption, altbilgi, üstbilgi, hgroup,
+menü, nav, çıktı, yakut, bölüm, özet,
+zaman, işaret, ses, video {
+	kenar boşluğu: 0;
+	dolgu malzemesi: 0;
+	kenarlık: 0;
+	yazı tipi boyutu:% 100;
+	yazı tipi: inherit;
+	dikey hizalama: temel çizgi;
+}
+/ * Eski tarayıcılar için HTML5 ekran rolü sıfırlaması * /
+makale, bir kenara, ayrıntılar, şekil, şekil,
+altbilgi, başlık, grup, menü, nav, bölüm {
+	Ekran bloğu;
+}
+vücut {
+	çizgi yüksekliği: 1;
+}
+ol, ul {
+	liste stili: yok;
+}
+blok alıntı, q {
+	tırnak: yok;
+}
+blockquote: önce, blockquote: sonra,
+q: önce, q: sonra {
+	içerik: '';
+	içerik: yok;
+}
+tablo {
+	sınır-çöküşü: çöküşü;
+	kenar aralığı: 0;
+}
