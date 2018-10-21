@@ -5,7 +5,7 @@
             <div class="col-xl-2 col-lg-3 mb-sm-30 col-lgmd-20per">
                 <div class="sidebar-block">
 
-                  <?php foreach ($anaKategoriler as $anaKategori): ?>
+                  <?php foreach ($anaKategoriler as $anaKategori){ ?>
                     <div class="sidebar-box listing-box mb-40">
                         <span class="opener plus"></span>
                         <div class="sidebar-title">
@@ -16,7 +16,7 @@
                           <?php if ($firstSubs): ?>
                             <ul>
 
-                              <?php foreach ($firstSubs as $firstSub): ?>
+                              <?php foreach ($firstSubs as $firstSub){ ?>
                                 <li>
                                     <div class="row">
                                       <div class="col-10">
@@ -30,14 +30,14 @@
 
                                     </div>
                                 </li>
-                                <?php endforeach; ?>
+                              <?php } ?>
 
                             </ul>
                             <?php endif; ?>
 
                         </div>
                     </div>
-                  <?php endforeach; ?>
+                  <?php } ?>
 
               </div>
             </div>
@@ -113,12 +113,12 @@
                     <div class="inner-listing">
                         <div class="row">
 
-                          <?php foreach ($mainVitrins as $item): ?>
+                          <?php foreach ($mainVitrins as $item){ ?>
                             <div class="col-md-4 col-6 item-width mb-30">
                                 <div class="product-item">
                                     <div class="product-image">
                                         <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
-                                            <img src="<?php echo fileControl('ilanlar/',subStr($item->resim1,8,strlen($item->resim1)-8),'yok_b.png');?>"  alt="<?php echo $item->firma_adi; ?>">
+                                            <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok_b.png');?>"  alt="<?php echo $item->firma_adi; ?>">
                                         </a>
                                         <div class="product-detail-inner">
                                             <div class="detail-inner-left align-center">
@@ -142,11 +142,10 @@
                                         <div class="row">
                                             <div class="col">
                                                 <a href="product-page.html">
-                                                  <?php echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId).' > ';?>
-                                                  <?php echo replace('kategoriler', 'kategori_adi','Id', $item->kategori2).' > ';?>
-                                                  <?php echo replace('kategoriler', 'kategori_adi','Id', $item->kategori3).' > ';?>
-                                                  <?php echo replace('kategoriler', 'kategori_adi','Id', $item->kategori4);?>
-
+                                                  <?php if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}?>
+                                                  <?php if ($item->kategori2) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
+                                                  <?php if ($item->kategori3) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
+                                                  <?php if ($item->kategori4) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}?>
                                                 </a>
                                             </div>
                                             <div class="col"><div class="price-box">
@@ -161,9 +160,9 @@
                                             <div class="rating-result" title="53%"> <span style="width:53%"></span> </div>
                                         </div>
                                         <div class="location">
-                                          <?php echo replace('tbl_il', 'il_ad','il_id', $item->il).' > ';?>
-                                          <?php echo replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce).' > ';?>
-                                          <?php echo replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle).'';?>
+                                          <?php if ($item->il) {echo replace('tbl_il', 'il_ad','il_id', $item->il);}?>
+                                          <?php if ($item->ilce) {echo ' > '.replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce);}?>
+                                          <?php if ($item->mahalle) {echo ' > '.replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle);}?>
                                         </div>
                                         <div class="product-des">
                                             <p><?php echo trSubstr(decode($item->aciklama)); ?></p>
@@ -185,7 +184,7 @@
                                     </div>
                                 </div>
                             </div>
-                          <?php endforeach; ?>
+                          <?php } ?>
 
                         </div>
                     </div>
@@ -215,12 +214,12 @@
                     <div class="inner-listing">
                         <div class="row">
 
-                          <?php foreach ($emergencyVitrins as $item): ?>
+                          <?php foreach ($emergencyVitrins as $item){ ?>
                             <div class="col-md-4 col-6 item-width mb-30">
                                 <div class="product-item">
                                     <div class="product-image">
                                         <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
-                                            <img src="<?php echo fileControl('ilanlar/',subStr($item->resim1,8,strlen($item->resim1)-8),'yok_b.png');?>"  alt="<?php echo $item->firma_adi; ?>">
+                                            <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok_b.png');?>"  alt="<?php echo $item->firma_adi; ?>">
                                         </a>
                                         <div class="product-detail-inner">
                                             <div class="detail-inner-left align-center">
@@ -244,11 +243,10 @@
                                         <div class="row">
                                             <div class="col">
                                                 <a href="product-page.html">
-                                                  <?php echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId).' > ';?>
-                                                  <?php echo replace('kategoriler', 'kategori_adi','Id', $item->kategori2).' > ';?>
-                                                  <?php echo replace('kategoriler', 'kategori_adi','Id', $item->kategori3).' > ';?>
-                                                  <?php echo replace('kategoriler', 'kategori_adi','Id', $item->kategori4);?>
-
+                                                  <?php if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}?>
+                                                  <?php if ($item->kategori2) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
+                                                  <?php if ($item->kategori3) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
+                                                  <?php if ($item->kategori4) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}?>
                                                 </a>
                                             </div>
                                             <div class="col"><div class="price-box">
@@ -263,9 +261,9 @@
                                             <div class="rating-result" title="53%"> <span style="width:53%"></span> </div>
                                         </div>
                                         <div class="location">
-                                          <?php echo replace('tbl_il', 'il_ad','il_id', $item->il).' > ';?>
-                                          <?php echo replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce).' > ';?>
-                                          <?php echo replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle).'';?>
+                                          <?php if ($item->il) {echo replace('tbl_il', 'il_ad','il_id', $item->il);}?>
+                                          <?php if ($item->ilce) {echo ' > '.replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce);}?>
+                                          <?php if ($item->mahalle) {echo ' > '.replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle);}?>
                                         </div>
                                         <div class="product-des">
                                             <p><?php echo trSubstr(decode($item->aciklama)); ?></p>
@@ -287,7 +285,7 @@
                                     </div>
                                 </div>
                             </div>
-                          <?php endforeach; ?>
+                          <?php } ?>
 
                         </div>
                     </div>
@@ -317,12 +315,12 @@
                     <div class="inner-listing">
                         <div class="row">
 
-                          <?php foreach ($sonEklenenler as $item): ?>
+                          <?php foreach ($sonEklenenler as $item){ ?>
                             <div class="col-md-4 col-6 item-width mb-30">
                                 <div class="product-item">
                                     <div class="product-image">
                                         <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
-                                            <img src="<?php echo fileControl('ilanlar/',subStr($item->resim1,8,strlen($item->resim1)-8),'yok_b.png');?>"  alt="<?php echo $item->firma_adi; ?>">
+                                            <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok_b.png');?>"  alt="<?php echo $item->firma_adi; ?>">
                                         </a>
                                         <div class="product-detail-inner">
                                             <div class="detail-inner-left align-center">
@@ -346,11 +344,10 @@
                                         <div class="row">
                                             <div class="col">
                                                 <a href="product-page.html">
-                                                  <?php echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId).' > ';?>
-                                                  <?php echo replace('kategoriler', 'kategori_adi','Id', $item->kategori2).' > ';?>
-                                                  <?php echo replace('kategoriler', 'kategori_adi','Id', $item->kategori3).' > ';?>
-                                                  <?php echo replace('kategoriler', 'kategori_adi','Id', $item->kategori4);?>
-
+                                                  <?php if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}?>
+                                                  <?php if ($item->kategori2) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
+                                                  <?php if ($item->kategori3) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
+                                                  <?php if ($item->kategori4) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}?>
                                                 </a>
                                             </div>
                                             <div class="col"><div class="price-box">
@@ -365,9 +362,9 @@
                                             <div class="rating-result" title="53%"> <span style="width:53%"></span> </div>
                                         </div>
                                         <div class="location">
-                                          <?php echo replace('tbl_il', 'il_ad','il_id', $item->il).' > ';?>
-                                          <?php echo replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce).' > ';?>
-                                          <?php echo replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle).'';?>
+                                          <?php if ($item->il) {echo replace('tbl_il', 'il_ad','il_id', $item->il);}?>
+                                          <?php if ($item->ilce) {echo ' > '.replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce);}?>
+                                          <?php if ($item->mahalle) {echo ' > '.replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle);}?>
                                         </div>
                                         <div class="product-des">
                                             <p><?php echo trSubstr(decode($item->aciklama)); ?></p>
@@ -389,7 +386,7 @@
                                     </div>
                                 </div>
                             </div>
-                          <?php endforeach; ?>
+                          <?php } ?>
 
                         </div>
                     </div>
@@ -419,12 +416,12 @@
                     <div class="inner-listing">
                         <div class="row">
 
-                          <?php foreach ($magazaVitrin as $item): ?>
+                          <?php foreach ($magazaVitrin as $item){ ?>
                             <div class="col-md-4 col-6 item-width mb-30">
                                 <div class="product-item">
                                     <div class="product-image">
                                         <a href="#">
-                                            <img src="<?php echo fileControl('magaza/',subStr($item->logo,7,strlen($item->logo)-7),'yeral_mgz.png');?>"  alt="<?php echo $item->magazaadi; ?>">
+                                            <img src="<?php echo fileControl('photos/magaza',$item->logo,'yeral_mgz.png');?>"  alt="<?php echo $item->magazaadi; ?>">
                                         </a>
                                         <div class="product-detail-inner">
                                             <div class="detail-inner-left align-center">
@@ -452,9 +449,6 @@
 
                                                 </a>
                                             </div>
-                                            <!--<div class="col"><div class="price-box">
-                                            <span class="price"><?php //echo $item->fiyat.' '.$item->birim; ?></span></div>
-                                          </div>-->
                                         </div>
 
                                         <div class="product-item-name">
@@ -488,7 +482,7 @@
                                     </div>
                                 </div>
                             </div>
-                          <?php endforeach; ?>
+                          <?php } ?>
 
                         </div>
                     </div>
