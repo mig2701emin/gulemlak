@@ -12,7 +12,7 @@
   <link href="http://www.ticaretmeclisi.com/css/my_account.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="http://www.ticaretmeclisi.com/js/ui/jquery-ui-1.10.3.custom.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="<?php echo base_url(); ?>js/jquery-ui-1.10.3.custom.min.js"></script>
+  <script src="http://www.ticaretmeclisi.com/js/jquery-ui-1.10.3.custom.min.js"></script>
   <script type="text/javascript" src="http://www.ticaretmeclisi.com/js/easing.js"></script>
   <script type="text/javascript" src="http://www.ticaretmeclisi.com/js/bxslider/jquery.bxslider.min"></script>
   <script type="text/javascript" src="http://www.ticaretmeclisi.com/js/jquery.cookie.1.4.0.js"></script>
@@ -175,7 +175,7 @@
               }
               ?>
               <div style="margin-left:10px;">
-                <a href="<?php echo base_url(); ?>kategori/<?php echo $kategorys[0]->seo; ?>-<?php echo $kategorys[0]->Id; ?>" class="cat_text"><?php echo $kategorys[0]->kategori_adi; ?></a>
+                <a href="<?php echo base_url(); ?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[0]->Id; ?>" class="cat_text"><?php echo $kategorys[0]->kategori_adi; ?></a>
               </div>
               <?php if($kat1==$kategori->Id){?>
                 <?php if ($altKategoriler!=""): ?>
@@ -183,7 +183,7 @@
                     <?php foreach ($altKategoriler as $kate2){
                       $say2=ilansay(array("kategori2" => $kate2->Id, "onay" => "1"));
                     ?>
-                    <div style="margin-left:17px;margin-top:5px;"><a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kate2->seo;?>-<?php echo $kate2->Id; ?>" class="incat_submenu_text"><?php echo $kate2->kategori_adi; ?></a> (<?php echo $say2;?>)</div>
+                    <div style="margin-left:17px;margin-top:5px;"><a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kate2->seo;?>/<?php echo $kate2->Id; ?>" class="incat_submenu_text"><?php echo $kate2->kategori_adi; ?></a> (<?php echo $say2;?>)</div>
                     <?php } ?>
                   </div>
                 <?php endif; ?>
@@ -192,7 +192,7 @@
                 $say2=ilansay(array("kategori2" => $kategorys[1]->Id, "onay" => "1"));
                 ?>
                 <div style="margin-left:17px;margin-top:5px;">
-                  <a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>-<?php echo $kategorys[1]->Id; ?>" class="incat_submenu_text"><?php echo $kategorys[1]->kategori_adi; ?></a>
+                  <a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[1]->Id; ?>" class="incat_submenu_text"><?php echo $kategorys[1]->kategori_adi; ?></a>
                   <?php if($kat2 == $kategori->Id){?> (<?php echo $say2;?>)<?php }?>
                 </div>
                 <?php
@@ -203,7 +203,7 @@
                     <?php foreach ($altKategoriler as $kate3){
                       $say3=ilansay(array("kategori3" => $kate3->Id, "onay" => "1"));
                     ?>
-                    <div style="margin-left:25px;margin-top:5px;"><a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kate3->seo;?>-<?php echo $kate3->Id; ?>" class="incat_submenu_text"><?php echo $kate3->kategori_adi; ?></a> (<?php echo $say3;?>)</div>
+                    <div style="margin-left:25px;margin-top:5px;"><a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kate3->seo;?>/<?php echo $kate3->Id; ?>" class="incat_submenu_text"><?php echo $kate3->kategori_adi; ?></a> (<?php echo $say3;?>)</div>
                     <?php } ?>
                   </div>
                 <?php endif; ?>
@@ -211,7 +211,7 @@
                   $say3=ilansay(array("kategori3" => $kategorys[2]->Id, "onay" => "1"));
                   ?>
                   <div style="margin-left:25px;margin-top:5px;">
-                    <a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>-<?php echo $kategorys[2]->Id; ?>" class="incat_submenu_text"><?php echo $kategorys[2]->kategori_adi; ?></a>
+                    <a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[2]->Id; ?>" class="incat_submenu_text"><?php echo $kategorys[2]->kategori_adi; ?></a>
                     <?php if($kat3 == $kategori->Id){?> (<?php echo $say3;?>)<?php }?>
                   </div>
                   <?php
@@ -223,7 +223,7 @@
                         $say4=ilansay(array("kategori4" => $kate4->Id, "onay" => "1"));
                       ?>
                       <div style="margin-left:32px;margin-top:5px;">
-                        <a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kate4->seo;?>-<?php echo $kate4->Id; ?>" class="incat_submenu_text"><?php echo $kate4->kategori_adi; ?></a>
+                        <a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kate4->seo;?>/<?php echo $kate4->Id; ?>" class="incat_submenu_text"><?php echo $kate4->kategori_adi; ?></a>
                         (<?php echo $say4;?>)</div>
                       <?php } ?>
                     </div>
@@ -232,7 +232,7 @@
                     $say4=ilansay(array("kategori4" => $kategorys[3]->Id, "onay" => "1"));
                     ?>
                     <div style="margin-left:32px;margin-top:5px;">
-                      <a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>-<?php echo $kategorys[3]->Id; ?>" class="incat_submenu_text"><?php echo $kategorys[3]->kategori_adi; ?></a>
+                      <a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kategorys[3]->Id; ?>" class="incat_submenu_text"><?php echo $kategorys[3]->kategori_adi; ?></a>
                       <?php if($kat4 == $kategori->Id){?> (<?php echo $say4;?>)<?php }?>
                     </div>
                     <?php
@@ -244,7 +244,7 @@
                           $say5=ilansay(array("kategori5" => $kate5->Id, "onay" => "1"));
                         ?>
                         <div style="margin-left:40px;margin-top:5px;">
-                          <a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kate5->seo;?>-<?php echo $kate5->Id; ?>" class="incat_submenu_text"><?php echo $kate5->kategori_adi; ?></a>
+                          <a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kate5->seo;?>/<?php echo $kate5->Id; ?>" class="incat_submenu_text"><?php echo $kate5->kategori_adi; ?></a>
                           (<?php echo $say5;?>)</div>
                         <?php } ?>
                       </div>
@@ -253,7 +253,7 @@
                       $say5=ilansay(array("kategori5" => $kategorys[4]->Id, "onay" => "1"));
                       ?>
                       <div style="margin-left:40px;margin-top:5px;">
-                        <a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kategorys[4]->seo; ?>-<?php echo $kategorys[4]->Id; ?>" class="incat_submenu_text"><?php echo $kategorys[4]->kategori_adi; ?></a>
+                        <a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kategorys[4]->seo; ?>/<?php echo $kategorys[4]->Id; ?>" class="incat_submenu_text"><?php echo $kategorys[4]->kategori_adi; ?></a>
                         <?php if($kat5 == $kategori->Id){?> (<?php echo $say5;?>)<?php }?>
                       </div>
                       <?php
@@ -265,7 +265,7 @@
                             $say6=ilansay(array("kategori6" => $kate6->Id, "onay" => "1"));
                           ?>
                           <div style="margin-left:50px;margin-top:5px;">
-                            <a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kategorys[4]->seo; ?>/<?php echo $kate6->seo;?>-<?php echo $kate6->Id; ?>" class="incat_submenu_text"><?php echo $kate6->kategori_adi; ?></a>
+                            <a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kategorys[4]->seo; ?>/<?php echo $kate6->seo;?>/<?php echo $kate6->Id; ?>" class="incat_submenu_text"><?php echo $kate6->kategori_adi; ?></a>
                             (<?php echo $say6;?>)</div>
                           <?php } ?>
                         </div>
@@ -274,7 +274,7 @@
                         $say6=ilansay(array("kategori6" => $kategorys[5]->Id, "onay" => "1"));
                         ?>
                         <div style="margin-left:50px;margin-top:5px;">
-                          <a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kategorys[4]->seo; ?>/<?php echo $kategorys[5]->seo; ?>-<?php echo $kategorys[5]->Id; ?>" class="incat_submenu_text"><?php echo $kategorys[5]->kategori_adi; ?></a>
+                          <a href="<?php echo base_url();?>kategori/<?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kategorys[4]->seo; ?>/<?php echo $kategorys[5]->seo; ?>/<?php echo $kategorys[5]->Id; ?>" class="incat_submenu_text"><?php echo $kategorys[5]->kategori_adi; ?></a>
                           <?php if($kat6 == $kategori->Id){?> (<?php echo $say6;?>)<?php }?>
                         </div>
                       <?php
@@ -569,6 +569,32 @@
             <a class="pages" href="/kategori/daire/?kat1=45&kat2=46&kat3=149&sayfa=6">6</a>
             <a class="pages" href="/kategori/daire/?kat1=45&kat2=46&kat3=149&sayfa=23">&raquo;</a>
           </div>
+          <?php
+          if($magazaKatVitrin){
+            ?>
+            <div class="genelbox" style="margin-bottom:5px;">Mağaza Vitrin</div>
+            <?php
+            foreach ($magazaKatVitrin as $b){
+              $magazaadi = html_entity_decode($b->magazaadi);
+              $uzunluk=strlen($magazaadi);
+              if($uzunluk>25){
+                $magazaadi = mb_substr($magazaadi,0,25,"UTF-8").'...';
+              }else{
+                $magazaadi=$magazaadi;
+              }
+              $seolink = seo_link($b->magazaadi);
+              if ($b->logo != "" and file_exists("photos/magaza/".$b->logo)){
+                $resim = '<a href="'.base_url().'/'.$b->username.'"><img src = "'.base_url().'photos/magaza/'.$b->logo.'" height = "37" width="97" border = "0" style="margin-top:10px;"></a>';
+              } else {
+                $resim = '<a href="'.base_url().'/'.$b->username.'"><img src = "'.base_url().'assets/images/no_store_logo.png" height = "37" width="97" border = "0" style="margin-top:10px;"></a>';
+              }
+              echo '<div class="ilan_liste" style="width:125px"><center>'.$resim.'<br><br>
+              <a href="'.base_url().'/'.$b->username.'">'.$magazaadi.' </a></center>
+              </div>
+              ';
+            }
+          }
+          ?>
           <div style="clear:both"></div>
           <!-- Kategori Görüntüle sonu ...............................................-->
 

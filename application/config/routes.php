@@ -34,11 +34,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $route[$magaza->username.'/(:any)']='home/magaza_goruntule/'.$magaza->username.'/$1';
         $route[$magaza->username.'/(:any)/(:any)']='home/magaza_goruntule/'.$magaza->username.'/$1/$2';
       }
-      $route['kategori/(:any)-(:num)']='home/kategori/$2';
-      $route['kategori/(:any)/(:any)-(:num)']='home/kategori/$3';
-      $route['kategori/(:any)/(:any)/(:any)-(:num)']='home/kategori/$4';
-      $route['kategori/(:any)/(:any)/(:any)/(:any)-(:num)']='home/kategori/$5';
-      $route['kategori/(:any)/(:any)/(:any)/(:any)/(:any)-(:num)']='home/kategori/$6';
+      $anaKategoriler=$db->where('ust_kategori','0')->get('kategoriler')->result();
+      foreach ($anaKategoriler as $anaKategori) {
+        $route[$anaKategori->seo.'/(:num)']='home/kategori/$1';
+        $route[$anaKategori->seo.'/(:any)/(:num)']='home/kategori/$2';
+        $route[$anaKategori->seo.'/(:any)/(:any)/(:num)']='home/kategori/$3';
+        $route[$anaKategori->seo.'/(:any)/(:any)/(:any)/(:num)']='home/kategori/$4';
+        $route[$anaKategori->seo.'/(:any)/(:any)/(:any)/(:any)/(:num)']='home/kategori/$5';
+
+      }
 
       $route['sitemap\.xml'] = 'sitemap';
 

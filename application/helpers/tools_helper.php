@@ -301,6 +301,7 @@ function getustkategorinames($Id)
 
 function getustkategorys($Id)
 {
+  $kategoriler = array();
   $kategori=kategori($Id);
   if ($kategori) {
     $kategoriler[]=$kategori;
@@ -333,8 +334,7 @@ function getustkategorys($Id)
       }
     }
   }
-
-  return array_reverse($kategoriler);
+    return array_reverse($kategoriler);
 }
 
 function dateReplace($date){
