@@ -208,6 +208,8 @@
 			$data["altKategoriler"]=$altKategoriler;
 			$this->load->view("magaza",$data);
 		}
+
+
 		public function kategori($kategori,$deneme="")
 		{
 			$kategorys=getustkategorys($kategori);
@@ -254,7 +256,7 @@
       //fieldlerin getirilmesi bitiş
       $data["fields"]=$fields;
 
-			$sql2="select * from firmalar where kategori='".$field_kategori."'";
+			$sql2="select * from firmalar where kategoriId='".$field_kategori."'";
       if ($field_kategori2!="") {
         $sql2.=" and kategori2='".$field_kategori2."'";
       }
@@ -276,10 +278,10 @@
       if ($field_kategori8!="") {
 				$sql2.=" and kategori8='".$field_kategori8."'";
       }
-      $sql2.=" and onay='1' order by kayit_tarihi desc ";
+      $sql2.=" and onay='1' order by kayit_tarihi desc LIMIT 10";
 
-      $ilanlar = $this->db->query($sql2);
-			$ilanlar["ilanlar"]=$ilanlar;
+      $ilanlar = $this->db->query($sql2)->result();
+			$data["ilanlar"]=$ilanlar;
 			$data["kategori"]=$this->kategoriler->getbyid($kategori);
 			$data["altKategoriler"]=$this->kategoriler->getSubs($kategori);
 			$data["iller"]=$this->db->get("tbl_il")->result();
@@ -289,7 +291,9 @@
 			$data["fotograf"]="";
 			$data["harita"]="";
 			$data["WithFilter_g"]="";
-
+			$data["order_type"]="";
+			$data["limit"]="40";
+			$data["sayfa"]="0";
 
 			$this->load->view("kategori",$data);
 		}
