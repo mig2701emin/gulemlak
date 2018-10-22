@@ -6,7 +6,7 @@ class Ilanekle extends CI_Controller{
   public function __construct()
   {
     parent::__construct();
-    if(!$this->session->userdata('userData')){ redirect('login'); }
+   if(!$this->session->userdata('userData')){ redirect('login'); }
     $this->load->model('kategoriler');
     $this->load->model('firmalar');
     $this->load->model('fields');
