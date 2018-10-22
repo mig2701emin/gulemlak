@@ -32,11 +32,11 @@
                                     <span class="opener plus"></span>
                                     <h3 class="title">Paketlerimiz<span></span></h3>
                                     <ul class="footer-block-contant link">
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Altın Paket</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Gümüş Paket</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Bronz Paket</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Standart Paket</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Tüm Paketler</a></li>
+                                        <li><a href="#">Altın Paket</a></li>
+                                        <li><a href="#">Gümüş Paket</a></li>
+                                        <li><a href="#">Bronz Paket</a></li>
+                                        <li><a href="#">Standart Paket</a></li>
+                                        <li><a href="#">Tüm Paketler</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -45,11 +45,11 @@
                                     <span class="opener plus"></span>
                                     <h3 class="title">Mağaza<span></span></h3>
                                     <ul class="footer-block-contant link">
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Mağazam</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Mağaza Açmak İstiyorum</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Neden Mağaza</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Mağaza Fiyatları</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Nasıl Çalışır</a></li>
+                                        <li><a href="#">Mağazam</a></li>
+                                        <li><a href="#">Mağaza Açmak İstiyorum</a></li>
+                                        <li><a href="#">Neden Mağaza</a></li>
+                                        <li><a href="#">Mağaza Fiyatları</a></li>
+                                        <li><a href="#">Nasıl Çalışır</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -58,11 +58,11 @@
                                     <span class="opener plus"></span>
                                     <h3 class="title">Destek<span></span></h3>
                                     <ul class="footer-block-contant link">
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Hakkımızda</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Yönetim İlkeleri</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>İnsan Kaynakları</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Yönetim</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Online Yardım</a></li>
+                                        <li><a href="#">Hakkımızda</a></li>
+                                        <li><a href="#">Yönetim İlkeleri</a></li>
+                                        <li><a href="#">İnsan Kaynakları</a></li>
+                                        <li><a href="#">Yönetim</a></li>
+                                        <li><a href="#">Online Yardım</a></li>
                                     </ul>
                                 </div>
                             </div>
