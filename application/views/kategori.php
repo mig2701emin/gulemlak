@@ -1,4 +1,3 @@
-
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//TR" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -288,7 +287,7 @@
               /* ********************************************* */
               ?>
 
-              <form action="<?php echo base_url(); ?>index.php" method="get">
+              <form action="" method="get">
                 <input type="hidden" name="page" value="ara">
                 <?php if($kat1!=""){?><input type="hidden" name="kat1" value="<?php echo $kat1;?>"><?php }?>
                 <?php if($kat2!=""){?><input type="hidden" name="kat2" value="<?php echo $kat2;?>"><?php }?>
@@ -454,14 +453,14 @@
 
           <!-- Kategori Görüntüle başlangıç ..............................................-->
           <script>
-            function order_by(type){window.location="/kategori/daire/?kat1=45&kat2=46&kat3=149&order_type="+type;}
-            function limit(limit){window.location="/kategori/daire/?kat1=45&kat2=46&kat3=149&limit="+limit;}
+            function order_by(type){window.location="<?php echo check_url('order_type');?>&order_type="+type;}
+            function limit(limit){window.location="<?php echo check_url('limit');?>&limit="+limit;}
           </script>
 
           <div class="genelbox" style="margin-bottom:10px;">
             <?php echo $kategori->kategori_adi; ?> İlanları
           </div>
-          <div class="ActiveButton" style="color:black;margin-left:0px;float:left" onclick="window.location='http://ticaretmeclisi.com/kategori/daire/?kat1=45&kat2=46&kat3=149';">
+          <div class="<?php if($WithFilter_g==''){?>ActiveButton<?php }else{?>WithButtons<?php }?>" style="color:black;margin-left:0px;float:left" onclick="window.location='<?php CallWithFilter('');?>';">
             Tüm İlanlar
           </div>
           <?php
@@ -470,37 +469,28 @@
               $new_values=explode("||",$field->field_values);
               for ($i = 0; $i <= count($new_values)-1; $i++) {
                 ?>
-                <div class="<?php if($WithFilter_g==$field->seo_name."**".$new_values[$i]){?>ActiveButton<?php }else{?>WithButtons<?php }?>" style="margin-left:2px;float:left" onclick="window.location='<?php //CallWithFilter(str_replace("==","",base64_encode($field->seo_name."**".$new_values[$i])));?>';"><?php echo $new_values[$i];?></div>
+                <div class="<?php if($WithFilter_g==$field->seo_name."**".$new_values[$i]){?>ActiveButton<?php }else{?>WithButtons<?php }?>" style="margin-left:2px;float:left" onclick="window.location='<?php CallWithFilter(str_replace("==","",base64_encode($field->seo_name."**".$new_values[$i])));?>';"><?php echo $new_values[$i];?></div>
                 <?php
               }
             }
           }
           ?>
-          <!-- <div class="WithButtons" style="margin-left:2px;float:left" onclick="window.location='http://ticaretmeclisi.com/kategori/daire/?kat1=45&kat2=46&kat3=149&WithFilter=a2ltZGVuKipTYWhpYmluZGVu';">
-            Sahibinden
-          </div>
-          <div class="WithButtons" style="margin-left:2px;float:left" onclick="window.location='http://ticaretmeclisi.com/kategori/daire/?kat1=45&kat2=46&kat3=149&WithFilter=a2ltZGVuKipFbWxhayBPZmlzaW5kZW4=';">
-            Emlak Ofisinden
-          </div>
-          <div class="WithButtons" style="margin-left:2px;float:left" onclick="window.location='http://ticaretmeclisi.com/kategori/daire/?kat1=45&kat2=46&kat3=149&WithFilter=a2ltZGVuKirEsG7Fn2FhdCBGaXJtYXPEsW5kYW4=';">
-            İnşaat Firmasından
-          </div> -->
           <div style="float:right;">
             <select onchange="order_by(this.options[selectedIndex].value);" style="width:200px;font-size:9pt;">
               <optgroup label="Sıralama:">
-                <option value="descdate">Tarihe Göre (Yeniden Eskiye)</option>
-                <option value="ascdate">Tarihe Göre (Eskiden Yeniye)</option>
-                <option value="descprice">Fiyata Göre (Artan)</option>
-                <option value="ascprice">Fiyata Göre (Azalan)</option>
-                <option value="city">İle Göre</option>
+                <option value="descdate"<?php if($order_type=='descdate'){?> selected<?php }?>>Tarihe Göre (Yeniden Eskiye)</option>
+                <option value="ascdate"<?php if($order_type=='ascdate'){?> selected<?php }?>>Tarihe Göre (Eskiden Yeniye)</option>
+                <option value="descprice"<?php if($order_type=='descprice'){?> selected<?php }?>>Fiyata Göre (Artan)</option>
+                <option value="ascprice"<?php if($order_type=='ascprice'){?> selected<?php }?>>Fiyata Göre (Azalan)</option>
+                <option value="city"<?php if($order_type=='city'){?> selected<?php }?>>İle Göre</option>
               </optgroup>
             </select>
             <select onchange="limit(this.options[selectedIndex].value);" style="width:50px;font-size:9pt;margin-left:5px;">
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="30">30</option>
-              <option value="40" selected>40</option>
-              <option value="50">50</option>
+              <option value="10"<?php if($limit=='10'){?> selected<?php }?>>10</option>
+              <option value="20"<?php if($limit=='20'){?> selected<?php }?>>20</option>
+              <option value="30"<?php if($limit=='30'){?> selected<?php }?>>30</option>
+              <option value="40"<?php if($limit=='40'){?> selected<?php }?>>40</option>
+              <option value="50"<?php if($limit=='50'){?> selected<?php }?>>50</option>
             </select>
           </div>
           <div style="clear:both"></div>
@@ -520,89 +510,53 @@
               <td style="background:#E9E9E9;height:35px;font-weight:bold;text-align:center;" width="300">İlan Başlığı</td>
               <td style="background:#E9E9E9;height:35px;font-weight:bold;text-align:center;" width="106">Fiyat</td>
               <?php echo implode("",$list_field_title);?>
-              <!-- <td style="background:#E9E9E9;height:35px;font-weight:bold;text-align:center;">Katı</td>
-              <td style="background:#E9E9E9;height:35px;font-weight:bold;text-align:center;">Oda Sayısı</td>
-              <td style="background:#E9E9E9;height:35px;font-weight:bold;text-align:center;">m2</td> -->
               <td style="background:#E9E9E9;height:35px;font-weight:bold;text-align:center;" width="91">Şehir</td>
             </tr>
-            <tr height="110" class="list_ads" onclick="window.location='http://www.ticaretmeclisi.com/ilan/Emlak-Konut-Daire-Satilik-Gaziantep-Sahinbey-KOCAOGLAN_MAH.-637876';">
+
+            <?php
+              $i=1;
+              foreach ($ilanlar as $a){
+              $firma_adi = html_entity_decode($a->firma_adi);
+              $uzunluk=strlen($firma_adi);
+              if($uzunluk>40){
+              $firma_adi = mb_substr($firma_adi,0,40,'UTF-8').'...';
+              }else{
+              $firma_adi=$firma_adi;
+              }
+
+              $seolink2 = $a->seo_url;
+              $il=$this->db->query("select * from tbl_il where il_id='".$a->il."'")->row();
+              $ilce=$this->db->query("select * from tbl_ilce where ilce_id='".$a->ilce."'")->row();
+              $ilan_no=$a->Id;
+              $mahalle=$this->db->query("select * from tbl_mahalle where mahalle_id='".$a->mahalle."'")->row();
+              ?>
+              <tr class="list_ads<?php if($a->kalinyazi_cerceve==1){echo' kalinyazi_cerceve';}?>" onclick="window.location='<?php echo base_url();?><?php echo "ilan/".$seolink2;?>-<?php echo $ilan_no;?>';">
               <td width="180">
-                <img src = "http://www.ticaretmeclisi.com/show_image.php?src=http://www.ticaretmeclisi.com/ilanlar/637876_1.jpg&q=100&w=180&h=100" height = "100" width="180" border = "0" alt="KURUMSAL İNŞAATTA SATILIK DAİRE2+1" title="KURUMSAL İNŞAATTA SATILIK DAİRE2+1">
+              <?php if($a->kucuk_fotograf==1 and ilk_resim($a->Id)!='' and file_exists('photos/thumbnail/'.ilk_resim($a->Id))){?>
+              <img src = "<?php echo base_url();?>photos/thumbnail/<?php echo ilk_resim($a->Id);?>" height = "100" width="180" border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
+              <?php }else{?>
+              <img src = "<?php echo base_url();?>assets/images/ad_photo.png" height = "80" width="150" border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
+              <?php }?>
               </td>
-              <td width="250" style="text-align:left;font-weight:bold;">
-                <a href="javascript:void(0);" style="display:block;position:relative;top:40px;left:5px;">KURUMSAL İNŞAATTA SATILIK DAİRE2+1</a>
-                <br/>
-                <div style="width:170px;font-size:12px;color:gray;margin-top:50px; margin-left:10px;">
-                  İlan Tarihi:18/Ekim/2018
-                </div>
-              </td>
-              <td width="140" style="color:red;text-align:center;font-weight:bold;font-size:14px;">
-                <b>195.000 TL</b>
-              </td>
-              <td style="text-align:center;font-size:13px;font-weight:bold;">8</td>
-              <td style="text-align:center;font-size:13px;font-weight:bold;">2+1</td>
-              <td style="text-align:center;font-size:13px;font-weight:bold;">125</td>
-              <td width="91" style="text-align:center">Gaziantep<br/>KOCAOĞLAN MAH.</td>
-            </tr>
-            <tr height="110" class="list_ads" onclick="window.location='http://www.ticaretmeclisi.com/ilan/Emlak-Konut-Daire-Satilik-Gaziantep-Sahinbey-GUZELVADI_MAH.-306200';">
-              <td width="180">
-                <img src = "http://www.ticaretmeclisi.com/show_image.php?src=http://www.ticaretmeclisi.com/ilanlar/306200_1.jpg&q=100&w=180&h=100" height = "100" width="180" border = "0" alt="GÜZELVADİDE ŞOK ŞOK ŞOK 2+1 DAİRE" title="GÜZELVADİDE ŞOK ŞOK ŞOK 2+1 DAİRE">
-              </td>
-              <td width="250" style="text-align:left;font-weight:bold;">
-                <a href="javascript:void(0);" style="display:block;position:relative;top:40px;left:5px;">GÜZELVADİDE ŞOK ŞOK ŞOK 2+1 DAİRE</a>
-                <br/>
-                <div style="width:170px;font-size:12px;color:gray;margin-top:50px; margin-left:10px;">İlan Tarihi:18/Ekim/2018</div>
-              </td>
-              <td width="140" style="color:red;text-align:center;font-weight:bold;font-size:14px;">
-                <b>109.000 TL</b>
-              </td>
-              <td style="text-align:center;font-size:13px;font-weight:bold;">8</td>
-              <td style="text-align:center;font-size:13px;font-weight:bold;">2+1</td>
-              <td style="text-align:center;font-size:13px;font-weight:bold;">88</td>
-              <td width="91" style="text-align:center">Gaziantep
-                <br/>
-                GÜZELVADİ MAH.
-              </td>
-            </tr>
-            <tr height="110" class="list_ads" onclick="window.location='<?php echo base_url(); ?>ilan/Emlak-Konut-Daire-Satilik-Gaziantep-Sehitkamil-BEYKENT_MAH.-833072';">
-              <td width="180">
-                <img src = "http://www.ticaretmeclisi.com/images/ad_photo.png" height = "80" width="150" border = "0" alt="SATILIK 2+1 VE 3+1 DAİRELER" title="SATILIK 2+1 VE 3+1 DAİRELER">
-              </td>
-              <td width="250" style="text-align:left;font-weight:bold;">
-                <a href="javascript:void(0);" style="display:block;position:relative;top:40px;left:5px;">SATILIK 2+1 VE 3+1 DAİRELER</a>
-                <br/>
-                <div style="width:170px;font-size:12px;color:gray;margin-top:50px; margin-left:10px;">
-                  İlan Tarihi:18/Ekim/2018
-                </div>
-              </td>
-              <td width="140" style="color:red;text-align:center;font-weight:bold;font-size:14px;">
-                <b>145.000 TL</b>
-              </td>
-              <td style="text-align:center;font-size:13px;font-weight:bold;">4</td>
-              <td style="text-align:center;font-size:13px;font-weight:bold;">3+1</td>
-              <td style="text-align:center;font-size:13px;font-weight:bold;">160.120</td>
-              <td width="91" style="text-align:center">Gaziantep<br/>BEYKENT MAH.</td>
-            </tr>
-            <tr height="110" class="list_ads" onclick="window.location='http://www.ticaretmeclisi.com/ilan/Emlak-Konut-Daire-Kiralik-Gaziantep-Sehitkamil-SEYRANTEPE_MAH.-142372';">
-              <td width="180">
-                <img src = "http://www.ticaretmeclisi.com/show_image.php?src=http://www.ticaretmeclisi.com/ilanlar/142372_1.jpg&q=100&w=180&h=100" height = "100" width="180" border = "0" alt="SEYRANTEPE DE KİRALIK 3+1 DAİRE" title="SEYRANTEPE DE KİRALIK 3+1 DAİRE">
-              </td>
-              <td width="250" style="text-align:left;font-weight:bold;">
-                <a href="javascript:void(0);" style="display:block;position:relative;top:40px;left:5px;">SEYRANTEPE DE KİRALIK 3+1 DAİRE</a>
-                <br/>
-                <div style="width:170px;font-size:12px;color:gray;margin-top:50px; margin-left:10px;">
-                  İlan Tarihi:17/Ekim/2018
-                </div>
-              </td>
-              <td width="140" style="color:red;text-align:center;font-weight:bold;font-size:14px;">
-                <b>1.000 TL</b>
-              </td>
-              <td style="text-align:center;font-size:13px;font-weight:bold;">4</td>
-              <td style="text-align:center;font-size:13px;font-weight:bold;">3+1</td>
-              <td style="text-align:center;font-size:13px;font-weight:bold;">160</td>
-              <td width="91" style="text-align:center">Gaziantep<br/>SEYRANTEPE MAH.</td>
-            </tr>
-          </table>
+              <td width="250" style="text-align:center;font-weight:bold;"><a href="javascript:void(0);"><?php echo $firma_adi;?></a><br/>
+              <div style="width:170px;font-size:12px;color:gray;margin-top:50px; margin-left:140px;">İlan Tarihi:<?php yeni_tarih2($a->kayit_tarihi);?></div></td>
+              <td width="140" style="color:red;text-align:center;font-weight:bold;font-size:14px;"><b><?php if ($field_kategori=45){echo $a->fiyat." ".$a->birim;}else{ echo write_price($a->fiyat,$a->fiyat2)." ".$a->birim;}?></b></td>
+              <?php
+              foreach ($list_field_value as $list_field_val) {
+                echo '<td style="text-align:center;font-size:13px;font-weight:bold;">'.get_ad_cat_show_detail($list_field_val,$ilan_no).'</td>';
+              }
+
+              ?>
+
+              <td width="91" style="text-align:center"><?php echo $il->il_ad;?><br/><?php echo $mahalle->mahalle_ad; ?></td>
+              </tr>
+              <?php
+              $i++;
+
+              }
+              ?>
+              </table>
+
           <div class="dopingCatView" onclick="window.location='<?php echo base_url(); ?>index.php?page=sayfa&sayfa=ustsiradayim';">
             Sizde İlanınızın Yukarıda Yer Almasını İstiyorsanız Tıklayınız.
           </div>

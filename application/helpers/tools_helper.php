@@ -527,3 +527,51 @@ function ilansay($where)
   $ci=& get_instance();
   return $ci->db->where($where)->get("firmalar")->num_rows();
 }
+
+function CallWithFilter($GetCall)
+{
+  $suankiadres="http://".str_replace("www.","",$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]);
+  $yeniadres=preg_replace("/&sayfa=(.*)/", "", $suankiadres);
+  $adres=explode("&WithFilter=",$yeniadres);
+  $new_adres=$adres[0];
+  if($GetCall!=''){
+    $WithFilter="&WithFilter=".$GetCall;
+  }else{
+    $WithFilter="";
+  }
+  echo $new_adres.$WithFilter;
+}
+
+function check_url($text){
+  if(strstr($_SERVER[REQUEST_URI],$text)){
+    $order_url=preg_replace("/&".$text."=[a-z-0-9]+/i","",$_SERVER[REQUEST_URI]);
+    $order_go=$order_url;
+  }else{
+    $order_url=$_SERVER[REQUEST_URI];
+    $order_go=$order_url;
+  }
+  return $order_go;
+}
+
+function yeni_tarih2($tarih) {
+  $tarih1= substr($tarih,0,4);
+  $tarih2= substr($tarih,5,2);
+
+  $tarih3= substr($tarih,8,2);
+  $saat= substr($tarih,11,8);
+  $ay1= array("01","02","03","04","05","06","07","08","09","10","11","12");
+
+  $ay2= array("Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos",
+  "Eylül","Ekim","Kasım","Aralık");
+  $yeniay= str_replace($ay1,$ay2,$tarih2);
+
+  echo $tarih3."/".$yeniay."/".$tarih1;
+}
+function get_ad_cat_show_detail($detail,$adId)
+{
+  $ci=& get_instance();
+  $b=$ci->db->query("select * from custom_fields where ilanId='".$adId."' and field_name='".$detail."'");
+  if ($b->num_rows() > 0) {
+    return $b->row()->field_value;
+  }
+}
