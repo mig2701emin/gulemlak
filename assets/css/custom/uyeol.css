@@ -1,0 +1,42 @@
+*{
+    font-family: "Poppins", sans-serif;
+
+
+}
+h2,h4{
+    font-weight: 700;
+}
+
+a{
+
+    color:gray;
+
+}
+
+.menu{
+
+    float:right;
+    height:60px;
+    text-align: center;
+    vertical-align:middle;
+    margin:10px;
+}
+.giris{
+
+
+
+    margin-top:30px; ;
+    text-align: end;
+}
+.giris a{
+
+    color:orangered;
+
+}
+a:hover{
+    text-decoration-line: none;
+    color:#B10007;
+}
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #dc3545;
+}
