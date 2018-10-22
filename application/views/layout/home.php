@@ -28,10 +28,10 @@
 
         <!-- Bread Crumb END -->
         <!-- CONTAIN START -->
-        <?php $this->load->view('layout/contain');?>
+<?php $this->load->view('layout/contain');?>
         <!-- CONTAINER END -->
         <!-- News Letter Start -->
-        <?php $this->load->view('layout/newsletter');?>
+
         <!-- News Letter End -->
         <!-- FOOTER START -->
         <?php $this->load->view('layout/footer');?>

@@ -1,5 +1,6 @@
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/footer.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/custom/footer.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <div class="footer">
     <div class="container">
         <div class="footer-inner">
@@ -8,7 +9,7 @@
                     <div class="col-xl-4 f-col">
                         <div class="footer-static-block">
                             <span class="opener plus"></span>
-                            <h3 class="title">İletişim<span></span></h3>
+                            <h3 class="title">İletİşİm<span></span></h3>
                             <ul class="footer-block-contant address-footer">
                                 <li class="item">
                                     <i class="fa fa-map-marker"> </i>
@@ -30,7 +31,7 @@
                             <div class="col-xl-4 f-col">
                                 <div class="footer-static-block">
                                     <span class="opener plus"></span>
-                                    <h3 class="title">Paketlerimiz<span></span></h3>
+                                    <h3 class="title">Paketlerİmİz<span></span></h3>
                                     <ul class="footer-block-contant link">
                                         <li><a href="#">Altın Paket</a></li>
                                         <li><a href="#">Gümüş Paket</a></li>
