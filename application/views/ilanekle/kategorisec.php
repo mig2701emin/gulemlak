@@ -46,7 +46,7 @@
 
     <div class="main">
 
-        <?php $this->load->view('layout/userheader');?>
+        <?php $this->load->view('layout/newuserheader');?>
 <div class="container" >
 
 <style>
