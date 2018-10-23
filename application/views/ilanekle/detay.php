@@ -20,16 +20,16 @@
 <body>
   <div class="se-pre-con"></div>
   <div class="main">
-    <?php $this->load->view('layout/userheader');?>
-    <div class="container">
-      <div class=" row d-flex justify-content-center" style="margin:50px 0 50px 0;">
-        <div class="col-sm-12 col-md-2 col"><a class="btn" style="color:mediumseagreen"><i class="far fa-thumbs-up"></i> Kategori</a> <br></div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:mediumseagreen"><i class="fas fa-file"></i> İlan Detay </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-camera"></i> Fotoğraf </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-search"></i>  Ön İzleme </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-tags"></i>  Doping Al </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-check-circle"></i> Tebrikler </a>	</div>
-      </div>
+    <?php $this->load->view('layout/newuserheader');?>
+    <div class="container" style="margin-top:20px; margin-bottom:100px;  ">
+        <div class="row d-flex justify-content-center" style="margin-top: 50px;margin-bottom: 50px;">
+            <div class="col-sm-12 col-md-2 col"><a class="btn" style="font-weight:bold;">  Kategori</a> <br></div>
+            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;color: orangered"><i class="fas fa-caret-right"></i> İlan Detay </a>	</div>
+            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;"> Fotoğraf </a>	</div>
+            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;" >  Ön İzleme </a>	</div>
+            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;">  Doping Al </a>	</div>
+            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold"> Tebrikler </a>	</div>
+        </div>
       <?php if (isset($kategorinames)): ?>
         <div class="col-md-12 order-md-1 text-primary font-weight-bold" style="margin-bottom:30px;">
           <?php foreach ($kategorinames as $kategoriadi): ?>
@@ -326,7 +326,13 @@
                 <label class="custom-control-label" for="ad_rules">İlan verme kurallarını okudum ve kabul ediyorum</label>
               </div>
               <div class="g-recaptcha" data-sitekey="6LdibXAUAAAAAKHsHSsa7SRfCIFS8Ax1M3PzjfDz"></div>
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Kaydet ve devam et</button>
+
+              <div class="row">
+                  <div class="col-md-6"></div>
+                  <div class="col-md-6"   style="float: left">   <button class="btn btn-primary  btn-block w-75" type="submit">Devam Et <i class="fas fa-caret-right"></i></button></div>
+              </div>
+
+
             </form>
           </div>
         </div>

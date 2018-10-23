@@ -11,7 +11,7 @@
 	<?php $this->load->view('layout/metas');?>
 	<!-- CSS
     ================================================== -->
-	<?php $this->load->view('layout/styles');?>
+
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<style>
 	/* Make the image fully responsive */
@@ -33,24 +33,40 @@
 </head>
 <body>
 	<div class="se-pre-con"></div>
-	<div class="main">
+	<div class="main" style="overflow:visible ">
 		<!-- HEADER START -->
-		<?php $this->load->view('layout/headermenu');?>
+		<?php $this->load->view('layout/newuserheader');?>
 		<!-- HEADER END -->
 		<div class="container">
-			<div class=" row d-flex justify-content-center" style="margin:50px 0 50px 0;">
-				<div class="col-sm-12 col-md-2 col"><a class="btn" style="color:mediumseagreen"><i class="far fa-thumbs-up"></i> Kategori</a> <br></div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:mediumseagreen"><i class="fas fa-file"></i> İlan Detay </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:mediumseagreen"><i class="fas fa-camera"></i> Fotoğraf </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:mediumseagreen"><i class="fas fa-search"></i>  Ön İzleme </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-tags"></i>  Doping Al </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-check-circle"></i> Tebrikler </a>	</div>
-			</div>
+            <div class="row d-flex justify-content-center" style="margin-top: 50px;margin-bottom: 50px;">
+                <div class="col-sm-12 col-md-2 col"><a class="btn" style="font-weight:bold;">  Kategori</a> <br></div>
+                <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;"> İlan Detay </a>	</div>
+                <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;"> Fotoğraf </a>	</div>
+                <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;color: orangered"" ><i class="fas fa-caret-right"></i>   Ön İzleme </a>	</div>
+                <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;> Doping Al </a>	</div>
+                <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold"> Tebrikler </a>	</div>
+            </div>
 
-				<div style="text-align:center;color:#7C7C7C;border:1px solid #7C7C7C;margin-bottom:5px;padding:10px;-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px">
-					İlanınızla ilgili aşağıdaki bilgiler doğruysa "Devam Et" butonunu tıklayıp bir sonraki aşamaya geçin. Değilse "Düzelt" butonunu tıklayın.
-					<br/><br/>
-					<a href="" class="btn btn-warning" name="back" onclick="history.back();">Düzelt</a>&nbsp;<a class="btn btn-info" href="<?php echo base_url('doping/ilan/'.$ilan->Id) ?>">Devam Et</a>
+				<div class="row" style="margin-bottom:50px; ">
+                    <div class="col-12 text-center align-middle" style=" margin-bottom:20px; ">
+                        <center>İlanınızla ilgili aşağıdaki bilgiler doğruysa "Devam Et" butonunu tıklayıp bir sonraki aşamaya geçin. Değilse "Düzelt" butonunu tıklayın.</center>
+
+
+                    </div>
+
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"> <a  class="btn btn-primary btn-block w-100 " name="back" style="color: white" onclick="history.back();"><i class="fas fa-caret-left"></i>  Düzelt  </a>
+                    </div><div class="col-md-3"> <a  class="btn btn-primary btn-block w-100"  href="<?php echo base_url('doping/ilan/'.$ilan->Id) ?>">Devam Et  <i class="fas fa-caret-right"></i></a>
+                    </div>
+                    <div class="col-md-3"></div>
+
+
+
+
+
+
+
+
 				</div>
 			<div class="row" >
 				<?php if (isset($kategorinames)): ?>
