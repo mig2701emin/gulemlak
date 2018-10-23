@@ -212,6 +212,15 @@
 
 		public function kategori($kategori)
 		{
+			/*if (isset($_POST) && !empty($_POST)) {
+				$data["banyo_sayisi"]=$this->input->post("banyo_sayisi");
+				print_r($data["banyo_sayisi"]);
+				die();
+			}*/
+			$this->load->library("pagination");
+			$ek="";
+			$add_query_to_sql="";
+			$order="";
 			$kategorys=getustkategorys($kategori);
 			$data["kategorys"]=$kategorys;
 			for ($i=0; $i < 9 ; $i++) {
@@ -256,30 +265,29 @@
 			//fieldlerin getirilmesi bitiş
 			$data["fields"]=$fields;
 
-			$sql2="select * from firmalar where kategoriId='".$field_kategori."'";
+			$sql2="select firmalar.* from firmalar left join custom_fields ON custom_fields.ilanId=firmalar.Id where firmalar.kategoriId='".$field_kategori."'";
 			if ($field_kategori2!="") {
-				$sql2.=" and kategori2='".$field_kategori2."'";
+				$sql2.=" and firmalar.kategori2='".$field_kategori2."'";
 			}
 			if ($field_kategori3!="") {
-				$sql.=" and kategori3='".$field_kategori3."'";
+				$sql.=" and firmalar.kategori3='".$field_kategori3."'";
 			}
 			if ($field_kategori4!="") {
-				$sql2.=" and kategori4='".$field_kategori4."'";
+				$sql2.=" and firmalar.kategori4='".$field_kategori4."'";
 			}
 			if ($field_kategori5!="") {
-				$sql2.=" and kategori5='".$field_kategori5."'";
+				$sql2.=" and firmalar.kategori5='".$field_kategori5."'";
 			}
 			if ($field_kategori6!="") {
-				$sql2.=" and kategori6='".$field_kategori6."'";
+				$sql2.=" and firmalar.kategori6='".$field_kategori6."'";
 			}
 			if ($field_kategori7!="") {
-				$sql2.=" and kategori7='".$field_kategori7."'";
+				$sql2.=" and firmalar.kategori7='".$field_kategori7."'";
 			}
 			if ($field_kategori8!="") {
-				$sql2.=" and kategori8='".$field_kategori8."'";
+				$sql2.=" and firmalar.kategori8='".$field_kategori8."'";
 			}
 
-			if(isset($_GET) && !empty($_GET)){
 				$add_query_to_sql="";
 				$order_type=$this->security->xss_clean($this->input->get("order_type"));
 				if($order_type=='descdate'){
@@ -295,6 +303,7 @@
 				}else{
 					$order="firmalar.kayit_tarihi DESC";
 				}
+				$data["order_type"]=$order_type;
 
 				$limit_get=$this->security->xss_clean($this->input->get("limit"));
 				if($limit_get<=50 and $limit_get>=10 and !empty($limit_get)){
@@ -302,32 +311,42 @@
 				}elseif(empty($limit)){
 					$limit=40;
 				}
-				$sehir=$this->security->xss_clean($this->input->get("sehir"));
+				$data["limit"]=$limit_get;
+
+				$sehir=$this->security->xss_clean($this->input->post("sehir"));
+				$data["sehir"]=$sehir;
 				if(!empty($sehir) and is_numeric($sehir)){
 					$add_query_to_sql.=" and firmalar.il='".$sehir."'";
 				}
-				$ilce=$this->security->xss_clean($this->input->get("ilce"));
+				$ilce=$this->security->xss_clean($this->input->post("ilce"));
+				$data["ilce"]=$ilce;
 				if(!empty($ilce) and is_numeric($ilce)){
 					$add_query_to_sql.=" and firmalar.ilce='".$ilce."'";
 				}
-				$mahalle=$this->security->xss_clean($this->input->get("mahalle"));
+				$mahalle=$this->security->xss_clean($this->input->post("mahalle"));
+				$data["mahalle"]=$mahalle;
 				if(!empty($mahalle) and is_numeric($mahalle)){
 					$add_query_to_sql.=" and firmalar.mahalle='".$mahalle."'";
 				}
-				$fotograf=$this->security->xss_clean($this->input->get("fotograf"));
-				if(!empty($fotograf) and is_numeric($fotograf)){
+				$fotograf=$this->security->xss_clean($this->input->post("fotograf"));
+				$data["fotograf"]=$fotograf;
+				/*if(!empty($fotograf) and is_numeric($fotograf)){
 					$add_query_to_sql.=" and firmalar.resim1!=''";
-				}
-				$harita=$this->security->xss_clean($this->input->get("harita"));
+				}*/
+				$harita=$this->security->xss_clean($this->input->post("harita"));
+				$data["harita"]=$harita;
 				if(!empty($harita) and is_numeric($harita)){
 					$add_query_to_sql.=" and firmalar.harita!=''";
 				}
-				$fiyat_1=$this->security->xss_clean($this->input->get("fiyat_1"));
-				$fiyat_2=$this->security->xss_clean($this->input->get("fiyat_2"));
+				$fiyat_1=$this->security->xss_clean($this->input->post("fiyat_1"));
+				$data["fiyat_1"]=$fiyat_1;
+				$fiyat_2=$this->security->xss_clean($this->input->post("fiyat_2"));
+				$data["fiyat_2"]=$fiyat_2;
 				if(!empty($fiyat_1) and !empty($fiyat_2)){
 					$add_query_to_sql.=" and (firmalar.fiyat BETWEEN ".$fiyat_1." and ".$fiyat_2.")";
 				}
-				$ilan_tarihi=$this->security->xss_clean(base64_decode($this->input->get("ilan_tarihi")));
+				$ilan_tarihi=$this->security->xss_clean(base64_decode($this->input->post("ilan_tarihi")));
+				$data["ilan_tarihi"]=$ilan_tarihi;
 				$current_date = date("Y-m-d");
 				if($ilan_tarihi=='Son 24 Saat'){
 					$date_filter = date('Y-m-d',strtotime('-1 day',strtotime($current_date)));
@@ -346,6 +365,7 @@
 					$add_query_to_sql.=" and firmalar.kayit_tarihi between '".$date_filter."' and '".$current_date."'";
 				}
 				$WithFilter_g=$this->security->xss_clean(base64_decode($this->input->get('WithFilter')));
+				$data["WithFilter_g"]=$WithFilter_g;
 				if(!empty($WithFilter_g)){
 					$explode_filter=explode("**",$WithFilter_g);
 					$ek=" and custom_fields.field_name='".$explode_filter[0]."' and custom_fields.field_value='".$explode_filter[1]."'";
@@ -353,54 +373,79 @@
 					$ek="";
 				}
 				// fields başlangıç
-				foreach ($fields as $field) {
-					if($field->type=='text'){
-						if($field->aralik=='1'){
-							$field_posted_data[$field->seo_name."_1"]=$this->security->xss_clean($this->input->get($field->seo_name."_1"));
-							$field_posted_data[$field->seo_name."_2"]=$this->security->xss_clean($this->input->get($field->seo_name."_2"));
-							if(!empty($field_posted_data[$field->seo_name."_1"]) and !empty($field_posted_data[$field->seo_name."_2"]) and is_numeric($field_posted_data[$field->seo_name."_1"]) and is_numeric($field_posted_data[$field->seo_name."_2"])){
-								$field_values[$field->seo_name]=" and EXISTS(select * from custom_fields where custom_fields.ilanId=firmalar.Id and custom_fields.field_name='".$field->seo_name."' and custom_fields.field_value BETWEEN '".$field_posted_data[$field->seo_name."_1"]."' and '".$field_posted_data[$field->seo_name."_2"]."')";
+				$field_values = array();
+				$field_posted_data=array();
+				$getirilen = array();
+				if(isset($_POST) && !empty($_POST)){
+					foreach ($fields as $field) {
+						if($field->type=='text'){
+							if($field->aralik=='1'){
+								$field_posted_data[$field->seo_name."_1"]=$this->security->xss_clean($this->input->post($field->seo_name."_1"));
+								$field_posted_data[$field->seo_name."_2"]=$this->security->xss_clean($this->input->post($field->seo_name."_2"));
+								if(!empty($field_posted_data[$field->seo_name."_1"]) and !empty($field_posted_data[$field->seo_name."_2"]) and is_numeric($field_posted_data[$field->seo_name."_1"]) and is_numeric($field_posted_data[$field->seo_name."_2"])){
+									$field_values[$field->seo_name]=" and EXISTS(select * from custom_fields where custom_fields.ilanId=firmalar.Id and custom_fields.field_name='".$field->seo_name."' and custom_fields.field_value BETWEEN '".$field_posted_data[$field->seo_name."_1"]."' and '".$field_posted_data[$field->seo_name."_2"]."')";
+									$getirilen[$field->seo_name."_1"]=$field_posted_data[$field->seo_name."_1"];
+									$getirilen[$field->seo_name."_2"]=$field_posted_data[$field->seo_name."_2"];
+								}
+							}else{
+								$field_posted_data[$field->seo_name]=$this->input->post($field->seo_name);
+								if(!empty($field_posted_data[$field->seo_name])){
+									$field_values[$field->seo_name]=" and EXISTS(select * from custom_fields where custom_fields.ilanId=firmalar.Id and custom_fields.field_name='".$field->seo_name."' and custom_fields.field_value='".$field_posted_data[$field->seo_name]."')";
+									$getirilen[$field->seo_name]=$field_posted_data[$field->seo_name];
+								}
 							}
-						}else{
-							$field_posted_data[$field->seo_name]=$_GET[$fieldId];
-							if(!empty($field_posted_data[$field->seo_name])){
-								$field_values[$field->seo_name]=" and EXISTS(select * from custom_fields where custom_fields.ilanId=firmalar.Id and custom_fields.field_name='".$field->seo_name."' and custom_fields.field_value='".$field_posted_data[$field->seo_name]."')";
+						}elseif($field->type=='select' or $field->type=='radio'){
+							if (!empty($this->input->post($field->seo_name))) {
+								$field_posted_data[$field->seo_name]=implode("','",array_map("base64_decode",$this->input->post($field->seo_name)));
+								if(!empty($field_posted_data[$field->seo_name])){
+									$field_values[$field->seo_name]=" and EXISTS(select * from custom_fields where custom_fields.ilanId=firmalar.Id and custom_fields.field_name='".$field->seo_name."' and custom_fields.field_value In ('".$field_posted_data[$field->seo_name]."'))";
+									//if($field->multiple==1){
+									//	$getirilen[$field->seo_name] = array($field_posted_data[$field->seo_name]);
+									//}else{
+										$getirilen[$field->seo_name]=$this->input->post($field->seo_name);
+									//}
+								}
 							}
-						}
-					}elseif($field->type=='select' or $field->type=='radio'){
-						$field_posted_data[$field->seo_name]=implode("','",array_map("base64_decode",$this->input->get($field->seo_name)));
-						if(!empty($field_posted_data[$field->seo_name])){
-							$field_values[$field->seo_name]=" and EXISTS(select * from custom_fields where custom_fields.ilanId=firmalar.Id and custom_fields.field_name='".$field->seo_name."' and custom_fields.field_value In ('".$field_posted_data[$field->seo_name]."'))";
-						}
-					}elseif($field->type=='checkbox'){
-						$field_posted_data[$field->seo_name]=array_map("base64_decode",$this->input->get($field->seo_name));
-						$field_search_v="";
-						for ($i = 0; $i <= count($field_posted_data[$field->seo_name])-1; $i++) {
-							$field_search_v.=" and find_in_set ('".str_replace('\'','',$field_posted_data[$field->seo_name][$i])."',replace(custom_fields.field_value,', ',','))";
-						}
-						if(!empty($field_posted_data[$field->seo_name])){
-							$field_values[$field->seo_name]=" and EXISTS(select * from custom_fields where custom_fields.ilanId=firmalar.Id and custom_fields.field_name='".$field->seo_name."'".$field_search_v.")";
-						}
-					}elseif($field->type=='multiple_select'){
-						$field_posted_data[$field->seo_name]=$this->input->get($field->seo_name);
-						$field_posted_data2[$field->multiple_field_seo_name]=implode("','",array_map('base64_decode',$_GET[$multiple_field_seo_name]));
-						if(!empty($field_posted_data[$field->seo_name]) and !empty($field_posted_data2[$field->multiple_field_seo_name])){
-							$field_values[$field->seo_name]=" and EXISTS(select * from custom_fields where custom_fields.ilanId=firmalar.Id and custom_fields.field_name='".$field->seo_name."' and custom_fields.field_value='".$field_posted_data[$field->seo_name]."' and custom_fields.field_name='".$field->multiple_field_seo_name."' and custom_fields.field_value In ('".$field_posted_data2[$field->multiple_field_seo_name]."'))";
+						}elseif($field->type=='checkbox'){
+							if (!empty($this->input->post($field->seo_name))) {
+								$field_posted_data[$field->seo_name]=array_map("base64_decode",$this->input->post($field->seo_name));
+								$field_search_v="";
+								for ($i = 0; $i <= count($field_posted_data[$field->seo_name])-1; $i++) {
+									$field_search_v.=" and find_in_set ('".str_replace('\'','',$field_posted_data[$field->seo_name][$i])."',replace(custom_fields.field_value,', ',','))";
+								}
+								if(!empty($field_posted_data[$field->seo_name])){
+									$field_values[$field->seo_name]=" and EXISTS(select * from custom_fields where custom_fields.ilanId=firmalar.Id and custom_fields.field_name='".$field->seo_name."'".$field_search_v.")";
+									$getirilen[$field->seo_name]=array($this->input->post($field->seo_name));
+								}
+							}
+						}elseif($field->type=='multiple_select'){
+							$field_posted_data[$field->seo_name]=$this->input->post($field->seo_name);
+							$field_posted_data2[$field->multiple_field_seo_name]=implode("','",array_map('base64_decode',$this->input->post($field->multiple_field_seo_name)));
+							if(!empty($field_posted_data[$field->seo_name]) and !empty($field_posted_data2[$field->multiple_field_seo_name])){
+								$field_values[$field->seo_name]=" and EXISTS(select * from custom_fields where custom_fields.ilanId=firmalar.Id and custom_fields.field_name='".$field->seo_name."' and custom_fields.field_value='".$field_posted_data[$field->seo_name]."' and custom_fields.field_name='".$field->multiple_field_seo_name."' and custom_fields.field_value In ('".$field_posted_data2[$field->multiple_field_seo_name]."'))";
+								$getirilen[$field->seo_name]=array($this->input->post($field->seo_name));
+							}
 						}
 					}
-				}
-				foreach ($field_values as $field_name => $field_value) {
-					if(!empty($field_value)){
-						$add_query_to_sql.=$field_value;
+					foreach ($field_values as $field_name => $field_value) {
+						if(!empty($field_value)){
+							$add_query_to_sql.=$field_value;
+						}
 					}
 				}
 				// fields sonu
-			}
-
-
-      $sql2.=" and onay='1' order by kayit_tarihi desc LIMIT 10";
-
-      $ilanlar = $this->db->query($sql2)->result();
+			$data["field_posted_data"]=$getirilen;
+			$config["uri_segment"] = 5;
+			$page = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
+			$config["per_page"] = 10;
+			$config["num_links"] = 10;
+			$config["base_url"] = base_url("emlak/konut/daire/149");
+      $sql2.=" and onay='1' ".$ek.$add_query_to_sql." group by firmalar.Id order by firmalar.ust_siradayim DESC,".$order;
+      $config["total_rows"] = $this->db->query($sql2)->num_rows();
+			$sql2.=" LIMIT ".$page.", ".$config['per_page'];
+			$this->pagination->initialize($config);
+			$data["links"] = $this->pagination->create_links();
+			$ilanlar = $this->db->query($sql2)->result();
 			$data["ilanlar"]=$ilanlar;
 			$data["kategori"]=$this->kategoriler->getbyid($kategori);
 			$data["altKategoriler"]=$this->kategoriler->getSubs($kategori);
@@ -411,14 +456,7 @@
 				$data["magazaKatVitrin"]=$magkatvitrin->result();
 			}
 			$data["search"]="";
-			$data["sehir"]="";
-			$data["ilan_tarihi"]="";
-			$data["fotograf"]="";
-			$data["harita"]="";
-			$data["WithFilter_g"]="";
-			$data["order_type"]="";
-			$data["limit"]="40";
-			$data["sayfa"]="0";
+			$data["sayfa"]=0;
 
 			$this->load->view("kategori",$data);
 		}
