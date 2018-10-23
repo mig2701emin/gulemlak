@@ -72,16 +72,16 @@ h5{
 }
 </style>
 
-<div class=" row d-flex justify-content-center" style="margin:50px 0 50px 0;">
-  <div class="col-sm-12 col-md-2 col"><a class="btn" style="color:mediumseagreen"><i class="far fa-thumbs-up"></i> Kategori</a> <br></div>
-  <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-file"></i> İlan Detay </a>	</div>
-  <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-camera"></i> Fotoğraf </a>	</div>
-  <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-search"></i>  Ön İzleme </a>	</div>
-  <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-tags"></i>  Doping Al </a>	</div>
-  <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-check-circle"></i> Tebrikler </a>	</div>
-</div>
+    <div class="row d-flex justify-content-center" style="margin-top: 50px;margin-bottom: 50px;">
+        <div class="col-sm-12 col-md-2 col"><a class="btn" style="font-weight:bold;color: orangered"><i class="fas fa-caret-right"></i>  Kategori</a> <br></div>
+        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;"> İlan Detay </a>	</div>
+        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;"> Fotoğraf </a>	</div>
+        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;" >  Ön İzleme </a>	</div>
+        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;">  Doping Al </a>	</div>
+        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold"> Tebrikler </a>	</div>
+    </div>
 
-    <div class="row" style="margin-top: 50px">
+    <div class="row" style="margin-top: 50px;margin-bottom:100px; ">
 
         <div class="col-12 col-md-4" style="border-right:solid 1px darkgray;">
           <div class="loader text-center ">

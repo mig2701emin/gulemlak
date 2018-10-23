@@ -17,29 +17,39 @@
 <body>
   <div class="se-pre-con"></div>
   <div class="main">
-    <?php $this->load->view('layout/userheader');?>
-    <div class="container">
-      <div class=" row d-flex justify-content-center" style="margin:50px 0 50px 0;">
-        <div class="col-sm-12 col-md-2 col"><a class="btn" style="color:mediumseagreen"><i class="far fa-thumbs-up"></i> Kategori</a> <br></div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:mediumseagreen"><i class="fas fa-file"></i> İlan Detay </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:mediumseagreen"><i class="fas fa-camera"></i> Fotoğraf </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-search"></i>  Ön İzleme </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-tags"></i>  Doping Al </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-check-circle"></i> Tebrikler </a>	</div>
-      </div>
+    <?php $this->load->view('layout/newuserheader');?>
+    <div class="container" style="margin-top:50px; margin-bottom:50px;">
+        <div class="row d-flex justify-content-center" style="margin-top: 50px;margin-bottom: 50px;">
+            <div class="col-sm-12 col-md-2 col"><a class="btn" style="font-weight:bold;">  Kategori</a> <br></div>
+            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;"> İlan Detay </a>	</div>
+            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;color: orangered""><i class="fas fa-caret-right"></i> Fotoğraf </a>	</div>
+            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;" >  Ön İzleme </a>	</div>
+            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;>  Doping Al </a>	</div>
+            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold"> Tebrikler </a>	</div>
+        </div>
       <div id="my-dropzone" class="dropzone">
         <!-- <div class="dz-message">
           <h3>Tıklayın!</h3> Ya da <br/><strong>Dosyaları Sürükleyip Bırakın!</strong>
         </div> -->
       </div>
-      <hr class="mt-3"/>
-      <div>
-        <a  class="btn btn-info btn-block" href="<?php echo base_url('ilanekle/onizleme/'.$ilanId) ?>">Devam Et</a>
-      </div>
-  <?php $this->load->view('layout/footer');?>
-    </div>
-  </div>
 
+
+
+        <div class="row" style="margin-top:50px; margin-bottom:50px;  ">
+            <div class="col-md-6"></div>
+            <div class="col-md-6"   style="float: left">
+                <a  class="btn btn-primary btn-block w-75 "  href="<?php echo base_url('ilanekle/onizleme/'.$ilanId) ?>">Devam Et  <i class="fas fa-caret-right"></i></a>
+
+
+        </div>
+
+
+        </div>
+
+
+
+  </div>
+      <?php $this->load->view('layout/footer');?>
   <script src="<?php echo base_url('assets/dropzone/min/dropzone.min.js'); ?>"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="<?php echo base_url('assets/');?>js/script.js"></script>
