@@ -21,7 +21,7 @@
                                     <div class="row">
                                       <div class="col-10">
                                         <span>
-                                            <a href="<?php echo base_url('kategori/'.$anaKategori->seo.'/'.$firstSub->seo); ?>"><?php echo $firstSub->kategori_adi.' '; ?></a>
+                                            <a href="<?php echo base_url($anaKategori->seo.'/'.$firstSub->seo.'/'.encode($firstSub->Id)); ?>"><?php echo $firstSub->kategori_adi.' '; ?></a>
                                         </span>
                                       </div>
                                       <div class="col-2" style="padding:3px">

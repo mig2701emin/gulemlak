@@ -10,39 +10,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       require_once (BASEPATH.'database/DB.php');
       $db=& DB();
-      /*$anaKategoriler=$db->where('ust_kategori','0')->get('kategoriler')->result();
+      /*$anaKategoriler=$db->select('Id, seo')->where('ust_kategori','0')->get('kategoriler')->result();
       foreach ($anaKategoriler as $anaKategori) {
-        //$route['kategori/'.$anaKategori->seo]='ilanlar/kategoriler/'.$anaKategori->Id;
         $route[$anaKategori->seo]='home/kategori/'.$anaKategori->Id;
-        $altKategoriler=$db->where('ust_kategori',$anaKategori->Id)->get('kategoriler')->result();
+        $altKategoriler=$db->select('Id, seo')->where('ust_kategori',$anaKategori->Id)->get('kategoriler')->result();
         foreach ($altKategoriler as $altKategori) {
-          //$route['kategori/'.$anaKategori->seo.'/'.$altKategori->seo]='ilanlar/kategoriler/'.$anaKategori->Id.'/'.$altKategori->Id;
           $route[$anaKategori->seo.'/'.$altKategori->seo]='home/kategori/'.$altKategori->Id;
-          $altKategoriler2=$db->where('ust_kategori',$altKategori->Id)->get('kategoriler')->result();
+          $altKategoriler2=$db->select('Id, seo')->where('ust_kategori',$altKategori->Id)->get('kategoriler')->result();
           foreach ($altKategoriler2 as $altKategori2) {
             $route[$anaKategori->seo.'/'.$altKategori->seo.'/'.$altKategori2->seo]='home/kategori/'.$altKategori2->Id;
-            $altKategoriler3=$db->where('ust_kategori',$altKategori2->Id)->get('kategoriler')->result();
+            $altKategoriler3=$db->select('Id, seo')->where('ust_kategori',$altKategori2->Id)->get('kategoriler')->result();
             foreach ($altKategoriler3 as $altKategori3) {
               $route[$anaKategori->seo.'/'.$altKategori->seo.'/'.$altKategori2->seo.'/'.$altKategori3->seo]='home/kategori/'.$altKategori3->Id;
+              $altKategoriler4=$db->select('Id, seo')->where('ust_kategori',$altKategori3->Id)->get('kategoriler')->result();
+              foreach ($altKategoriler4 as $altKategori4) {
+                $route[$anaKategori->seo.'/'.$altKategori->seo.'/'.$altKategori2->seo.'/'.$altKategori3->seo.'/'.$altKategori4->seo]='home/kategori/'.$altKategori4->Id;
+              }
             }
           }
         }
       }*/
+      $anaKategoriler=$db->select('Id, seo')->where('ust_kategori','0')->get('kategoriler')->result();
+      foreach ($anaKategoriler as $anaKategori) {
+        $route[$anaKategori->seo."/(:any)"]="home/kategori/$1";
+        $route[$anaKategori->seo."/(:any)/(:num)"]="home/kategori/$1";
+        $route[$anaKategori->seo."/(:any)/(:any)"]="home/kategori/$2";
+        $route[$anaKategori->seo."/(:any)/(:any)/(:num)"]="home/kategori/$2";
+        $route[$anaKategori->seo."/(:any)/(:any)/(:any)"]="home/kategori/$3";
+        $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:num)"]="home/kategori/$3";
+        $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:any)"]="home/kategori/$4";
+        $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:any)/(:num)"]="home/kategori/$4";
+        $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:any)/(:any)"]="home/kategori/$5";
+        $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:any)/(:any)/(:num)"]="home/kategori/$5";
+      }
       $magazalar=$db->get('magazalar')->result();
       foreach ($magazalar as $magaza) {
         $route[$magaza->username]='home/magaza_goruntule/'.$magaza->username;
         $route[$magaza->username.'/(:any)']='home/magaza_goruntule/'.$magaza->username.'/$1';
         $route[$magaza->username.'/(:any)/(:any)']='home/magaza_goruntule/'.$magaza->username.'/$1/$2';
-      }
-      $anaKategoriler=$db->where('ust_kategori','0')->get('kategoriler')->result();
-      foreach ($anaKategoriler as $anaKategori) {
-        $route[$anaKategori->seo.'/(:num)']='home/kategori/$1';
-        $route[$anaKategori->seo.'/(:any)/(:num)']='home/kategori/$2';
-        $route[$anaKategori->seo.'/(:any)/(:any)/(:num)']='home/kategori/$3';
-        $route[$anaKategori->seo.'/(:any)/(:any)/(:num)/(:num)']='home/kategori/$3';
-        //$route[$anaKategori->seo.'/(:any)/(:any)/(:any)/(:num)']='home/kategori/$4';
-        //$route[$anaKategori->seo.'/(:any)/(:any)/(:any)/(:any)/(:num)']='home/kategori/$5';
-
       }
 
       $route['sitemap\.xml'] = 'sitemap';

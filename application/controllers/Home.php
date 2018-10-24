@@ -210,33 +210,33 @@
 		}
 
 
-		public function kategori($kategori)
+		public function kategori($kat)
 		{
-			/*if (isset($_POST) && !empty($_POST)) {
-				$data["banyo_sayisi"]=$this->input->post("banyo_sayisi");
-				print_r($data["banyo_sayisi"]);
-				die();
-			}*/
+			$kategori=decode($kat);
 			$this->load->library("pagination");
 			$ek="";
-			$add_query_to_sql="";
 			$order="";
 			$kategorys=getustkategorys($kategori);
+			$urlstring="";
+
 			$data["kategorys"]=$kategorys;
 			for ($i=0; $i < 9 ; $i++) {
 				if ($i == 0) {
 					$field_kategori=$kategorys[0]->Id;
 					$i++;
-
+					$urlstring=$kategorys[0]->seo;
 
 				} elseif(isset($kategorys[$i-1])){
 					$yeni="field_kategori".$i;
 					$$yeni=$kategorys[$i-1]->Id;
+					$urlstring.="/".$kategorys[$i-1]->seo;
+					$uri_segment=$i+2;
 				}else {
 					$yeni="field_kategori".$i;
 					$$yeni="";
 				}
 			}
+			$urlstring.="/".$kat;
 			$sql="select * from fields where ((kategori='".$field_kategori."' and kategori2='0')";
 			if ($field_kategori2!="") {
 				$sql.=" or (kategori2='".$field_kategori2."' and kategori3='0')";
@@ -312,71 +312,63 @@
 					$limit=40;
 				}
 				$data["limit"]=$limit_get;
-
-				$sehir=$this->security->xss_clean($this->input->post("sehir"));
-				$data["sehir"]=$sehir;
-				if(!empty($sehir) and is_numeric($sehir)){
-					$add_query_to_sql.=" and firmalar.il='".$sehir."'";
-				}
-				$ilce=$this->security->xss_clean($this->input->post("ilce"));
-				$data["ilce"]=$ilce;
-				if(!empty($ilce) and is_numeric($ilce)){
-					$add_query_to_sql.=" and firmalar.ilce='".$ilce."'";
-				}
-				$mahalle=$this->security->xss_clean($this->input->post("mahalle"));
-				$data["mahalle"]=$mahalle;
-				if(!empty($mahalle) and is_numeric($mahalle)){
-					$add_query_to_sql.=" and firmalar.mahalle='".$mahalle."'";
-				}
-				$fotograf=$this->security->xss_clean($this->input->post("fotograf"));
-				$data["fotograf"]=$fotograf;
-				/*if(!empty($fotograf) and is_numeric($fotograf)){
-					$add_query_to_sql.=" and firmalar.resim1!=''";
-				}*/
-				$harita=$this->security->xss_clean($this->input->post("harita"));
-				$data["harita"]=$harita;
-				if(!empty($harita) and is_numeric($harita)){
-					$add_query_to_sql.=" and firmalar.harita!=''";
-				}
-				$fiyat_1=$this->security->xss_clean($this->input->post("fiyat_1"));
-				$data["fiyat_1"]=$fiyat_1;
-				$fiyat_2=$this->security->xss_clean($this->input->post("fiyat_2"));
-				$data["fiyat_2"]=$fiyat_2;
-				if(!empty($fiyat_1) and !empty($fiyat_2)){
-					$add_query_to_sql.=" and (firmalar.fiyat BETWEEN ".$fiyat_1." and ".$fiyat_2.")";
-				}
-				$ilan_tarihi=$this->security->xss_clean(base64_decode($this->input->post("ilan_tarihi")));
-				$data["ilan_tarihi"]=$ilan_tarihi;
-				$current_date = date("Y-m-d");
-				if($ilan_tarihi=='Son 24 Saat'){
-					$date_filter = date('Y-m-d',strtotime('-1 day',strtotime($current_date)));
-					$add_query_to_sql.=" and firmalar.kayit_tarihi between '".$date_filter."' and '".$current_date."'";
-				}elseif($ilan_tarihi=='Son 3 Gün'){
-					$date_filter = date('Y-m-d',strtotime('-3 day',strtotime($current_date)));
-					$add_query_to_sql.=" and firmalar.kayit_tarihi between '".$date_filter."' and '".$current_date."'";
-				}elseif($ilan_tarihi=='Son 7 Gün'){
-					$date_filter = date('Y-m-d',strtotime('-7 day',strtotime($current_date)));
-					$add_query_to_sql.=" and firmalar.kayit_tarihi between '".$date_filter."' and '".$current_date."'";
-				}elseif($ilan_tarihi=='Son 15 Gün'){
-					$date_filter = date('Y-m-d',strtotime('-15 day',strtotime($current_date)));
-					$add_query_to_sql.=" and firmalar.kayit_tarihi between '".$date_filter."' and '".$current_date."'";
-				}elseif($ilan_tarihi=='Son 30 Gün'){
-					$date_filter = date('Y-m-d',strtotime('-30 day',strtotime($current_date)));
-					$add_query_to_sql.=" and firmalar.kayit_tarihi between '".$date_filter."' and '".$current_date."'";
-				}
-				$WithFilter_g=$this->security->xss_clean(base64_decode($this->input->get('WithFilter')));
-				$data["WithFilter_g"]=$WithFilter_g;
-				if(!empty($WithFilter_g)){
-					$explode_filter=explode("**",$WithFilter_g);
-					$ek=" and custom_fields.field_name='".$explode_filter[0]."' and custom_fields.field_value='".$explode_filter[1]."'";
-				}else{
-					$ek="";
-				}
-				// fields başlangıç
-				$field_values = array();
-				$field_posted_data=array();
-				$getirilen = array();
 				if(isset($_POST) && !empty($_POST)){
+					$field_values = array();
+					$field_posted_data=array();
+					$getirilen = array();
+
+					$sehir=$this->security->xss_clean($this->input->post("sehir"));
+					$data["sehir"]=$sehir;
+					if(!empty($sehir) and is_numeric($sehir)){
+						$add_query_to_sql.=" and firmalar.il='".$sehir."'";
+					}
+					$ilce=$this->security->xss_clean($this->input->post("ilce"));
+					$data["ilce"]=$ilce;
+					if(!empty($ilce) and is_numeric($ilce)){
+						$add_query_to_sql.=" and firmalar.ilce='".$ilce."'";
+					}
+					$mahalle=$this->security->xss_clean($this->input->post("mahalle"));
+					$data["mahalle"]=$mahalle;
+					if(!empty($mahalle) and is_numeric($mahalle)){
+						$add_query_to_sql.=" and firmalar.mahalle='".$mahalle."'";
+					}
+					$fotograf=$this->security->xss_clean($this->input->post("fotograf"));
+					$data["fotograf"]=$fotograf;
+					/*if(!empty($fotograf) and is_numeric($fotograf)){
+						$add_query_to_sql.=" and firmalar.resim1!=''";
+					}*/
+					$harita=$this->security->xss_clean($this->input->post("harita"));
+					$data["harita"]=$harita;
+					if(!empty($harita) and is_numeric($harita)){
+						$add_query_to_sql.=" and firmalar.harita!=''";
+					}
+					$fiyat_1=$this->security->xss_clean($this->input->post("fiyat_1"));
+					$data["fiyat_1"]=$fiyat_1;
+					$fiyat_2=$this->security->xss_clean($this->input->post("fiyat_2"));
+					$data["fiyat_2"]=$fiyat_2;
+					if(!empty($fiyat_1) and !empty($fiyat_2)){
+						$add_query_to_sql.=" and (firmalar.fiyat BETWEEN ".$fiyat_1." and ".$fiyat_2.")";
+					}
+					$ilan_tarihi=$this->security->xss_clean(base64_decode($this->input->post("ilan_tarihi")));
+					$data["ilan_tarihi"]=$ilan_tarihi;
+					$current_date = date("Y-m-d");
+					if($ilan_tarihi=='Son 24 Saat'){
+						$date_filter = date('Y-m-d',strtotime('-1 day',strtotime($current_date)));
+						$add_query_to_sql.=" and firmalar.kayit_tarihi between '".$date_filter."' and '".$current_date."'";
+					}elseif($ilan_tarihi=='Son 3 Gün'){
+						$date_filter = date('Y-m-d',strtotime('-3 day',strtotime($current_date)));
+						$add_query_to_sql.=" and firmalar.kayit_tarihi between '".$date_filter."' and '".$current_date."'";
+					}elseif($ilan_tarihi=='Son 7 Gün'){
+						$date_filter = date('Y-m-d',strtotime('-7 day',strtotime($current_date)));
+						$add_query_to_sql.=" and firmalar.kayit_tarihi between '".$date_filter."' and '".$current_date."'";
+					}elseif($ilan_tarihi=='Son 15 Gün'){
+						$date_filter = date('Y-m-d',strtotime('-15 day',strtotime($current_date)));
+						$add_query_to_sql.=" and firmalar.kayit_tarihi between '".$date_filter."' and '".$current_date."'";
+					}elseif($ilan_tarihi=='Son 30 Gün'){
+						$date_filter = date('Y-m-d',strtotime('-30 day',strtotime($current_date)));
+						$add_query_to_sql.=" and firmalar.kayit_tarihi between '".$date_filter."' and '".$current_date."'";
+					}
+
 					foreach ($fields as $field) {
 						if($field->type=='text'){
 							if($field->aralik=='1'){
@@ -432,14 +424,26 @@
 							$add_query_to_sql.=$field_value;
 						}
 					}
+					$data["field_posted_data"]=$getirilen;
+
+
 				}
+
+				$WithFilter_g=$this->security->xss_clean(base64_decode($this->input->get('WithFilter')));
+				$data["WithFilter_g"]=$WithFilter_g;
+				if(!empty($WithFilter_g)){
+					$explode_filter=explode("**",$WithFilter_g);
+					$ek=" and custom_fields.field_name='".$explode_filter[0]."' and custom_fields.field_value='".$explode_filter[1]."'";
+				}else{
+					$ek="";
+				}
+				// fields başlangıç
 				// fields sonu
-			$data["field_posted_data"]=$getirilen;
-			$config["uri_segment"] = 5;
-			$page = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
+			$config["uri_segment"] = $uri_segment;
+			$page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
 			$config["per_page"] = 10;
 			$config["num_links"] = 10;
-			$config["base_url"] = base_url("emlak/konut/daire/149");
+			$config["base_url"] = base_url($urlstring);
       $sql2.=" and onay='1' ".$ek.$add_query_to_sql." group by firmalar.Id order by firmalar.ust_siradayim DESC,".$order;
       $config["total_rows"] = $this->db->query($sql2)->num_rows();
 			$sql2.=" LIMIT ".$page.", ".$config['per_page'];

@@ -191,7 +191,7 @@
               }
               ?>
               <div style="margin-left:10px;">
-                <a href="<?php echo base_url(); ?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[0]->Id; ?>" class="cat_text"><?php echo $kategorys[0]->kategori_adi; ?></a>
+                <a href="<?php echo base_url(); ?><?php echo $kategorys[0]->seo; ?>/<?php echo encode($kategorys[0]->Id); ?>" class="cat_text"><?php echo $kategorys[0]->kategori_adi; ?></a>
               </div>
               <?php if($kat1==$kategori->Id){?>
                 <?php if ($altKategoriler!=""): ?>
@@ -199,7 +199,7 @@
                     <?php foreach ($altKategoriler as $kate2){
                       $say2=ilansay(array("kategori2" => $kate2->Id, "onay" => "1"));
                     ?>
-                    <div style="margin-left:17px;margin-top:5px;"><a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kate2->seo;?>/<?php echo $kate2->Id; ?>" class="incat_submenu_text"><?php echo $kate2->kategori_adi; ?></a> (<?php echo $say2;?>)</div>
+                    <div style="margin-left:17px;margin-top:5px;"><a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kate2->seo;?>/<?php echo encode($kate2->Id); ?>" class="incat_submenu_text"><?php echo $kate2->kategori_adi; ?></a> (<?php echo $say2;?>)</div>
                     <?php } ?>
                   </div>
                 <?php endif; ?>
@@ -208,7 +208,7 @@
                 $say2=ilansay(array("kategori2" => $kategorys[1]->Id, "onay" => "1"));
                 ?>
                 <div style="margin-left:17px;margin-top:5px;">
-                  <a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[1]->Id; ?>" class="incat_submenu_text"><?php echo $kategorys[1]->kategori_adi; ?></a>
+                  <a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo encode($kategorys[1]->Id); ?>" class="incat_submenu_text"><?php echo $kategorys[1]->kategori_adi; ?></a>
                   <?php if($kat2 == $kategori->Id){?> (<?php echo $say2;?>)<?php }?>
                 </div>
                 <?php
@@ -219,7 +219,7 @@
                     <?php foreach ($altKategoriler as $kate3){
                       $say3=ilansay(array("kategori3" => $kate3->Id, "onay" => "1"));
                     ?>
-                    <div style="margin-left:25px;margin-top:5px;"><a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kate3->seo;?>/<?php echo $kate3->Id; ?>" class="incat_submenu_text"><?php echo $kate3->kategori_adi; ?></a> (<?php echo $say3;?>)</div>
+                    <div style="margin-left:25px;margin-top:5px;"><a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kate3->seo;?>/<?php echo encode($kate3->Id); ?>" class="incat_submenu_text"><?php echo $kate3->kategori_adi; ?></a> (<?php echo $say3;?>)</div>
                     <?php } ?>
                   </div>
                 <?php endif; ?>
@@ -319,7 +319,7 @@
                     <?php
                     foreach($iller as $bolge){
                     ?>
-                    <option value="<?php echo $bolge->il_id;?>"<?php if($sehir!="" && $bolge->il_id==$sehir){?> selected<?php }?>><?php echo $bolge->il_ad;?></option>
+                    <option value="<?php echo $bolge->il_id;?>"<?php if(isset($sehir) && $bolge->il_id==$sehir){?> selected<?php }?>><?php echo $bolge->il_ad;?></option>
                     <?php }?>
                   </select>
 
@@ -338,7 +338,7 @@
                   </span>
                 </div>
                 <div id="field_2" class="category_openField" style="display:block;">
-                  <input type="text" name="fiyat_1" class="price_format" value="<?php echo $fiyat_1; ?>" style="width:60px"> - <input type="text" name="fiyat_2" class="price_format" value="<?php echo $fiyat_2; ?>" style="width:60px">
+                  <input type="text" name="fiyat_1" class="price_format" value="<?php if(isset($fiyat_1)){echo $fiyat_1;}?>" style="width:60px"> - <input type="text" name="fiyat_2" class="price_format" value="<?php if(isset($fiyat_2)){echo $fiyat_2;} ?>" style="width:60px">
                 </div>
                 <div class="fieldSep"></div>
                 <?php // fields baslangıç ?>
@@ -451,10 +451,10 @@
                   </select>
                 </div>
                 <div class="category_fieldSep"></div>
-                <input type="checkbox" name="fotograf" id="fotograf" value="1"<?php if($fotograf==1){?> checked<?php }?>>
+                <input type="checkbox" name="fotograf" id="fotograf" value="1"<?php if(isset($fotograf) && $fotograf==1){?> checked<?php }?>>
                 <label for="fotograf">Sadece Fotoğraflı İlanlar</label>
                 <br>
-                <input type="checkbox" name="harita" id="harita" value="1"<?php if($harita==1){?> checked<?php }?>>
+                <input type="checkbox" name="harita" id="harita" value="1"<?php if(isset($harita) && $harita==1){?> checked<?php }?>>
                 <label for="harita">Sadece Haritalı İlanlar</label>
                 <input type="submit" class="v4_special_button" style="margin:10px auto 0 auto ;width:120px; "  value="Ara">
               </form>
@@ -701,7 +701,7 @@
     <style type="css/text">a{ font-family: 'Raleway', sans-serif;}</style>
     <script type="text/javascript">
     function ilcegetir(parametre) {
-      if (parametre>0){
+      if (parametre > 0){
         var il_id = parametre;
         //ajax işlemi post ile yapılıyor
         $.post('<?php echo base_url(); ?>ajax/get_ilceler', {il_id : il_id}, function(result){
@@ -723,7 +723,7 @@
           }
         });
       }
-    };
+    }
 
     function mahallegetir(parametre) {
       if (parametre>0){
@@ -749,7 +749,7 @@
           }
         });
       }
-    };
+    }
     </script>
   </body>
   </html>
