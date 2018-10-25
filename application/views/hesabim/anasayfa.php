@@ -6,6 +6,21 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/'); ?>css/style.css"/>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <style type="text/css">
+    .pagination a, .pagination strong{
+
+      padding: 5px;
+      border: 1px solid #ccc;
+      margin-left: 5px;
+      text-decoration: none;
+      box-shadow: 0px 0px 8px rgba(5,5,5,0.3);
+
+    }
+    .pagination strong{
+      background-color: #35a5f2;
+
+    }
+</style>
 </head>
 <body>
   <div class="se-pre-con"></div>
@@ -123,7 +138,9 @@
             }?>
           </tbody>
           </table>
+          <p class="pagination text-center"><?php echo $links; ?></p>
     </div>
+
     <?php $this->load->view('layout/footer');?>
   </div>
   <div id="ilan-sil" title="İlan Silme Onayı" style="display:none">

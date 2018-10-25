@@ -19,24 +19,44 @@ class Hesabim extends CI_Controller{
   }
   public function anasayfa($filter="")
   {
-      if ($filter == "aktif") {
-        $where = array("uyeId" => $this->user->Id,"onay"=>"1","suresi_doldu" =>"0");
-        $query=$this->firmalar->getWhere($where);
-        $filter2="Aktif";
-      }elseif ($filter == "pasif") {
-        $where = "uyeId=".$this->user->Id." and (onay=0 or suresi_doldu=1)";
-        $query=$this->firmalar->getWhere($where);
-        $filter2="Pasif";
-      } else {
-        $where = array("uyeId" => $this->user->Id);
-        $query=$this->firmalar->getWhere($where);
-        $filter2="Tüm";
-      }
-      $data["toplam_kayit"]=$query->num_rows();
-      $data["ilanlar"]=$query->result();
-      $data["user"]=$this->user;
-      $data["filter"]=$filter2;
-      $this->load->view("hesabim/anasayfa",$data);
+    $this->load->library("pagination");
+    $config["per_page"] = 10;
+    if ($filter == "aktif") {
+      $where = array("uyeId" => $this->user->Id,"onay"=>"1","suresi_doldu" =>"0");
+      $filter2="Aktif";
+      $urlstring="hesabim/anasayfa/aktif";
+      $uri_segment=4;
+      $page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
+      $query=$this->db->where($where)->limit($config["per_page"],$page)->get("firmalar");
+      $data["toplam_kayit"]=$this->db->where($where)->get("firmalar")->num_rows();
+    }elseif ($filter == "pasif") {
+      $where = "uyeId=".$this->user->Id." and (onay=0 or suresi_doldu=1)";
+      $filter2="Pasif";
+      $urlstring="hesabim/anasayfa/pasif";
+      $uri_segment=4;
+      $page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
+      $query=$this->db->where($where)->limit($config["per_page"],$page)->get("firmalar");
+      $data["toplam_kayit"]=$this->db->where($where)->get("firmalar")->num_rows();
+    } else {
+      $where = array("uyeId" => $this->user->Id);
+      $filter2="Tüm";
+      $urlstring="hesabim/anasayfa";
+      $uri_segment=3;
+      $page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
+      $query=$this->db->where($where)->limit($config["per_page"],$page)->get("firmalar");
+      $data["toplam_kayit"]=$this->db->where($where)->get("firmalar")->num_rows();
+    }
+    $data["ilanlar"]=$query->result();
+    $data["user"]=$this->user;
+    $data["filter"]=$filter2;
+
+    $config["uri_segment"] = $uri_segment;
+    $config["base_url"] = base_url($urlstring);
+    $config["total_rows"] = $data["toplam_kayit"];
+    $config["num_links"] = $data["toplam_kayit"]/$config["per_page"];
+    $this->pagination->initialize($config);
+    $data["links"] = $this->pagination->create_links();
+    $this->load->view("hesabim/anasayfa",$data);
 
   }
   public function bilgilerim()
