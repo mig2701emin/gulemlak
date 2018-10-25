@@ -227,7 +227,7 @@
                   $say3=ilansay(array("kategori3" => $kategorys[2]->Id, "onay" => "1"));
                   ?>
                   <div style="margin-left:25px;margin-top:5px;">
-                    <a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[2]->Id; ?>" class="incat_submenu_text"><?php echo $kategorys[2]->kategori_adi; ?></a>
+                    <a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo encode($kategorys[2]->Id); ?>" class="incat_submenu_text"><?php echo $kategorys[2]->kategori_adi; ?></a>
                     <?php if($kat3 == $kategori->Id){?> (<?php echo $say3;?>)<?php }?>
                   </div>
                   <?php
@@ -239,7 +239,7 @@
                         $say4=ilansay(array("kategori4" => $kate4->Id, "onay" => "1"));
                       ?>
                       <div style="margin-left:32px;margin-top:5px;">
-                        <a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kate4->seo;?>/<?php echo $kate4->Id; ?>" class="incat_submenu_text"><?php echo $kate4->kategori_adi; ?></a>
+                        <a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kate4->seo;?>/<?php echo encode($kate4->Id); ?>" class="incat_submenu_text"><?php echo $kate4->kategori_adi; ?></a>
                         (<?php echo $say4;?>)</div>
                       <?php } ?>
                     </div>
@@ -248,7 +248,7 @@
                     $say4=ilansay(array("kategori4" => $kategorys[3]->Id, "onay" => "1"));
                     ?>
                     <div style="margin-left:32px;margin-top:5px;">
-                      <a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kategorys[3]->Id; ?>" class="incat_submenu_text"><?php echo $kategorys[3]->kategori_adi; ?></a>
+                      <a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo encode($kategorys[3]->Id); ?>" class="incat_submenu_text"><?php echo $kategorys[3]->kategori_adi; ?></a>
                       <?php if($kat4 == $kategori->Id){?> (<?php echo $say4;?>)<?php }?>
                     </div>
                     <?php
@@ -260,7 +260,7 @@
                           $say5=ilansay(array("kategori5" => $kate5->Id, "onay" => "1"));
                         ?>
                         <div style="margin-left:40px;margin-top:5px;">
-                          <a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kate5->seo;?>/<?php echo $kate5->Id; ?>" class="incat_submenu_text"><?php echo $kate5->kategori_adi; ?></a>
+                          <a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kate5->seo;?>/<?php echo encode($kate5->Id); ?>" class="incat_submenu_text"><?php echo $kate5->kategori_adi; ?></a>
                           (<?php echo $say5;?>)</div>
                         <?php } ?>
                       </div>
@@ -269,7 +269,7 @@
                       $say5=ilansay(array("kategori5" => $kategorys[4]->Id, "onay" => "1"));
                       ?>
                       <div style="margin-left:40px;margin-top:5px;">
-                        <a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kategorys[4]->seo; ?>/<?php echo $kategorys[4]->Id; ?>" class="incat_submenu_text"><?php echo $kategorys[4]->kategori_adi; ?></a>
+                        <a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kategorys[4]->seo; ?>/<?php echo encode($kategorys[4]->Id); ?>" class="incat_submenu_text"><?php echo $kategorys[4]->kategori_adi; ?></a>
                         <?php if($kat5 == $kategori->Id){?> (<?php echo $say5;?>)<?php }?>
                       </div>
                       <?php
@@ -281,7 +281,7 @@
                             $say6=ilansay(array("kategori6" => $kate6->Id, "onay" => "1"));
                           ?>
                           <div style="margin-left:50px;margin-top:5px;">
-                            <a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kategorys[4]->seo; ?>/<?php echo $kate6->seo;?>/<?php echo $kate6->Id; ?>" class="incat_submenu_text"><?php echo $kate6->kategori_adi; ?></a>
+                            <a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kategorys[4]->seo; ?>/<?php echo $kate6->seo;?>/<?php echo encode($kate6->Id); ?>" class="incat_submenu_text"><?php echo $kate6->kategori_adi; ?></a>
                             (<?php echo $say6;?>)</div>
                           <?php } ?>
                         </div>
@@ -290,7 +290,7 @@
                         $say6=ilansay(array("kategori6" => $kategorys[5]->Id, "onay" => "1"));
                         ?>
                         <div style="margin-left:50px;margin-top:5px;">
-                          <a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kategorys[4]->seo; ?>/<?php echo $kategorys[5]->seo; ?>/<?php echo $kategorys[5]->Id; ?>" class="incat_submenu_text"><?php echo $kategorys[5]->kategori_adi; ?></a>
+                          <a href="<?php echo base_url();?><?php echo $kategorys[0]->seo; ?>/<?php echo $kategorys[1]->seo; ?>/<?php echo $kategorys[2]->seo; ?>/<?php echo $kategorys[3]->seo; ?>/<?php echo $kategorys[4]->seo; ?>/<?php echo $kategorys[5]->seo; ?>/<?php echo encode($kategorys[5]->Id); ?>" class="incat_submenu_text"><?php echo $kategorys[5]->kategori_adi; ?></a>
                           <?php if($kat6 == $kategori->Id){?> (<?php echo $say6;?>)<?php }?>
                         </div>
                       <?php
@@ -300,7 +300,6 @@
                   }
                 }
               }
-              /* ********************************************* */
               ?>
 
               <div class="searchSeperator"></div>
@@ -468,10 +467,6 @@
         <div style="float:left;" class="listable">
 
           <!-- Kategori Görüntüle başlangıç ..............................................-->
-          <script>
-            function order_by(type){window.location="<?php echo check_url('order_type');?>&order_type="+type;}
-            function limit(limit){window.location="<?php echo check_url('limit');?>&limit="+limit;}
-          </script>
 
           <div class="genelbox" style="margin-bottom:10px;">
             <?php echo $kategori->kategori_adi; ?> İlanları
@@ -491,24 +486,25 @@
             }
           }
           ?>
-          <div style="float:right;">
-            <select onchange="order_by(this.options[selectedIndex].value);" style="width:200px;font-size:9pt;">
-              <optgroup label="Sıralama:">
-                <option value="descdate"<?php if($order_type=='descdate'){?> selected<?php }?>>Tarihe Göre (Yeniden Eskiye)</option>
-                <option value="ascdate"<?php if($order_type=='ascdate'){?> selected<?php }?>>Tarihe Göre (Eskiden Yeniye)</option>
-                <option value="descprice"<?php if($order_type=='descprice'){?> selected<?php }?>>Fiyata Göre (Artan)</option>
-                <option value="ascprice"<?php if($order_type=='ascprice'){?> selected<?php }?>>Fiyata Göre (Azalan)</option>
-                <option value="city"<?php if($order_type=='city'){?> selected<?php }?>>İle Göre</option>
-              </optgroup>
-            </select>
-            <select onchange="limit(this.options[selectedIndex].value);" style="width:50px;font-size:9pt;margin-left:5px;">
-              <option value="10"<?php if($limit=='10'){?> selected<?php }?>>10</option>
-              <option value="20"<?php if($limit=='20'){?> selected<?php }?>>20</option>
-              <option value="30"<?php if($limit=='30'){?> selected<?php }?>>30</option>
-              <option value="40"<?php if($limit=='40'){?> selected<?php }?>>40</option>
-              <option value="50"<?php if($limit=='50'){?> selected<?php }?>>50</option>
-            </select>
-          </div>
+            <div style="float:right;">
+              <form id="sort" class="" action="" method="post">
+              <select name="order_type" onchange="order_by()" style="width:200px;font-size:9pt;">
+                  <option value="descdate"<?php if($order_type=='descdate'){?> selected<?php }?>>Tarihe Göre (Yeniden Eskiye)</option>
+                  <option value="ascdate"<?php if($order_type=='ascdate'){?> selected<?php }?>>Tarihe Göre (Eskiden Yeniye)</option>
+                  <option value="descprice"<?php if($order_type=='descprice'){?> selected<?php }?>>Fiyata Göre (Artan)</option>
+                  <option value="ascprice"<?php if($order_type=='ascprice'){?> selected<?php }?>>Fiyata Göre (Azalan)</option>
+                  <option value="city"<?php if($order_type=='city'){?> selected<?php }?>>İle Göre</option>
+              </select>
+              <select name="limit" onchange="order_by();" style="width:50px;font-size:9pt;margin-left:5px;">
+                <option value="10"<?php if($limit=='10'){?> selected<?php }?>>10</option>
+                <option value="20"<?php if($limit=='20'){?> selected<?php }?>>20</option>
+                <option value="30"<?php if($limit=='30'){?> selected<?php }?>>30</option>
+                <option value="40"<?php if($limit=='40'){?> selected<?php }?>>40</option>
+                <option value="50"<?php if($limit=='50'){?> selected<?php }?>>50</option>
+              </select>
+            </form>
+            </div>
+
           <div style="clear:both"></div>
           <div style="background:#DDD;width:100%;height:2px;"></div>
           <?php
@@ -749,6 +745,9 @@
           }
         });
       }
+    }
+    function order_by() {
+      $("#sort").submit();
     }
     </script>
   </body>

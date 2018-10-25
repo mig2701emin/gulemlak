@@ -532,10 +532,10 @@ function CallWithFilter($GetCall)
 {
   $suankiadres="http://".str_replace("www.","",$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]);
   $yeniadres=preg_replace("/&sayfa=(.*)/", "", $suankiadres);
-  $adres=explode("&WithFilter=",$yeniadres);
+  $adres=explode("?WithFilter=",$yeniadres);
   $new_adres=$adres[0];
   if($GetCall!=''){
-    $WithFilter="&WithFilter=".$GetCall;
+    $WithFilter="?WithFilter=".$GetCall;
   }else{
     $WithFilter="";
   }

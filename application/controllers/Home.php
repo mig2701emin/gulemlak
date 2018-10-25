@@ -289,29 +289,29 @@
 			}
 
 				$add_query_to_sql="";
-				$order_type=$this->security->xss_clean($this->input->get("order_type"));
+				$order_type=$this->security->xss_clean($this->input->post("order_type"));
 				if($order_type=='descdate'){
 					$order="firmalar.kayit_tarihi DESC";
 				}elseif($order_type=='ascdate'){
 					$order="firmalar.kayit_tarihi ASC";
 				}elseif($order_type=='descprice'){
-					$order="fiyat_yeni+0 DESC";
+					$order="firmalar.fiyat DESC";
 				}elseif($order_type=='ascprice'){
-					$order="fiyat_yeni+0 ASC";
+					$order="firmalar.fiyat ASC";
 				}elseif($order_type=='city'){
-					$order="firmalar.il DESC";
+					$order="firmalar.il ASC";
 				}else{
 					$order="firmalar.kayit_tarihi DESC";
 				}
 				$data["order_type"]=$order_type;
 
-				$limit_get=$this->security->xss_clean($this->input->get("limit"));
+				$limit_get=$this->security->xss_clean($this->input->post("limit"));
 				if($limit_get<=50 and $limit_get>=10 and !empty($limit_get)){
 					$limit=$limit_get;
 				}elseif(empty($limit)){
 					$limit=40;
 				}
-				$data["limit"]=$limit_get;
+				$data["limit"]=$limit;
 				if(isset($_POST) && !empty($_POST)){
 					$field_values = array();
 					$field_posted_data=array();
@@ -441,7 +441,7 @@
 				// fields sonu
 			$config["uri_segment"] = $uri_segment;
 			$page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
-			$config["per_page"] = 10;
+			$config["per_page"] = $limit;
 			$config["num_links"] = 10;
 			$config["base_url"] = base_url($urlstring);
       $sql2.=" and onay='1' ".$ek.$add_query_to_sql." group by firmalar.Id order by firmalar.ust_siradayim DESC,".$order;
