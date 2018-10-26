@@ -466,12 +466,27 @@
 		}
 		public function ara()
 		{
+			$this->load->library("pagination");
+			$uri_segment=3;
+			$limit=40;
+			$page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
+			$config["per_page"] = $limit;
 			$search=$this->security->xss_clean($this->input->post("search"));
 			$this->db->like('firma_adi', $search);
 			$this->db->or_like('Id', $search);
+			$config["total_rows"] = $this->db->get('firmalar')->num_rows();
+			$this->db->like('firma_adi', $search);
+			$this->db->or_like('Id', $search);
 			$this->db->order_by('kayit_tarihi', 'DESC');
+			$this->db->limit($limit, $page);
 			$ilanlar=$this->db->get('firmalar')->result();
 			$data["ilanlar"]=$ilanlar;
+			$config["uri_segment"] = $uri_segment;
+			$config["num_links"] = 25;
+			$config["base_url"] = base_url("home/ara");
+			//$config["total_rows"] = count($ilanlar);
+			$this->pagination->initialize($config);
+			$data["links"] = $this->pagination->create_links();
 			$this->load->view("ara",$data);
 		}
 

@@ -113,6 +113,19 @@
   @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) { /* For landscape layouts only */
     .listable { width:900px; }
   }
+  .pagination a, .pagination strong{
+
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-left: 5px;
+    text-decoration: none;
+    box-shadow: 0px 0px 8px rgba(5,5,5,0.3);
+
+  }
+  .pagination strong{
+    background-color: #35a5f2;
+
+  }
 </style>
 <div class="siteContent" style="width:1200px;">
   <div style="width:150px;float:left;margin-right:15px">
@@ -197,9 +210,8 @@
       </tr>
     <?php endforeach; ?>
   </table>
-  <div style="display: table;margin: auto;margin-top:5px;">
-    <a class="pages pages_active" href="/index.php?page=ara&search=deneme&submit=&sayfa=1">1</a>
-  </div>
+
+  <p class="pagination"><?php echo $links; ?></p>
 </div>
 <div style="clear:both"></div>
 </div>
