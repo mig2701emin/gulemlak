@@ -20,9 +20,9 @@ class Hesabim extends CI_Controller{
   public function anasayfa($filter="")
   {
     $this->load->library("pagination");
-    $config["per_page"] = 10;
+    $config["per_page"] = 40;
     if ($filter == "aktif") {
-      $where = array("uyeId" => $this->user->Id,"onay"=>"1","suresi_doldu" =>"0");
+      $where = array("uyeId" => $this->user->Id,"onay"=>"1");
       $filter2="Aktif";
       $urlstring="hesabim/anasayfa/aktif";
       $uri_segment=4;
@@ -30,7 +30,7 @@ class Hesabim extends CI_Controller{
       $query=$this->db->where($where)->limit($config["per_page"],$page)->get("firmalar");
       $data["toplam_kayit"]=$this->db->where($where)->get("firmalar")->num_rows();
     }elseif ($filter == "pasif") {
-      $where = "uyeId=".$this->user->Id." and (onay=0 or suresi_doldu=1)";
+      $where = array("uyeId" => $this->user->Id,"onay"=>"0");
       $filter2="Pasif";
       $urlstring="hesabim/anasayfa/pasif";
       $uri_segment=4;
@@ -53,7 +53,7 @@ class Hesabim extends CI_Controller{
     $config["uri_segment"] = $uri_segment;
     $config["base_url"] = base_url($urlstring);
     $config["total_rows"] = $data["toplam_kayit"];
-    $config["num_links"] = $data["toplam_kayit"]/$config["per_page"];
+    $config["num_links"] = 20;
     $this->pagination->initialize($config);
     $data["links"] = $this->pagination->create_links();
     $this->load->view("hesabim/anasayfa",$data);
@@ -239,137 +239,130 @@ class Hesabim extends CI_Controller{
     $data["iller"]=$this->firmalar->iller();
     $data["ilceler"]=$this->firmalar->ilcelerbyIl($ilan->il);
     $data["mahalleler"]=$this->firmalar->mahallelerbyIlce($ilan->ilce);
-    $this->load->view("ilanduzenle",$data);
     if (isset($_POST) && !empty($_POST)) {
       $userID=$this->session->userdata("userData")["userID"];
-      $res = post_captcha($_POST['g-recaptcha-response']);
-      if ($res['success']) {
-        //recaptcha onaylanmışsa
-        $formvalid = array(
-            array('field' => 'ilanadi',                 'label' => 'İlan Başlığı',          'rules' => 'required'),
-            array('field' => 'aciklama',                'label' => 'İlan Açıklaması',       'rules' => 'required'),
-            array('field' => 'fiyat1',                  'label' => 'Fiyat',                 'rules' => 'required'),
-            array('field' => 'bitis_suresi',            'label' => 'İlan Süresi',           'rules' => 'required')
-        );
-        $this->form_validation->set_rules($formvalid);
-        $this->form_validation->set_error_delimiters('<p>', '</p>');
-        $this->form_validation->set_message('required', '<strong>%s</strong> Gerekli Bir Alandır.');
-        if ($this->form_validation->run() == TRUE) {
-          $ad_rules = $this->security->xss_clean($this->input->post('ad_rules'));
-          if ($ad_rules='') {
-            $this->session->set_flashdata('error', 'İlan Verme Kurallarını Kabul Etmelisiniz.');
-            redirect(base_url("hesabim/ilanduzenle/".$ilanId));
-          }
-          $firmalar = array();
-          $ilanadi       = $this->security->xss_clean($this->input->post('ilanadi'));
-          $firmalar["firma_adi"]=$ilanadi;
-          $use_map       = $this->security->xss_clean($this->input->post('use_map'));
-          $map           = $this->security->xss_clean($this->input->post('map_Val'));
-          if($use_map!=1 or $map==''){$map="";}
-          $firmalar["map"]=$map;
-          $aciklama      = $this->security->xss_clean($this->input->post('aciklama'));
-          $firmalar["aciklama"] = base64_encode($aciklama);
-          $firmalar["il"] = $this->security->xss_clean($this->input->post('il'));
-          $seo_url.="-".replace("tbl_il","il_ad","il_id",$firmalar["il"]);
-          $firmalar["ilce"] = $this->security->xss_clean($this->input->post('ilce'));
-          $seo_url.="-".replace("tbl_ilce","ilce_ad","ilce_id",$firmalar["ilce"]);
-          $firmalar["mahalle"] = $this->security->xss_clean($this->input->post('mahalle'));
-          $seo_url.="-".replace("tbl_mahalle","mahalle_ad","mahalle_id",$firmalar["mahalle"]);
-          //$seo_url.="-".$ilanId;
-          $firmalar["seo_url"]=$seo_url;
-          $firmalar["kayit_tarihi"]=date("Y-m-d");
-          $bitis_suresi  = $this->security->xss_clean($this->input->post('bitis_suresi'));
-          switch ($bitis_suresi) {
-            case '1 Ay':
-              $bitis_tarihi=date("Y-m-d",strtotime("+1 month"));
-            break;
-            case '2 Ay':
-              $bitis_tarihi=date("Y-m-d",strtotime("+2 month"));
-            break;
-            case '3 Ay':
-              $bitis_tarihi=date("Y-m-d",strtotime("+3 month"));
-            break;
-            case '4 Ay':
-              $bitis_tarihi=date("Y-m-d",strtotime("+4 month"));
-            break;
-            case '5 Ay':
-              $bitis_tarihi=date("Y-m-d",strtotime("+5 month"));
-            break;
-            case '6 Ay':
-              $bitis_tarihi=date("Y-m-d",strtotime("+6 month"));
-            break;
-            case '7 Ay':
-              $bitis_tarihi=date("Y-m-d",strtotime("+7 month"));
-            break;
-            case '8 Ay':
-              $bitis_tarihi=date("Y-m-d",strtotime("+8 month"));
-            break;
-            case '9 Ay':
-              $bitis_tarihi=date("Y-m-d",strtotime("+9 month"));
-            break;
-            case '10 Ay':
-              $bitis_tarihi=date("Y-m-d",strtotime("+10 month"));
-            break;
-            case '11 Ay':
-              $bitis_tarihi=date("Y-m-d",strtotime("+11 month"));
-            break;
-            case '1 Yıl':
-              $bitis_tarihi=date("Y-m-d",strtotime("+1 year"));
-            break;
-            default:
-              $bitis_tarihi=date("Y-m-d",strtotime("+1 month"));
-            break;
-          }
-          $firmalar["bitis_tarihi"]=$bitis_tarihi;
-          $ilan_magazada_mi  = $this->magazalar->ilan_magazada_mi($ilanId);
-
-          if ($ilan_magazada_mi) {
-            $onay_durum=1;
-            $kucuk_fotograf=1;
-          } else {
-            $onay_durum=0;
-            $kucuk_fotograf=0;
-          }
-          $firmalar["onay"]=$onay_durum;
-          $firmalar["yayinla"]=$this->security->xss_clean($this->input->post('yayinla'));
-          $firmalar["fiyat"] = $this->security->xss_clean($this->input->post('fiyat1'));
-          $firmalar["fiyat2"] = $this->security->xss_clean($this->input->post('fiyat2'));
-          $firmalar["birim"] = $this->security->xss_clean($this->input->post('birim'));
-          $firmalar["kucuk_fotograf"] = $kucuk_fotograf;
-          $firmalar["ilan_notu"] = $this->security->xss_clean($this->input->post('ilan_notu'));
-          $insert=$this->firmalar->update($ilanId,$firmalar);
-          $field_values = array();
-          foreach ($fields as $field) {
-            if($field->type=='checkbox'){
-              // hidden fields
-              $field_values[$field->seo_name]=implode($this->security->xss_clean($this->input->post($field->seo_name)),", ");
-
-            }elseif($field->type=='multiple_select'){
-              // hidden fields
-              $field_values[$field->seo_name]=$this->security->xss_clean($this->input->post($field->seo_name));
-              $field_values[$field->multiple_field_seo_name]=$this->security->xss_clean($this->input->post($field->multiple_field_seo_name));
-            }else{
-              // hidden fields
-              $field_values[$field->seo_name]=$this->security->xss_clean($this->input->post($field->seo_name));
-            }
-          }
-          foreach ($field_values as $field_name => $field_value) {
-            $where = array("ilanId" => $ilanId, "field_name" => $field_name);
-            $update = array("field_value" => $field_value);
-            $this->fields->update($where,$update);
-          //  $this->db->query("insert into custom_fields (Id,ilanId,field_name,field_value) VALUES(null,'".$ilanId."','".$field_name."','".$field_value."')");
-          }
-          $this->session->set_flashdata('success', 'Değişiklikler Kaydedildi.');
-          redirect(base_url("hesabim/ilanduzenle_ok/".$ilanId));
-
-        } else {
-          //validation kontrolü error verirse
+      $formvalid = array(
+          array('field' => 'ilanadi',                 'label' => 'İlan Başlığı',          'rules' => 'required'),
+          array('field' => 'aciklama',                'label' => 'İlan Açıklaması',       'rules' => 'required'),
+          array('field' => 'fiyat1',                  'label' => 'Fiyat',                 'rules' => 'required'),
+          array('field' => 'bitis_suresi',            'label' => 'İlan Süresi',           'rules' => 'required')
+      );
+      $this->form_validation->set_rules($formvalid);
+      $this->form_validation->set_error_delimiters('<p>', '</p>');
+      $this->form_validation->set_message('required', '<strong>%s</strong> Gerekli Bir Alandır.');
+      if ($this->form_validation->run() == TRUE) {
+        $ad_rules = $this->security->xss_clean($this->input->post('ad_rules'));
+        if ($ad_rules='') {
+          $this->session->set_flashdata('error', 'İlan Verme Kurallarını Kabul Etmelisiniz.');
+          redirect(base_url("hesabim/ilanduzenle/".$ilanId));
         }
+        $firmalar = array();
+        $ilanadi       = $this->security->xss_clean($this->input->post('ilanadi'));
+        $firmalar["firma_adi"]=$ilanadi;
+        $use_map       = $this->security->xss_clean($this->input->post('use_map'));
+        $map           = $this->security->xss_clean($this->input->post('map_Val'));
+        if($use_map!=1 or $map==''){$map="";}
+        $firmalar["map"]=$map;
+        $aciklama      = $this->security->xss_clean($this->input->post('aciklama'));
+        $firmalar["aciklama"] = base64_encode($aciklama);
+        $firmalar["il"] = $this->security->xss_clean($this->input->post('il'));
+        $seo_url.="-".replace("tbl_il","il_ad","il_id",$firmalar["il"]);
+        $firmalar["ilce"] = $this->security->xss_clean($this->input->post('ilce'));
+        $seo_url.="-".replace("tbl_ilce","ilce_ad","ilce_id",$firmalar["ilce"]);
+        $firmalar["mahalle"] = $this->security->xss_clean($this->input->post('mahalle'));
+        $seo_url.="-".replace("tbl_mahalle","mahalle_ad","mahalle_id",$firmalar["mahalle"]);
+        //$seo_url.="-".$ilanId;
+        $firmalar["seo_url"]=$seo_url;
+        $firmalar["kayit_tarihi"]=date("Y-m-d");
+        $bitis_suresi  = $this->security->xss_clean($this->input->post('bitis_suresi'));
+        switch ($bitis_suresi) {
+          case '1 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+1 month"));
+          break;
+          case '2 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+2 month"));
+          break;
+          case '3 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+3 month"));
+          break;
+          case '4 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+4 month"));
+          break;
+          case '5 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+5 month"));
+          break;
+          case '6 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+6 month"));
+          break;
+          case '7 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+7 month"));
+          break;
+          case '8 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+8 month"));
+          break;
+          case '9 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+9 month"));
+          break;
+          case '10 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+10 month"));
+          break;
+          case '11 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+11 month"));
+          break;
+          case '1 Yıl':
+            $bitis_tarihi=date("Y-m-d",strtotime("+1 year"));
+          break;
+          default:
+            $bitis_tarihi=date("Y-m-d",strtotime("+1 month"));
+          break;
+        }
+        $firmalar["bitis_tarihi"]=$bitis_tarihi;
+        $ilan_magazada_mi  = $this->magazalar->ilan_magazada_mi($ilanId);
+
+        if ($ilan_magazada_mi) {
+          $onay_durum=1;
+          $kucuk_fotograf=1;
+        } else {
+          $onay_durum=0;
+          $kucuk_fotograf=0;
+        }
+        $firmalar["onay"]=$onay_durum;
+        $firmalar["yayinla"]=$this->security->xss_clean($this->input->post('yayinla'));
+        $firmalar["fiyat"] = $this->security->xss_clean($this->input->post('fiyat1'));
+        $firmalar["fiyat2"] = $this->security->xss_clean($this->input->post('fiyat2'));
+        $firmalar["birim"] = $this->security->xss_clean($this->input->post('birim'));
+        $firmalar["kucuk_fotograf"] = $kucuk_fotograf;
+        $firmalar["ilan_notu"] = $this->security->xss_clean($this->input->post('ilan_notu'));
+        $insert=$this->firmalar->update($ilanId,$firmalar);
+        $field_values = array();
+        foreach ($fields as $field) {
+          if($field->type=='checkbox'){
+            // hidden fields
+            $field_values[$field->seo_name]=implode($this->security->xss_clean($this->input->post($field->seo_name)),", ");
+
+          }elseif($field->type=='multiple_select'){
+            // hidden fields
+            $field_values[$field->seo_name]=$this->security->xss_clean($this->input->post($field->seo_name));
+            $field_values[$field->multiple_field_seo_name]=$this->security->xss_clean($this->input->post($field->multiple_field_seo_name));
+          }else{
+            // hidden fields
+            $field_values[$field->seo_name]=$this->security->xss_clean($this->input->post($field->seo_name));
+          }
+        }
+        foreach ($field_values as $field_name => $field_value) {
+          $where = array("ilanId" => $ilanId, "field_name" => $field_name);
+          $update = array("field_value" => $field_value);
+          $this->fields->update($where,$update);
+        //  $this->db->query("insert into custom_fields (Id,ilanId,field_name,field_value) VALUES(null,'".$ilanId."','".$field_name."','".$field_value."')");
+        }
+        $this->session->set_flashdata('success', 'Değişiklikler Kaydedildi.');
+        redirect(base_url("hesabim/ilanduzenle_ok/".$ilanId));
+
       } else {
-        //recaptcha onaylanmışsa.
-        $this->session->set_flashdata('error', 'Lütfen robot olmadığınızı doğrulayın.');
+        //validation kontrolü error verirse
       }
     }
+    $this->load->view("hesabim/ilanduzenle",$data);
   }
   public function ilansil($ilanId,$filter="")
   {
@@ -555,7 +548,7 @@ class Hesabim extends CI_Controller{
       redirect(base_url());
     }
     $data["ilanId"]=$ilanId;
-    $this->load->view("ilanduzenle_ok",$data);
+    $this->load->view("hesabim/ilanduzenle_ok",$data);
   }
 
   public function get_details($ilanId,$detail)

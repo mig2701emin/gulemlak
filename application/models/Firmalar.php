@@ -104,15 +104,20 @@ class Firmalar extends CI_Model{
   }
 
   public function iller(){
-		$query = $this->db->get('tbl_il');
+    $this->db->order_by("il_ad","ASC");
+		$query = $this->db->get("tbl_il");
 		return $query->result();
 	}
   public function ilcelerbyIl($il_id){
-		$query = $this->db->where("il_id",$il_id)->get('tbl_ilce');
+    $this->db->where("il_id",$il_id);
+    $this->db->order_by("ilce_ad","ASC");
+		$query =$this->db->get('tbl_ilce');
 		return $query->result();
 	}
   public function mahallelerbyIlce($ilce_id){
-		$query = $this->db->where("ilce_id",$ilce_id)->get('tbl_mahalle');
+    $this->db->where("ilce_id",$ilce_id);
+    $this->db->order_by("mahalle_ad","ASC");
+		$query =$this->db->get('tbl_mahalle');
 		return $query->result();
 	}
 

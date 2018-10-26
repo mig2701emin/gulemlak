@@ -15,7 +15,6 @@
         font-weight:bold;
     }
   </style>
-  <script src='https://www.google.com/recaptcha/api.js?hl=tr'></script>
 </head>
 <body>
   <div class="se-pre-con"></div>
@@ -320,7 +319,6 @@
                 <input type="checkbox" class="custom-control-input" name="ad_rules" id="ad_rules">
                 <label class="custom-control-label" for="ad_rules">İlan verme kurallarını okudum ve kabul ediyorum</label>
               </div>
-              <div class="g-recaptcha" data-sitekey="6LdibXAUAAAAAKHsHSsa7SRfCIFS8Ax1M3PzjfDz"></div>
               <button class="btn btn-primary btn-lg btn-block" type="submit">Kaydet ve devam et</button>
             </form>
           </div>

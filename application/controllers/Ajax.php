@@ -27,7 +27,10 @@ class Ajax extends CI_Controller
         else
         {
             //ile göre ilçeler çekiliyor...
-            $ilceler = $this->db->get_where('tbl_ilce', array('il_id' => $il_id));
+            //$ilceler = $this->db->where('il_id', $il_id)->orber_by('ilce_ad', 'ASC')->get('tbl_ilce');
+            $this->db->where("il_id",$il_id);
+            $this->db->order_by("ilce_ad","ASC");
+            $ilceler=$this->db->get("tbl_ilce");
 
             if ( $ilceler->num_rows() > 0 )
             {
@@ -64,8 +67,10 @@ class Ajax extends CI_Controller
         else
         {
             //ilçeye göre mahalleler çekiliyor...
-            $mahalleler = $this->db->get_where('tbl_mahalle', array('ilce_id' => $ilce_id));
-
+            //$mahalleler = $this->db->where('ilce_id', $ilce_id)->orber_by('mahalle_ad','ASC')->get('tbl_mahalle');
+            $this->db->where("ilce_id",$ilce_id);
+            $this->db->order_by("mahalle_ad","ASC");
+            $mahalleler=$this->db->get("tbl_mahalle");
             if ( $mahalleler->num_rows() > 0 )
             {
                 $mahalleList = array();
