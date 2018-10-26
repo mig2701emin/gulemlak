@@ -70,6 +70,7 @@
                                 <?php } ?>
                               <?php $i++; } ?>
                               <?php if (($i>$sinir)&&($kat_sayisi!='0')) {?>
+                                <hr/>
                                 <div id="xdiv<?php echo $anaKategori->Id;?>">
                                 <li>
                                     <div class="row">

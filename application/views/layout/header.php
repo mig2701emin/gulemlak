@@ -155,10 +155,10 @@
                             </div>
                             <div class="main-search">
                                 <div class="header_search_toggle desktop-view">
-                                    <form>
+                                    <form action="<?php echo base_url(); ?>home/ara" method="post">
                                         <div class="search-box">
-                                            <input class="input-text" type="text" placeholder="Kelime,ilan no Giriniz">
-                                            <button class="search-btn"></button>
+                                            <input name="search" class="input-text" type="text" placeholder="Kelime,ilan no Giriniz">
+                                            <button type="submit" class="search-btn"></button>
                                         </div>
                                     </form>
                                 </div>

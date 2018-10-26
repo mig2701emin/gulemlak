@@ -127,7 +127,7 @@ class Ilanekle extends CI_Controller{
             $seo_url.="-".seo_link(replace("tbl_mahalle","mahalle_ad","mahalle_id",$firmalar["mahalle"]));
             //$seo_url.="-".$ilanId;
             $firmalar["seo_url"]=$seo_url;
-            $firmalar["kayit_tarihi"]=date("Y-m-d");
+            $firmalar["kayit_tarihi"]=date("Y-m-d H:i:s");
             $bitis_suresi  = $this->security->xss_clean($this->input->post('bitis_suresi'));
             switch ($bitis_suresi) {
               case '1 Ay':

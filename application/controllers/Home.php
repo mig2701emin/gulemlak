@@ -464,7 +464,16 @@
 
 			$this->load->view("kategori",$data);
 		}
-
+		public function ara()
+		{
+			$search=$this->security->xss_clean($this->input->post("search"));
+			$this->db->like('firma_adi', $search);
+			$this->db->or_like('Id', $search);
+			$this->db->order_by('kayit_tarihi', 'DESC');
+			$ilanlar=$this->db->get('firmalar')->result();
+			$data["ilanlar"]=$ilanlar;
+			$this->load->view("ara",$data);
+		}
 
 
 
