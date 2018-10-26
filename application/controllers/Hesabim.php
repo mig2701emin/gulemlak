@@ -27,7 +27,7 @@ class Hesabim extends CI_Controller{
       $urlstring="hesabim/anasayfa/aktif";
       $uri_segment=4;
       $page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
-      $query=$this->db->where($where)->limit($config["per_page"],$page)->get("firmalar");
+      $query=$this->db->where($where)->order_by("kayit_tarihi","DESC")->limit($config["per_page"],$page)->get("firmalar");
       $data["toplam_kayit"]=$this->db->where($where)->get("firmalar")->num_rows();
     }elseif ($filter == "pasif") {
       $where = array("uyeId" => $this->user->Id,"onay"=>"0");
@@ -35,7 +35,7 @@ class Hesabim extends CI_Controller{
       $urlstring="hesabim/anasayfa/pasif";
       $uri_segment=4;
       $page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
-      $query=$this->db->where($where)->limit($config["per_page"],$page)->get("firmalar");
+      $query=$this->db->where($where)->order_by("kayit_tarihi","DESC")->limit($config["per_page"],$page)->get("firmalar");
       $data["toplam_kayit"]=$this->db->where($where)->get("firmalar")->num_rows();
     } else {
       $where = array("uyeId" => $this->user->Id);
@@ -43,7 +43,7 @@ class Hesabim extends CI_Controller{
       $urlstring="hesabim/anasayfa";
       $uri_segment=3;
       $page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
-      $query=$this->db->where($where)->limit($config["per_page"],$page)->get("firmalar");
+      $query=$this->db->where($where)->order_by("kayit_tarihi","DESC")->limit($config["per_page"],$page)->get("firmalar");
       $data["toplam_kayit"]=$this->db->where($where)->get("firmalar")->num_rows();
     }
     $data["ilanlar"]=$query->result();
@@ -61,7 +61,7 @@ class Hesabim extends CI_Controller{
   }
   public function bilgilerim()
   {
-    $data["iller"] = $this->db->query("select * from tbl_il order by il_id")->result();
+    $data["iller"] = $this->db->query("select * from tbl_il order by il_ad")->result();
     $data["user"]=$this->user;
     if (isset($_POST) && !empty($_POST)) {
       $formvalid = array(
