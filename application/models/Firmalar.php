@@ -15,8 +15,8 @@ class Firmalar extends CI_Model{
     $this->db->select('gvitrin.*,firmalar.*');
     $this->db->where('gvitrin.bitis_tarihi >=',$bugun);
     $this->db->where('firmalar.onay','1');
-    $this->db->order_by('Id','RANDOM');
-    //$this->db->limit('12');
+    $this->db->order_by('firmalar.kayit_tarihi','DESC');
+    $this->db->limit('12');
     $this->db->from('gvitrin');
     $this->db->join('firmalar','firmalar.Id=gvitrin.firmaId');
     $query = $this->db->get();
@@ -30,8 +30,8 @@ class Firmalar extends CI_Model{
     $this->db->select('acilacilvitrin.*,firmalar.*');
     $this->db->where('acilacilvitrin.bitis_tarihi >=',$bugun);
     $this->db->where('firmalar.onay','1');
-    $this->db->order_by('Id','RANDOM');
-    //$this->db->limit('12');
+    $this->db->order_by('firmalar.kayit_tarihi','DESC');
+    $this->db->limit('12');
     $this->db->from('acilacilvitrin');
     $this->db->join('firmalar','firmalar.Id=acilacilvitrin.ilanId');
     $query = $this->db->get();
@@ -43,7 +43,7 @@ class Firmalar extends CI_Model{
     $this->db->select('*');
     $this->db->where('onay','1');
     $this->db->order_by('kayit_tarihi','DESC');
-    $this->db->limit('18');
+    $this->db->limit('12');
     $this->db->from('firmalar');
     $query = $this->db->get();
     return $query->result();
@@ -57,7 +57,7 @@ class Firmalar extends CI_Model{
     $this->db->where('mvitrin.bitis_tarihi >=',$bugun);
     $this->db->where('magazalar.onay','1');
     $this->db->order_by('Id','RANDOM');
-    //$this->db->limit('12');
+    $this->db->limit('12');
     $this->db->from('mvitrin');
     $this->db->join('magazalar','magazalar.Id=mvitrin.magazaId');
     $query = $this->db->get();
@@ -161,6 +161,7 @@ class Firmalar extends CI_Model{
   public function gets()
   {
     $this->db->where("onay","1");
+    $this->db->order_by("kayit_tarihi","DESC");
     $query=$this->db->get("firmalar");
     return $query->result();
   }
@@ -171,12 +172,14 @@ class Firmalar extends CI_Model{
     if ($altKategoriId!="") {
       $this->db->where("kategori2",$altKategoriId);
     }
+    $this->db->order_by("kayit_tarihi","DESC");
     $query=$this->db->get("firmalar");
     return $query->result();
   }
   public function getWhere($where)
   {
     $this->db->where($where);
+    $this->db->order_by("kayit_tarihi","DESC");
     $query=$this->db->get("firmalar");
     return $query;
   }

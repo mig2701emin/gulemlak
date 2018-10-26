@@ -20,22 +20,21 @@
 <body>
     <div class="se-pre-con"></div>
     <div class="main">
-
-        <!-- HEADER START -->
+      <!-- HEADER START -->
       <?php $this->load->view('layout/header');?>
-        <!-- HEADER END -->
-        <!-- Bread Crumb STRAT -->
+      <!-- HEADER END -->
+      <!-- Bread Crumb STRAT -->
 
-        <!-- Bread Crumb END -->
-        <!-- CONTAIN START -->
-<?php $this->load->view('layout/contain');?>
-        <!-- CONTAINER END -->
-        <!-- News Letter Start -->
+      <!-- Bread Crumb END -->
+      <!-- CONTAIN START -->
+      <?php $this->load->view('layout/contain');?>
+      <!-- CONTAINER END -->
+      <!-- News Letter Start -->
 
-        <!-- News Letter End -->
-        <!-- FOOTER START -->
-        <?php $this->load->view('layout/footer');?>
-        <!-- FOOTER END -->
+      <!-- News Letter End -->
+      <!-- FOOTER START -->
+      <?php $this->load->view('layout/footer');?>
+      <!-- FOOTER END -->
     </div>
     <?php $this->load->view('layout/scripts');?>
 </body>

@@ -1,10 +1,23 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  function goster(a){
+
+  $("#div"+a).slideDown("slow");
+  $("#xdiv"+a).html('<li><div class="row"><div class="col-10"><span><a onclick="gizle(\''+a+'\');">Gizle</a></span></div><div class="col-2" style="padding:3px"><span class="badge badge-secondary" style="width:40px;"></span></div></div></li>');
+
+  }
+  function gizle(a){
+  $("#div"+a).slideUp("slow");
+  $("#xdiv"+a).html('<li><div class="row"><div class="col-10"><span><a onclick="goster(\''+a+'\');">Tümünü Göster</a></span></div><div class="col-2" style="padding:3px"><span class="badge badge-secondary" style="width:40px;"></span></div></div></li>');
+}
+</script>
+
 <section class="mtb-30">
     <div class="container">
         <div class="row">
            <!-- slider-->
             <div class="col-xl-2 col-lg-3 mb-sm-30 col-lgmd-20per">
                 <div class="sidebar-block">
-
                   <?php foreach ($anaKategoriler as $anaKategori){ ?>
                     <div class="sidebar-box listing-box mb-40">
                         <span class="opener plus"></span>
@@ -13,27 +26,67 @@
                         </div>
                         <div class="sidebar-contant">
                           <?php $firstSubs=getAltKategoriler($anaKategori->Id); ?>
-                          <?php if ($firstSubs): ?>
+                          <?php if ($firstSubs){ ?>
                             <ul>
+                              <?php
+                              $kat_sayisi=count($firstSubs);
+                              $i=0;
+                              $goster=0;
+                              foreach ($firstSubs as $firstSub){
+                                $sinir=15;
+                                if ($i<=$sinir && $kat_sayisi!=0) {?>
+                                  <li>
+                                      <div class="row">
+                                        <div class="col-10">
+                                          <span>
+                                              <a href="<?php echo base_url($anaKategori->seo.'/'.$firstSub->seo.'/'.encode($firstSub->Id)); ?>"><?php echo $firstSub->kategori_adi.' '; ?></a>
+                                          </span>
+                                        </div>
+                                        <div class="col-2" style="padding:3px">
+                                            <span class="badge badge-secondary" style="width:40px;"><?php echo countDB('firmalar','kategori2',$firstSub->Id); ?></span>
+                                        </div>
 
-                              <?php foreach ($firstSubs as $firstSub){ ?>
+                                      </div>
+                                  </li>
+
+                                <?php } else { ?>
+                                  <?php if ($goster=='0') { ?>
+                                      <div id="div<?php echo $anaKategori->Id; ?>" style="width:100%;display:none;">
+                                      <?php $goster='1';
+                                  }?>
+                                  <li>
+                                      <div class="row">
+                                        <div class="col-10">
+                                          <span>
+                                              <a href="<?php echo base_url($anaKategori->seo.'/'.$firstSub->seo.'/'.encode($firstSub->Id)); ?>"><?php echo $firstSub->kategori_adi.' '; ?></a>
+                                          </span>
+                                        </div>
+                                        <div class="col-2" style="padding:3px">
+                                            <span class="badge badge-secondary" style="width:40px;"><?php echo countDB('firmalar','kategori2',$firstSub->Id); ?></span>
+                                        </div>
+                                      </div>
+                                  </li>
+                                  <?php if (($kat_sayisi-1)==$i and $goster=='1') {?></div><?php }?>
+                                <?php } ?>
+                              <?php $i++; } ?>
+                              <?php if (($i>$sinir)&&($kat_sayisi!='0')) {?>
+                                <div id="xdiv<?php echo $anaKategori->Id;?>">
                                 <li>
                                     <div class="row">
                                       <div class="col-10">
                                         <span>
-                                            <a href="<?php echo base_url($anaKategori->seo.'/'.$firstSub->seo.'/'.encode($firstSub->Id)); ?>"><?php echo $firstSub->kategori_adi.' '; ?></a>
+                                            <a onclick="goster('<?php echo $anaKategori->Id; ?>')">Tümünü Göster</a>
                                         </span>
                                       </div>
                                       <div class="col-2" style="padding:3px">
-                                          <span class="badge badge-secondary" style="width:40px;"><?php echo countDB('firmalar','kategori2',$firstSub->Id); ?></span>
+                                          <span class="badge badge-secondary" style="width:40px;"></span>
                                       </div>
-
                                     </div>
                                 </li>
-                              <?php } ?>
-
+                                </div>
+                            <?php } ?>
                             </ul>
-                            <?php endif; ?>
+                          <?php } ?>
 
                         </div>
                     </div>
