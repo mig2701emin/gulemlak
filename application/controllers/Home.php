@@ -122,14 +122,14 @@
 					$check_values=get_details($ilanId,$field->seo_name);
 					$explode_check=explode("||",$check_values);
 					$new_values=explode("||",$field->field_values);
-					$show_additional_fields.='<div class="col-12 col-sm-6 col-md-4 col-lg-3"><h4 class="mb-3">'.$field->name.'</h4>';
+					$show_additional_fields.='<div class="col-12 col-sm-6 col-md-3 col-lg-2"><h4 class="mb-3">'.$field->name.'</h4>';
 					if($show_ok[$field->name]!=1){
 						$show_additional_fields.='<div class="row">';
 					}
 					for ($i = 0; $i <= count($new_values)-1; $i++) {
 						//$show_additional_fields.='<div class="custom-control custom-checkbox col-6 col-md-3"';
 						if (sorgula2($ilanId,$field->seo_name,$new_values[$i])) {
-							$show_additional_fields.='<div class="custom-control custom-checkbox col-6 col-md-3"';//yeni ekledim
+							$show_additional_fields.='<div class="custom-control custom-checkbox"';//yeni ekledim
 							$show_additional_fields.=' style="background:url('.base_url().'assets/images/evet.png) no-repeat 0px -2px"';
 							$show_additional_fields.='>&nbsp;'.$new_values[$i].'</div>';//yeni ekledim
 						}
@@ -143,12 +143,12 @@
 						// preview fields
 						$change_value=get_details($ilanId,$field->seo_name);
 						$change_value2=get_details($ilanId,$multiple_field_seo_name);
-						$show_fields.='<div class="col-12 mar-bot">'.$field->name.':&nbsp;'.($change_value!=''?$change_value:'Belirtilmemiş').'</div>';
-						$show_fields.='<div class="col-12 mar-bot">'.$field->multiple_field_name.':&nbsp;'.($change_value2!=''?$change_value2:'Belirtilmemiş').'</div>';
+						$show_fields.='<div class="col-12 mar-bot row"><div class="col-6">'.$field->name.'</div><div class="col-6">'.($change_value!=''?$change_value:'Belirtilmemiş').'</div></div>';
+						$show_fields.='<div class="col-12 mar-bot row"><div class="col-6">'.$field->multiple_field_name.'</div><div class="col-6">'.($change_value2!=''?$change_value2:'Belirtilmemiş').'</div></div>';
 					}else{
 						// preview fields
 						$change_value=get_details($ilanId,$field->seo_name);
-						$show_fields.='<div class="col-12 mar-bot">'.$field->name.':&nbsp;'.($change_value!=''?$change_value:'Belirtilmemiş').'</div>';
+						$show_fields.='<div class="col-12 mar-bot row"><div class="col-6">'.$field->name.'</div><div class="col-6">'.($change_value!=''?$change_value:'Belirtilmemiş').'</div></div>';
 					}
 			}
 

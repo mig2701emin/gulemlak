@@ -26,7 +26,7 @@
 	}
 	.mar-bot{
 		border-bottom:1px solid lightgray ;
-		line-height:40px;
+		line-height:30px;
 	}
 	</style>
 	<link href="<?php echo base_url('assets'); ?>/light/lightgallery.css" rel="stylesheet">
@@ -35,7 +35,11 @@
 	<div class="se-pre-con"></div>
 	<div class="main">
 		<!-- HEADER START -->
-		<?php $this->load->view('layout/headermenu');?>
+		<?php //if ($this->session->userdata("userData")["userID"] == $ilan->uyeId){ ?>
+			<?php //$this->load->view('layout/newuserheader');?>
+		<?php //}else{ ?>
+			<?php $this->load->view('layout/headermenu');?>
+		<?php //} ?>
 		<!-- HEADER END -->
 		<div class="container">
 
@@ -49,6 +53,7 @@
 								<?php echo $kategoriadi; ?> <i class="fas fa-angle-double-right"></i>
 						<?php endif; ?>
 					<?php endforeach; ?>
+					<i class="fas fa-angle-double-right"></i> <?php echo replace('tbl_il','il_ad','il_id',$ilan->il).' <i class="fas fa-angle-double-right"></i> '.replace('tbl_ilce','ilce_ad','ilce_id',$ilan->ilce).' <i class="fas fa-angle-double-right"></i> '.baslik_yap(replace('tbl_mahalle','mahalle_ad','mahalle_id',$ilan->mahalle));?>
 				</div>
 				<?php endif; ?>
 			</div>
@@ -94,7 +99,7 @@
 								<row id="lightgallery" class="list-unstyled row">
 									<?php $r=1; ?>
 									<?php foreach ($resimler as $resim): ?>
-										<div class="col-4 col-sm-6 col-md-4" data-responsive="<?php echo base_url('photos/big/'.$resim->name); ?> 375, <?php echo base_url('photos/big/'.$resim->name); ?> 480, <?php echo base_url('photos/big/'.$resim->name); ?> 800" data-src="<?php echo base_url('photos/big/'.$resim->name); ?>" data-sub-html="<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
+										<div class="col-4 col-sm-6 col-md-4" data-responsive="<?php echo base_url('photos/big/'.$resim->name); ?> 375, <?php echo base_url('photos/big/'.$resim->name); ?> 480, <?php echo base_url('photos/big/'.$resim->name); ?> 800" data-src="<?php echo base_url('photos/big/'.$resim->name); ?>" data-sub-html="<h2><?php echo $ilan->firma_adi; ?></h2><p></p>">
 											<a href="">
 												<img <?php if ($r==1) {echo ' id="lightImg" ';} ?> class="img-responsive" style="border-radius:20px;" src="<?php echo base_url('photos/big/'.$resim->name); ?>">
 											</a>
@@ -105,20 +110,35 @@
 							</div>
 						</div>
 						<div id="genelBilgi" class="col-12 col-sm-12 col-md-4 col-lg-4">
-							<div class="col-12 mar-bot">İlan No:<?php echo $ilan->Id; ?></div>
-							<div class="col-12 mar-bot"><?php echo $ilan->fiyat; ?></div>
-							<div class="col-12 mar-bot"><?php echo replace('tbl_il','il_ad','il_id',$ilan->il).'/'.replace('tbl_ilce','ilce_ad','ilce_id',$ilan->ilce).'/'.baslik_yap(replace('tbl_mahalle','mahalle_ad','mahalle_id',$ilan->mahalle)); ?> </div>
-							<div class="col-12 mar-bot">İlan Tarihi:&nbsp;<?php echo dateReplace(date("d.m.Y")); ?></div>
+							<div class="col-12 mar-bot row">
+								<div class="col-6">
+									İlan No:
+								</div>
+								<div class="col-6">
+									<?php echo $ilan->Id; ?>
+								</div>
+							</div>
+							<div class="col-12 mar-bot row">
+								<div class="col-6">
+									Fiyat:
+								</div>
+								<div class="col-6">
+									<?php echo $ilan->fiyat; ?>
+								</div>
+							</div>
+							<div class="col-12 mar-bot row">
+								<div class="col-6">
+									İlan Tarihi:
+								</div>
+								<div class="col-6">
+									<?php echo dateReplace(date("d.m.Y")); ?>
+								</div>
+							</div>
 							<?php
 							echo $show_fields;
 							?>
 						</div>
-						<div class="col-12 mb-3">
-							<?php echo base64_decode($ilan->aciklama); ?>
-						</div>
-							<?php
-							echo $show_additional_fields;
-							?>
+
 					</div>
 				</div>
 				<div class="col-12 col-sm-6 col-lg-3">
@@ -183,6 +203,17 @@
 					<!-- <div class="col-12 mar-bot">
 						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3185.951538138242!2d37.34923931510993!3d37.01095247990566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1531de263041cad9%3A0x2ea85746583f6db6!2sKarata%C5%9F+Mahallesi%2C+103424.+Cd.+24%2C+27470+%C5%9Eahinbey%2FGaziantep!5e0!3m2!1str!2str!4v1534592215147"  width="100%" height="250" frameborder="0" style="border:0; border-radius:30px;" allowfullscreen></iframe>
 					</div> -->
+				</div>
+				<div class="col-12">
+					<div class="row col-12 mb-3 mt-3">
+						<?php echo base64_decode($ilan->aciklama); ?>
+					</div>
+					<div class="row col-12 mb-3">
+						<?php
+						echo $show_additional_fields;
+						?>
+					</div>
+
 				</div>
 			</div>
 		</div>
