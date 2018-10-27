@@ -10,8 +10,8 @@
                 <div class="col-xl-2 col-lg-3 col-lgmd-20per">
                     <div class="header-middle-left">
                         <div class="navbar-header float-none-sm">
-                            <a class="navbar-brand page-scroll" href="index.html">
-                                <img  alt="Ezone" src="<?php echo base_url('assets/');?>images/logo.png" />
+                            <a class="navbar-brand page-scroll" href="<?php echo base_url(); ?>">
+                                <img  alt="" src="<?php echo base_url('assets/');?>images/logo.png" />
                             </a>
                         </div>
                     </div>

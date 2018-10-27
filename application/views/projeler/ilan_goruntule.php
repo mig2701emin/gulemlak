@@ -113,7 +113,7 @@
 							echo $show_fields;
 							?>
 						</div>
-						<div class="row">
+						<div class="col-12">
 							<?php echo base64_decode($ilan->aciklama); ?>
 						</div>
 						<?php
@@ -122,22 +122,58 @@
 					</div>
 				</div>
 				<div class="col-12 col-sm-6 col-lg-3">
-				<?php if ($magaza_var_mi): ?>
+
+					<?php if($this->session->userdata("userData")["userID"]==$ilan->uyeId){?>
+					<div class="col-12 show_ad_icons show_ad_icon1"><a href="<?php echo base_url(); ?>hesabim/ilanduzenle/<?php echo $ilan->Id; ?>">İlanı Düzenle</a></div>
+					<div class="col-12 show_ad_icons show_ad_icon2"><a href="<?php echo base_url(); ?>hesabim/samekategoriilan/<?php echo $ilan->Id; ?>">Aynı Kategoride Yeni İlan Ver</a></div>
+					<div class="col-12 show_ad_icons show_ad_icon3"><a href="<?php echo base_url(); ?>doping/ilan/<?php echo $ilan->Id; ?>">Doping Yap</a></div>
+					<?php if($ilan->onay==1){?>
+					<div class="col-12 show_ad_icons show_ad_icon4"><a href="<?php echo base_url(); ?>hesabim/ilandurdur/<?php echo $ilan->Id; ?>">Yayından Kaldır</a></div>
+					<?php }else{?>
+					<div class="col-12 show_ad_icons show_ad_icon4"><a href="<?php echo base_url(); ?>hesabim/ilansil/<?php echo $ilan->Id; ?>" onclick="return window.confirm('İlanı Yayından Kaldırmak İstediğinizden Eminmisiniz?');">Sil</a></div>
+					<?php }?>
+					<?php if($ilan->suresi_doldu==1 || $ilan->onay==2){?>
+					<div class="col-12 show_ad_icons show_ad_icon5"><a href="<?php echo base_url(); ?>hesabim/<?php if($ilan->suresi_doldu==1){?>ilansureuzat/<?php }else{?>ilanaktiflestir/<?php }?><?php echo $ilan->Id;?>">Yayına Al</a></div>
+
+					<?php }else{?>
+					<div class="col-12 show_ad_icons show_ad_icon5"><a href="<?php echo base_url(); ?>hesabim/guncelle/<?php echo $ilan->Id; ?>">Güncelim</a></div>
+					<?php }}?>
+
+				<?php if ($magaza_var_mi){ ?>
 					<div class="col-12"><h3><?php echo $magaza->magazaadi; ?></h3></div>
 					<div class="col-12">
 			 			<img class="img-responsive" style="border-radius:20px;" src="<?php if ($magaza->logo) {echo base_url('photos/magaza/').$magaza->logo;} else {echo base_url('assets/images/company/c1.png');}?>">
 		 			</div>
 					<div class="col-12 mar-bot">Yetkili: <?php echo $user->ad." ".$user->soyad; ?></div>
-				<?php else: ?>
+				<?php }else{ ?>
 					<div class="col-12"><h3><?php echo $user->ad." ".$user->soyad; ?></h3></div>
 					<div class="col-12">
 			 			<img class="img-responsive" style="border-radius:20px;" src="<?php if ($user->picture) {echo $user->picture;} else {echo base_url('assets/images/picto_profil.png');}?>">
 		 			</div>
-				<?php endif; ?>
+				<?php } ?>
 					<div class="col-12 mar-bot">Üyelik Tarihi:<?php echo dateReplace($user->kayit_tarihi); ?></div>
-					<?php if ($ilan->yayinla==1): ?>
+					<?php if ($ilan->yayinla==1){ ?>
 						<div class="col-12 mar-bot">Telefon:<?php echo $user->gsm; ?></div>
-					<?php endif; ?>
+					<?php } ?>
+					<?php
+					if($magaza_var_mi){
+					?>
+					<a class="col-12 ad_detail_right" href="<?php echo base_url().$magaza->username; ?>"> &nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png" > Üyenin Mağazası</a>
+					<?php }?>
+					<a class="col-12 ad_detail_right" href=""> &nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Diğer İlanları</a>
+					<?php $favsor = $this->db->query("select * from favoriler where ilanId='".$ilan->Id."' and uyeId='".$this->session->userdata('userData')['userID']."'");
+					$favsorgu=$favsor->num_rows();
+					if($favsorgu==0){
+					?>
+					<a class="col-12 ad_detail_right" id="favorilink" href="javascript:favori();">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Favorilerime Ekle</a>
+					<?php }else{?>
+					<a class="col-12 ad_detail_right" id="favorilink" href="javascript:favorisil();">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Favorilerimden Sil</a>
+					<?php }?>
+					<!-- <a class="ad_detail_right" href="javascript:mesaj_gonder(<?php //echo $a[uyeId];?>,<?php //echo $a[Id];?>);">&nbsp;<img border="0" src="<?php //echo $site_adresi;?>/cursor_image_right.png" width="12" height="13"> Mesaj Gönder</a>
+
+					<a class="ad_detail_right" href="?yazdir=1">&nbsp;<img border="0" src="<?php //echo $site_adresi;?>/cursor_image_right.png" width="12" height="13"> İlanı Yazdır</a>
+
+					<a class="ad_detail_right" href="javascript:sikayet();">&nbsp;<img border="0" src="<?php //echo $site_adresi;?>/cursor_image_right.png" width="12" height="13"> İlan ile ilgili şikayetim var</a> -->
 					<!-- <div class="col-12 mar-bot">
 						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3185.951538138242!2d37.34923931510993!3d37.01095247990566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1531de263041cad9%3A0x2ea85746583f6db6!2sKarata%C5%9F+Mahallesi%2C+103424.+Cd.+24%2C+27470+%C5%9Eahinbey%2FGaziantep!5e0!3m2!1str!2str!4v1534592215147"  width="100%" height="250" frameborder="0" style="border:0; border-radius:30px;" allowfullscreen></iframe>
 					</div> -->
@@ -163,6 +199,49 @@
         })
 	});
 </script>
+<script type="text/javascript">
+	function favorisil() {
+		$.ajax({
+				type: "post",
+				url: "<?php echo base_url('hesabim/favorisil'); ?>",
+				data: "id="+<?php echo $ilan->Id; ?>,
+				dataType: 'json',
+
+				success: function(json){
+						if(json['success']){
+								$('a#favorilink').attr("href", "javascript:favori()");
+								$('a#favorilink').html(" Favorilerime Ekle");
+								generate('success', json['success']);
+						}
+
+						if(json['error']){
+								generate('error', json['error']);
+						}
+				}
+		});
+	}
+	function favori() {
+		$.ajax({
+				type: "post",
+				url: "<?php echo base_url('hesabim/favoriekle'); ?>",
+				data: "id="+<?php echo $ilan->Id; ?>,
+				dataType: 'json',
+
+				success: function(json){
+						if(json['success']){
+								$('a#favorilink').attr("href", "javascript:favorisil()");
+								$('a#favorilink').html(" Favorilerimden Sil");
+								generate('success', json['success']);
+						}
+
+						if(json['error']){
+								generate('error', json['error']);
+						}
+				}
+		});
+	}
+</script>
+
 <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
 <script src="<?php echo base_url('assets'); ?>/light/lightgallery-all.min.js"></script>
 <script src="<?php echo base_url('assets'); ?>/light/jquery.mousewheel.min.js"></script>

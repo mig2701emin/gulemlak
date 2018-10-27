@@ -160,14 +160,44 @@ class Hesabim extends CI_Controller{
     }
     $this->load->view("hesabim/favorilerim",$data);
   }
-  public function favorisil($ilanId)
+  public function favoriekle($ilanId="")
   {
+    $json = array();
     $id=$this->security->xss_clean($this->input->post("id"));
     $sql = $this->db->query("SELECT * FROM favoriler WHERE uyeId='".$this->user->Id."' and ilanId='".$id."'");
     $say=$sql->num_rows();
-    if ($say==1){
-    $this->db->query("DELETE from favoriler where uyeId='".$this->user->Id."' and ilanId='".$id."'");
+    if ($say > 0){
+      $json['error'] = 'İlan Zaten Favori Listenizde';
+    }else {
+      $veri = array("uyeId" => $this->user->Id,"ilanId" => $id);
+      $insert=$this->db->insert("favoriler",$veri);
+      if ($insert) {
+        $json['success'] = 'İlan Favorilerinize Eklendi';
+      }else {
+        $json['error'] = 'Hatalı İşlem! Lütfen Tekrar Deneyiniz..';
+      }
+
     }
+    echo json_encode($json);
+  }
+
+  public function favorisil($ilanId="")
+  {
+    $json = array();
+    $id=$this->security->xss_clean($this->input->post("id"));
+    $sql = $this->db->query("SELECT * FROM favoriler WHERE uyeId='".$this->user->Id."' and ilanId='".$id."'");
+    $say=$sql->num_rows();
+    if ($say > 0){
+      $delete=$this->db->query("DELETE from favoriler where uyeId='".$this->user->Id."' and ilanId='".$id."'");
+      if ($delete) {
+        $json['success'] = 'İlan Favorilerinizden Silindi';
+      }else {
+        $json['error'] = 'Hatalı İşlem! Lütfen Tekrar Deneyiniz..';
+      }
+    }else {
+      $json['error'] = 'İlan Favorilerinizde Bulunamadı';
+    }
+    echo json_encode($json);
   }
   public function ilanduzenle($ilanId)
   {
@@ -550,7 +580,6 @@ class Hesabim extends CI_Controller{
     $data["ilanId"]=$ilanId;
     $this->load->view("hesabim/ilanduzenle_ok",$data);
   }
-
   public function get_details($ilanId,$detail)
   {
 
