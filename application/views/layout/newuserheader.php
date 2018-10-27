@@ -233,7 +233,7 @@
                                      <li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
                                         <a href="#" class="m-nav__link m-dropdown__toggle">
                                             <span class="m-topbar__welcome">Merhaba,&nbsp;</span>
-                                            <span class="m-topbar__username"><?php if ($this->session->userdata("userData")) {echo $this->session->userdata("userData")["ad"]." " $this->session->userdata("userData")["soyad"]} else {echo "Misafir"}?></span>
+                                            <span class="m-topbar__username"><?php if ($this->session->userdata("userData")) {echo $this->session->userdata("userData")["ad"]." ".$this->session->userdata("userData")["soyad"];} else {echo "Misafir";}?></span>
                                             <span class="m-topbar__userpic">
                                                 <img src="<?php echo base_url(); ?>assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt="" />
                                             </span>
@@ -247,8 +247,8 @@
                                                             <img src="<?php echo base_url(); ?>assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt="" />
                                                         </div>
                                                         <div class="m-card-user__details">
-                                                            <span class="m-card-user__name m--font-weight-500"><?php if ($this->session->userdata("userData")) {echo $this->session->userdata("userData")["ad"]." " $this->session->userdata("userData")["soyad"]} else {echo "Misafir"}?></span>
-                                                            <a href="" class="m-card-user__email m--font-weight-300 m-link"><?php if ($this->session->userdata("userData")) {echo $this->session->userdata("userData")["email"]} else {echo ""}?></a>
+                                                            <span class="m-card-user__name m--font-weight-500"><?php if ($this->session->userdata("userData")) {echo $this->session->userdata("userData")["ad"]." ".$this->session->userdata("userData")["soyad"];} else {echo "Misafir";}?></span>
+                                                            <a href="" class="m-card-user__email m--font-weight-300 m-link"><?php if ($this->session->userdata("userData")) {echo $this->session->userdata("userData")["email"];} else {echo "";}?></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -410,7 +410,7 @@
                                     <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left">
                                         <span class="m-menu__arrow m-menu__arrow--adjust"></span>
                                         <ul class="m-menu__subnav">
-                                          <?php if ((magaza_var_mi($this->session->userdata("userData")["userID"]): ?>
+                                          <?php if (magaza_var_mi($this->session->userdata("userData")["userID"])): ?>
                                             <li class="m-menu__item " aria-haspopup="true">
                                                 <a href="<?php echo base_url().magaza_username($this->session->userdata('userData')['userID']); ?>" class="m-menu__link ">
                                                     <i class="m-menu__link-icon flaticon-diagram"></i><span
