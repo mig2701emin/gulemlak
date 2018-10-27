@@ -94,7 +94,7 @@
                                             <a  href="<?php echo base_url('cikis'); ?>" class="btn btn-danger" style="border: none" ><i class="fa fa-user"></i> ÇIKIŞ YAP</a>
                                           </li>
                                           <li>
-                                            <a  href="<?php echo base_url('banaozel'); ?>" class="btn btn-danger" style="border: none" ><i class="fa fa-user"></i> HESABIM</a>
+                                            <a  href="<?php echo base_url('hesabim/anasayfa'); ?>" class="btn btn-danger" style="border: none" ><i class="fa fa-user"></i> HESABIM</a>
                                           </li>
                                         <?php }else{ ?>
                                           <li>

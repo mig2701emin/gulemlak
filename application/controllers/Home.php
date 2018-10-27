@@ -122,16 +122,18 @@
 					$check_values=get_details($ilanId,$field->seo_name);
 					$explode_check=explode("||",$check_values);
 					$new_values=explode("||",$field->field_values);
-					$show_additional_fields.='<div class="col-12"><h4 class="mb-3">'.$field->name.'</h4>';
+					$show_additional_fields.='<div class="col-12 col-sm-6 col-md-4 col-lg-3"><h4 class="mb-3">'.$field->name.'</h4>';
 					if($show_ok[$field->name]!=1){
 						$show_additional_fields.='<div class="row">';
 					}
 					for ($i = 0; $i <= count($new_values)-1; $i++) {
-						$show_additional_fields.='<div class="custom-control custom-checkbox col-6 col-md-3"';
+						//$show_additional_fields.='<div class="custom-control custom-checkbox col-6 col-md-3"';
 						if (sorgula2($ilanId,$field->seo_name,$new_values[$i])) {
+							$show_additional_fields.='<div class="custom-control custom-checkbox col-6 col-md-3"';//yeni ekledim
 							$show_additional_fields.=' style="background:url('.base_url().'assets/images/evet.png) no-repeat 0px -2px"';
+							$show_additional_fields.='>&nbsp;'.$new_values[$i].'</div>';//yeni ekledim
 						}
-						$show_additional_fields.='>&nbsp;'.$new_values[$i].'</div>';
+						//$show_additional_fields.='>&nbsp;'.$new_values[$i].'</div>';
 					}
 					if($show_ok[$field->name]!=1){
 						$show_additional_fields.='</div><hr class="mt-4"/></div>';
@@ -198,8 +200,11 @@
 			if ($subKategori != "") {
 				$this->db->where("kategori2",$subKategori);
 			}
-			$ilan=$this->db->get("firmalar")->row();
-			$ilanlar[]=$ilan;
+			$ilan=$this->db->get("firmalar");
+			if ($ilan->num_rows() > 0) {
+					$ilanlar[]=$ilan->row();
+			}
+
 			}
 			$data["ilanlar"]=$ilanlar;
 			$kategori=$this->kategoriler->getbyid($magaza->kategoriId);
