@@ -1,8 +1,3 @@
-
-
-
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
     <script>
         WebFont.load({
@@ -12,24 +7,11 @@
             }
         });
     </script>
-
-    <link href="/assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/demo/demo5/base/style.bundle.css" rel="stylesheet" type="text/css" />
-
-    <link href="/assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
-
-
-
-
-    <link rel="shortcut icon" href="assets/demo/demo5/media/img/logo/favicon.ico" />
-
-
-
-
-
-<div class="m-grid m-grid--hor m-grid--root m-page">
-
-
+    <link href="<?php echo base_url(); ?>assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url(); ?>assets/demo/demo5/base/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url(); ?>assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/demo/demo5/media/img/logo/favicon.ico" />
+  <div class="m-grid m-grid--hor m-grid--root m-page">
     <!-- begin::Header -->
     <header id="m_header" class="m-grid__item		m-header " m-minimize="minimize" m-minimize-offset="200" m-minimize-mobile-offset="200">
         <div class="m-header__top">
@@ -39,13 +21,12 @@
                     <div class="m-stack__item m-brand">
                         <div class="m-stack m-stack--ver m-stack--general m-stack--inline">
                             <div class="m-stack__item m-stack__item--middle m-brand__logo">
-                                <a href="?page=index&demo=demo5" class="m-brand__logo-wrapper">
-                                    <img alt="" src="/assets/images/logo.png" />
+                                <a href="<?php echo base_url(); ?>" class="m-brand__logo-wrapper">
+                                    <img alt="" src="<?php echo base_url(); ?>assets/images/logo.png" />
                                 </a>
                             </div>
                             <div class="m-stack__item m-stack__item--middle m-brand__tools">
                                 <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-left m-dropdown--align-push" m-dropdown-toggle="click" aria-expanded="true">
-
                                     <div class="m-dropdown__wrapper">
                                         <span class="m-dropdown__arrow m-dropdown__arrow--left m-dropdown__arrow--adjust"></span>
                                         <div class="m-dropdown__inner">
@@ -99,9 +80,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
                                 <!-- begin::Responsive Header Menu Toggler-->
                                 <a id="m_aside_header_menu_mobile_toggle" href="javascript:;" class="m-brand__icon m-brand__toggler m--visible-tablet-and-mobile-inline-block">
                                     <span></span>
@@ -125,15 +103,15 @@
                                         <a href="#" class="m-nav__link m-dropdown__toggle" id="m_topbar_notification_icon">
                                             <span class="m-nav__link-badge m-badge m-badge--dot m-badge--dot-small m-badge--danger"></span>
                                             <span class="m-nav__link-icon">
-                                                    <span class="m-nav__link-icon-wrapper">
-                                                        <i class="flaticon-alarm"></i>
-                                                    </span>
+                                                <span class="m-nav__link-icon-wrapper">
+                                                    <i class="flaticon-alarm"></i>
                                                 </span>
+                                            </span>
                                         </a>
                                         <div class="m-dropdown__wrapper">
                                             <span class="m-dropdown__arrow m-dropdown__arrow--center"></span>
                                             <div class="m-dropdown__inner">
-                                                <div class="m-dropdown__header m--align-center" style="background: url(./assets/app/media/img/misc/notification_bg.jpg); background-size: cover;">
+                                                <div class="m-dropdown__header m--align-center" style="background: url(<?php echo base_url(); ?>assets/app/media/img/misc/notification_bg.jpg); background-size: cover;">
                                                     <span class="m-dropdown__header-title">9 New</span>
                                                     <span class="m-dropdown__header-subtitle">User Notifications</span>
                                                 </div>
@@ -254,23 +232,23 @@
                                     </li>
                                      <li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
                                         <a href="#" class="m-nav__link m-dropdown__toggle">
-                                            <span class="m-topbar__welcome">Hello,&nbsp;</span>
-                                            <span class="m-topbar__username">Nick</span>
+                                            <span class="m-topbar__welcome">Merhaba,&nbsp;</span>
+                                            <span class="m-topbar__username"><?php if ($this->session->userdata("userData")) {echo $this->session->userdata("userData")["ad"]." " $this->session->userdata("userData")["soyad"]} else {echo "Misafir"}?></span>
                                             <span class="m-topbar__userpic">
-                                                    <img src="/assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt="" />
-                                                </span>
+                                                <img src="<?php echo base_url(); ?>assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt="" />
+                                            </span>
                                         </a>
                                         <div class="m-dropdown__wrapper">
                                             <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
                                             <div class="m-dropdown__inner">
-                                                <div class="m-dropdown__header m--align-center" style="background: url(./assets/app/media/img/misc/user_profile_bg.jpg); background-size: cover;">
+                                                <div class="m-dropdown__header m--align-center" style="background: url(<?php echo base_url(); ?>assets/app/media/img/misc/user_profile_bg.jpg); background-size: cover;">
                                                     <div class="m-card-user m-card-user--skin-dark">
                                                         <div class="m-card-user__pic">
-                                                            <img src="/assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt="" />
+                                                            <img src="<?php echo base_url(); ?>assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt="" />
                                                         </div>
                                                         <div class="m-card-user__details">
-                                                            <span class="m-card-user__name m--font-weight-500">Mark Andre</span>
-                                                            <a href="" class="m-card-user__email m--font-weight-300 m-link">mark.andre@gmail.com</a>
+                                                            <span class="m-card-user__name m--font-weight-500"><?php if ($this->session->userdata("userData")) {echo $this->session->userdata("userData")["ad"]." " $this->session->userdata("userData")["soyad"]} else {echo "Misafir"}?></span>
+                                                            <a href="" class="m-card-user__email m--font-weight-300 m-link"><?php if ($this->session->userdata("userData")) {echo $this->session->userdata("userData")["email"]} else {echo ""}?></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -284,11 +262,11 @@
                                                                 <a href="?page=profile&demo=demo5" class="m-nav__link">
                                                                     <i class="m-nav__link-icon flaticon-profile-1"></i>
                                                                     <span class="m-nav__link-title">
-                                                                            <span class="m-nav__link-wrap">
-                                                                                <span class="m-nav__link-text">My Profile</span>
-                                                                                <span class="m-nav__link-badge"><span class="m-badge m-badge--success">2</span></span>
-                                                                            </span>
+                                                                        <span class="m-nav__link-wrap">
+                                                                            <span class="m-nav__link-text">My Profile</span>
+                                                                            <span class="m-nav__link-badge"><span class="m-badge m-badge--success">2</span></span>
                                                                         </span>
+                                                                    </span>
                                                                 </a>
                                                             </li>
                                                             <li class="m-nav__item">
@@ -328,8 +306,6 @@
                                             </div>
                                         </div>
                                     </li>
-
-
                                 </ul>
                             </div>
                         </div>
@@ -343,42 +319,50 @@
                 <div class="m-stack m-stack--ver m-stack--desktop">
                     <!-- begin::Horizontal Menu -->
                     <div class="m-stack__item m-stack__item--middle m-stack__item--fluid">
-
                         <button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-light " id="m_aside_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
-
                         <div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-dark m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-light m-aside-header-menu-mobile--submenu-skin-light ">
                             <ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
                                 <li class="m-menu__item  m-menu__item--active " aria-haspopup="true">
-                                    <a href="?page=index&demo=demo5" class="m-menu__link ">
+                                    <a href="<?php echo base_url() ?>hesabim/anasayfa" class="m-menu__link ">
                                         <span class="m-menu__item-here"></span>
-                                        <span class="m-menu__link-text">Hesabım</span></a></li>
-                                <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel" m-menu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link">
+                                        <span class="m-menu__link-text">Hesabım</span>
+                                    </a>
+                                </li>
+                                <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel" m-menu-submenu-toggle="click" aria-haspopup="true">
+                                  <a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link">
                                         <span class="m-menu__item-here"></span>
-                                        <span class="m-menu__link-text">İlanlar</span>
+                                        <span class="m-menu__link-text">İlanlarım</span>
                                         <i class="m-menu__hor-arrow la la-angle-down"></i>
-                                        <i class="m-menu__ver-arrow la la-angle-right"></i></a>
+                                        <i class="m-menu__ver-arrow la la-angle-right"></i>
+                                  </a>
                                     <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left">
                                         <span class="m-menu__arrow m-menu__arrow--adjust"></span>
                                         <ul class="m-menu__subnav">
-
                                             <li class="m-menu__item " aria-haspopup="true">
                                                 <a href="<?php echo base_url(); ?>hesabim/anasayfa/aktif" class="m-menu__link ">
-                                                    <i class="m-menu__link-icon flaticon-diagram"></i><span
-                                                            class="m-menu__link-title">  <span
-                                                                class="m-menu__link-wrap">
-                                                            <span class="m-menu__link-text">Aktif İlanlar</span>
+                                                    <i class="m-menu__link-icon flaticon-diagram"></i>
+                                                    <span class="m-menu__link-title">
+                                                      <span class="m-menu__link-wrap">
+                                                            <span class="m-menu__link-text">Aktif İlanlarım</span>
                                                             <span class="m-menu__link-badge">
                                                                 <span class="m-badge m-badge--success">2</span>
-                                                            </span>  </span></span></a></li>
-
-                                            <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                        href="<?php echo base_url(); ?>hesabim/anasayfa/pasif" class="m-menu__link "><i
-                                                            class="m-menu__link-icon flaticon-users"></i><span
-                                                            class="m-menu__link-text">Pasif İlanlar</span></a></li>
-                                            <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                        href="<?php echo base_url(); ?>hesabim/anasayfa/aktif" class="m-menu__link "><i
-                                                            class="m-menu__link-icon flaticon-users"></i><span
-                                                            class="m-menu__link-text">Tüm İlanlar</span></a></li>
+                                                            </span>
+                                                      </span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                              <a href="<?php echo base_url(); ?>hesabim/anasayfa/pasif" class="m-menu__link ">
+                                                <i class="m-menu__link-icon flaticon-users"></i>
+                                                <span class="m-menu__link-text">Pasif İlanlarım</span>
+                                              </a>
+                                            </li>
+                                            <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                              <a href="<?php echo base_url(); ?>hesabim/anasayfa" class="m-menu__link ">
+                                                <i class="m-menu__link-icon flaticon-users"></i>
+                                                <span class="m-menu__link-text">Tüm İlanlar</span>
+                                              </a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </li>
@@ -387,23 +371,27 @@
                                         <span class="m-menu__item-here"></span>
                                         <span class="m-menu__link-text">Ödemeler</span>
                                         <i class="m-menu__hor-arrow la la-angle-down"></i>
-                                        <i class="m-menu__ver-arrow la la-angle-right"></i></a>
+                                        <i class="m-menu__ver-arrow la la-angle-right"></i>
+                                    </a>
                                     <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left">
                                         <span class="m-menu__arrow m-menu__arrow--adjust"></span>
                                         <ul class="m-menu__subnav">
-
                                             <li class="m-menu__item " aria-haspopup="true">
                                                 <a href="<?php echo base_url(); ?>hesabim/odemeler/bekleyen" class="m-menu__link ">
-                                                    <i class="m-menu__link-icon flaticon-diagram"></i><span
-                                                            class="m-menu__link-title">  <span
-                                                                class="m-menu__link-wrap">
+                                                    <i class="m-menu__link-icon flaticon-diagram"></i>
+                                                    <span class="m-menu__link-title">
+                                                      <span class="m-menu__link-wrap">
                                                             <span class="m-menu__link-text">Bekleyen Ödemeler</span>
                                                             <span class="m-menu__link-badge">
                                                                 <span class="m-badge m-badge--success">2</span>
-                                                            </span>  </span></span></a></li>
+                                                            </span>
+                                                      </span>
+                                                    </span>
+                                                </a>
+                                            </li>
 
                                             <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                        href="<?php echo base_url(); ?>hesabim/odemeler/bekleyen" class="m-menu__link "><i
+                                                        href="<?php echo base_url(); ?>hesabim/odemeler/tamam" class="m-menu__link "><i
                                                             class="m-menu__link-icon flaticon-users"></i><span
                                                             class="m-menu__link-text">Tamamlanan Ödemeler</span></a></li>
                                             <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
@@ -422,13 +410,9 @@
                                     <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left">
                                         <span class="m-menu__arrow m-menu__arrow--adjust"></span>
                                         <ul class="m-menu__subnav">
-                                            <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                        href="<?php echo base_url(); ?>magazaac" class="m-menu__link "><i
-                                                            class="m-menu__link-icon flaticon-users"></i><span
-                                                            class="m-menu__link-text">Mağazamı Aç </span></a></li>
-
+                                          <?php if ((magaza_var_mi($this->session->userdata("userData")["userID"]): ?>
                                             <li class="m-menu__item " aria-haspopup="true">
-                                                <a href="<?php echo base_url(); ?>hesabim/odemeler/bekleyen" class="m-menu__link ">
+                                                <a href="<?php echo base_url().magaza_username($this->session->userdata('userData')['userID']); ?>" class="m-menu__link ">
                                                     <i class="m-menu__link-icon flaticon-diagram"></i><span
                                                             class="m-menu__link-title">  <span
                                                                 class="m-menu__link-wrap">
@@ -438,21 +422,34 @@
                                                             </span>  </span></span></a></li>
 
                                             <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                        href="<?php echo base_url(); ?>hesabim/odemeler/bekleyen" class="m-menu__link "><i
+                                                        href="<?php echo base_url(); ?>magazam/magazam" class="m-menu__link "><i
                                                             class="m-menu__link-icon flaticon-users"></i><span
                                                             class="m-menu__link-text">Mağazamı Düzenle </span></a></li>
                                             <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                        href="<?php echo base_url(); ?>hesabim/odemeler" class="m-menu__link "><i
+                                                        href="<?php echo base_url(); ?>magazam/magazakullanicilari" class="m-menu__link "><i
                                                             class="m-menu__link-icon flaticon-users"></i><span
                                                             class="m-menu__link-text">Mağaza Kullanıcıları</span></a></li>
                                             <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                        href="<?php echo base_url(); ?>hesabim/odemeler/bekleyen" class="m-menu__link "><i
+                                                        href="<?php echo base_url(); ?>magazam/magazauseradd" class="m-menu__link "><i
+                                                            class="m-menu__link-icon flaticon-users"></i><span
+                                                            class="m-menu__link-text">Yeni Kullanıcı</span></a></li>
+                                            <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
+                                                        href="<?php echo base_url(); ?>magazam/magazailanlari" class="m-menu__link "><i
                                                             class="m-menu__link-icon flaticon-users"></i><span
                                                             class="m-menu__link-text">Mağaza İlanları</span></a></li>
                                             <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
-                                                        href="<?php echo base_url(); ?>hesabim/odemeler" class="m-menu__link "><i
+                                                        href="<?php echo base_url(); ?>magazam/magazailanadd" class="m-menu__link "><i
                                                             class="m-menu__link-icon flaticon-users"></i><span
                                                             class="m-menu__link-text">Yeni Mağaza İlanı Ekle</span></a></li>
+                                          <?php else: ?>
+                                            <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a
+                                                        href="<?php echo base_url(); ?>magazaac" class="m-menu__link "><i
+                                                            class="m-menu__link-icon flaticon-users"></i><span
+                                                            class="m-menu__link-text">Mağaza Aç </span></a></li>
+                                          <?php endif; ?>
+
+
+
 
 
                                         </ul>
@@ -460,7 +457,7 @@
                                 </li>
 
 
-                                <li class="m-menu__item " aria-haspopup="true"><a href="/ilanekle"
+                                <li class="m-menu__item " aria-haspopup="true"><a href="<?php echo base_url(); ?>ilanekle"
                                                                                   class="m-menu__link "><span
                                                 class="m-menu__item-here"></span><span class="m-menu__link-text ">İlan ekle</span></a>
                                 </li>
@@ -469,8 +466,6 @@
                                                                                   class="m-menu__link "><span
                                                 class="m-menu__item-here"></span><span
                                                 class="m-menu__link-text ">Destek</span></a></li>
-
-
                             </ul>
                         </div>
                     </div>
@@ -575,6 +570,5 @@
 
 <!-- begin::Quick Nav -->
 <!--begin::Global Theme Bundle -->
-<script src="/assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
-<script src="/assets/demo/demo5/base/scripts.bundle.js" type="text/javascript"></script>
-
+<script src="<?php echo base_url(); ?>assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/demo/demo5/base/scripts.bundle.js" type="text/javascript"></script>
