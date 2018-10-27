@@ -24,6 +24,16 @@
 #uiv {color:#ed1c24; background-color:white; padding: 5px; border-radius: 3px; font-weight: bold;}
 #uiv:hover {color:white; background-color: #ed1c24; padding: 5px; border-radius: 3px; font-weight: bold;}
 #logouiv {float:left; height:50px;}#logouiv:hover {float:left; height:50px; opacity:0.8;}
+.pagination a, .pagination strong{
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin-left: 5px;
+  text-decoration: none;
+  box-shadow: 0px 0px 8px rgba(5,5,5,0.3);
+}
+.pagination strong{
+  background-color: #35a5f2;
+}
 </style>
 <script>
 function show(a){
@@ -130,33 +140,16 @@ function hide(a){
   </div>
   <div style="float:left;width:21.2%;border-right:1px solid #e1e1e1">
     <div class="genelbox">
-      <a href="<?php echo base_url().$magaza->username; ?>/<?php echo encode($kategori->Id); ?>"style="background:url('<?php echo base_url(); ?>assets/images/category_icon/<?php echo $kategori->icon; ?>') no-repeat center left;background-size:20px 20px;padding-left:25px"><?php echo $kategori->kategori_adi; ?></a>
+      <a href="<?php echo base_url().$magaza->username; ?>/<?php echo encode($kategori->Id); ?>" style="background:url('<?php echo base_url(); ?>assets/images/category_icon/<?php echo $kategori->icon; ?>') no-repeat center left;background-size:20px 20px;padding-left:25px"><?php echo $kategori->kategori_adi; ?></a>
       ( <?php echo magaza_ilan_say($magaza->Id,$kategori->Id); ?> )
     </div>
     <div style="clear:both"></div>
     <?php foreach ($altKategoriler as $altKategori): ?>
       <div class="subcat">
-        <a href="<?php echo base_url().$magaza->username; ?>/<?php echo encode($kategori->Id); ?>/"<?php echo encode($altKategori->Id); ?> class="submenu_text"><?php echo $altKategori->kategori_adi; ?></a>
+        <a href="<?php echo base_url().$magaza->username; ?>/<?php echo encode($kategori->Id); ?>/<?php echo encode($altKategori->Id); ?>" class="submenu_text"><?php echo $altKategori->kategori_adi; ?></a>
         ( <?php echo magaza_ilan_say($magaza->Id,$kategori->Id,$altKategori->Id); ?> )
       </div>
     <?php endforeach; ?>
-    <!-- <div class="subcat">
-      <a href="http://deneme.ticaretmeclisi.com/?ukate=45&akate=46" class="submenu_text">Konut</a> (2)
-    </div>
-    <div class="subcat">
-      <a href="http://deneme.ticaretmeclisi.com/?ukate=45&akate=47" class="submenu_text">İş Yeri</a> (0)
-    </div>
-    <div class="subcat">
-      <a href="http://deneme.ticaretmeclisi.com/?ukate=45&akate=48" class="submenu_text">Arsa</a> (1)
-    </div>
-    <div class="subcat">
-      <a href="http://deneme.ticaretmeclisi.com/?ukate=45&akate=50" class="submenu_text">Bina</a> (0)
-    </div><div class="subcat">
-      <a href="http://deneme.ticaretmeclisi.com/?ukate=45&akate=51" class="submenu_text">Devremülk</a> (0)
-    </div>
-    <div class="subcat">
-      <a href="http://deneme.ticaretmeclisi.com/?ukate=45&akate=52" class="submenu_text">Turistik Tesis</a> (0)
-    </div> -->
     <div class="genelbox">Hakkımızda</div>
     <div class="custom_content">
       <font face="Arial" size="3pt"><strong><?php echo $magaza->magazaadi; ?></strong></font>
@@ -210,80 +203,12 @@ function hide(a){
         if($count%2){echo "</tr><tr>";}
         }
         ?>
-        <!-- <td>
-          <table border="0" width="100%" height="100" cellpadding="0" style="cursor:hand;cursor:pointer; border-collapse:collapse" bgcolor="#FFFFFF" onmouseover="this.style.background='#F5F5F5'" onmouseout="this.style.background='#FFFFFF'" onclick="top.window.location='<?php echo base_url(); ?>ilan/<?php echo $ilan->seo_url(); ?>-<?php echo $ilan->Id; ?>'">
-            <tr>
-              <td width="150" align="center" valign="middle">
-                <a href="http://www.ticaretmeclisi.com/ilan/Emlak-Konut-Daire-Kiralik-Bilecik-Golpazari-CIFTLIK_KOYU-719620">
-                  <img src = "http://www.ticaretmeclisi.com/images/yok.png" width="100" height = "75" border = "0" style="margin-top:10px;">
-                </a>
-              </td>
-              <td valign="top" style="text-align:left">
-                <font color="red" style="font-size:9pt;">#719620</font>
-                <br>
-                <font color="#000080" style="text-transform: uppercase;font-size:9pt;">bgtntgn</font>
-                <br>
-                <font color="brown" style="font-size:9pt;">21.561 TL</font>
-                <br>
-                <font color="brown" style="font-size:9pt;">İlan Tarihi : 2018-10-04 11:07:25</font>
-                <br>
-                <font color="#000080" style="font-size:9pt;">İl : Bilecik</font>
-              </td>
-            </tr>
-          </table>
-        </td>
-        <td>
-          <table border="0" width="100%" height="100" cellpadding="0" style="cursor:hand;cursor:pointer; border-collapse:collapse" bgcolor="#FFFFFF" onmouseover="this.style.background='#F5F5F5'" onmouseout="this.style.background='#FFFFFF'" onclick="top.window.location='http://www.ticaretmeclisi.com/ilan/Emlak-Arsa-Satilik--Afyonkarahisar-Bolvadin-CIRIT_MAH.-195926'">
-            <tr>
-              <td width="150" align="center" valign="middle">
-                <a href="http://www.ticaretmeclisi.com/ilan/Emlak-Arsa-Satilik--Afyonkarahisar-Bolvadin-CIRIT_MAH.-195926">
-                  <img src = "http://www.ticaretmeclisi.com/images/yok.png" width="100" height = "75" border = "0" style="margin-top:10px;">
-                </a>
-              </td>
-              <td valign="top" style="text-align:left">
-                <font color="red" style="font-size:9pt;">#195926</font>
-                <br>
-                <font color="#000080" style="text-transform: uppercase;font-size:9pt;">bfnnngn</font>
-                <br>
-                <font color="brown" style="font-size:9pt;">3.066 TL</font>
-                <br>
-                <font color="brown" style="font-size:9pt;">İlan Tarihi : 2018-10-04 06:30:54</font>
-                <br>
-                <font color="#000080" style="font-size:9pt;">İl : Afyonkarahisar</font>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <table border="0" width="100%" height="100" cellpadding="0" style="cursor:hand;cursor:pointer; border-collapse:collapse" bgcolor="#FFFFFF" onmouseover="this.style.background='#F5F5F5'" onmouseout="this.style.background='#FFFFFF'" onclick="top.window.location='http://www.ticaretmeclisi.com/ilan/Emlak-Konut-Daire-Satilik-Adana-Ceyhan-AGACPINAR_KOYU-30974'">
-            <tr>
-              <td width="150" align="center" valign="middle">
-                <a href="http://www.ticaretmeclisi.com/ilan/Emlak-Konut-Daire-Satilik-Adana-Ceyhan-AGACPINAR_KOYU-30974">
-                  <img src = "http://www.ticaretmeclisi.com/images/yok.png" width="100" height = "75" border = "0" style="margin-top:10px;">
-                </a>
-              </td>
-              <td valign="top" style="text-align:left">
-                <font color="red" style="font-size:9pt;">#30974</font>
-                <br>
-                <font color="#000080" style="text-transform: uppercase;font-size:9pt;">bbf fnnfnfn</font>
-                <br>
-                <font color="brown" style="font-size:9pt;">225.156 TL</font>
-                <br>
-                <font color="brown" style="font-size:9pt;">İlan Tarihi : 2018-10-04 06:28:27</font>
-                <br>
-                <font color="#000080" style="font-size:9pt;">İl : Adana</font>
-              <td>
-            </tr>
-          </table>
-        </td> -->
       </tr>
       <tr>
         <td align="center" colspan="2">
           <hr color="#DADADA" size="1">
           <div style="display: table;margin: auto;margin-top:5px;">
-            <a class="pages pages_active" href="">1</a>
+            <p class="pagination"><?php echo $links; ?></p>
           </div>
         </td>
       </tr>

@@ -170,12 +170,8 @@
 		}
 		public function magaza_goruntule($username,$anaKategori="",$subKategori="")
 		{
-			if ($subKategori != "") {
-				$subKategori=decode($subKategori);
-			}
-			if ($anaKategori != "") {
-				$anaKategori=decode($anaKategori);
-			}
+
+
 			$query=$this->db->where("username",$username)->get("magazalar");
 			if ($query->num_rows() > 0) {
 				$magaza=$query->row();
@@ -189,23 +185,59 @@
 			</ul>');
 			//redirect(base_url("hesabim/anasayfa"));
 			}
-			$magaza_ilanlari=$this->db->where("magazaId",$magaza->Id)->get("magaza_ilanlari")->result();
-			//$data["user"]=$this->user;
-			$ilanlar = array();
-			foreach ($magaza_ilanlari as $magaza_ilan) {
-			$this->db->where("Id",$magaza_ilan->ilanId);
+			$uri_segment=1;
+			$urlstring=$magaza->username;
 			if ($anaKategori != "") {
-				$this->db->where("kategoriId",$anaKategori);
+				$anaKategori=decode($anaKategori);
+				$uri_segment++;
+				$urlstring.="/".$anaKategori;
 			}
 			if ($subKategori != "") {
-				$this->db->where("kategori2",$subKategori);
+				$subKategori=decode($subKategori);
+				$uri_segment++;
+				$urlstring.="/".$subKategori;
 			}
-			$ilan=$this->db->get("firmalar");
-			if ($ilan->num_rows() > 0) {
-					$ilanlar[]=$ilan->row();
-			}
+			$magaza_ilanlari=$this->db->where("magazaId",$magaza->Id)->order_by("Id","DESC")->get("magaza_ilanlari")->result();
+			$ilanlar = array();
 
+			$say=0;
+			foreach ($magaza_ilanlari as $magaza_ilan) {
+				$this->db->where("Id",$magaza_ilan->ilanId);
+				if ($anaKategori != "") {
+					$this->db->where("kategoriId",$anaKategori);
+				}
+				if ($subKategori != "") {
+					$this->db->where("kategori2",$subKategori);
+				}
+				$ilan=$this->db->get("firmalar");
+				if ($ilan->num_rows() > 0) {
+						$say++;
+				}
 			}
+			$this->load->library("pagination");
+			$config["total_rows"] = $say;
+			$config["uri_segment"] = $uri_segment;
+			$page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
+			$config["per_page"] = 24;
+			$config["num_links"] = 10;
+			$config["base_url"] = base_url($urlstring);
+			$i=1;
+			foreach ($magaza_ilanlari as $magaza_ilan) {
+				$this->db->where("Id",$magaza_ilan->ilanId);
+				if ($anaKategori != "") {
+					$this->db->where("kategoriId",$anaKategori);
+				}
+				if ($subKategori != "") {
+					$this->db->where("kategori2",$subKategori);
+				}
+				$ilan=$this->db->get("firmalar");
+				if ($ilan->num_rows() > 0 && $i > $page && ($i <= $page + $config["per_page"])) {
+						$ilanlar[]=$ilan->row();
+						$i++;
+				}
+			}
+			$this->pagination->initialize($config);
+			$data["links"] = $this->pagination->create_links();
 			$data["ilanlar"]=$ilanlar;
 			$kategori=$this->kategoriler->getbyid($magaza->kategoriId);
 			$altKategoriler=$this->kategoriler->getSubs($magaza->kategoriId);
