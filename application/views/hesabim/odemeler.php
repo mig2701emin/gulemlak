@@ -9,7 +9,7 @@
 <body>
   <div class="se-pre-con"></div>
   <div class="main">
-    <?php $this->load->view('layout/userheader');?>
+    <?php $this->load->view('layout/newuserheader');?>
     <div class="container">
       <div class="p-3 mb-2 bg-secondary text-white text-center"><strong>Ödeme Geçmişi</strong></div>
       <?php

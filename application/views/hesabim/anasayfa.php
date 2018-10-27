@@ -25,7 +25,7 @@
 <body>
   <div class="se-pre-con"></div>
   <div class="main">
-    <?php $this->load->view('layout/userheader');?>
+    <?php $this->load->view('layout/newuserheader');?>
     <div class="container">
     <div class="p-3 mb-2 bg-secondary text-white text-center"><strong><?php echo $filter." İlanlarım" ?></strong></div>
         <table width="100%" cellpadding="1" class="v4_special_heads">

@@ -9,7 +9,7 @@
 <body>
   <div class="se-pre-con"></div>
   <div class="main">
-    <?php $this->load->view('layout/userheader');?>
+    <?php $this->load->view('layout/newuserheader');?>
     <div class="container">
       <div class="centerfix siteWrapper sitePage">
           <div class="centercontent">
