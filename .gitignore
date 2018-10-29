@@ -5,3 +5,9 @@
 /.idea/
 /application/config/facebook.php
 /application/config/google.php
+/panel/
+/libs/
+/takip/
+/setting.php
+/config.php
+/config_includes.php
