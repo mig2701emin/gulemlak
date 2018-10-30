@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Hesabim extends CI_Controller{
   private $user;
-
+  private $magaza;
   public function __construct()
   {
     parent::__construct();
@@ -15,6 +15,11 @@ class Hesabim extends CI_Controller{
 
     $where = array("Id" => $this->session->userdata('userData')["userID"]);
     $this->user=$this->members->get($where);
+    if(magaza_var_mi($this->user->Id)){
+      $this->magaza=$this->magazalar->getMagaza($this->magazalar->getMagazaId($this->user->Id));
+    }else {
+      $this->magaza=null;
+    }
 
   }
   public function anasayfa($filter="")
@@ -56,6 +61,9 @@ class Hesabim extends CI_Controller{
     $config["num_links"] = 20;
     $this->pagination->initialize($config);
     $data["links"] = $this->pagination->create_links();
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view("hesabim/anasayfa",$data);
 
   }
@@ -101,6 +109,9 @@ class Hesabim extends CI_Controller{
         }
       }
     }
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view("hesabim/bilgilerim",$data);
   }
   public function sifredegistir()
@@ -130,12 +141,18 @@ class Hesabim extends CI_Controller{
         }
       }
     }
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view("hesabim/sifredegistir",$data);
   }
   public function odemeler($filter="")
   {
     $data["user"]=$this->user;
     $data["filter"]=$filter;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view("hesabim/odemeler",$data);
   }
   public function favorilerim()
@@ -157,6 +174,9 @@ class Hesabim extends CI_Controller{
       //$ilans = implode(',',$ilans);
     }else {
       $data["toplam_kayit"]=0;
+    }
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
     }
     $this->load->view("hesabim/favorilerim",$data);
   }
@@ -392,6 +412,9 @@ class Hesabim extends CI_Controller{
         //validation kontrolü error verirse
       }
     }
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view("hesabim/ilanduzenle",$data);
   }
   public function ilansil($ilanId,$filter="")
@@ -581,6 +604,9 @@ class Hesabim extends CI_Controller{
       redirect(base_url());
     }
     $data["ilanId"]=$ilanId;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view("hesabim/ilanduzenle_ok",$data);
   }
   public function get_details($ilanId,$detail)
