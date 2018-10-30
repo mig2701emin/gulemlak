@@ -477,7 +477,9 @@ function yeni_tarih($tarih) {
   "Eylül","Ekim","Kasım","Aralık");
   $yeniay= str_replace($ay1,$ay2,$tarih2);
 
-  echo $tarih3." ".$yeniay." ".$tarih1." ".$saat;
+  //echo $tarih3." ".$yeniay." ".$tarih1." ".$saat;
+  echo $tarih3." ".$yeniay." ".$tarih1;
+
 }
 function write_price($price1,$price2) {
   if ($price2== "0") {

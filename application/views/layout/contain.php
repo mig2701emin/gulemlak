@@ -13,7 +13,7 @@
 </script>
 
 <section class="mtb-30">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
            <!-- slider-->
             <div class="col-xl-2 col-lg-3 mb-sm-30 col-lgmd-20per">
@@ -544,7 +544,7 @@
 
                 <div id="product_popup" class="quick-view-popup white-popup-block mfp-hide popup-position ">
                     <div class="popup-detail">
-                        <div class="container">
+                        <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="row">
