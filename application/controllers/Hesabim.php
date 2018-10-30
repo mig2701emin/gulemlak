@@ -303,7 +303,7 @@ class Hesabim extends CI_Controller{
         $seo_url.="-".replace("tbl_mahalle","mahalle_ad","mahalle_id",$firmalar["mahalle"]);
         //$seo_url.="-".$ilanId;
         $firmalar["seo_url"]=$seo_url;
-        $firmalar["kayit_tarihi"]=date("Y-m-d");
+        $firmalar["kayit_tarihi"]=date("Y-m-d H:i:s");
         $bitis_suresi  = $this->security->xss_clean($this->input->post('bitis_suresi'));
         switch ($bitis_suresi) {
           case '1 Ay':
@@ -470,7 +470,10 @@ class Hesabim extends CI_Controller{
   {
     $ilan=$this->db->where(array("Id" => $ilanId, "onay" => "2"))->get("firmalar")->num_rows();
     if ($ilan > 0) {
-      $aktiflestir=$this->firmalar->update($ilanId,array("onay" => "1"));
+      $kayittarihi= date("Y-m-d H:i:s");
+      $yenitarih = strtotime('60 day',strtotime($kayittarihi));
+      $bitistarihi = date('Y-m-d' ,$yenitarih );
+      $aktiflestir=$this->firmalar->update($ilanId,array("onay" => "1","kayit_tarihi" => $kayittarihi,"bitis_tarihi" => $bitistarihi, "suresi_doldu" => "0"));
       if($aktiflestir){
         $this->session->set_flashdata("success","İlan Aktifleştirildi.");
         if ($filter == "") {
@@ -493,10 +496,10 @@ class Hesabim extends CI_Controller{
   {
     $ilan=$this->db->where(array("Id" => $ilanId, "onay" => "0","suresi_doldu" => "1"))->get("firmalar")->num_rows();
     if ($ilan > 0) {
-      $bitistarihi= date("Y-m-d");
-      $yenitarih = strtotime('2 month',strtotime($bitistarihi));
-      $yenitarih = date('Y-m-d' ,$yenitarih );
-      $sureuzat=$this->firmalar->update($ilanId,array("onay" => "1", "kayit_tarihi" => $bitistarihi, "bitis_tarihi" => $yenitarih, "suresi_doldu" => "0"));
+      $kayittarihi= date("Y-m-d H:i:s");
+      $yenitarih = strtotime('2 month',strtotime($kayittarihi));
+      $bitistarihi = date('Y-m-d' ,$yenitarih );
+      $sureuzat=$this->firmalar->update($ilanId,array("onay" => "1", "kayit_tarihi" => $kayittarihi, "bitis_tarihi" => $bitistarihi, "suresi_doldu" => "0"));
       if($sureuzat){
         $this->session->set_flashdata("success","İlanın Süresi Uzatıldı.");
         if ($filter == "") {
@@ -549,10 +552,10 @@ class Hesabim extends CI_Controller{
   {
     $ilan=$this->db->where(array("Id" => $ilanId, "onay" => "1","guncelim" => "1"))->get("firmalar")->num_rows();
     if ($ilan > 0) {
-      $bitistarihi= date("Y-m-d");
-      $yenitarih = strtotime('2 month',strtotime($bitistarihi));
-      $yenitarih = date('Y-m-d' ,$yenitarih );
-      $sureuzat=$this->firmalar->update($ilanId,array("kayit_tarihi" => $bitistarihi, "bitis_tarihi" => $yenitarih, "guncelim" => "0"));
+      $kayittarihi= date("Y-m-d H:i:s");
+      $yenitarih = strtotime('2 month',strtotime($kayittarihi));
+      $bitistarihi = date('Y-m-d' ,$yenitarih );
+      $sureuzat=$this->firmalar->update($ilanId,array("kayit_tarihi" => $kayittarihi, "bitis_tarihi" => $bitistarihi, "guncelim" => "0","onay" =>"1","suresi_doldu" => "0"));
       if($sureuzat){
         $this->session->set_flashdata("success","İlan Tarihi Güncellendi.");
         if ($filter == "") {
