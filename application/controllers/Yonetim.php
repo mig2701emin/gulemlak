@@ -15,8 +15,8 @@ class Yonetim extends CI_Controller{
   }
   public function uyegir($id)
   {
-    $Id=base64_decode($id);
-    $return=$this->db->query("select * from uyeler WHERE Id=".$Id)->row();
+    $Id=decode($id);
+    $return=$this->db->query("select * from uyeler WHERE Id='".$Id."'")->row();
     if ($return) {
       $userData['userID'] = $return->Id;
       $userData['oauth_provider'] = $return->oauth_provider;
@@ -33,7 +33,7 @@ class Yonetim extends CI_Controller{
   public function uyeduzenle($id)
   {
     $Id=base64_decode($id);
-    $return=$this->db->query("select * from uyeler WHERE Id=".$Id)->row();
+    $return=$this->db->query("select * from uyeler WHERE Id='".$Id."'")->row();
     if ($return) {
       $userData['userID'] = $return->Id;
       $userData['oauth_provider'] = $return->oauth_provider;

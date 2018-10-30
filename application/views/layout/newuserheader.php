@@ -235,7 +235,7 @@
                                             <span class="m-topbar__welcome">Merhaba,&nbsp;</span>
                                             <span class="m-topbar__username"><?php if ($this->session->userdata("userData")) {echo $this->session->userdata("userData")["ad"]." ".$this->session->userdata("userData")["soyad"];} else {echo "Misafir";}?></span>
                                             <span class="m-topbar__userpic">
-                                                <img src="<?php echo base_url(); ?>assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt="" />
+                                                <img src="<?php if ($this->session->userdata('userData')['picture']) {echo $this->session->userdata('userData')['picture'];} else {echo base_url(); ?>assets/app/media/img/users/user4.jpg<?php }?>" class="m--img-rounded m--marginless m--img-centered" alt="" />
                                             </span>
                                         </a>
                                         <div class="m-dropdown__wrapper">
