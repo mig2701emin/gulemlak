@@ -213,7 +213,7 @@ class Login extends CI_Controller{
 
   }
 
-  public function valid_password($password = '')
+  private function valid_password($password = '')
 		  {
 
 		    $password = trim($password);
@@ -259,7 +259,8 @@ class Login extends CI_Controller{
 		    return TRUE;
 		  }
 
-      public function activation($activation_code){
+      public function activation($activation_code)
+      {
 
   			$where = array(
   				"activation_code"   => $activation_code
@@ -417,13 +418,7 @@ class Login extends CI_Controller{
                   }
   			}
 
-
-
-
-
   				$this->load->view("uye/newpassword",$data);
   			}
   		}
-
-
 }
