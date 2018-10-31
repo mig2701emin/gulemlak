@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>"/>
   <style media="screen">
   .dropzone .dz-preview .dz-image {
-    width: 240px;
-    height: 135px;
+    width: 178px;
+    height: 110px;
   }
   </style>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -62,10 +62,10 @@
     parallelUploads: 15,
     dictRemoveFile:"RESMİ SİL",
     maxFiles:15,
-    thumbnailWidth: 240,
-    thumbnailHeight: 135,
-    resizeHeight: 900,
-    resizeWidth: 1600,
+    thumbnailWidth: 178,
+    thumbnailHeight: 110,
+    resizeHeight: 550,
+    resizeWidth: 890,
     /*resizeMethod:"crop",*/
     addRemoveLinks: true,
     removedfile: function(file) {

@@ -72,8 +72,8 @@ class Resim extends CI_Controller{
         $config3['source_image'] = $this->upload->upload_path.$this->upload->file_name;
         $config3['new_image'] = $this->upload_path."crop/".$this->upload->file_name;
         $config3['maintain_ratio'] = TRUE;
-        $config3['width'] = 640;
-        $config3['height'] = 360;
+        $config3['width'] = 445;
+        $config3['height'] = 275;
 
 
         $this->image_lib->initialize($config3);
@@ -90,8 +90,8 @@ class Resim extends CI_Controller{
         $config4['source_image'] = $this->upload->upload_path.$this->upload->file_name;
         $config4['new_image'] = $this->upload_path."thumbnail/".$this->upload->file_name;
         $config4['maintain_ratio'] = TRUE;
-        $config4['width'] = 240;
-        $config4['height'] = 135;
+        $config4['width'] = 178;
+        $config4['height'] = 110;
 
 
         $this->image_lib->initialize($config4);

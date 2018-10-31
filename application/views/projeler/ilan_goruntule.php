@@ -69,7 +69,7 @@
 									<?php $r=1; ?>
 									<?php foreach ($resimler as $resim): ?>
 										<div class="carousel-item<?php if ($r==1) {echo ' active';} ?>">
-											<img src="<?php echo base_url('photos/crop/'.$resim->name); ?>" alt="Chicago" class="img-rounded border border-secondary" style="background-color:#8a8a8a">
+											<img src="<?php echo base_url('photos/crop/'.$resim->name); ?>" alt="Chicago" class="img-rounded border border-secondary" style="background-color:#EFEBE9">
 										</div>
 										<?php $r++; ?>
 									<?php endforeach; ?>
@@ -87,7 +87,7 @@
 
 								<?php foreach ($resimler as $resim): ?>
 									<div class="col-3 col-lg-2 m-0 p-1">
-									<a><img src="<?php echo base_url('photos/thumbnail/'.$resim->name); ?>" class="img-rounded border border-secondary" style="border-radius:15px;background-color:#8a8a8a"  alt="Cinque Terre"></a>
+									<a><img src="<?php echo base_url('photos/thumbnail/'.$resim->name); ?>" class="img-rounded border border-secondary" style="border-radius:15px;background-color:#EFEBE9"  alt="Cinque Terre"></a>
 									</div>
 								<?php endforeach; ?>
 

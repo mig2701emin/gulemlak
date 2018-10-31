@@ -160,8 +160,8 @@ class Firmalar extends CI_Model{
   }
   public function gets()
   {
-    $this->db->where("onay","1");
-    $this->db->order_by("kayit_tarihi","DESC");
+    //$this->db->where("onay","1");
+    //$this->db->order_by("kayit_tarihi","DESC");
     $query=$this->db->get("firmalar");
     return $query->result();
   }
