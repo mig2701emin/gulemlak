@@ -160,10 +160,12 @@ class Firmalar extends CI_Model{
   }
   public function gets()
   {
-    //$this->db->where("onay","1");
-    //$this->db->order_by("kayit_tarihi","DESC");
+    $this->db->where("onay","1");
+    $this->db->order_by("kayit_tarihi","DESC");
+    //$query=$this->db->order_by("Id","ASC")->limit(1777,0)->get("firmalar");
     $query=$this->db->get("firmalar");
-    return $query->result();
+    // return $query->result();
+    return $query->num_rows();
   }
   public function getByKategori($anaKategoriId,$altKategoriId="")
   {

@@ -6,18 +6,18 @@
 	  public function __construct()
 	  {
 	    parent::__construct();
-	    /*$this->load->model('members');
+	    $this->load->model('members');
 			$this->load->model('kategoriler');
 			$this->load->model('firmalar');
 			$this->load->model('fields');
-			$this->load->model('magazalar');*/
+			$this->load->model('magazalar');
 		}
 
 		public function index()
 		{
 
 
-			/*$data['title']='Emlak Meclisi | Anasayfa';
+			$data['title']='Emlak Meclisi | Anasayfa';
 			$data['anaKategoriler']=$this->kategoriler->getAnaKategoriler();
 			$data['mainVitrins']=$this->firmalar->getMainVitrins();
 			$data['emergencyVitrins']=$this->firmalar->getEmegencyVitrins();
@@ -25,8 +25,7 @@
 			$data['magazaVitrin']=$this->firmalar->getMagazaVitrin();
 			//$data['ayarlar'] = "Merhaba";
 			//print_r($data['mainVitrins']);
-			$this->load->view('layout/home', $data);*/
-			$this->load->view('bakim/index');
+			$this->load->view('layout/home', $data);
 		}
 
 

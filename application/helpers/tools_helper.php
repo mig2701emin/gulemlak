@@ -577,3 +577,18 @@ function get_ad_cat_show_detail($detail,$adId)
     return $b->row()->field_value;
   }
 }
+function resim_sil()
+{
+  $ci=& get_instance();
+  $resimler=$ci->db->get("pictures")->result();
+  $i=1;
+  foreach ($resimler as $resim) {
+    if (!file_exists("photos/big/".$resim->name)) {
+      $delete=$ci->db->delete("pictures",array("name" => $resim->name));
+      if ($delete) {
+        echo $i.". resim ".$resim->name." silindi.<br />";
+        $i++;
+      }
+    }
+  }
+}

@@ -13,9 +13,11 @@ class Movetophotos extends CI_Controller{
 
   function index()
   {
-    set_time_limit(500);
+    set_time_limit(5000);
     ini_set('error_reporting', E_ALL);
     $ilanlar=$this->firmalar->gets();
+    //echo $ilanlar;
+    //die();
     foreach ($ilanlar as $ilan) {
       for ($i=1; $i < 16; $i++) {
       //$i=1;

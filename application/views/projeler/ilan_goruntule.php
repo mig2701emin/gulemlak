@@ -85,11 +85,11 @@
 							<center>
 							<div id="corusel" class="row col-12">
 
-								<?php foreach ($resimler as $resim): ?>
+								<?php foreach ($resimler as $resim){ ?>
 									<div class="col-3 col-lg-2 m-0 p-1">
 									<a><img src="<?php echo base_url('photos/thumbnail/'.$resim->name); ?>" class="img-rounded border border-secondary" style="border-radius:15px;background-color:#EFEBE9"  alt="Cinque Terre"></a>
 									</div>
-								<?php endforeach; ?>
+								<?php } ?>
 
 							</div>
 							</center>
@@ -98,14 +98,14 @@
 							<div class="demo-gallery" style="display: none;">
 								<row id="lightgallery" class="list-unstyled row">
 									<?php $r=1; ?>
-									<?php foreach ($resimler as $resim): ?>
+									<?php foreach ($resimler as $resim){ ?>
 										<div class="col-4 col-sm-6 col-md-4" data-responsive="<?php echo base_url('photos/big/'.$resim->name); ?> 375, <?php echo base_url('photos/big/'.$resim->name); ?> 480, <?php echo base_url('photos/big/'.$resim->name); ?> 800" data-src="<?php echo base_url('photos/big/'.$resim->name); ?>" data-sub-html="<h2><?php echo $ilan->firma_adi; ?></h2><p></p>">
 											<a href="">
 												<img <?php if ($r==1) {echo ' id="lightImg" ';} ?> class="img-responsive" style="border-radius:20px;" src="<?php echo base_url('photos/big/'.$resim->name); ?>">
 											</a>
 										</div>
 										<?php $r++; ?>
-									<?php endforeach; ?>
+									<?php } ?>
 								</row>
 							</div>
 						</div>
@@ -195,6 +195,20 @@
 					<div class="col-12 mar-bot"><a href="?yazdir=1">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> İlanı Yazdır</a></div>
 					<div class="col-12 mar-bot"><a href="javascript:sikayet();">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> İlan ile ilgili şikayetim var</a></div>
 				<?php } ?>
+				<!-- AddToAny BEGIN -->
+				<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+					<a class="a2a_button_facebook"></a>
+					<a class="a2a_button_twitter"></a>
+					<a class="a2a_button_google_plus"></a>
+					<a class="a2a_button_pinterest"></a>
+					<a class="a2a_button_whatsapp"></a>
+				</div>
+				<script>
+					var a2a_config = a2a_config || {};
+					a2a_config.locale = "tr";
+				</script>
+				<script async src="https://static.addtoany.com/menu/page.js"></script>
+				<!-- AddToAny END -->
 					<!-- <div class="col-12 mar-bot">
 						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3185.951538138242!2d37.34923931510993!3d37.01095247990566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1531de263041cad9%3A0x2ea85746583f6db6!2sKarata%C5%9F+Mahallesi%2C+103424.+Cd.+24%2C+27470+%C5%9Eahinbey%2FGaziantep!5e0!3m2!1str!2str!4v1534592215147"  width="100%" height="250" frameborder="0" style="border:0; border-radius:30px;" allowfullscreen></iframe>
 					</div> -->
