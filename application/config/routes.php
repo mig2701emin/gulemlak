@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       require_once (BASEPATH.'database/DB.php');
       $db=& DB();
-      /*$anaKategoriler=$db->select('Id, seo')->where('ust_kategori','0')->get('kategoriler')->result();
+      $anaKategoriler=$db->select('Id, seo')->where('ust_kategori','0')->get('kategoriler')->result();
       foreach ($anaKategoriler as $anaKategori) {
         $route[$anaKategori->seo."/(:any)"]="home/kategori/$1";
         $route[$anaKategori->seo."/(:any)/(:num)"]="home/kategori/$1";
@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $route[$magaza->username]='home/magaza_goruntule/'.$magaza->username;
         $route[$magaza->username.'/(:any)']='home/magaza_goruntule/'.$magaza->username.'/$1';
         $route[$magaza->username.'/(:any)/(:any)']='home/magaza_goruntule/'.$magaza->username.'/$1/$2';
-      }*/
+      }
 
       $route['sitemap\.xml'] = 'sitemap';
 

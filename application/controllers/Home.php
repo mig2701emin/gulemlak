@@ -165,6 +165,7 @@
 				$magazaId=$this->magazalar->getMagazaId($user->Id);
 				$data["magaza"]=$this->magazalar->getMagaza($magazaId);
 			}
+			$data["title"]="Ticaret Meclisi";
 			$this->load->view('projeler/ilan_goruntule',$data);
 
 		}
