@@ -53,10 +53,10 @@ function getKategori($Id){
 }
 function fileControl($road,$file,$noPic){
     if($file){
-        $picRoad = './'.$road.'/'.$file.'';
+        $picRoad = $road.'/'.$file.'';
 
         if(file_exists($picRoad)){
-            $picture = base_url(''.$road.'/'.$file.'');
+            $picture = base_url($road.'/'.$file);
         }else{
             $picture = base_url('assets/images/'.$noPic.'');
         }

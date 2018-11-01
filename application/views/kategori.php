@@ -574,7 +574,7 @@
           </div>
           <p class="pagination"><?php echo $links; ?></p>
           <?php
-          if($magazaKatVitrin){
+          if(isset($magazaKatVitrin)){
             ?>
             <div class="genelbox" style="margin-bottom:5px;">Mağaza Vitrin</div>
             <?php
