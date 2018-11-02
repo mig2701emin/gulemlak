@@ -8,6 +8,8 @@ class Resim extends CI_Controller{
   public function __construct()
   {
     parent::__construct();
+    $this->load->model("magazalar");
+    $this->load->model("members");
     if(!$this->session->userdata('userData')){ redirect('login'); }
     $this->load->model('firmalar');
     $where = array("Id" => $this->session->userdata('userData')["userID"]);
