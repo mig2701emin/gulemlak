@@ -2,6 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Doping extends CI_Controller{
+  private $user;
+  private $magaza;
   public function __construct()
   {
     parent::__construct();
@@ -13,21 +15,27 @@ class Doping extends CI_Controller{
     $this->load->model("magazalar");
     $this->load->model("members");
     $this->load->model("siparisler");
+    $where = array("Id" => $this->session->userdata('userData')["userID"]);
+    $this->user=$this->members->get($where);
+    if(magaza_var_mi($this->user->Id)){
+      $this->magaza=$this->magazalar->getMagaza($this->magazalar->getMagazaId($this->user->Id));
+    }else {
+      $this->magaza=null;
+    }
 
   }
   public function ilan($ilanId)
-  {
-    $ilan_kontrol=$this->firmalar->ilan_kontrol($ilanId,$this->session->userdata("userData")["userID"]);
-    if (!$ilan_kontrol) {
+  { $ilan=$this->firmalar->get_ilan($ilanId);
+    if($this->user->Id != $ilan->uyeId){
       redirect(base_url());
     }
-    $user=$this->session->userdata("userData");
+    //$user=$this->session->userdata("userData");
     if ($ilanId) {
       for ($i=1; $i < 11; $i++) {
         $this->session->unset_userdata("doping_".$i);
       }
       $ilan=$this->firmalar->get_ilan($ilanId);
-      if ($ilan->uyeId==$user["userID"]) {
+      if ($ilan->uyeId==$this->user->Id) {
 
         $ilan_dopings=$this->dopings->get("1");
         $data["dopings"]=$ilan_dopings;
@@ -54,7 +62,10 @@ class Doping extends CI_Controller{
           }
         }
 
-
+        $data["user"]=$this->user;
+        if ($this->magaza!=null) {
+          $data["magaza"]=$this->magaza;
+        }
         $this->load->view('ilanekle/ilandopingsec',$data);
       }
     }
@@ -65,7 +76,7 @@ class Doping extends CI_Controller{
     if (!$ilan_kontrol) {
       redirect(base_url());
     }
-    $user=$this->session->userdata("userData");
+    //$user=$this->session->userdata("userData");
     $data["ilanId"]=$ilanId;
     $ilan_dopings=$this->dopings->get("1");
     $data["dopings"]=$ilan_dopings;
@@ -83,7 +94,7 @@ class Doping extends CI_Controller{
     $data["doping_al"]=1;
     $data["video"]=0;
     $data["onay_durum"]=$ilan->onay;
-    $user=$this->session->userdata("userData");
+    //$user=$this->session->userdata("userData");
     $ilan_dopings=$this->dopings->get("1");
   	$islemno=rand(100,999999);
     $tarih=date("Y-m-d");
@@ -91,7 +102,7 @@ class Doping extends CI_Controller{
     foreach ($ilan_dopings as $ilan_doping) {
         if ($this->session->userdata("idoping_".$d)) {
           $sql="insert into siparis (id,islemno,uyeId,firmaId,doping,sure,tutar,";
-          $sql.="magaza,durum,tarih) values(null,'".$islemno."','".$user['userID'];
+          $sql.="magaza,durum,tarih) values(null,'".$islemno."','".$this->user->Id;
           $sql.="','".$ilanId."','".$ilan_doping->doping."','".$this->session->userdata('idoping_'.$d);
           $sql.="m','".$this->session->userdata('iprice_'.$d)."','','0','".$tarih."')";
           $this->db->query($sql);
@@ -107,8 +118,8 @@ class Doping extends CI_Controller{
   public function magaza($magazaId)
   {
     $data["magazaId"]=$magazaId;
-    $user=$this->session->userdata("userData");
-    $magaza_kontrol=$this->magazalar->magaza_kontrol($magazaId,$user["userID"]);
+    //$user=$this->session->userdata("userData");
+    $magaza_kontrol=$this->magazalar->magaza_kontrol($magazaId,$this->user->Id);
     if (!$magaza_kontrol) {
       redirect(base_url());
     }
@@ -141,27 +152,35 @@ class Doping extends CI_Controller{
 
       }
     }
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view('magazaac/magazadopingsec',$data);
   }
   public function magazasepet($magazaId, $doping)
   {
     $data["magazaId"]=$magazaId;
-    $user=$this->session->userdata("userData");
-    $magaza_kontrol=$this->magazalar->magaza_kontrol($magazaId,$user["userID"]);
+    //$user=$this->session->userdata("userData");
+    $magaza_kontrol=$this->magazalar->magaza_kontrol($magazaId,$this->user->Id);
     if (!$magaza_kontrol) {
       redirect(base_url());
     }
     $data["doping"]=$doping;
     $magaza_dopings=$this->dopings->get("0");
     $data["dopings"]=$magaza_dopings;
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
 
     $this->load->view('magazaac/magazasepet',$data);
   }
   public function magazaodeme($magazaId,$doping)
   {
     $data["magazaId"]=$magazaId;
-    $user=$this->session->userdata("userData");
-    $magaza_kontrol=$this->magazalar->magaza_kontrol($magazaId,$user["userID"]);
+    //$user=$this->session->userdata("userData");
+    $magaza_kontrol=$this->magazalar->magaza_kontrol($magazaId,$this->user->Id);
     if (!$magaza_kontrol) {
       redirect(base_url());
     }
@@ -175,7 +194,7 @@ class Doping extends CI_Controller{
         foreach ($magaza_dopings as $magaza_doping) {
           if ($this->session->userdata("mdoping_".$d)) {
             $sql="insert into siparis (id,islemno,uyeId,firmaId,doping,sure,tutar,";
-            $sql.="magaza,durum,tarih) values(null,'".$siparis['islemno']."','".$user['userID'];
+            $sql.="magaza,durum,tarih) values(null,'".$siparis['islemno']."','".$this->user->Id;
             $sql.="','','".$magaza_dopings->doping."','".$this->session->userdata('mdoping_'.$d);
             $sql.="m','".$this->session->userdata('mprice_'.$d)."','".$magazaId."','0','".$tarih."')";
             $this->db->query($sql);
@@ -190,6 +209,10 @@ class Doping extends CI_Controller{
         $data["tutar"]=$siparis["tutar"];
       }
 
+      $data["user"]=$this->user;
+      if ($this->magaza!=null) {
+        $data["magaza"]=$this->magaza;
+      }
 
     $this->load->view("magazaac/magazaok",$data);
   }

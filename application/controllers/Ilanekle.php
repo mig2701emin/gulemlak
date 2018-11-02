@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ilanekle extends CI_Controller{
   private $upload_path = FCPATH."photos/";
+  private $user;
+  private $magaza;
   public function __construct()
   {
     parent::__construct();
@@ -13,7 +15,13 @@ class Ilanekle extends CI_Controller{
     $this->load->model('dopings');
     $this->load->model("magazalar");
     $this->load->model("members");
-
+    $where = array("Id" => $this->session->userdata('userData')["userID"]);
+    $this->user=$this->members->get($where);
+    if(magaza_var_mi($this->user->Id)){
+      $this->magaza=$this->magazalar->getMagaza($this->magazalar->getMagazaId($this->user->Id));
+    }else {
+      $this->magaza=null;
+    }
   }
   public function index()
   {
@@ -24,6 +32,10 @@ class Ilanekle extends CI_Controller{
     }
     //ana kategorileri view e gönderiyoruz
     $data['anaKategoriler']=$this->kategoriler->getAnaKategoriler();
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
 
     $this->load->view('ilanekle/kategorisec',$data);
   }
@@ -120,11 +132,11 @@ class Ilanekle extends CI_Controller{
             $aciklama      = $this->security->xss_clean($this->input->post('aciklama'));
             $firmalar["aciklama"] = base64_encode($aciklama);
             $firmalar["il"] = $this->security->xss_clean($this->input->post('il'));
-            $seo_url.="-".seo_link(replace("tbl_il","il_ad","il_id",$firmalar["il"]));
+            $seo_url.="-".replace("tbl_il","seo_il","il_id",$firmalar["il"]);
             $firmalar["ilce"] = $this->security->xss_clean($this->input->post('ilce'));
-            $seo_url.="-".replace("tbl_ilce","ilce_ad","ilce_id",$firmalar["ilce"]);
+            $seo_url.="-".replace("tbl_ilce","seo_icel","ilce_id",$firmalar["ilce"]);
             $firmalar["mahalle"] = $this->security->xss_clean($this->input->post('mahalle'));
-            $seo_url.="-".seo_link(replace("tbl_mahalle","mahalle_ad","mahalle_id",$firmalar["mahalle"]));
+            $seo_url.="-".replace("tbl_mahalle","seo_mahalle","mahalle_id",$firmalar["mahalle"]);
             //$seo_url.="-".$ilanId;
             $firmalar["seo_url"]=$seo_url;
             $firmalar["kayit_tarihi"]=date("Y-m-d H:i:s");
@@ -232,6 +244,11 @@ class Ilanekle extends CI_Controller{
         // }
       }
       //post sonu
+      $data["user"]=$this->user;
+      if ($this->magaza!=null) {
+        $data["magaza"]=$this->magaza;
+      }
+
       $this->load->view('ilanekle/detay',$data);
     } else {
       //kategori boşsa
@@ -242,10 +259,10 @@ class Ilanekle extends CI_Controller{
   //ilan önizleme
   public function onizleme($ilanId)
   {
-    $ilan_kontrol=$this->firmalar->ilan_kontrol($ilanId,$this->session->userdata("userData")["userID"]);
+    /*$ilan_kontrol=$this->firmalar->ilan_kontrol($ilanId,$this->session->userdata("userData")["userID"]);
     if (!$ilan_kontrol) {
       redirect(base_url());
-    }
+    }*/
     $ilan=$this->firmalar->get_ilan($ilanId);
     $data["ilan"]=$ilan;
     $show_fields="";
@@ -365,10 +382,16 @@ class Ilanekle extends CI_Controller{
     }
     $data["ilanId"]=$ilanId;
     $ilan=$this->firmalar->get_ilan($ilanId);
+    $data["ilan"]=$ilan;
     $data["ilan_turu"]=0;
     $data["doping_al"]=0;
     $data["video"]=0;
     $data["onay_durum"]=$ilan->onay;
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
+
     $this->load->view("ilanekle/ok",$data);
   }
 

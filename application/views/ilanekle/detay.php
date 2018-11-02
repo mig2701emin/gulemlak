@@ -48,21 +48,21 @@
             <!--harita--------------------->
             <!--iletişim bilgileri --------->
             <h2 class="text-center">İletişim Bilgileri</h2>
-            <div class="row">
-                <dt>Adı Soyadı :</dt>
-                <?php $user=$this->session->userdata("userData");?>
-                <dd><?php echo $user['ad'];?> <?php echo $user['soyad'];?></dd>
+            <div class="mb-3">
+              <?php $user=$this->session->userdata("userData");?>
+                <label for="ilanadi">Adı Soyadı</label>
+                <input type="text" class="form-control" name="adsoyad" value="<?php echo $user['ad'];?> <?php echo $user['soyad'];?>" disabled>
             </div>
-            <div class="row">
-              <dt>Cep Telefonu :</dt>
-              <dd><?php if($user['gsm']!=''){echo $user['gsm'];}else{echo "Belirtilmemiş";}?></dd>
+            <div class="mb-3">
+                <label for="ilanadi">Cep Telefonu</label>
+                <input type="text" class="form-control" name="adsoyad" value="<?php if($user['gsm']!=''){echo $user['gsm'];}else{echo "Belirtilmemiş";}?>" disabled>
             </div>
             <div class="custom-control custom-checkbox mb-3">
               <input type="checkbox"  class="custom-control-input" name="yayinla" id="yayinla" value="1" checked/>
               <label class="custom-control-label" for="yayinla">Telefonum ilanımda yayınlansın</label>
             </div>
-            <div class="row">
-              <a href="index.php?page=banaozel&type=bilgilerim" class="v4_special_button_active" style="width:75px;margin:0 0 10px 225px">Güncelle</a>
+            <div class="mb-3">
+              <a href="<?php echo base_url(); ?>hesabim/bilgilerim" class="btn btn-primary" type="submit">Güncelle <i class="fas fa-caret-right"></i></a>
             </div>
             <hr class="mb-4"/>
             <h2 class="text-center">İlan Detayları</h2>

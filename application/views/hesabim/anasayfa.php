@@ -89,7 +89,7 @@
                   <td valign="top" style="text-align:center"><?php if($ilan->onay==0 and $ilan->suresi_doldu==1){?>Süresi Doldu<?php }elseif($ilan->onay==1){?>Yayında<?php }elseif($ilan->onay==2){?>İlan Durduruldu<?php }else{?>Onay Bekliyor<?php } ?></td>
                   <td valign="top" style="text-align:center"><?php echo yeni_tarih($ilan->bitis_tarihi);?></td>
                   <td valign="top">
-                    <select name="islem" onchange="ilan_islemyap(this.options[selectedIndex].value,<?php echo $ilan->Id;?>,'<?php echo $filter;?>');" style="margin-top:-5px">
+                    <select name="islem" onchange="ilan_islemyap(this.options[selectedIndex].value,<?php echo $ilan->Id;?>,'<?php echo mb_strtolower($filter);?>');" style="margin-top:-5px">
                       <option value="0">Seçiniz</option>
                       <option value="1">İlanı Düzenle</option>
                       <option value="2">Doping Yap</option>

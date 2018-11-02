@@ -19,8 +19,12 @@
 <body>
   <div class="se-pre-con"></div>
   <div class="main">
-    <?php $this->load->view('layout/userheader');?>
-    <div class="container">
+    <?php $this->load->view('layout/newuserheader');?>
+    <div class="container" style="margin-top:20px; margin-bottom:100px;  ">
+        <div class="row d-flex justify-content-center" style="margin-top: 50px;margin-bottom: 50px;">
+            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;color: orangered"><i class="fas fa-caret-right"></i> İlan Düzenleme </a>	</div>
+            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold"> Tebrikler </a>	</div>
+        </div>
       <?php if (isset($kategorinames)){ ?>
         <div class="col-md-12 order-md-1 text-primary font-weight-bold" style="margin-bottom:30px;">
           <?php foreach ($kategorinames as $kategoriadi){ ?>
@@ -39,21 +43,21 @@
             <!--harita--------------------->
             <!--iletişim bilgileri --------->
             <h2 class="text-center">İletişim Bilgileri</h2>
-            <div class="row">
-                <dt>Adı Soyadı :</dt>
-
-                <dd><?php echo $user->ad;?> <?php echo $user->soyad;?></dd>
+            <div class="mb-3">
+              <?php $user=$this->session->userdata("userData");?>
+                <label for="ilanadi">Adı Soyadı</label>
+                <input type="text" class="form-control" name="adsoyad" value="<?php echo $user['ad'];?> <?php echo $user['soyad'];?>" disabled>
             </div>
-            <div class="row">
-              <dt>Cep Telefonu :</dt>
-              <dd><?php if($user->gsm!=''){echo $user->gsm;}else{echo "Belirtilmemiş";}?></dd>
+            <div class="mb-3">
+                <label for="ilanadi">Cep Telefonu</label>
+                <input type="text" class="form-control" name="adsoyad" value="<?php if($user['gsm']!=''){echo $user['gsm'];}else{echo "Belirtilmemiş";}?>" disabled>
             </div>
             <div class="custom-control custom-checkbox mb-3">
-              <input type="checkbox"  class="custom-control-input" name="yayinla" id="yayinla" value="1" <?php if($ilan->yayinla==1){?> checked<?php }?>/>
+              <input type="checkbox"  class="custom-control-input" name="yayinla" id="yayinla" value="1" checked/>
               <label class="custom-control-label" for="yayinla">Telefonum ilanımda yayınlansın</label>
             </div>
-            <div class="row">
-              <a href="index.php?page=banaozel&type=bilgilerim" class="v4_special_button_active" style="width:75px;margin:0 0 10px 225px">Güncelle</a>
+            <div class="mb-3">
+              <a href="<?php echo base_url(); ?>hesabim/bilgilerim" class="btn btn-primary" type="submit">Güncelle <i class="fas fa-caret-right"></i></a>
             </div>
             <hr class="mb-4"/>
             <h2 class="text-center">İlan Detayları</h2>
@@ -319,7 +323,10 @@
                 <input type="checkbox" class="custom-control-input" name="ad_rules" id="ad_rules">
                 <label class="custom-control-label" for="ad_rules">İlan verme kurallarını okudum ve kabul ediyorum</label>
               </div>
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Kaydet ve devam et</button>
+              <div class="row">
+                  <div class="col-md-6"></div>
+                  <div class="col-md-6"   style="float: left">   <button class="btn btn-primary  btn-block w-75" type="submit">Devam Et <i class="fas fa-caret-right"></i></button></div>
+              </div>
             </form>
           </div>
         </div>

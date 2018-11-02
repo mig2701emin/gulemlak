@@ -19,8 +19,8 @@
 		opacity: 0.7;
 	}
 	.baslik{
-         font-weight:700;
-		 font-size:30px;
+    font-weight:700;
+		font-size:30px;
 		margin-bottom:10px;
 		margin-top: :10px;
 	}
@@ -69,6 +69,13 @@
 	  /*margin: 20px;*/
 
 	}
+	.cont_breadcrumbs_1 > ul {
+		list-style-type: none;
+	}
+	.cont_breadcrumbs_2 > ul {
+		list-style-type: none;
+	}
+
 
 	.cont_breadcrumbs_1 > ul > li {
 	  position: relative;
@@ -77,7 +84,7 @@
 	  background-color: #fff;
 		box-shadow: -2px 0px 20px -6px rgba(0,0,0,0.5);
 		z-index: 1;
-	  width: 25%;
+	  width: auto;
 	  margin-left: -50px;
 		transition: all 0.5s;
 	}
@@ -86,9 +93,9 @@
 		float: right;
 		transform: skewX(-15deg);
 		background-color: #fff;
-		box-shadow: -2px 0px 20px -6px rgba(0,0,0,0.5);
+		box-shadow: -6px 0px 20px -2px rgba(0,0,0,0.5);
 		z-index: 1;
-		width: 33.33%;
+		width: auto;
 		margin-right: -50px;
 		transition: all 0.5s;
 	}
@@ -96,7 +103,7 @@
 	.cont_breadcrumbs_1 > ul > li  > a {
 		display: block;
 		padding: 10px;
-		font-size: 20px;
+		/*font-size: 20px;*/
 		transform: skewX(15deg);
 		text-decoration:none;
 		color: #444;
@@ -105,7 +112,7 @@
 	.cont_breadcrumbs_2 > ul > li  > a {
 		display: block;
 		padding: 10px;
-		font-size: 20px;
+		/*font-size: 20px;*/
 		transform: skewX(15deg);
 		text-decoration:none;
 		color: #444;
@@ -164,43 +171,42 @@
 			<!-- <div class="row"> -->
 			<!-- </div> -->
 			<div class="row">
-		    <div class="col-12 col-sm-6 col-lg-10">
-					<hr class="mb-4"/>
-					<div class="row">
-						<?php if (isset($kategorinames)){ ?>
-								<div class="col-12 col-lg-6">
-									<div class="cont_principal">
-										<div class="cont_breadcrumbs">
-											<div class="cont_breadcrumbs_1">
-												<ul>
-									<?php foreach ($kategorinames as $kategoriadi){ ?>
-										<?php if ($kategoriadi==end($kategorinames)){ ?>
-											<li><a href="#"><strong><?php echo $kategoriadi; ?></strong></a></li>
-										<?php }else{ ?>
-											<li><a href="#"><?php echo $kategoriadi; ?></a></li>
-										<?php } ?>
-									<?php } ?>
-								</ul>
-							</div>
-						</div>
-					</div>
-								</div>
-						<?php } ?>
+				<div class="row col-12 mt-2 mb-2">
+
+					<?php if (isset($kategorinames)){ ?>
 						<div class="col-12 col-lg-6">
 							<div class="cont_principal">
 								<div class="cont_breadcrumbs">
-									<div class="cont_breadcrumbs_2">
+									<div class="cont_breadcrumbs_1">
 										<ul>
-											<li><a href="#"><?php echo replace('tbl_il','il_ad','il_id',$ilan->il); ?></a></li>
-											<li><a href="#"><?php echo replace('tbl_ilce','ilce_ad','ilce_id',$ilan->ilce); ?></a></li>
-											<li><a href="#"><?php echo baslik_yap(replace('tbl_mahalle','mahalle_ad','mahalle_id',$ilan->mahalle)); ?></a></li>
+											<?php foreach ($kategorinames as $kategoriadi){ ?>
+											<?php if ($kategoriadi==end($kategorinames)){ ?>
+											<li><a href="#"><strong><?php echo $kategoriadi; ?></strong></a></li>
+											<?php }else{ ?>
+											<li><a href="#"><?php echo $kategoriadi; ?></a></li>
+											<?php } ?>
+											<?php } ?>
 										</ul>
 									</div>
 								</div>
 							</div>
-
+						</div>
+					<?php } ?>
+					<div class="col-12 col-lg-6">
+						<div class="cont_principal">
+							<div class="cont_breadcrumbs">
+								<div class="cont_breadcrumbs_2">
+									<ul>
+										<li><a href="#"><?php echo replace('tbl_il','il_ad','il_id',$ilan->il); ?></a></li>
+										<li><a href="#"><?php echo replace('tbl_ilce','ilce_ad','ilce_id',$ilan->ilce); ?></a></li>
+										<li><a href="#"><?php echo baslik_yap(replace('tbl_mahalle','mahalle_ad','mahalle_id',$ilan->mahalle)); ?></a></li>
+									</ul>
+								</div>
+							</div>
 						</div>
 					</div>
+				</div>
+		    <div class="col-12 col-sm-6 col-lg-10">
 						<div class="col-12 jumbotron">
 							<h2 class="text-uppercase"><?php echo $ilan->firma_adi; ?></h2>
 						</div>
@@ -286,7 +292,6 @@
 					</div>
 				</div>
 				<div class="col-12 col-sm-6 col-lg-2" style="paddind-right:0;padding-left:0">
-					<hr class="mb-4"/>
 				<?php if ($magaza_var_mi){ ?>
 					<center>
 					<div class="col-12"><h3><?php echo $magaza->magazaadi; ?></h3></div>

@@ -95,6 +95,7 @@ class Magazam extends CI_Controller{
         $this->session->set_flashdata('error', 'Mağazanız Güncellenemedi.');
       }
     }
+    $data["user"]=$this->user;
     $this->load->view("magazam/magazam",$data);
   }
   public function magazakullanicilari()
@@ -104,7 +105,10 @@ class Magazam extends CI_Controller{
     $magaza_users=$this->db->where("magazaId",$this->magaza->Id)->get("magaza_kullanicilari")->result();
     $data["magaza_users"]=$magaza_users;
     $data["uye_izinleri"]=$this->uye_izinleri;
-
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view("magazam/magaza_kullanicilari",$data);
   }
   public function magazauseradd()
@@ -143,6 +147,10 @@ class Magazam extends CI_Controller{
       }
       redirect(base_url("magazam/magazakullanicilari"));
     }
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view("magazam/magaza_user_add");
   }
 
@@ -177,6 +185,11 @@ class Magazam extends CI_Controller{
       }
       redirect(base_url("magazam/magazakullanicilari"));
     }
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
+
     $this->load->view("magazam/magaza_user_edit",$data);
   }
   public function magazausersil($uyeId)
@@ -212,6 +225,9 @@ class Magazam extends CI_Controller{
     }
     $data["ilanlar"]=$ilanlar;
     $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view("magazam/magaza_ilanlari",$data);
   }
   public function magazailansil($ilanId)
@@ -247,7 +263,10 @@ class Magazam extends CI_Controller{
         }
       }
     }
-
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view("magazam/magaza_ilan_add");
 
   }

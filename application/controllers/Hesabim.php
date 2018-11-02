@@ -604,6 +604,9 @@ class Hesabim extends CI_Controller{
       redirect(base_url());
     }
     $data["ilanId"]=$ilanId;
+    $ilan=$this->firmalar->get_ilan($ilanId);
+    $data["ilan"]=$ilan;
+    $data["user"]=$this->user;
     if ($this->magaza!=null) {
       $data["magaza"]=$this->magaza;
     }

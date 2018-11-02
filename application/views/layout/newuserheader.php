@@ -264,7 +264,6 @@
                                                                     <span class="m-nav__link-title">
                                                                         <span class="m-nav__link-wrap">
                                                                             <span class="m-nav__link-text">Bilgilerim</span>
-                                                                            <span class="m-nav__link-badge"><span class="m-badge m-badge--success">2</span></span>
                                                                         </span>
                                                                     </span>
                                                                 </a>
@@ -279,6 +278,7 @@
                                                                 <a href="" class="m-nav__link">
                                                                     <i class="m-nav__link-icon flaticon-chat-1"></i>
                                                                     <span class="m-nav__link-text">Gelen Mesajlar</span>
+                                                                    <span class="m-nav__link-badge"><span class="m-badge m-badge--success">2</span></span>
                                                                 </a>
                                                             </li>
                                                             <li class="m-nav__separator m-nav__separator--fit">
@@ -287,6 +287,7 @@
                                                                 <a href="" class="m-nav__link">
                                                                     <i class="m-nav__link-icon flaticon-info"></i>
                                                                     <span class="m-nav__link-text">Gönderilen Mesajlar</span>
+                                                                    <span class="m-nav__link-badge"><span class="m-badge m-badge--success">2</span></span>
                                                                 </a>
                                                             </li>
                                                             <li class="m-nav__item">

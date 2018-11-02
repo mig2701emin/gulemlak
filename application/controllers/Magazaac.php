@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Magazaac extends CI_Controller{
   private $user;
+  private $magaza;
   public function __construct()
   {
     parent::__construct();
@@ -12,7 +13,13 @@ class Magazaac extends CI_Controller{
     $this->load->model("kategoriler");
     $this->load->model("siparisler");
     $where = array("Id" => $this->session->userdata('userData')["userID"]);
+    $where = array("Id" => $this->session->userdata('userData')["userID"]);
     $this->user=$this->members->get($where);
+    if(magaza_var_mi($this->user->Id)){
+      $this->magaza=$this->magazalar->getMagaza($this->magazalar->getMagazaId($this->user->Id));
+    }else {
+      $this->magaza=null;
+    }
   }
 
   function index()
@@ -20,11 +27,19 @@ class Magazaac extends CI_Controller{
     if (magaza_var_mi($this->user->Id)) {
       redirect(base_url("hesabim/magazam"));
     }
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view("magazaac/start");
   }
 
   public function kategorisec()
   {
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view("magazaac/kategorisec");
     if (isset($_POST) && !empty($_POST)) {
       $paket=$this->security->xss_clean($this->input->post("paket"));
@@ -50,6 +65,10 @@ class Magazaac extends CI_Controller{
     $data["paket"]=$paket;
     $data["super_magaza_resim_siniri"]=$a->super_magaza_resim_siniri;
     $data["normal_magaza_resim_siniri"]=$a->normal_magaza_resim_siniri;
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view("magazaac/settype",$data);
     if (isset($_POST) && !empty($_POST)) {
       $store_type=$this->security->xss_clean($this->input->post("store_type"));
@@ -164,6 +183,10 @@ class Magazaac extends CI_Controller{
         "durum"   => 0,
         "tarih"   => $tarih
        );
+       $data["user"]=$this->user;
+       if ($this->magaza!=null) {
+         $data["magaza"]=$this->magaza;
+       }
        $this->session->set_userdata("siparis",$siparis);
        //$this->siparisler->add($siparis);
 
@@ -173,6 +196,10 @@ class Magazaac extends CI_Controller{
         $this->session->set_flashdata('error', 'Hatalı işlem');
       }
       redirect(base_url("doping/magaza/".$insert_id));
+    }
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
     }
     $this->load->view("magazaac/detay");
   }
@@ -186,6 +213,10 @@ class Magazaac extends CI_Controller{
     }
     $data["magazaId"]=$magazaId;
     $data["ucret"]=$ucret;
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view("magazaac/magazaok",$data);
   }
 

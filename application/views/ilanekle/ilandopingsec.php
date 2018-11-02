@@ -128,19 +128,6 @@
                                     </div>
                                 <?php $d++; ?>
                             <?php endforeach; ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
 						</div>
 
 

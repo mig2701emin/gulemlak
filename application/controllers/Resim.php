@@ -3,11 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Resim extends CI_Controller{
   private $upload_path = FCPATH."photos/";
+  private $user;
+  private $magaza;
   public function __construct()
   {
     parent::__construct();
     if(!$this->session->userdata('userData')){ redirect('login'); }
     $this->load->model('firmalar');
+    $where = array("Id" => $this->session->userdata('userData')["userID"]);
+    $this->user=$this->members->get($where);
+    if(magaza_var_mi($this->user->Id)){
+      $this->magaza=$this->magazalar->getMagaza($this->magazalar->getMagazaId($this->user->Id));
+    }else {
+      $this->magaza=null;
+    }
   }
   public function set($ilanId)
   {
@@ -15,6 +24,10 @@ class Resim extends CI_Controller{
     $ilan_kontrol=$this->firmalar->ilan_kontrol($ilanId,$this->session->userdata("userData")["userID"]);
     if (!$ilan_kontrol) {
       redirect(base_url());
+    }
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
     }
     $this->load->view("resim/ekle",$data);
   }
