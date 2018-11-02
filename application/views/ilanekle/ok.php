@@ -61,7 +61,7 @@
 													</b>
 													<br>
 													<?php if($doping_al==1 or $ilan_turu==1 or $video==1){?>
-                            <h2>Ödemeniz Gereken Ücret : <font color="red"><?php echo $tutar; ?> TL</font> TL.</h2>
+                            <h2>Ödemeniz Gereken Ücret : <font color="red"><?php echo $tutar; ?> </font> TL.</h2>
                             <h2>Ödemenizi <strong>Bana Özel > Bekleyen Ödemeler</strong> Menüsünden Yapabilirsiniz.</h2>
                           <?php }?>
                           <br>

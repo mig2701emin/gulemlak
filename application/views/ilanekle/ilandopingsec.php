@@ -198,7 +198,7 @@
                   <?php for ($i=1; $i < 4; $i++) {?>
 
                   <li class="nav-item m-tabs__item">
-										<label class="radyocontainer"><?php echo $i ?> Ay ( <?php echo $ilan_doping->ucret; ?> TL )
+										<label class="radyocontainer"><?php echo $i ?> Ay ( <?php echo $ilan_doping->ucret*$i; ?> TL )
 										  <input type="radio" name="idoping_<?php echo $d; ?>" id="idoping_<?php echo $d; ?>Radio<?php echo $i ?>" value="<?php echo $i; ?>">
 										  <span class="checkmark"></span>
 										</label>

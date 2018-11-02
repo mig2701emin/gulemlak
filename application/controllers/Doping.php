@@ -81,6 +81,10 @@ class Doping extends CI_Controller{
     $data["ilanId"]=$ilanId;
     $ilan_dopings=$this->dopings->get("1");
     $data["dopings"]=$ilan_dopings;
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view('ilanekle/ilansepet',$data);
   }
   public function ilanodeme($ilanId)
@@ -91,6 +95,7 @@ class Doping extends CI_Controller{
     }
     $data["ilanId"]=$ilanId;
     $ilan=$this->firmalar->get_ilan($ilanId);
+    $data["ilan"]=$ilan;
     $data["ilan_turu"]=0;
     $data["doping_al"]=1;
     $data["video"]=0;
@@ -114,6 +119,10 @@ class Doping extends CI_Controller{
 
     $data["tutar"]=$this->session->userdata("tutar");
     $this->session->unset_userdata("tutar");
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->view("ilanekle/ok",$data);
   }
   public function magaza($magazaId)

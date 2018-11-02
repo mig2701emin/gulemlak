@@ -100,13 +100,14 @@ class Ilanekle extends CI_Controller{
       $data["fields"]=$fields;
       //post başlangıcı
       if (isset($_POST) && !empty($_POST)) {
-        // $res = post_captcha($_POST['g-recaptcha-response']);
-        // if ($res['success']) {
+        $res = post_captcha($_POST['g-recaptcha-response']);
+        if ($res['success']) {
           //recaptcha onaylanmışsa
           $formvalid = array(
               array('field' => 'ilanadi',                 'label' => 'İlan Başlığı',          'rules' => 'required'),
               array('field' => 'aciklama',                'label' => 'İlan Açıklaması',       'rules' => 'required'),
               array('field' => 'fiyat1',                  'label' => 'Fiyat',                 'rules' => 'required'),
+              //array('field' => 'ad_rules',                'label' => 'Sözleşme Okuma',        'rules' => 'required'),
               array('field' => 'bitis_suresi',            'label' => 'İlan Süresi',           'rules' => 'required')
           );
           $this->form_validation->set_rules($formvalid);
@@ -238,10 +239,10 @@ class Ilanekle extends CI_Controller{
           } else {
             //validation kontrolü error verirse
           }
-        // } else {
-        //   //recaptcha onaylanmışsa.
-        //   $this->session->set_flashdata('error', 'Lütfen robot olmadığınızı doğrulayın.');
-        // }
+        } else {
+          //recaptcha onaylanmışsa.
+          $this->session->set_flashdata('error', 'Lütfen robot olmadığınızı doğrulayın.');
+        }
       }
       //post sonu
       $data["user"]=$this->user;
