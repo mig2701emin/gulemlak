@@ -25,10 +25,11 @@ class Doping extends CI_Controller{
 
   }
   public function ilan($ilanId)
-  { $ilan=$this->firmalar->get_ilan($ilanId);
-    if($this->user->Id != $ilan->uyeId){
+  {
+    //$ilan=$this->firmalar->get_ilan($ilanId);
+    /*if($this->user->Id != $ilan->uyeId){
       redirect(base_url());
-    }
+    }*/
     //$user=$this->session->userdata("userData");
     if ($ilanId) {
       for ($i=1; $i < 11; $i++) {
