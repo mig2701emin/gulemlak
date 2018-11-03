@@ -499,8 +499,8 @@
 			}
 			$data["search"]="";
 			$data["sayfa"]=0;
-
-			$this->load->view("kategori",$data);
+            $data["title"]="konut";
+			$this->load->view("kategori2",$data);
 		}
 		public function ara()
 		{
