@@ -475,7 +475,7 @@
 
             </div>
             <div class="col-md-3">
-                <div class="col-12">  <?php echo $il->il_ad;?><br/><?php echo $mahalle->mahalle_ad; ?></div>
+                <div class="col-12"><?php if ($il) { echo $il->il_ad;}?><br/><?php if($mahalle){echo $mahalle->mahalle_ad;}?></div>
                   </div>
 
             </div>
