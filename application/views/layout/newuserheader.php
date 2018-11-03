@@ -244,7 +244,7 @@
                                                 <div class="m-dropdown__header m--align-center" style="background: url(<?php echo base_url(); ?>assets/app/media/img/misc/user_profile_bg.jpg); background-size: cover;">
                                                     <div class="m-card-user m-card-user--skin-dark">
                                                         <div class="m-card-user__pic">
-                                                            <img src="<?php if ($this->session->userdata('userData')['picture']) {echo $this->session->userdata('userData')['picture'];} else {echo base_url(); ?>assets/app/media/img/users/user4.jpg<?php }?>" class="m--img-rounded m--marginless" alt="" />
+                                                            <img src="<?php if ($user->picture) {echo $user->picture;} else {echo base_url(); ?>assets/app/media/img/users/user4.jpg<?php }?>" class="m--img-rounded m--marginless" alt="" />
                                                         </div>
                                                         <div class="m-card-user__details">
                                                             <span class="m-card-user__name m--font-weight-500"><?php if ($this->session->userdata("userData")) {echo $this->session->userdata("userData")["ad"]." ".$this->session->userdata("userData")["soyad"];} else {echo "Misafir";}?></span>

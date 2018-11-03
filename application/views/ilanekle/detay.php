@@ -15,7 +15,7 @@
         font-weight:bold;
     }
   </style>
-  <script src='https://www.google.com/recaptcha/api.js?hl=tr'></script>
+  <!-- <script src='https://www.google.com/recaptcha/api.js?hl=tr'></script> -->
 </head>
 <body>
   <div class="se-pre-con"></div>
@@ -46,7 +46,7 @@
             <div class="alert alert-danger"><?php echo validation_errors(); ?></div>
           <?php } ?>
 
-          <form class="needs-validation" novalidate="" method="post">
+          <form class="needs-validation" novalidate="" method="post" id="ilan_form">
             <!--harita--------------------->
             <input type="hidden" id="map_Val" name="map_Val"/>
             <!--harita--------------------->
@@ -58,8 +58,8 @@
                 <input type="text" class="form-control" name="adsoyad" value="<?php echo $user['ad'];?> <?php echo $user['soyad'];?>" disabled>
             </div>
             <div class="mb-3">
-                <label for="ilanadi">Cep Telefonu</label>
-                <input type="text" class="form-control" name="adsoyad" value="<?php if($user['gsm']!=''){echo $user['gsm'];}else{echo "Belirtilmemiş";}?>" disabled>
+                <label for="gsm">Cep Telefonu</label>
+                <input type="text" class="form-control" name="gsm" value="<?php if($user['gsm']!=''){echo $user['gsm'];}else{echo "Belirtilmemiş";}?>">
             </div>
             <div class="custom-control custom-checkbox mb-3">
               <input type="checkbox"  class="custom-control-input" name="yayinla" id="yayinla" value="1" checked/>
@@ -101,7 +101,7 @@
             <div class="row mb-3">
                 <div class="col-md-8" style="float: left">
                   <label for="fiyat1">Fiyat</label>
-                  <input type="number" class="form-control" name="fiyat1" placeholder="" value="" required>
+                  <input type="text" class="form-control" name="fiyat1" placeholder="" value="">
                 </div>
                 <div class="col-md-1" style="float: left">
                   <label for="fiyat2">Kuruş</label>
@@ -329,7 +329,7 @@
                 <input type="checkbox" class="custom-control-input" name="ad_rules" id="ad_rules" value="1">
                 <label class="custom-control-label" for="ad_rules">İlan verme kurallarını okudum ve kabul ediyorum</label>
               </div>
-              <div class="g-recaptcha" data-sitekey="6LdibXAUAAAAAKHsHSsa7SRfCIFS8Ax1M3PzjfDz"></div>
+              <!-- <div class="g-recaptcha" data-sitekey="6LdibXAUAAAAAKHsHSsa7SRfCIFS8Ax1M3PzjfDz"></div> -->
 
               <div class="row">
                   <div class="col-md-6"></div>
@@ -347,7 +347,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maps.google.com/maps/api/js?key=AIzaSyAgvcI5F7yEbzhTlj3HHwj7vnTZgQIdfqA&sensor=false"></script>
   <script src="<?php echo base_url(); ?>assets/map/add_ad_map.js"></script>
-  <script src="<?php echo base_url('assets/');?>js/script.js"></script>
+  <script src="<?php echo base_url('assets/');?>js/autoNumeric.js" defer></script>
   <script src="<?php echo base_url('assets/noty/packaged/jquery.noty.packaged.min.js'); ?>"></script>
   <script src="<?php echo base_url('assets/');?>js/script.js"></script>
   <?php if(flashdata()){ ?>
@@ -418,6 +418,7 @@
   function adresgetir() {
     codeAddress($("#mahalle option:selected").html()+" "+$("#ilce option:selected").html()+" "+$("#il option:selected").html()+" Türkiye");
   }
+
 
   </script>
 </body>

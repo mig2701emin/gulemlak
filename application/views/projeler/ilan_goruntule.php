@@ -195,7 +195,7 @@
 					<div class="col-12 col-lg-6">
 						<div class="cont_principal">
 							<div class="cont_breadcrumbs">
-								<div class="cont_breadcrumbs_2">
+								<div class="cont_breadcrumbs_1">
 									<ul>
 										<li><a href="#"><?php echo replace('tbl_il','il_ad','il_id',$ilan->il); ?></a></li>
 										<li><a href="#"><?php echo replace('tbl_ilce','ilce_ad','ilce_id',$ilan->ilce); ?></a></li>

@@ -155,6 +155,7 @@ class Hesabim extends CI_Controller{
     }
     $this->load->view("hesabim/odemeler",$data);
   }
+
   public function favorilerim()
   {
     $favoriler=$this->db->where("uyeId",$this->user->Id)->get("favoriler");
@@ -219,6 +220,7 @@ class Hesabim extends CI_Controller{
     }
     echo json_encode($json);
   }
+
   public function ilanduzenle($ilanId)
   {
     $ilan_kontrol=$this->firmalar->ilan_kontrol($ilanId,$this->session->userdata("userData")["userID"]);
@@ -292,11 +294,20 @@ class Hesabim extends CI_Controller{
     if (isset($_POST) && !empty($_POST)) {
       $userID=$this->session->userdata("userData")["userID"];
       $formvalid = array(
+          array('field' => 'ad_rules',                'label' => 'Sözleşme Kabul',        'rules' => 'required'),
           array('field' => 'ilanadi',                 'label' => 'İlan Başlığı',          'rules' => 'required'),
           array('field' => 'aciklama',                'label' => 'İlan Açıklaması',       'rules' => 'required'),
           array('field' => 'fiyat1',                  'label' => 'Fiyat',                 'rules' => 'required'),
-          array('field' => 'bitis_suresi',            'label' => 'İlan Süresi',           'rules' => 'required')
+          array('field' => 'bitis_suresi',            'label' => 'İlan Süresi',           'rules' => 'required'),
+          array('field' => 'il',                      'label' => 'İl',                    'rules' => 'required'),
+          array('field' => 'ilce',                    'label' => 'İlce',                  'rules' => 'required'),
+          array('field' => 'mahalle',                 'label' => 'Mahalle',               'rules' => 'required'),
       );
+      foreach ($fields as $field) {
+        if ($field->required==1) {
+          $formvalid[]=  array('field' => $field->seo_name, 'label' => $field->name,'rules' => 'required');
+        }
+      }
       $this->form_validation->set_rules($formvalid);
       $this->form_validation->set_error_delimiters('<p>', '</p>');
       $this->form_validation->set_message('required', '<strong>%s</strong> Gerekli Bir Alandır.');
@@ -627,6 +638,343 @@ class Hesabim extends CI_Controller{
         return false;
       }
 
+  }
+  public function sahistan()
+  {
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
+    if(isset($_POST) && !empty($_POST)){
+      $formvalid = array(
+        array('field' => 'url',		'label' => 'URL',				'rules' => 'required')
+      );
+
+      $this->form_validation->set_rules($formvalid);
+      $this->form_validation->set_error_delimiters('<p>', '</p>');
+      $this->form_validation->set_message('required', '<strong>%s</strong> Gerekli Bir Alandır.');
+
+      if($this->form_validation->run() == TRUE){
+        $url = $this->security->xss_clean($this->input->post('url'));
+        $content = curl_connect($url); // fonksiyon ile bağlandık
+        $classifiedBreadCrumbs = curl_search('<div class="classifiedBreadCrumb">', '</div>', $content); // Gelen içerik içinde arama yaparak başlıkları ayıklıyoruz. Sonuç diziye aktarılacak.
+        foreach ($classifiedBreadCrumbs as $classifiedBreadCrumb) {
+                $breadcrumbItems=curl_search('<li class="breadcrumbItem">', '</li>', $classifiedBreadCrumb);
+                foreach ($breadcrumbItems as $breadcrumbItem) {
+                    $as=curl_search('">','</a>', $breadcrumbItem);
+                    foreach ($as as $a) {
+                        $dizi[]=$a;
+                    }
+                }
+
+        }
+        $anaKategoriler=$this->db->where("ust_kategori","0")->get("kategoriler")->result();
+        foreach ($anaKategoriler as $anaKategori) {
+          if ($dizi[0]==$anaKategori->kategori_adi) {
+            echo $anaKategori->Id.'<br/>';
+            $firstSubs=$this->db->where("ust_kategori",$anaKategori->Id)->get("kategoriler")->result();
+            foreach ($firstSubs as $firstSub) {
+              if ($dizi[1]==$firstSub->kategori_adi) {
+                echo $firstSub->Id.'<br/>';
+                $secondSubs=$this->db->where("ust_kategori",$firstSub->Id)->get("kategoriler")->result();
+                foreach ($secondSubs as $secondSub) {
+                  if ($dizi[2]==$secondSub->kategori_adi) {
+                    echo $secondSub->Id.'<br/>';
+                    $thirdSubs=$this->db->where("ust_kategori",$secondSub->Id)->get("kategoriler")->result();
+                    foreach ($thirdSubs as $thirdSub) {
+                      if ($dizi[3]==$thirdSub->kategori_adi) {
+                        echo $thirdSub->Id.'<br/>';
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        echo $dizi[0].'<br/>';
+        echo $dizi[1].'<br/>';
+        echo $dizi[2].'<br/>';
+        echo $dizi[3].'<br/>';
+
+        $classifiedDetailTitles = curl_search('<h1>', '</h1>', $content);
+        echo $classifiedDetailTitles[0].'<br/>';
+
+        $classifiedInfos = curl_search('<h3>', '<a class="', $content);
+        echo $classifiedInfos[0].'<br/>';
+
+        $h2s = curl_search('<h2>', '</h2>', $content);
+        foreach ($h2s as $h2) {
+            $adress[]= curl_search('">', '</a>', $h2);
+        }
+        //print_r($adress);
+        //print_r($h2s);
+        echo $adress[0][0].'<br/>';
+        echo $adress[0][1].'<br/>';
+        echo $adress[0][2].'<br/>';
+
+        $classifiedInfoLists = curl_search('<ul class="classifiedInfoList">', '</ul', $content);
+        foreach ($classifiedInfoLists as $classifiedInfoList) {
+            $lis= curl_search('<li>', '</li>', $classifiedInfoList);
+            foreach ($lis as $li) {
+                $labels=curl_search('<strong>', '</strong>', $li);
+                //print_r($labels);
+                //echo $labels[0];
+                $label[]=$labels[0];
+                $values1=curl_search('<span class="classifiedId" id="classifiedId">', '</span>', $li);
+                $values2=curl_search('<span>', '</span>', $li);
+                $values3=curl_search('<span class="">', '</span>', $li);
+                if(!empty($values1)){
+                    //print_r($values1);
+                    //echo $values1[0];
+                    $value[]=$values1[0];
+                }elseif(!empty($values2)){
+                    //print_r($values2);
+                    //echo $values2[0];
+                    $value[]=$values2[0];
+                }else{
+                    //print_r($values3);
+                    //echo $values3[0];
+                    $value[]=$values3[0];
+                }
+            }
+        }
+        //prinr_r($label);
+        //prinr_r($value);
+        for($i=0;$i<count($value);$i++){
+        echo $label[$i].': '.$value[$i].'<br/>';
+
+        }
+
+        $classifiedDescription=curl_search('<div id="classifiedDescription" class="uiBoxContainer">','</div>',$content);
+        echo $classifiedDescription[0].'<br/>';
+
+        $images_1=curl_search('<label id="label_images_1" for="images_1" class="">','</label>',$content);
+        //echo $images_1[0].'<br/>';
+        $image_src=curl_search('src="','"',$images_1[0]);
+        echo $image_src[0].'<br/>';
+
+        $classifiedDetailMainPhoto=curl_search('<div class="classifiedDetailMainPhoto">','<ul class="classifiedDetailMegaVideo">',$content);
+        $classifiedDetailMainPhoto_src=curl_search('data-src="','"',$classifiedDetailMainPhoto[0]);
+
+        for($i=0;$i<count($classifiedDetailMainPhoto_src);$i++){
+          echo explode(".",(explode("/",$classifiedDetailMainPhoto_src[$i])[count(explode("/",$classifiedDetailMainPhoto_src[$i]))-1]))[1]."<br/>";
+            //echo $classifiedDetailMainPhoto_src[$i].'<br/>';
+            //copy($classifiedDetailMainPhoto_src[$i],'sahipresim/resim'.$i.'.jpg');
+        }
+        //$this->load->view("hesabim/sahistanilan",$data);
+      }
+    }else {
+      $this->load->view("hesabim/sahistan",$data);
+    }
+
+  }
+  public function sahistanilan($ilanId)
+  {
+    $ilan_kontrol=$this->firmalar->ilan_kontrol($ilanId,$this->session->userdata("userData")["userID"]);
+    if (!$ilan_kontrol) {
+      redirect(base_url());
+    }
+    $where = array('Id' => $this->session->userdata("userData")["userID"]);
+    $user=$this->members->get($where);
+    $data["user"]=$user;
+    $ilan=$this->firmalar->get_ilan($ilanId);
+    $data["ilan"]=$ilan;
+    $kategori=max(
+      $ilan->kategoriId,
+      $ilan->kategori2,
+      $ilan->kategori3,
+      $ilan->kategori4,
+      $ilan->kategori5,
+      $ilan->kategori6,
+      $ilan->kategori7,
+      $ilan->kategori8
+    );
+    $kategorinames=getustkategorinames($kategori);
+    $data["kategorinames"]=$kategorinames;
+    $seo_url="";
+    $kategorys=getustkategorys($kategori);
+    for ($i=0; $i < 9 ; $i++) {
+      if ($i == 0) {
+        $field_kategori=$kategorys[0]->Id;
+        $seo_url.=$kategorys[0]->kategori_adi;
+        $i++;
+
+
+      } elseif(isset($kategorys[$i-1])){
+        $yeni="field_kategori".$i;
+        $$yeni=$kategorys[$i-1]->Id;
+        $seo_url.="-".$kategorys[$i-1]->kategori_adi;
+      }else {
+        $yeni="field_kategori".$i;
+        $$yeni="";
+      }
+    }
+
+    $sql="select * from fields where ((kategori='".$field_kategori."' and kategori2='0') ";
+    if ($field_kategori2!="" || $field_kategori2!=0) {
+      $sql.="or (kategori2='".$field_kategori2."' and kategori3='0') ";
+    }
+    if ($field_kategori3!="" || $field_kategori3!=0) {
+      $sql.="or (kategori3='".$field_kategori3."' and kategori4='0') ";
+    }
+    if ($field_kategori4!="" || $field_kategori4!=0) {
+      $sql.="or (kategori4='".$field_kategori4."' and kategori5='0') ";
+    }
+    if ($field_kategori5!="" || $field_kategori5!=0) {
+      $sql.="or (kategori5='".$field_kategori5."' and kategori6='0') ";
+    }
+    if ($field_kategori6!="" || $field_kategori6!=0) {
+      $sql.="or (kategori6='".$field_kategori6."' and kategori7='0') ";
+    }
+    if ($field_kategori7!="" || $field_kategori7!=0) {
+      $sql.="or (kategori7='".$field_kategori7."' and kategori8='0') ";
+    }
+    if ($field_kategori8!="" || $field_kategori8!=0) {
+      $sql.="or (kategori8='".$field_kategori8."') ";
+    }
+    $sql.=") order by siralama";
+    $fields=$this->fields->getfields($sql);
+    $data["fields"]=$fields;
+    $data["iller"]=$this->firmalar->iller();
+    $data["ilceler"]=$this->firmalar->ilcelerbyIl($ilan->il);
+    $data["mahalleler"]=$this->firmalar->mahallelerbyIlce($ilan->ilce);
+    if (isset($_POST) && !empty($_POST)) {
+      $userID=$this->session->userdata("userData")["userID"];
+      $formvalid = array(
+          array('field' => 'ad_rules',                'label' => 'Sözleşme Kabul',        'rules' => 'required'),
+          array('field' => 'ilanadi',                 'label' => 'İlan Başlığı',          'rules' => 'required'),
+          array('field' => 'aciklama',                'label' => 'İlan Açıklaması',       'rules' => 'required'),
+          array('field' => 'fiyat1',                  'label' => 'Fiyat',                 'rules' => 'required'),
+          array('field' => 'bitis_suresi',            'label' => 'İlan Süresi',           'rules' => 'required'),
+          array('field' => 'il',                      'label' => 'İl',                    'rules' => 'required'),
+          array('field' => 'ilce',                    'label' => 'İlce',                  'rules' => 'required'),
+          array('field' => 'mahalle',                 'label' => 'Mahalle',               'rules' => 'required'),
+      );
+      foreach ($fields as $field) {
+        if ($field->required==1) {
+          $formvalid[]=  array('field' => $field->seo_name, 'label' => $field->name,'rules' => 'required');
+        }
+      }
+      $this->form_validation->set_rules($formvalid);
+      $this->form_validation->set_error_delimiters('<p>', '</p>');
+      $this->form_validation->set_message('required', '<strong>%s</strong> Gerekli Bir Alandır.');
+      if ($this->form_validation->run() == TRUE) {
+        $ad_rules = $this->security->xss_clean($this->input->post('ad_rules'));
+        if ($ad_rules='') {
+          $this->session->set_flashdata('error', 'İlan Verme Kurallarını Kabul Etmelisiniz.');
+          redirect(base_url("hesabim/ilanduzenle/".$ilanId));
+        }
+        $firmalar = array();
+        $ilanadi       = $this->security->xss_clean($this->input->post('ilanadi'));
+        $firmalar["firma_adi"]=$ilanadi;
+        $use_map       = $this->security->xss_clean($this->input->post('use_map'));
+        $map           = $this->security->xss_clean($this->input->post('map_Val'));
+        if($use_map!=1 or $map==''){$map="";}
+        $firmalar["map"]=$map;
+        $aciklama      = $this->security->xss_clean($this->input->post('aciklama'));
+        $firmalar["aciklama"] = base64_encode($aciklama);
+        $firmalar["il"] = $this->security->xss_clean($this->input->post('il'));
+        $seo_url.="-".replace("tbl_il","il_ad","il_id",$firmalar["il"]);
+        $firmalar["ilce"] = $this->security->xss_clean($this->input->post('ilce'));
+        $seo_url.="-".replace("tbl_ilce","ilce_ad","ilce_id",$firmalar["ilce"]);
+        $firmalar["mahalle"] = $this->security->xss_clean($this->input->post('mahalle'));
+        $seo_url.="-".replace("tbl_mahalle","mahalle_ad","mahalle_id",$firmalar["mahalle"]);
+        //$seo_url.="-".$ilanId;
+        $firmalar["seo_url"]=$seo_url;
+        $firmalar["kayit_tarihi"]=date("Y-m-d H:i:s");
+        $bitis_suresi  = $this->security->xss_clean($this->input->post('bitis_suresi'));
+        switch ($bitis_suresi) {
+          case '1 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+1 month"));
+          break;
+          case '2 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+2 month"));
+          break;
+          case '3 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+3 month"));
+          break;
+          case '4 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+4 month"));
+          break;
+          case '5 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+5 month"));
+          break;
+          case '6 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+6 month"));
+          break;
+          case '7 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+7 month"));
+          break;
+          case '8 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+8 month"));
+          break;
+          case '9 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+9 month"));
+          break;
+          case '10 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+10 month"));
+          break;
+          case '11 Ay':
+            $bitis_tarihi=date("Y-m-d",strtotime("+11 month"));
+          break;
+          case '1 Yıl':
+            $bitis_tarihi=date("Y-m-d",strtotime("+1 year"));
+          break;
+          default:
+            $bitis_tarihi=date("Y-m-d",strtotime("+1 month"));
+          break;
+        }
+        $firmalar["bitis_tarihi"]=$bitis_tarihi;
+        $ilan_magazada_mi  = $this->magazalar->ilan_magazada_mi($ilanId);
+
+        if ($ilan_magazada_mi) {
+          $onay_durum=1;
+          $kucuk_fotograf=1;
+        } else {
+          $onay_durum=0;
+          $kucuk_fotograf=0;
+        }
+        $firmalar["onay"]=$onay_durum;
+        $firmalar["yayinla"]=$this->security->xss_clean($this->input->post('yayinla'));
+        $firmalar["fiyat"] = $this->security->xss_clean($this->input->post('fiyat1'));
+        $firmalar["fiyat2"] = $this->security->xss_clean($this->input->post('fiyat2'));
+        $firmalar["birim"] = $this->security->xss_clean($this->input->post('birim'));
+        $firmalar["kucuk_fotograf"] = $kucuk_fotograf;
+        $firmalar["ilan_notu"] = $this->security->xss_clean($this->input->post('ilan_notu'));
+        $insert=$this->firmalar->update($ilanId,$firmalar);
+        $field_values = array();
+        foreach ($fields as $field) {
+          if($field->type=='checkbox'){
+            // hidden fields
+            $field_values[$field->seo_name]=implode($this->security->xss_clean($this->input->post($field->seo_name)),", ");
+
+          }elseif($field->type=='multiple_select'){
+            // hidden fields
+            $field_values[$field->seo_name]=$this->security->xss_clean($this->input->post($field->seo_name));
+            $field_values[$field->multiple_field_seo_name]=$this->security->xss_clean($this->input->post($field->multiple_field_seo_name));
+          }else{
+            // hidden fields
+            $field_values[$field->seo_name]=$this->security->xss_clean($this->input->post($field->seo_name));
+          }
+        }
+        foreach ($field_values as $field_name => $field_value) {
+          $where = array("ilanId" => $ilanId, "field_name" => $field_name);
+          $update = array("field_value" => $field_value);
+          $this->fields->update($where,$update);
+        //  $this->db->query("insert into custom_fields (Id,ilanId,field_name,field_value) VALUES(null,'".$ilanId."','".$field_name."','".$field_value."')");
+        }
+        $this->session->set_flashdata('success', 'Değişiklikler Kaydedildi.');
+        redirect(base_url("hesabim/ilanduzenle_ok/".$ilanId));
+
+      } else {
+        //validation kontrolü error verirse
+      }
+    }
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
+    $this->load->view("hesabim/sahistanilan",$data);
   }
 
 }
