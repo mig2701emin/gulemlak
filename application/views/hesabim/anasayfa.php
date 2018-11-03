@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/'); ?>css/style.css"/>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>bootstrap-4.1.3/css/bootstrap.min.css" />
   <style type="text/css">
     .pagination a, .pagination strong{
 
@@ -28,16 +29,16 @@
     <?php $this->load->view('layout/newuserheader');?>
     <div class="container">
     <div class="p-3 mb-2 bg-secondary text-white text-center"><strong><?php echo $filter." İlanlarım" ?></strong></div>
-        <table width="100%" cellpadding="1" class="v4_special_heads">
+        <table class="table-responsive">
           <thead class="p-3 mb-2 bg-light">
               <tr>
-                <th style="width:75px">Fotoğraf</th>
-                <th style="width:300px">Eklenme Tarihi</th>
-                <th class="center">Favori</th>
-                <th class="center">Sayaç</th>
-                <th class="center">Fiyat</th>
-                <th class="center">Durum</th>
-                <th class="center">Bitiş Tarihi</th>
+                <th>Fotoğraf</th>
+                <th>Eklenme Tarihi</th>
+                <th>Favori</th>
+                <th>Sayaç</th>
+                <th>Fiyat</th>
+                <th>Durum</th>
+                <th>Bitiş Tarihi</th>
                 <th>İşlem</th>
               </tr>
           </thead>
@@ -72,7 +73,7 @@
                   <td rowspan="3">
                     <a href="<?php echo base_url(); ?>ilan/<?php echo $ilan->seo_url;?>-<?php echo $ilan->Id;?>">
                       <img src="<?php if(ilk_resim($ilan->Id)!='' and file_exists('photos/thumbnail/'.ilk_resim($ilan->Id))){echo base_url().'photos/thumbnail/'.ilk_resim($ilan->Id);
-                      }else{echo base_url();?>assets/images/yok_b.png<?php } ?>" border="0" alt="<?php echo $ilan->firma_adi;?>" title="<?php echo $ilan->firma_adi;?>" width="240" height="135">
+                      }else{echo base_url();?>assets/images/yok_thumbnail.png<?php } ?>" border="0" alt="<?php echo $ilan->firma_adi;?>" title="<?php echo $ilan->firma_adi;?>">
                     </a>
                   </td>
                   <td colspan="8" style="text-align:left">
