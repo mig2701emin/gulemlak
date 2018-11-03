@@ -372,6 +372,7 @@ select {
 	border: 1px solid #eaeaea;
 	padding: 5px 24px 5px 5px;
 	line-height: 18px;
+	width: 100%;
 }
 
 .full select {
