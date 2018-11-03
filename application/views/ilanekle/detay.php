@@ -42,6 +42,10 @@
         </div>
       <?php endif; ?>
         <div class="col-md-12 order-md-1">
+          <?php if(validation_errors()){ ?>
+            <div class="alert alert-danger"><?php echo validation_errors(); ?></div>
+          <?php } ?>
+
           <form class="needs-validation" novalidate="" method="post">
             <!--harita--------------------->
             <input type="hidden" id="map_Val" name="map_Val"/>
@@ -322,7 +326,7 @@
               </div>
               <hr class="mb-4"/>
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="ad_rules" id="ad_rules">
+                <input type="checkbox" class="custom-control-input" name="ad_rules" id="ad_rules" value="1">
                 <label class="custom-control-label" for="ad_rules">İlan verme kurallarını okudum ve kabul ediyorum</label>
               </div>
               <div class="g-recaptcha" data-sitekey="6LdibXAUAAAAAKHsHSsa7SRfCIFS8Ax1M3PzjfDz"></div>
@@ -345,6 +349,7 @@
   <script src="<?php echo base_url(); ?>assets/map/add_ad_map.js"></script>
   <script src="<?php echo base_url('assets/');?>js/script.js"></script>
   <script src="<?php echo base_url('assets/noty/packaged/jquery.noty.packaged.min.js'); ?>"></script>
+  <script src="<?php echo base_url('assets/');?>js/script.js"></script>
   <?php if(flashdata()){ ?>
       <script type="text/javascript">
           generate(<?php echo flashdata(); ?>);

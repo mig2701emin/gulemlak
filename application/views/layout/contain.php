@@ -218,9 +218,6 @@
                                           <?php if ($item->ilce) {echo ' > '.replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce);}?>
                                           <?php if ($item->mahalle) {echo ' > '.replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle);}?>
                                         </div>
-                                        <div class="product-des">
-                                            <p><?php echo trSubstr(decode($item->aciklama)); ?></p>
-                                        </div>
                                         <div class="product-detail-inner">
                                             <div class="detail-inner-left">
                                                 <ul>
@@ -319,9 +316,6 @@
                                           <?php if ($item->ilce) {echo ' > '.replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce);}?>
                                           <?php if ($item->mahalle) {echo ' > '.replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle);}?>
                                         </div>
-                                        <div class="product-des">
-                                            <p><?php echo trSubstr(decode($item->aciklama)); ?></p>
-                                        </div>
                                         <div class="product-detail-inner">
                                             <div class="detail-inner-left">
                                                 <ul>
@@ -419,9 +413,6 @@
                                           <?php if ($item->il) {echo replace('tbl_il', 'il_ad','il_id', $item->il);}?>
                                           <?php if ($item->ilce) {echo ' > '.replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce);}?>
                                           <?php if ($item->mahalle) {echo ' > '.replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle);}?>
-                                        </div>
-                                        <div class="product-des">
-                                            <p><?php echo trSubstr(decode($item->aciklama)); ?></p>
                                         </div>
                                         <div class="product-detail-inner">
                                             <div class="detail-inner-left">

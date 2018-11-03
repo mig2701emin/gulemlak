@@ -107,7 +107,7 @@ class Ilanekle extends CI_Controller{
               array('field' => 'ilanadi',                 'label' => 'İlan Başlığı',          'rules' => 'required'),
               array('field' => 'aciklama',                'label' => 'İlan Açıklaması',       'rules' => 'required'),
               array('field' => 'fiyat1',                  'label' => 'Fiyat',                 'rules' => 'required'),
-              //array('field' => 'ad_rules',                'label' => 'Sözleşme Okuma',        'rules' => 'required'),
+              array('field' => 'ad_rules',                'label' => 'Sözleşme Okuma',        'rules' => 'required'),
               array('field' => 'bitis_suresi',            'label' => 'İlan Süresi',           'rules' => 'required')
           );
           $this->form_validation->set_rules($formvalid);

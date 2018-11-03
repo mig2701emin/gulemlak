@@ -154,8 +154,8 @@ class Magazaac extends CI_Controller{
           $config4['image_library'] = 'gd2';
           $config4['source_image'] = $this->upload->upload_path.$this->upload->file_name;
           $config4['maintain_ratio'] = false;
-          $config4['width'] = 240;
-          $config4['height'] = 135;
+          $config4['width'] = 178;
+          $config4['height'] = 110;
           $this->image_lib->initialize($config4);
 
           if ( ! $this->image_lib->resize())
