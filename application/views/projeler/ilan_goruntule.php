@@ -54,7 +54,7 @@
 	.cont_breadcrumbs {
 	  width: 100%;
 	}
-
+@media (max-width: 767px){
 	.cont_breadcrumbs_1 {
 	  position: relative;
 	  width: 100%;
@@ -62,17 +62,7 @@
 	  /*margin: 20px;*/
 
 	}
-	.cont_breadcrumbs_2 {
-	  position: relative;
-	  width: 100%;
-	  float: right;
-	  /*margin: 20px;*/
-
-	}
 	.cont_breadcrumbs_1 > ul {
-		list-style-type: none;
-	}
-	.cont_breadcrumbs_2 > ul {
 		list-style-type: none;
 	}
 
@@ -88,28 +78,8 @@
 	  margin-left: -50px;
 		transition: all 0.5s;
 	}
-	.cont_breadcrumbs_2 > ul > li {
-		position: relative;
-		float: right;
-		transform: skewX(-15deg);
-		background-color: #fff;
-		box-shadow: -6px 0px 20px -2px rgba(0,0,0,0.5);
-		z-index: 1;
-		width: auto;
-		margin-right: -50px;
-		transition: all 0.5s;
-	}
 
 	.cont_breadcrumbs_1 > ul > li  > a {
-		display: block;
-		padding: 10px;
-		/*font-size: 20px;*/
-		transform: skewX(15deg);
-		text-decoration:none;
-		color: #444;
-		font-weight: 300;
-	}
-	.cont_breadcrumbs_2 > ul > li  > a {
 		display: block;
 		padding: 10px;
 		/*font-size: 20px;*/
@@ -122,36 +92,65 @@
 	.cont_breadcrumbs_1 > ul > li:first-child {
 		margin-left: 0px;
 	}
-	.cont_breadcrumbs_2 > ul > li:first-child {
-		margin-right: 0px;
-	}
 	.cont_breadcrumbs_1 > ul > li:hover {
-	 background-color: #CFD8DC;
-	}
-	.cont_breadcrumbs_2 > ul > li:hover {
 	 background-color: #CFD8DC;
 	}
 
 	.cont_breadcrumbs_1 > ul > li:last-child {
 	  background-color: #78909C;
 	}
-	.cont_breadcrumbs_2 > ul > li:last-child {
-	  background-color: #78909C;
-	}
 
 	.cont_breadcrumbs_1 > ul > li:last-child > a {
-	  color: #fff;;
-	}
-	.cont_breadcrumbs_2 > ul > li:last-child > a {
 	  color: #fff;;
 	}
 
 	.cont_breadcrumbs_1 > ul:hover > li {
 	  margin-left: 0px;
 	}
-	.cont_breadcrumbs_2 > ul:hover > li {
-	  margin-right: 0px;
+}
+@media (min-width: 768px){
+	.cont_breadcrumbs_1 {
+	  position: relative;
+	  width: 100%;
+	  float: left;
+	  margin: 20px 20px;
 	}
+
+	.cont_breadcrumbs_1 > ul > li {
+	  position: relative;
+	  float: left;
+	  transform: skewX(-15deg);
+	  background-color: #fff;
+		box-shadow: -2px 0px 20px -6px rgba(0,0,0,0.5);
+		z-index: 1;
+		transition: all 0.5s;
+	}
+
+	.cont_breadcrumbs_1 > ul > li:hover {
+	 background-color: #CFD8DC;
+	}
+
+	.cont_breadcrumbs_1 > ul > li  > a {
+	  display: block;
+	  padding: 10px;
+	  font-size: 20px;
+		 transform: skewX(15deg);
+		 text-decoration:none;
+		 color: #444;
+		font-weight: 300;
+	}
+	.cont_breadcrumbs_1 > ul > li:last-child {
+	  background-color: #78909C;
+	  transform: skew(0deg);
+		margin-left: -5px;
+
+	}
+
+	.cont_breadcrumbs_1 > ul > li:last-child > a {
+		  color: #fff;
+		 transform: skewX(0deg);
+	}
+}
 
 	</style>
 	<link href="<?php echo base_url('assets'); ?>/light/lightgallery.css" rel="stylesheet">
@@ -249,7 +248,7 @@
 								<row id="lightgallery" class="list-unstyled row">
 									<?php $r=1; ?>
 									<?php foreach ($resimler as $resim){ ?>
-										<div class="col-4 col-sm-6 col-md-4" data-responsive="<?php echo base_url('photos/big/'.$resim->name); ?> 375, <?php echo base_url('photos/big/'.$resim->name); ?> 480, <?php echo base_url('photos/big/'.$resim->name); ?> 800" data-src="<?php echo base_url('photos/big/'.$resim->name); ?>" data-sub-html="<h4><?php echo $ilan->firma_adi; ?></h4><p></p>">
+										<div class="col-4 col-sm-6 col-md-4" data-responsive="<?php echo base_url('photos/big/'.$resim->name); ?> 375, <?php echo base_url('photos/big/'.$resim->name); ?> 480, <?php echo base_url('photos/big/'.$resim->name); ?> 800" data-src="<?php echo base_url('photos/big/'.$resim->name); ?>" data-sub-html="<h4 class='text-success'><?php echo $ilan->firma_adi; ?></h4><p></p>">
 											<a href="">
 												<img <?php if ($r==1) {echo ' id="lightImg" ';} ?> class="img-responsive" style="border-radius:20px;" src="<?php echo base_url('photos/big/'.$resim->name); ?>">
 											</a>
