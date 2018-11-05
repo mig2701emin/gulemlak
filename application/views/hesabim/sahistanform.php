@@ -44,10 +44,10 @@
           <form class="needs-validation" novalidate method="post" action="<?php echo base_url(); ?>hesabim/sahistanilanok">
             <?php $r=1; ?>
             <?php foreach ($resimler as $resim){ ?>
-              <input type="hidden" name="resim_"<?php echo $r; ?> value="<?php echo $resim;?>"/>
+              <input type="hidden" name="resim_<?php echo $r; ?>" value="<?php echo $resim;?>"/>
               <?php $r++; ?>
             <?php } ?>
-            <?php if (condition) {
+            <?php if ($r < 16) {
               for ($i=$r; $i < 16; $i++) {?>
                   <input type="hidden" name="resim_"<?php echo $i; ?> value=""/>
               <?php } ?>

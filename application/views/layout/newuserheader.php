@@ -235,7 +235,7 @@
                                             <span class="m-topbar__welcome">Merhaba,&nbsp;</span>
                                             <span class="m-topbar__username"><?php if ($user) {echo $user->ad." ".$user->soyad;} else {echo "Misafir";}?></span>
                                             <span class="m-topbar__userpic">
-                                                <img src="<?php if ($user->picture) {echo $user->picture;} else {echo base_url(); ?>assets/app/media/img/users/user4.jpg<?php }?>" class="m--img-rounded m--marginless m--img-centered" alt="" />
+                                                <img src="<?php if (!empty($user->picture)) {echo $user->picture;} else {echo base_url(); ?>assets/app/media/img/users/user4.jpg<?php }?>" class="m--img-rounded m--marginless m--img-centered" alt="" />
                                             </span>
                                         </a>
                                         <div class="m-dropdown__wrapper">
@@ -244,7 +244,7 @@
                                                 <div class="m-dropdown__header m--align-center" style="background: url(<?php echo base_url(); ?>assets/app/media/img/misc/user_profile_bg.jpg); background-size: cover;">
                                                     <div class="m-card-user m-card-user--skin-dark">
                                                         <div class="m-card-user__pic">
-                                                            <img src="<?php if ($user->picture) {echo $user->picture;} else {echo base_url(); ?>assets/app/media/img/users/user4.jpg<?php }?>" class="m--img-rounded m--marginless" alt="" />
+                                                            <img src="<?php if (!empty($user->picture)) {echo $user->picture;} else {echo base_url(); ?>assets/app/media/img/users/user4.jpg<?php }?>" class="m--img-rounded m--marginless" alt="" />
                                                         </div>
                                                         <div class="m-card-user__details">
                                                             <span class="m-card-user__name m--font-weight-500"><?php if ($this->session->userdata("userData")) {echo $this->session->userdata("userData")["ad"]." ".$this->session->userdata("userData")["soyad"];} else {echo "Misafir";}?></span>
@@ -505,9 +505,17 @@
                                 </li>
 
 
-                                <li class="m-menu__item " aria-haspopup="true"><a href="<?php echo base_url(); ?>ilanekle"
-                                                                                  class="m-menu__link "><span
-                                                class="m-menu__item-here"></span><span class="m-menu__link-text font-weight-bold text-danger">ÜCRETSİZ İLAN VER</span></a>
+                                <li class="m-menu__item " aria-haspopup="true">
+                                  <a href="<?php echo base_url(); ?>ilanekle" class="m-menu__link ">
+                                    <span class="m-menu__item-here"></span>
+                                    <span class="m-menu__link-text font-weight-bold text-danger">ÜCRETSİZ İLAN VER</span>
+                                  </a>
+                                </li>
+                                <li class="m-menu__item " aria-haspopup="true">
+                                  <a href="<?php echo base_url(); ?>hesabim/sahistan" class="m-menu__link ">
+                                    <span class="m-menu__item-here"></span>
+                                    <span class="m-menu__link-text text-warning">Sahibinden.com</span>
+                                  </a>
                                 </li>
                                 <li class="m-menu__item " aria-haspopup="true"><a href="<?php echo base_url() ?>hesabim/favorilerim" class="m-menu__link "><span class="m-menu__item-here"></span><span class="m-menu__link-text " >Favori ilanlarım</span></a></li>
                                 <li class="m-menu__item " aria-haspopup="true"><a href="<?php echo base_url() ?>hesabim/favorilerim"

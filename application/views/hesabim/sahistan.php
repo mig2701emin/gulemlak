@@ -14,14 +14,14 @@
       <div class="centerfix siteWrapper sitePage">
           <div class="centercontent">
               <div class="row">
-                  <div class="col-xs-9">
+                  <div class="col-12">
                       <?php if(validation_errors()){ ?>
                             <div class="alert alert-danger"><?php echo validation_errors(); ?></div>
                         <?php } ?>
                     <div class="panel panel-default">
                       <div class="panel-heading">
 
-                        <div class="p-3 mb-2 bg-secondary text-white text-center"><strong>Şifre Yenileme</strong></div>
+                        <div class="p-3 mb-2 bg-secondary text-white text-center"><strong>Sahibinden</strong></div>
                       </div>
 
                       <div class="panel-body">

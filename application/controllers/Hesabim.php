@@ -727,6 +727,7 @@ class Hesabim extends CI_Controller{
             }
           }
         }
+        $this->session->set_userdata("kategori",$kategori);
         $kategorinames=getustkategorinames($kategori);
         $data["kategorinames"]=$kategorinames;
 
@@ -745,35 +746,35 @@ class Hesabim extends CI_Controller{
             $$yeni="";
           }
         }
-        $ilan->katetoriId=$field_kategori;
+        $ilan->kategoriId=$field_kategori;
         $sql="select * from fields where ((kategori='".$field_kategori."' and kategori2='0') ";
         if ($field_kategori2!="" || $field_kategori2!=0) {
           $sql.="or (kategori2='".$field_kategori2."' and kategori3='0') ";
-          $ilan->katetori2=$field_kategori2;
+          $ilan->kategori2=$field_kategori2;
         }
         if ($field_kategori3!="" || $field_kategori3!=0) {
           $sql.="or (kategori3='".$field_kategori3."' and kategori4='0') ";
-          $ilan->katetori3=$field_kategori3;
+          $ilan->kategori3=$field_kategori3;
         }
         if ($field_kategori4!="" || $field_kategori4!=0) {
           $sql.="or (kategori4='".$field_kategori4."' and kategori5='0') ";
-          $ilan->katetori4=$field_kategori4;
+          $ilan->kategori4=$field_kategori4;
         }
         if ($field_kategori5!="" || $field_kategori5!=0) {
           $sql.="or (kategori5='".$field_kategori5."' and kategori6='0') ";
-          $ilan->katetori5=$field_kategori5;
+          $ilan->kategori5=$field_kategori5;
         }
         if ($field_kategori6!="" || $field_kategori6!=0) {
           $sql.="or (kategori6='".$field_kategori6."' and kategori7='0') ";
-          $ilan->katetori6=$field_kategori6;
+          $ilan->kategori6=$field_kategori6;
         }
         if ($field_kategori7!="" || $field_kategori7!=0) {
           $sql.="or (kategori7='".$field_kategori7."' and kategori8='0') ";
-          $ilan->katetori7=$field_kategori7;
+          $ilan->kategori7=$field_kategori7;
         }
         if ($field_kategori8!="" || $field_kategori8!=0) {
           $sql.="or (kategori8='".$field_kategori8."') ";
-          $ilan->katetori8=$field_kategori8;
+          $ilan->kategori8=$field_kategori8;
         }
         $sql.=") order by siralama";
         $fields=$this->fields->getfields($sql);
@@ -890,6 +891,7 @@ class Hesabim extends CI_Controller{
   }
   public function sahistanilanok()
   {
+
     if (isset($_POST) && !empty($_POST)) {
       // $res = post_captcha($_POST['g-recaptcha-response']);
       // if ($res['success']) {
@@ -905,18 +907,64 @@ class Hesabim extends CI_Controller{
             array('field' => 'ilce',                    'label' => 'İlce',                  'rules' => 'required'),
             array('field' => 'mahalle',                 'label' => 'Mahalle',               'rules' => 'required'),
         );
-        foreach ($fields as $field) {
+        /*foreach ($fields as $field) {
           if ($field->required==1) {
             $formvalid[]=  array('field' => $field->seo_name, 'label' => $field->name,'rules' => 'required');
           }
-        }
+        }*/
         $this->form_validation->set_rules($formvalid);
         $this->form_validation->set_error_delimiters('<p>', '</p>');
         $this->form_validation->set_message('required', '<strong>%s</strong> Gerekli Bir Alandır.');
         if ($this->form_validation->run() == TRUE) {
           $ad_rules = $this->security->xss_clean($this->input->post('ad_rules'));
-          if ($ad_rules==1) {
-            $this->session->set_flashdata('error', 'İlan Verme Kurallarını Kabul Etmelisiniz.');
+          if ($ad_rules=="1") {
+
+
+            $kategori=$this->session->userdata("kategori");
+            //$seo_url="";
+            $this->session->unset_userdata("kategori");
+            $kategorys=getustkategorys($kategori);
+            for ($i=0; $i < 9 ; $i++) {
+              if ($i == 0) {
+                $field_kategori=$kategorys[0]->Id;
+                //$seo_url.=$kategorys[0]->kategori_adi;
+                $i++;
+
+              } elseif(isset($kategorys[$i-1])){
+                $yeni="field_kategori".$i;
+                $$yeni=$kategorys[$i-1]->Id;
+                //$seo_url.="-".$kategorys[$i-1]->kategori_adi;
+              }else {
+                $yeni="field_kategori".$i;
+                $$yeni="";
+              }
+            }
+
+            $sql="select * from fields where ((kategori='".$field_kategori."' and kategori2='0') ";
+            if ($field_kategori2!="" || $field_kategori2!=0) {
+              $sql.="or (kategori2='".$field_kategori2."' and kategori3='0') ";
+            }
+            if ($field_kategori3!="" || $field_kategori3!=0) {
+              $sql.="or (kategori3='".$field_kategori3."' and kategori4='0') ";
+            }
+            if ($field_kategori4!="" || $field_kategori4!=0) {
+              $sql.="or (kategori4='".$field_kategori4."' and kategori5='0') ";
+            }
+            if ($field_kategori5!="" || $field_kategori5!=0) {
+              $sql.="or (kategori5='".$field_kategori5."' and kategori6='0') ";
+            }
+            if ($field_kategori6!="" || $field_kategori6!=0) {
+              $sql.="or (kategori6='".$field_kategori6."' and kategori7='0') ";
+            }
+            if ($field_kategori7!="" || $field_kategori7!=0) {
+              $sql.="or (kategori7='".$field_kategori7."' and kategori8='0') ";
+            }
+            if ($field_kategori8!="" || $field_kategori8!=0) {
+              $sql.="or (kategori8='".$field_kategori8."') ";
+            }
+            $sql.=") order by siralama";
+            $fields=$this->fields->getfields($sql);
+
             $firmalar = array();
             $ilanId=ilan_id_al();
             $firmalar["Id"]=$ilanId;
@@ -1039,16 +1087,20 @@ class Hesabim extends CI_Controller{
             foreach ($field_values as $field_name => $field_value) {
               $this->db->query("insert into custom_fields (Id,ilanId,field_name,field_value) VALUES(null,'".$ilanId."','".$field_name."','".$field_value."')");
             }
+            $this->load->library('image_lib');
             for ($i=1; $i < 16; $i++) {
-              $resim=$this->security->xss_clean($this->input->post('resim'.$i));
+              $resim=$this->security->xss_clean($this->input->post('resim_'.$i));
               if (!empty($resim)) {
                 $uzunluk=mb_strlen($resim,'UTF-8');
-                $uzanti=explode(".",(explode("/",$resim)[count(explode("/",$resim))-1]))[1]."<br/>";
-                $name=mb_substr($resim,0,$uzunluk-mb_strlen($uzanti));
-                $upload=copy($resim,'photos/big/'.$ilanId.'_'.$i.'\.'.$uzanti);
+                $uzanti=explode(".",(explode("/",$resim)[count(explode("/",$resim))-1]))[1];
+                //$name=mb_substr($resim,0,$uzunluk-mb_strlen($uzanti));
+                $name=$ilanId.'_'.$i.'.'.$uzanti;
+                // echo $name;
+                // die();
+                $upload=copy($resim,FCPATH.'photos/big/'.$name);
                 if ($upload) {
                   $config['image_library'] = 'gd2';
-                  $config['source_image'] = 'photos/big/'.$ilanId.'_'.$i.'\.'.$uzanti;
+                  $config['source_image'] = FCPATH.'photos/big/'.$name;
                   $config['maintain_ratio'] = false;
                   $config['width'] = 890;
                   $config['height'] = 550;
@@ -1058,16 +1110,16 @@ class Hesabim extends CI_Controller{
 
                   if ( ! $this->image_lib->resize())
                   {
-                    echo "hata";
-                    //$this->session->set_flashdata('error', $this->image_lib->display_errors('error', 'İkinci boyutlandırma Yapılamadı'));
+                    //echo "hata";
+                    $this->session->set_flashdata('error', $this->image_lib->display_errors('error', 'İlk boyutlandırma Yapılamadı'));
                   }
                   $this->image_lib->clear();
 
                   $config1['image_library'] = 'gd2';
-                  $config1['source_image'] = 'assets/images/deneme1.png';
-                  $config1['new_image'] = 'photos/big/'.$ilanId.'_'.$i.'\.'.$uzanti;
+                  $config1['source_image'] = FCPATH.'assets/images/deneme1.png';
+                  $config1['new_image'] = FCPATH.'photos/big/'.$name;
                   $config1['wm_type'] = 'overlay';
-                  $config1['wm_overlay_path'] = 'photos/big/'.$ilanId.'_'.$i.'\.'.$uzanti;
+                  $config1['wm_overlay_path'] = FCPATH.'photos/big/'.$name;
                   $config1['wm_opacity'] = '100';
                   $config1['wm_vrt_alignment'] = 'middle';
                   $config1['wm_hor_alignment'] = 'center';
@@ -1081,7 +1133,7 @@ class Hesabim extends CI_Controller{
                   $this->image_lib->clear();
 
                   $config1['image_library'] = 'gd2';
-                  $config1['source_image'] = 'photos/big/'.$ilanId.'_'.$i.'\.'.$uzanti;
+                  $config1['source_image'] = FCPATH.'photos/big/'.$name;
                   $config1['new_image'] = FCPATH."photos/crop/".$name;
                   $config1['maintain_ratio'] = TRUE;
                   $config1['width'] = 445;
@@ -1091,28 +1143,24 @@ class Hesabim extends CI_Controller{
 
                   if ( ! $this->image_lib->resize())
                   {
-                    echo "hata";
-                    //$this->session->set_flashdata('error', $this->image_lib->display_errors('error', 'İkinci boyutlandırma Yapılamadı'));
+                    //echo "hata";
+                    $this->session->set_flashdata('error', $this->image_lib->display_errors('error', 'İkinci boyutlandırma Yapılamadı'));
                   }
                   $this->image_lib->clear();
 
-
-
                   $config2['image_library'] = 'gd2';
-                  $config2['source_image'] = 'photos/big/'.$ilanId.'_'.$i.'\.'.$uzanti;
+                  $config2['source_image'] = FCPATH.'photos/big/'.$name;
                   $config2['new_image'] = FCPATH."photos/thumbnail/".$name;
                   $config2['maintain_ratio'] = TRUE;
                   $config2['width'] = 178;
                   $config2['height'] = 110;
 
-
-
                   $this->image_lib->initialize($config2);
 
                   if ( ! $this->image_lib->resize())
                   {
-                    echo "hata";
-                    //$this->session->set_flashdata('error', $this->image_lib->display_errors('error', 'İkinci boyutlandırma Yapılamadı'));
+                    //echo "hata";
+                    $this->session->set_flashdata('error', $this->image_lib->display_errors('error', 'Üçüncü boyutlandırma Yapılamadı'));
                   }
                   $this->image_lib->clear();
                   $data = array(
@@ -1125,19 +1173,21 @@ class Hesabim extends CI_Controller{
                   //   echo "dosya Kaydedildi";
                   // }
                 }
-
               }
             }
+
           }else{
             echo "İlan Verme Kurallarını Kabul Etmelisiniz";
             die();
           }
         }
-        $data["ilanId"]=$ilanId;
-        $this->load->view("hesabim/ilanduzenle_ok",$data);
-
     }
-
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
+    $data["ilanId"]=$ilanId;
+    $data["ilan"]=$this->db->where("Id",$ilanId)->get("firmalar")->row();
+    $this->load->view("hesabim/ilanduzenle_ok",$data);
   }
-
 }
