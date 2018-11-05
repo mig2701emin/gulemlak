@@ -41,10 +41,41 @@
             <div class="alert alert-danger"><?php echo validation_errors(); ?></div>
           <?php } ?>
 
-          <form class="needs-validation" novalidate method="post">
-            <!--harita--------------------->
-            <input type="hidden" id="map_Val" name="map_Val" value="<?php echo $ilan->map;?>"/>
-            <!--harita--------------------->
+          <form class="needs-validation" novalidate method="post" action="<?php echo base_url(); ?>hesabim/sahistanilanok">
+            <?php $r=1; ?>
+            <?php foreach ($resimler as $resim){ ?>
+              <input type="hidden" name="resim_"<?php echo $r; ?> value="<?php echo $resim;?>"/>
+              <?php $r++; ?>
+            <?php } ?>
+            <?php if (condition) {
+              for ($i=$r; $i < 16; $i++) {?>
+                  <input type="hidden" name="resim_"<?php echo $i; ?> value=""/>
+              <?php } ?>
+          <?php } ?>
+          <input type="hidden" name="kategoriId" value="<?php echo $ilan->kategoriId; ?>"/>
+          <?php
+          if (!empty($ilan->kategori2)) {?>
+            <input type="hidden" name="kategori2" value="<?php echo $ilan->kategori2; ?>"/>
+          <?php }
+          if (!empty($ilan->kategori3)) {?>
+            <input type="hidden" name="kategori3" value="<?php echo $ilan->kategori3; ?>"/>
+          <?php }
+          if (!empty($ilan->kategori4)) {?>
+            <input type="hidden" name="kategori4" value="<?php echo $ilan->kategori4; ?>"/>
+          <?php }
+          if (!empty($ilan->kategori5)) {?>
+            <input type="hidden" name="kategori5" value="<?php echo $ilan->kategori5; ?>"/>
+          <?php }
+          if (!empty($ilan->kategori6)) {?>
+            <input type="hidden" name="kategori6" value="<?php echo $ilan->kategori6; ?>"/>
+          <?php }
+          if (!empty($ilan->kategori7)) {?>
+            <input type="hidden" name="kategori7" value="<?php echo $ilan->kategori7; ?>"/>
+          <?php }
+          if (!empty($ilan->kategori8)) {?>
+            <input type="hidden" name="kategori8" value="<?php echo $ilan->kategori8; ?>"/>
+          <?php }
+          ?>
             <!--iletişim bilgileri --------->
             <h2 class="text-center">İletişim Bilgileri</h2>
             <div class="mb-3">
@@ -87,7 +118,7 @@
 
                 <label for="aciklama">İlan Bilgileri<span class="text-muted"></span></label>
                 <textarea name="aciklama" id="aciklama" style="width: 100%;min-height:300px;">
-                  <?php  echo base64_decode($ilan->aciklama);?>
+                  <?php  echo $ilan->aciklama;?>
                 </textarea>
                 <br />
               </div>
@@ -96,7 +127,7 @@
             <div class="row mb-3">
                 <div class="col-md-8" style="float: left">
                   <label for="fiyat1">Fiyat</label>
-                  <input type="number" class="form-control" name="fiyat1" placeholder="" value="<?php echo str_replace(array(".",","),"",$ilan->fiyat);?>" required>
+                  <input type="number" class="form-control" name="fiyat1" placeholder="" value="<?php echo $ilan->fiyat;?>" required>
                 </div>
                 <div class="col-md-1" style="float: left">
                   <label for="fiyat2">Kuruş</label>
@@ -134,7 +165,7 @@
 
               <div class="mb-3">
                 <label for="ilan_notu">İlan Notu :</label>
-                <input class="form-control" type="text" name="ilan_notu" value="<?php  echo $ilan->ilan_notu; ?>"/>
+                <input class="form-control" type="text" name="ilan_notu" value="<?php foreach ($ilan->ilan_notu as $key => $value) {echo $key.' : '.$value.', ';}  ?>"/>
               </div>
               <!------------------------------------------------------------------------------>
               <hr class="mb-4"/>
@@ -148,13 +179,13 @@
                       <label for="<?php echo $field->seo_name; ?>"><?php echo $field->name; ?><?php if($field->required==1){?> <span style="color:#FF0000">*</span><?php }?></label>
                       <input type="text" class="form-control" name="<?php echo $field->seo_name; ?>" <?php if($field->name=='m2'){?> size="6"<?php }?>
                       <?php if($field->name=='ada'){?> size="5"<?php }?><?php if($field->name=='parsel'){?> size="5"<?php }?>
-                      value="<?php echo set_value($field->seo_name, get_details($ilan->Id,$field->seo_name)); ?>" <?php if($field->required==1){?> required<?php }?>>
+                      value="<?php if(!empty($deger[$field->name])) {echo set_value($field->seo_name, $deger[$field->seo_name]);} else {echo set_value($field->seo_name);} ; ?>" <?php if($field->required==1){?> required<?php }?>>
                   </div>
                   <?php
                 }elseif($field->type=='textarea'){
                   ?>
                   <dt><?php echo $field->name;?><?php if($field->required==1){?> <span style="color:#FF0000">*</span><?php }?></dt>
-                  <dd><textarea name="<?php echo $field->seo_name;?>" value="<?php echo get_details($ilan->Id,$field->seo_name); ?>" style="width:185px;height:50px"<?php if($field->required==1){?> required<?php }?>></textarea></dd>
+                  <dd><textarea name="<?php echo $field->seo_name;?>" value="" style="width:185px;height:50px"<?php if($field->required==1){?> required<?php }?>></textarea></dd>
                   <div style="clear:both"></div>
                   <?php
                 }elseif($field->type=='radio'){
@@ -170,7 +201,7 @@
                     <div class="custom-control custom-radio">
                       <input class="custom-control-input" type="radio" name="<?php echo $field->seo_name; ?>"
                       id="<?php echo md5($field->seo_name."_".$i);?>" value="<?php echo $new_values[$i];?>"
-                      <?php if(get_details($ilan->Id,$field->seo_name)==$new_values[$i]){?> checked<?php }?><?php if($field->required==1){?> required<?php }?>>
+                      <?php if($field->required==1){?> required<?php }?>>
                       <label class="custom-control-label" for="<?php echo md5($field->seo_name."_".$i);?>"><?php echo " ".$new_values[$i];?></label>
                     </div>
                     <?php
@@ -196,7 +227,7 @@
                       $new_values=explode("||",$field->field_values);
                       for ($i = 0; $i <= count($new_values)-1; $i++) {
                         ?>
-                        <option value="<?php echo $new_values[$i];?>"<?php if(get_details($ilan->Id,$field->seo_name)==$new_values[$i]){?> selected<?php }?>><?php echo $new_values[$i];?></option>
+                        <option value="<?php echo $new_values[$i];?>"<?php if (!empty($deger[$field->name]) && $deger[$field->name]==$new_values[$i]) {?> selected<?php } ?>><?php echo $new_values[$i];?></option>
                         <?php
                       }
                       ?>
@@ -211,7 +242,7 @@
                   <?php
                   if($field->required==1){?>
                     <select name="<?php echo $field->seo_name;?>" onchange="multiple_field_values('<?php echo $field->seo_name;?>','<?php echo $field->Id;?>','<?php echo sha1($field->multiple_field_name);?>','','Seçiniz','./');" required>
-                    <option value=""<?php if(get_details($ilan->Id,$field->seo_name)==$new_values[$i]){?> selected<?php }?>>Seçiniz</option>
+                    <option value="">Seçiniz</option>
                     <?php
                   }else{
                     ?>
@@ -221,7 +252,7 @@
                   $new_values=explode("||",$field->field_values);
                   for ($i = 0; $i <= count($new_values)-1; $i++) {
                     ?>
-                    <option value="<?php echo $new_values[$i];?>"<?php if(get_details($ilan->Id,$field->seo_name)==$new_values[$i]){?> selected<?php }?>><?php echo $new_values[$i];?></option>
+                    <option value="<?php echo $new_values[$i];?>"><?php echo $new_values[$i];?></option>
                     <?php
                   }
                   ?>
@@ -233,7 +264,7 @@
                   <?php
                   if($field->required==1){?>
                     <select name="<?php echo $field->multiple_field_seo_name;?>" id="<?php echo sha1($field->multiple_field_name);?>" required>
-                    <option value=""<?php if(get_details($ilan->Id,$field->seo_name)==''){?> selected<?php }?>>Seçiniz</option>
+                    <option value="">Seçiniz</option>
                     <?php
                   }else{
                     ?>
@@ -255,7 +286,7 @@
                       <div class="row">
                   <?php endif; ?>
                   <?php
-                  $check_values=get_details($ilan->Id,$field->seo_name);
+                  $check_values="";
                   $explode_check=explode(", ",$check_values);
                   $new_values=explode("||",$field->field_values);
                   for ($i = 0; $i <= count($new_values)-1; $i++) {
@@ -263,7 +294,7 @@
                     ?>
                     <div class="custom-control custom-checkbox col-6 col-md-2">
                         <input type="checkbox" class="custom-control-input" name="<?php echo $field->seo_name;?>[]" value="<?php echo $new_values[$i];?>" id="<?php echo $crypted_name[$field->seo_name];?>"
-                        <?php if($field->required==1){?> required<?php }if(in_array($new_values[$i],$explode_check)){?> checked<?php }?>>
+                        <?php if($field->required==1){?> required<?php }?>>
                         <label class="custom-control-label" for="<?php echo $crypted_name[$field->seo_name];?>"><?php echo $new_values[$i];?></label>
                     </div>
                     <?php

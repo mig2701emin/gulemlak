@@ -645,6 +645,15 @@ class Hesabim extends CI_Controller{
     if ($this->magaza!=null) {
       $data["magaza"]=$this->magaza;
     }
+    $this->load->view("hesabim/sahistan",$data);
+  }
+  public function sahistanilan()
+  {
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
+    $ilan=new stdClass();
     if(isset($_POST) && !empty($_POST)){
       $formvalid = array(
         array('field' => 'url',		'label' => 'URL',				'rules' => 'required')
@@ -666,24 +675,50 @@ class Hesabim extends CI_Controller{
                         $dizi[]=$a;
                     }
                 }
-
         }
         $anaKategoriler=$this->db->where("ust_kategori","0")->get("kategoriler")->result();
         foreach ($anaKategoriler as $anaKategori) {
-          if ($dizi[0]==$anaKategori->kategori_adi) {
-            echo $anaKategori->Id.'<br/>';
+          if (seo_link($dizi[0])===$anaKategori->seo) {
+            //echo $anaKategori->Id.'<br/>';
+            $kategori=$anaKategori->Id;
             $firstSubs=$this->db->where("ust_kategori",$anaKategori->Id)->get("kategoriler")->result();
             foreach ($firstSubs as $firstSub) {
-              if ($dizi[1]==$firstSub->kategori_adi) {
-                echo $firstSub->Id.'<br/>';
+              if (seo_link($dizi[1])==$firstSub->seo) {
+                //echo $firstSub->Id.'<br/>';
+                $kategori=$firstSub->Id;
                 $secondSubs=$this->db->where("ust_kategori",$firstSub->Id)->get("kategoriler")->result();
                 foreach ($secondSubs as $secondSub) {
-                  if ($dizi[2]==$secondSub->kategori_adi) {
-                    echo $secondSub->Id.'<br/>';
+                  if (seo_link($dizi[2])==$secondSub->seo) {
+                    //echo $secondSub->Id.'<br/>';
+                    $kategori=$secondSub->Id;
                     $thirdSubs=$this->db->where("ust_kategori",$secondSub->Id)->get("kategoriler")->result();
                     foreach ($thirdSubs as $thirdSub) {
-                      if ($dizi[3]==$thirdSub->kategori_adi) {
-                        echo $thirdSub->Id.'<br/>';
+                      if (seo_link($dizi[3])==$thirdSub->seo) {
+                        //echo $thirdSub->Id.'<br/>';
+                        $kategori=$thirdSub->Id;
+                      }
+                    }
+                  }elseif (seo_link($dizi[2])=="satilik") {
+                    if (seo_link($dizi[3])==$secondSub->seo) {
+                      //echo $secondSub->Id.'<br/>';
+                      $thirdSubs=$this->db->where("ust_kategori",$secondSub->Id)->get("kategoriler")->result();
+                      foreach ($thirdSubs as $thirdSub) {
+                        if ($thirdSub->seo=="satilik") {
+                          //echo $thirdSub->Id.'<br/>';
+                          $kategori=$thirdSub->Id;
+                        }
+                      }
+                    }
+                  }elseif (seo_link($dizi[2])=="kiralik") {
+                    if (seo_link($dizi[3])==$secondSub->seo) {
+                      //echo $secondSub->Id.'<br/>';
+                      $kategori=$secondSub->Id;
+                      $thirdSubs=$this->db->where("ust_kategori",$secondSub->Id)->get("kategoriler")->result();
+                      foreach ($thirdSubs as $thirdSub) {
+                        if ($thirdSub->seo=="kiralik") {
+                          //echo $thirdSub->Id.'<br/>';
+                          $kategori=$thirdSub->Id;
+                        }
                       }
                     }
                   }
@@ -692,27 +727,87 @@ class Hesabim extends CI_Controller{
             }
           }
         }
-        echo $dizi[0].'<br/>';
-        echo $dizi[1].'<br/>';
-        echo $dizi[2].'<br/>';
-        echo $dizi[3].'<br/>';
+        $kategorinames=getustkategorinames($kategori);
+        $data["kategorinames"]=$kategorinames;
 
+        $kategorys=getustkategorys($kategori);
+        for ($i=0; $i < 9 ; $i++) {
+          if ($i == 0) {
+            $field_kategori=$kategorys[0]->Id;
+            $i++;
+
+
+          } elseif(isset($kategorys[$i-1])){
+            $yeni="field_kategori".$i;
+            $$yeni=$kategorys[$i-1]->Id;
+          }else {
+            $yeni="field_kategori".$i;
+            $$yeni="";
+          }
+        }
+        $ilan->katetoriId=$field_kategori;
+        $sql="select * from fields where ((kategori='".$field_kategori."' and kategori2='0') ";
+        if ($field_kategori2!="" || $field_kategori2!=0) {
+          $sql.="or (kategori2='".$field_kategori2."' and kategori3='0') ";
+          $ilan->katetori2=$field_kategori2;
+        }
+        if ($field_kategori3!="" || $field_kategori3!=0) {
+          $sql.="or (kategori3='".$field_kategori3."' and kategori4='0') ";
+          $ilan->katetori3=$field_kategori3;
+        }
+        if ($field_kategori4!="" || $field_kategori4!=0) {
+          $sql.="or (kategori4='".$field_kategori4."' and kategori5='0') ";
+          $ilan->katetori4=$field_kategori4;
+        }
+        if ($field_kategori5!="" || $field_kategori5!=0) {
+          $sql.="or (kategori5='".$field_kategori5."' and kategori6='0') ";
+          $ilan->katetori5=$field_kategori5;
+        }
+        if ($field_kategori6!="" || $field_kategori6!=0) {
+          $sql.="or (kategori6='".$field_kategori6."' and kategori7='0') ";
+          $ilan->katetori6=$field_kategori6;
+        }
+        if ($field_kategori7!="" || $field_kategori7!=0) {
+          $sql.="or (kategori7='".$field_kategori7."' and kategori8='0') ";
+          $ilan->katetori7=$field_kategori7;
+        }
+        if ($field_kategori8!="" || $field_kategori8!=0) {
+          $sql.="or (kategori8='".$field_kategori8."') ";
+          $ilan->katetori8=$field_kategori8;
+        }
+        $sql.=") order by siralama";
+        $fields=$this->fields->getfields($sql);
+        $data["fields"]=$fields;
         $classifiedDetailTitles = curl_search('<h1>', '</h1>', $content);
-        echo $classifiedDetailTitles[0].'<br/>';
-
+        //echo $classifiedDetailTitles[0].'<br/>';
+        $ilan->firma_adi=$classifiedDetailTitles[0];
         $classifiedInfos = curl_search('<h3>', '<a class="', $content);
-        echo $classifiedInfos[0].'<br/>';
-
+        $ilan->fiyat=intval(str_replace(array(".","\," ),array("",""),explode(" ",trim($classifiedInfos[0]))[0]));
+        $ilan->fiyat2="0";
+        $ilan->birim=explode(" ",$classifiedInfos[0])[1];
         $h2s = curl_search('<h2>', '</h2>', $content);
         foreach ($h2s as $h2) {
             $adress[]= curl_search('">', '</a>', $h2);
         }
         //print_r($adress);
         //print_r($h2s);
-        echo $adress[0][0].'<br/>';
-        echo $adress[0][1].'<br/>';
-        echo $adress[0][2].'<br/>';
 
+        // echo seo_link($adress[0][2]);
+        // die();
+        $mah=explode(" ",$adress[0][2])[count(explode(" ",$adress[0][2]))-1];
+        $mahalle=$adress[0][2];
+        if($mah="Mh."){
+          $mahalle=str_replace("Mh.","Mah.",$adress[0][2]);
+        }
+
+        $ilan->il=konum(seo_link($adress[0][0]),seo_link($adress[0][1]),seo_link($mahalle))["il"];
+        //echo $adress[0][1].'<br/>';
+        $ilan->ilce=konum(seo_link($adress[0][0]),seo_link($adress[0][1]),seo_link($mahalle))["ilce"];
+        //echo $adress[0][2].'<br/>';
+        $ilan->mahalle=konum(seo_link($adress[0][0]),seo_link($adress[0][1]),seo_link($mahalle))["mahalle"];
+        $data["iller"]=$this->firmalar->iller();
+        $data["ilceler"]=$this->firmalar->ilcelerbyIl($ilan->il);
+        $data["mahalleler"]=$this->firmalar->mahallelerbyIlce($ilan->ilce);
         $classifiedInfoLists = curl_search('<ul class="classifiedInfoList">', '</ul', $content);
         foreach ($classifiedInfoLists as $classifiedInfoList) {
             $lis= curl_search('<li>', '</li>', $classifiedInfoList);
@@ -727,254 +822,322 @@ class Hesabim extends CI_Controller{
                 if(!empty($values1)){
                     //print_r($values1);
                     //echo $values1[0];
-                    $value[]=$values1[0];
+                    $value[]="".$values1[0];
                 }elseif(!empty($values2)){
                     //print_r($values2);
                     //echo $values2[0];
-                    $value[]=$values2[0];
-                }else{
+                    $value[]="".$values2[0];
+                }elseif(!empty($values3)){
                     //print_r($values3);
                     //echo $values3[0];
-                    $value[]=$values3[0];
+                    $value[]="".$values3[0];
                 }
             }
         }
         //prinr_r($label);
         //prinr_r($value);
-        for($i=0;$i<count($value);$i++){
+        /*for($i=0;$i<count($value);$i++){
         echo $label[$i].': '.$value[$i].'<br/>';
 
+      }*/
+      $ilan_notu = array();
+      $usernameinfoarea = curl_search('<div class="username-info-area">', '<div class="getUserInfo noBorder">', $content);
+      $prettyphonepart = curl_search('<span class="pretty-phone-part">', '</span>', $content);
+      $ilan_notu["İlan Sahibi"]=curl_search('<h5>', '</h5>', $usernameinfoarea[0])[0];
+      $ilan_notu["Telefon"] =$prettyphonepart[0];
+      $ilan_notu[$label[0]] =$value[0];
+      $deger = array();
+      $aciklama="";
+
+        for($i=2;$i<count($value);$i++){
+          $deger[trim($label[$i])] =trim($value[$i]);
+
+            $aciklama.=trim($label[$i]).': '.trim($value[$i]).'<br/>';
         }
-
+        $data["deger"]=$deger;
         $classifiedDescription=curl_search('<div id="classifiedDescription" class="uiBoxContainer">','</div>',$content);
-        echo $classifiedDescription[0].'<br/>';
-
+        //echo $classifiedDescription[0].'<br/>';
+        $aciklama.=$classifiedDescription[0];
+        $ilan->aciklama=$aciklama;
         $images_1=curl_search('<label id="label_images_1" for="images_1" class="">','</label>',$content);
         //echo $images_1[0].'<br/>';
         $image_src=curl_search('src="','"',$images_1[0]);
-        echo $image_src[0].'<br/>';
+        //echo $image_src[0].'<br/>';
 
         $classifiedDetailMainPhoto=curl_search('<div class="classifiedDetailMainPhoto">','<ul class="classifiedDetailMegaVideo">',$content);
         $classifiedDetailMainPhoto_src=curl_search('data-src="','"',$classifiedDetailMainPhoto[0]);
-
+        $resimler = array();
         for($i=0;$i<count($classifiedDetailMainPhoto_src);$i++){
-          echo explode(".",(explode("/",$classifiedDetailMainPhoto_src[$i])[count(explode("/",$classifiedDetailMainPhoto_src[$i]))-1]))[1]."<br/>";
+          $resimler[]=$classifiedDetailMainPhoto_src[$i];
+          /*$resim=new stdClass();
+          //echo explode(".",(explode("/",$classifiedDetailMainPhoto_src[$i])[count(explode("/",$classifiedDetailMainPhoto_src[$i]))-1]))[1]."<br/>";
+          $uzunluk=mb_strlen($classifiedDetailMainPhoto_src[$i],'UTF-8');
+          $uzanti=explode(".",(explode("/",$classifiedDetailMainPhoto_src[$i])[count(explode("/",$classifiedDetailMainPhoto_src[$i]))-1]))[1]."<br/>";
+          $resim->name=mb_substr($classifiedDetailMainPhoto_src[$i],0,$uzunluk-mb_strlen($uzanti));
+          $resim->uzanti=$uzanti;
+          $resimler[]=$resim;
+          $resim=null;*/
             //echo $classifiedDetailMainPhoto_src[$i].'<br/>';
             //copy($classifiedDetailMainPhoto_src[$i],'sahipresim/resim'.$i.'.jpg');
         }
-        //$this->load->view("hesabim/sahistanilan",$data);
+        $data["resimler"]=$resimler;
+        $ilan->map="";
+        $ilan->ilan_notu=$ilan_notu;
+        $data["ilan"]=$ilan;
       }
-    }else {
-      $this->load->view("hesabim/sahistan",$data);
     }
-
+    $this->load->view("hesabim/sahistanform",$data);
   }
-  public function sahistanilan($ilanId)
+  public function sahistanilanok()
   {
-    $ilan_kontrol=$this->firmalar->ilan_kontrol($ilanId,$this->session->userdata("userData")["userID"]);
-    if (!$ilan_kontrol) {
-      redirect(base_url());
-    }
-    $where = array('Id' => $this->session->userdata("userData")["userID"]);
-    $user=$this->members->get($where);
-    $data["user"]=$user;
-    $ilan=$this->firmalar->get_ilan($ilanId);
-    $data["ilan"]=$ilan;
-    $kategori=max(
-      $ilan->kategoriId,
-      $ilan->kategori2,
-      $ilan->kategori3,
-      $ilan->kategori4,
-      $ilan->kategori5,
-      $ilan->kategori6,
-      $ilan->kategori7,
-      $ilan->kategori8
-    );
-    $kategorinames=getustkategorinames($kategori);
-    $data["kategorinames"]=$kategorinames;
-    $seo_url="";
-    $kategorys=getustkategorys($kategori);
-    for ($i=0; $i < 9 ; $i++) {
-      if ($i == 0) {
-        $field_kategori=$kategorys[0]->Id;
-        $seo_url.=$kategorys[0]->kategori_adi;
-        $i++;
-
-
-      } elseif(isset($kategorys[$i-1])){
-        $yeni="field_kategori".$i;
-        $$yeni=$kategorys[$i-1]->Id;
-        $seo_url.="-".$kategorys[$i-1]->kategori_adi;
-      }else {
-        $yeni="field_kategori".$i;
-        $$yeni="";
-      }
-    }
-
-    $sql="select * from fields where ((kategori='".$field_kategori."' and kategori2='0') ";
-    if ($field_kategori2!="" || $field_kategori2!=0) {
-      $sql.="or (kategori2='".$field_kategori2."' and kategori3='0') ";
-    }
-    if ($field_kategori3!="" || $field_kategori3!=0) {
-      $sql.="or (kategori3='".$field_kategori3."' and kategori4='0') ";
-    }
-    if ($field_kategori4!="" || $field_kategori4!=0) {
-      $sql.="or (kategori4='".$field_kategori4."' and kategori5='0') ";
-    }
-    if ($field_kategori5!="" || $field_kategori5!=0) {
-      $sql.="or (kategori5='".$field_kategori5."' and kategori6='0') ";
-    }
-    if ($field_kategori6!="" || $field_kategori6!=0) {
-      $sql.="or (kategori6='".$field_kategori6."' and kategori7='0') ";
-    }
-    if ($field_kategori7!="" || $field_kategori7!=0) {
-      $sql.="or (kategori7='".$field_kategori7."' and kategori8='0') ";
-    }
-    if ($field_kategori8!="" || $field_kategori8!=0) {
-      $sql.="or (kategori8='".$field_kategori8."') ";
-    }
-    $sql.=") order by siralama";
-    $fields=$this->fields->getfields($sql);
-    $data["fields"]=$fields;
-    $data["iller"]=$this->firmalar->iller();
-    $data["ilceler"]=$this->firmalar->ilcelerbyIl($ilan->il);
-    $data["mahalleler"]=$this->firmalar->mahallelerbyIlce($ilan->ilce);
     if (isset($_POST) && !empty($_POST)) {
-      $userID=$this->session->userdata("userData")["userID"];
-      $formvalid = array(
-          array('field' => 'ad_rules',                'label' => 'Sözleşme Kabul',        'rules' => 'required'),
-          array('field' => 'ilanadi',                 'label' => 'İlan Başlığı',          'rules' => 'required'),
-          array('field' => 'aciklama',                'label' => 'İlan Açıklaması',       'rules' => 'required'),
-          array('field' => 'fiyat1',                  'label' => 'Fiyat',                 'rules' => 'required'),
-          array('field' => 'bitis_suresi',            'label' => 'İlan Süresi',           'rules' => 'required'),
-          array('field' => 'il',                      'label' => 'İl',                    'rules' => 'required'),
-          array('field' => 'ilce',                    'label' => 'İlce',                  'rules' => 'required'),
-          array('field' => 'mahalle',                 'label' => 'Mahalle',               'rules' => 'required'),
-      );
-      foreach ($fields as $field) {
-        if ($field->required==1) {
-          $formvalid[]=  array('field' => $field->seo_name, 'label' => $field->name,'rules' => 'required');
-        }
-      }
-      $this->form_validation->set_rules($formvalid);
-      $this->form_validation->set_error_delimiters('<p>', '</p>');
-      $this->form_validation->set_message('required', '<strong>%s</strong> Gerekli Bir Alandır.');
-      if ($this->form_validation->run() == TRUE) {
-        $ad_rules = $this->security->xss_clean($this->input->post('ad_rules'));
-        if ($ad_rules='') {
-          $this->session->set_flashdata('error', 'İlan Verme Kurallarını Kabul Etmelisiniz.');
-          redirect(base_url("hesabim/ilanduzenle/".$ilanId));
-        }
-        $firmalar = array();
-        $ilanadi       = $this->security->xss_clean($this->input->post('ilanadi'));
-        $firmalar["firma_adi"]=$ilanadi;
-        $use_map       = $this->security->xss_clean($this->input->post('use_map'));
-        $map           = $this->security->xss_clean($this->input->post('map_Val'));
-        if($use_map!=1 or $map==''){$map="";}
-        $firmalar["map"]=$map;
-        $aciklama      = $this->security->xss_clean($this->input->post('aciklama'));
-        $firmalar["aciklama"] = base64_encode($aciklama);
-        $firmalar["il"] = $this->security->xss_clean($this->input->post('il'));
-        $seo_url.="-".replace("tbl_il","il_ad","il_id",$firmalar["il"]);
-        $firmalar["ilce"] = $this->security->xss_clean($this->input->post('ilce'));
-        $seo_url.="-".replace("tbl_ilce","ilce_ad","ilce_id",$firmalar["ilce"]);
-        $firmalar["mahalle"] = $this->security->xss_clean($this->input->post('mahalle'));
-        $seo_url.="-".replace("tbl_mahalle","mahalle_ad","mahalle_id",$firmalar["mahalle"]);
-        //$seo_url.="-".$ilanId;
-        $firmalar["seo_url"]=$seo_url;
-        $firmalar["kayit_tarihi"]=date("Y-m-d H:i:s");
-        $bitis_suresi  = $this->security->xss_clean($this->input->post('bitis_suresi'));
-        switch ($bitis_suresi) {
-          case '1 Ay':
-            $bitis_tarihi=date("Y-m-d",strtotime("+1 month"));
-          break;
-          case '2 Ay':
-            $bitis_tarihi=date("Y-m-d",strtotime("+2 month"));
-          break;
-          case '3 Ay':
-            $bitis_tarihi=date("Y-m-d",strtotime("+3 month"));
-          break;
-          case '4 Ay':
-            $bitis_tarihi=date("Y-m-d",strtotime("+4 month"));
-          break;
-          case '5 Ay':
-            $bitis_tarihi=date("Y-m-d",strtotime("+5 month"));
-          break;
-          case '6 Ay':
-            $bitis_tarihi=date("Y-m-d",strtotime("+6 month"));
-          break;
-          case '7 Ay':
-            $bitis_tarihi=date("Y-m-d",strtotime("+7 month"));
-          break;
-          case '8 Ay':
-            $bitis_tarihi=date("Y-m-d",strtotime("+8 month"));
-          break;
-          case '9 Ay':
-            $bitis_tarihi=date("Y-m-d",strtotime("+9 month"));
-          break;
-          case '10 Ay':
-            $bitis_tarihi=date("Y-m-d",strtotime("+10 month"));
-          break;
-          case '11 Ay':
-            $bitis_tarihi=date("Y-m-d",strtotime("+11 month"));
-          break;
-          case '1 Yıl':
-            $bitis_tarihi=date("Y-m-d",strtotime("+1 year"));
-          break;
-          default:
-            $bitis_tarihi=date("Y-m-d",strtotime("+1 month"));
-          break;
-        }
-        $firmalar["bitis_tarihi"]=$bitis_tarihi;
-        $ilan_magazada_mi  = $this->magazalar->ilan_magazada_mi($ilanId);
-
-        if ($ilan_magazada_mi) {
-          $onay_durum=1;
-          $kucuk_fotograf=1;
-        } else {
-          $onay_durum=0;
-          $kucuk_fotograf=0;
-        }
-        $firmalar["onay"]=$onay_durum;
-        $firmalar["yayinla"]=$this->security->xss_clean($this->input->post('yayinla'));
-        $firmalar["fiyat"] = $this->security->xss_clean($this->input->post('fiyat1'));
-        $firmalar["fiyat2"] = $this->security->xss_clean($this->input->post('fiyat2'));
-        $firmalar["birim"] = $this->security->xss_clean($this->input->post('birim'));
-        $firmalar["kucuk_fotograf"] = $kucuk_fotograf;
-        $firmalar["ilan_notu"] = $this->security->xss_clean($this->input->post('ilan_notu'));
-        $insert=$this->firmalar->update($ilanId,$firmalar);
-        $field_values = array();
+      // $res = post_captcha($_POST['g-recaptcha-response']);
+      // if ($res['success']) {
+        //recaptcha onaylanmışsa
+        $userID=$this->session->userdata("userData")["userID"];
+        $formvalid = array(
+            array('field' => 'ad_rules',                'label' => 'Sözleşme Kabul',        'rules' => 'required'),
+            array('field' => 'ilanadi',                 'label' => 'İlan Başlığı',          'rules' => 'required'),
+            array('field' => 'aciklama',                'label' => 'İlan Açıklaması',       'rules' => 'required'),
+            array('field' => 'fiyat1',                  'label' => 'Fiyat',                 'rules' => 'required'),
+            array('field' => 'bitis_suresi',            'label' => 'İlan Süresi',           'rules' => 'required'),
+            array('field' => 'il',                      'label' => 'İl',                    'rules' => 'required'),
+            array('field' => 'ilce',                    'label' => 'İlce',                  'rules' => 'required'),
+            array('field' => 'mahalle',                 'label' => 'Mahalle',               'rules' => 'required'),
+        );
         foreach ($fields as $field) {
-          if($field->type=='checkbox'){
-            // hidden fields
-            $field_values[$field->seo_name]=implode($this->security->xss_clean($this->input->post($field->seo_name)),", ");
-
-          }elseif($field->type=='multiple_select'){
-            // hidden fields
-            $field_values[$field->seo_name]=$this->security->xss_clean($this->input->post($field->seo_name));
-            $field_values[$field->multiple_field_seo_name]=$this->security->xss_clean($this->input->post($field->multiple_field_seo_name));
-          }else{
-            // hidden fields
-            $field_values[$field->seo_name]=$this->security->xss_clean($this->input->post($field->seo_name));
+          if ($field->required==1) {
+            $formvalid[]=  array('field' => $field->seo_name, 'label' => $field->name,'rules' => 'required');
           }
         }
-        foreach ($field_values as $field_name => $field_value) {
-          $where = array("ilanId" => $ilanId, "field_name" => $field_name);
-          $update = array("field_value" => $field_value);
-          $this->fields->update($where,$update);
-        //  $this->db->query("insert into custom_fields (Id,ilanId,field_name,field_value) VALUES(null,'".$ilanId."','".$field_name."','".$field_value."')");
-        }
-        $this->session->set_flashdata('success', 'Değişiklikler Kaydedildi.');
-        redirect(base_url("hesabim/ilanduzenle_ok/".$ilanId));
+        $this->form_validation->set_rules($formvalid);
+        $this->form_validation->set_error_delimiters('<p>', '</p>');
+        $this->form_validation->set_message('required', '<strong>%s</strong> Gerekli Bir Alandır.');
+        if ($this->form_validation->run() == TRUE) {
+          $ad_rules = $this->security->xss_clean($this->input->post('ad_rules'));
+          if ($ad_rules==1) {
+            $this->session->set_flashdata('error', 'İlan Verme Kurallarını Kabul Etmelisiniz.');
+            $firmalar = array();
+            $ilanId=ilan_id_al();
+            $firmalar["Id"]=$ilanId;
+            $firmalar["kategoriId"]= $this->security->xss_clean($this->input->post('kategoriId'));
+            $firmalar["uyeId"]=$userID;
+            $ilanadi       = $this->security->xss_clean($this->input->post('ilanadi'));
+            $firmalar["firma_adi"]=$ilanadi;
+            $use_map       = $this->security->xss_clean($this->input->post('use_map'));
+            $map           = $this->security->xss_clean($this->input->post('map_Val'));
+            if($use_map!=1 or $map==''){$map="";}
+            $firmalar["map"]=$map;
+            $aciklama      = $this->security->xss_clean($this->input->post('aciklama'));
+            $firmalar["aciklama"] = base64_encode($aciklama);
+            $firmalar["il"] = $this->security->xss_clean($this->input->post('il'));
+            $firmalar["ilce"] = $this->security->xss_clean($this->input->post('ilce'));
+            $firmalar["mahalle"] = $this->security->xss_clean($this->input->post('mahalle'));
+            //$seo_url.="-".$ilanId;
+            $firmalar["kayit_tarihi"]=date("Y-m-d H:i:s");
+            $bitis_suresi  = $this->security->xss_clean($this->input->post('bitis_suresi'));
+            switch ($bitis_suresi) {
+              case '1 Ay':
+                $bitis_tarihi=date("Y-m-d",strtotime("+1 month"));
+              break;
+              case '2 Ay':
+                $bitis_tarihi=date("Y-m-d",strtotime("+2 month"));
+              break;
+              case '3 Ay':
+                $bitis_tarihi=date("Y-m-d",strtotime("+3 month"));
+              break;
+              case '4 Ay':
+                $bitis_tarihi=date("Y-m-d",strtotime("+4 month"));
+              break;
+              case '5 Ay':
+                $bitis_tarihi=date("Y-m-d",strtotime("+5 month"));
+              break;
+              case '6 Ay':
+                $bitis_tarihi=date("Y-m-d",strtotime("+6 month"));
+              break;
+              case '7 Ay':
+                $bitis_tarihi=date("Y-m-d",strtotime("+7 month"));
+              break;
+              case '8 Ay':
+                $bitis_tarihi=date("Y-m-d",strtotime("+8 month"));
+              break;
+              case '9 Ay':
+                $bitis_tarihi=date("Y-m-d",strtotime("+9 month"));
+              break;
+              case '10 Ay':
+                $bitis_tarihi=date("Y-m-d",strtotime("+10 month"));
+              break;
+              case '11 Ay':
+                $bitis_tarihi=date("Y-m-d",strtotime("+11 month"));
+              break;
+              case '1 Yıl':
+                $bitis_tarihi=date("Y-m-d",strtotime("+1 year"));
+              break;
+              default:
+                $bitis_tarihi=date("Y-m-d",strtotime("+1 month"));
+              break;
+            }
+            $firmalar["bitis_tarihi"]=$bitis_tarihi;
+            $firmalar["toplam_ziyaretci"]=0;
+            $magaza_var_mi=magaza_var_mi($userID);
+            $add_to_store  = $this->security->xss_clean($this->input->post('add_to_store'));
 
-      } else {
-        //validation kontrolü error verirse
-      }
+            if ($magaza_var_mi && $add_to_store) {
+              $magazaId=$this->db->where("uyeId",$userID)->get("magaza_kullanicilari")->row()->magazaId;
+              $magaza_ilanlari = array('Id' => null, 'magazaId' => $magazaId, 'ilanId' => $ilanId, 'uyeId' => $userID);
+              $this->db->insert("magaza_ilanlari",$magaza_ilanlari);
+              $onay_durum=1;
+              $kucuk_fotograf=1;
+            } else {
+              $onay_durum=0;
+              $kucuk_fotograf=0;
+            }
+            $firmalar["onay"]=$onay_durum;
+            $firmalar["yayinla"]=$this->security->xss_clean($this->input->post('yayinla'));
+            $firmalar["kategori2"] = ($this->security->xss_clean($this->input->post('kategori2'))!="") ? $this->security->xss_clean($this->input->post('kategori2')) : 0 ;
+            $firmalar["kategori3"] = ($this->security->xss_clean($this->input->post('kategori3'))!="") ? $this->security->xss_clean($this->input->post('kategori3')) : 0 ;
+            $firmalar["kategori4"] = ($this->security->xss_clean($this->input->post('kategori4'))!="") ? $this->security->xss_clean($this->input->post('kategori4')) : 0 ;
+            $firmalar["kategori5"] = ($this->security->xss_clean($this->input->post('kategori5'))!="") ? $this->security->xss_clean($this->input->post('kategori5')) : 0 ;
+            $firmalar["kategori6"] = ($this->security->xss_clean($this->input->post('kategori6'))!="") ? $this->security->xss_clean($this->input->post('kategori6')) : 0 ;
+            $firmalar["kategori7"] = ($this->security->xss_clean($this->input->post('kategori7'))!="") ? $this->security->xss_clean($this->input->post('kategori7')) : 0 ;
+            $firmalar["kategori8"] = ($this->security->xss_clean($this->input->post('kategori8'))!="") ? $this->security->xss_clean($this->input->post('kategori8')) : 0 ;
+            $seo_url=replace("kategoriler","seo","Id",$firmalar["kategoriId"]);
+            $seo_url.="-".replace("kategoriler","seo","Id",$firmalar["kategori2"]);
+            $seo_url.="-".replace("kategoriler","seo","Id",$firmalar["kategori3"]);
+            if ($firmalar["kategori4"]!=0) {
+              $seo_url.="-".replace("kategoriler","seo","Id",$firmalar["kategori4"]);
+            }
+            if ($firmalar["kategori5"]!=0) {
+              $seo_url.="-".replace("kategoriler","seo","Id",$firmalar["kategori5"]);
+            }
+            $seo_url.="-".replace("tbl_il","seo_il","il_id",$firmalar["il"]);
+            $seo_url.="-".replace("tbl_ilce","seo_ilce","ilce_id",$firmalar["ilce"]);
+            $seo_url.="-".replace("tbl_mahalle","seo_mahalle","mahalle_id",$firmalar["mahalle"]);
+            $firmalar["seo_url"]=$seo_url;
+            $firmalar["fiyat"] = $this->security->xss_clean($this->input->post('fiyat1'));
+            $firmalar["fiyat2"] = $this->security->xss_clean($this->input->post('fiyat2'));
+            $firmalar["birim"] = $this->security->xss_clean($this->input->post('birim'));
+            $firmalar["kucuk_fotograf"] = $kucuk_fotograf;
+            $firmalar["ilan_turu"] = 0;
+            $firmalar["ilan_notu"] = $this->security->xss_clean($this->input->post('ilan_notu'));
+            $insert=$this->firmalar->add($firmalar);
+            $field_values = array();
+            foreach ($fields as $field) {
+              if($field->type=='checkbox'){
+                // hidden fields
+                $field_values[$field->seo_name]=implode($this->security->xss_clean($this->input->post($field->seo_name)),", ");
+
+              }elseif($field->type=='multiple_select'){
+                // hidden fields
+                $field_values[$field->seo_name]=$this->security->xss_clean($this->input->post($field->seo_name));
+                $field_values[$field->multiple_field_seo_name]=$this->security->xss_clean($this->input->post($field->multiple_field_seo_name));
+              }else{
+                // hidden fields
+                $field_values[$field->seo_name]=$this->security->xss_clean($this->input->post($field->seo_name));
+              }
+            }
+            foreach ($field_values as $field_name => $field_value) {
+              $this->db->query("insert into custom_fields (Id,ilanId,field_name,field_value) VALUES(null,'".$ilanId."','".$field_name."','".$field_value."')");
+            }
+            for ($i=1; $i < 16; $i++) {
+              $resim=$this->security->xss_clean($this->input->post('resim'.$i));
+              if (!empty($resim)) {
+                $uzunluk=mb_strlen($resim,'UTF-8');
+                $uzanti=explode(".",(explode("/",$resim)[count(explode("/",$resim))-1]))[1]."<br/>";
+                $name=mb_substr($resim,0,$uzunluk-mb_strlen($uzanti));
+                $upload=copy($resim,'photos/big/'.$ilanId.'_'.$i.'\.'.$uzanti);
+                if ($upload) {
+                  $config['image_library'] = 'gd2';
+                  $config['source_image'] = 'photos/big/'.$ilanId.'_'.$i.'\.'.$uzanti;
+                  $config['maintain_ratio'] = false;
+                  $config['width'] = 890;
+                  $config['height'] = 550;
+
+
+                  $this->image_lib->initialize($config);
+
+                  if ( ! $this->image_lib->resize())
+                  {
+                    echo "hata";
+                    //$this->session->set_flashdata('error', $this->image_lib->display_errors('error', 'İkinci boyutlandırma Yapılamadı'));
+                  }
+                  $this->image_lib->clear();
+
+                  $config1['image_library'] = 'gd2';
+                  $config1['source_image'] = 'assets/images/deneme1.png';
+                  $config1['new_image'] = 'photos/big/'.$ilanId.'_'.$i.'\.'.$uzanti;
+                  $config1['wm_type'] = 'overlay';
+                  $config1['wm_overlay_path'] = 'photos/big/'.$ilanId.'_'.$i.'\.'.$uzanti;
+                  $config1['wm_opacity'] = '100';
+                  $config1['wm_vrt_alignment'] = 'middle';
+                  $config1['wm_hor_alignment'] = 'center';
+
+
+                  $this->image_lib->initialize($config1);
+                  if (!$this->image_lib->watermark()) {
+                    $this->session->set_flashdata('error', $this->image_lib->display_errors('error', 'Watermak işlemi Yapılamadı'));
+                  }
+
+                  $this->image_lib->clear();
+
+                  $config1['image_library'] = 'gd2';
+                  $config1['source_image'] = 'photos/big/'.$ilanId.'_'.$i.'\.'.$uzanti;
+                  $config1['new_image'] = FCPATH."photos/crop/".$name;
+                  $config1['maintain_ratio'] = TRUE;
+                  $config1['width'] = 445;
+                  $config1['height'] = 275;
+
+                  $this->image_lib->initialize($config1);
+
+                  if ( ! $this->image_lib->resize())
+                  {
+                    echo "hata";
+                    //$this->session->set_flashdata('error', $this->image_lib->display_errors('error', 'İkinci boyutlandırma Yapılamadı'));
+                  }
+                  $this->image_lib->clear();
+
+
+
+                  $config2['image_library'] = 'gd2';
+                  $config2['source_image'] = 'photos/big/'.$ilanId.'_'.$i.'\.'.$uzanti;
+                  $config2['new_image'] = FCPATH."photos/thumbnail/".$name;
+                  $config2['maintain_ratio'] = TRUE;
+                  $config2['width'] = 178;
+                  $config2['height'] = 110;
+
+
+
+                  $this->image_lib->initialize($config2);
+
+                  if ( ! $this->image_lib->resize())
+                  {
+                    echo "hata";
+                    //$this->session->set_flashdata('error', $this->image_lib->display_errors('error', 'İkinci boyutlandırma Yapılamadı'));
+                  }
+                  $this->image_lib->clear();
+                  $data = array(
+                      "ilanId" => $ilanId,
+                      "name" => $name
+                  );
+
+                  $insert = $this->db->insert("pictures", $data);
+                  // if ($insert) {
+                  //   echo "dosya Kaydedildi";
+                  // }
+                }
+
+              }
+            }
+          }else{
+            echo "İlan Verme Kurallarını Kabul Etmelisiniz";
+            die();
+          }
+        }
+        $data["ilanId"]=$ilanId;
+        $this->load->view("hesabim/ilanduzenle_ok",$data);
+
     }
-    if ($this->magaza!=null) {
-      $data["magaza"]=$this->magaza;
-    }
-    $this->load->view("hesabim/sahistanilan",$data);
+
   }
 
 }

@@ -25,7 +25,7 @@
                       </div>
 
                       <div class="panel-body">
-                        <form method="post">
+                        <form method="post" action="<?php echo base_url(); ?>hesabim/sahistanilan">
                             <div class="well">Kullanıcı: <strong><?php echo $user->ad." ".$user->soyad; ?></strong></div>
                             <hr/>
                             <div class="form-group">

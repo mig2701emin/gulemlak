@@ -148,7 +148,7 @@ class Ilanekle extends CI_Controller{
             $firmalar["il"] = $this->security->xss_clean($this->input->post('il'));
             $seo_url.="-".replace("tbl_il","seo_il","il_id",$firmalar["il"]);
             $firmalar["ilce"] = $this->security->xss_clean($this->input->post('ilce'));
-            $seo_url.="-".replace("tbl_ilce","seo_icel","ilce_id",$firmalar["ilce"]);
+            $seo_url.="-".replace("tbl_ilce","seo_ilce","ilce_id",$firmalar["ilce"]);
             $firmalar["mahalle"] = $this->security->xss_clean($this->input->post('mahalle'));
             $seo_url.="-".replace("tbl_mahalle","seo_mahalle","mahalle_id",$firmalar["mahalle"]);
             //$seo_url.="-".$ilanId;
