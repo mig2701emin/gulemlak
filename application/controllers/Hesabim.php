@@ -841,21 +841,26 @@ class Hesabim extends CI_Controller{
       $ilan_notu[$label[0]] =$value[0];
       $deger = array();
       $aciklama1= array();
-
+      $mevcut = array();
         for($i=2;$i<count($value);$i++){
           foreach ($fields as $field) {
-            if (seo_link2($label[$i])==$field->seo_name) {
-              $deger[seo_link2($label[$i])] =trim($value[$i]);
-            } else {
-              $aciklama1[seo_link2($label[$i])] =trim($value[$i]);
+            if (cleanword($label[$i])==cleanword($field->name)) {
+              $deger[cleanword($label[$i])] =cleanword($value[$i]);
+              $mevcut[]=cleanword($label[$i]);
             }
           }
-            //$aciklama.=trim($label[$i]).': '.trim($value[$i]).'<br/>';
         }
         $aciklama="";
-        foreach ($aciklama1 as $key => $value) {
-          $aciklama.=$key.': '.$value.'<br/>';
+        for($i=2;$i<count($value);$i++){
+            if (!in_array(cleanword($label[$i]),$mevcut)) {
+              $aciklama.=cleanword($label[$i]).': '.cleanword($value[$i]).'<br/>';
+            }
         }
+
+        // $aciklama="";
+        // foreach ($aciklama1 as $key => $value) {
+        //   $aciklama.=$key.': '.$value.'<br/>';
+        // }
         $data["deger"]=$deger;
         $classifiedDescription=curl_search('<div id="classifiedDescription" class="uiBoxContainer">','</div>',$content);
         //echo $classifiedDescription[0].'<br/>';
