@@ -296,7 +296,7 @@
         <?php } ?>
       <?php } ?>
         <div class="col-12">
-          <p class="pagination text-center"><?php echo $links; ?></p>
+            <p class="pagination"><?php echo $links; ?></p>
         </div>
     </div>
 
