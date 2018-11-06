@@ -50,7 +50,7 @@ class Movetophotos extends CI_Controller{
             $this->image_lib->clear();
 
             $config1['image_library'] = 'gd2';
-            $config1['source_image'] = 'assets/images/deneme1.png';
+            $config1['source_image'] = 'assets/images/deneme1.jpg';
             $config1['new_image'] = $destination_file;
             $config1['wm_type'] = 'overlay';
             $config1['wm_overlay_path'] = $destination_file;

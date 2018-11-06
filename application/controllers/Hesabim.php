@@ -1116,7 +1116,7 @@ class Hesabim extends CI_Controller{
                   $this->image_lib->clear();
 
                   $config1['image_library'] = 'gd2';
-                  $config1['source_image'] = FCPATH.'assets/images/deneme1.png';
+                  $config1['source_image'] = FCPATH.'assets/images/deneme1.jpg';
                   $config1['new_image'] = FCPATH.'photos/big/'.$name;
                   $config1['wm_type'] = 'overlay';
                   $config1['wm_overlay_path'] = FCPATH.'photos/big/'.$name;

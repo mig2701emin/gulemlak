@@ -50,7 +50,7 @@ class Resim extends CI_Controller{
 			if ($this->upload->do_upload("file")){
         $this->load->library('image_lib');
         $config1['image_library'] = 'gd2';
-        $config1['source_image'] = 'assets/images/deneme1.png';
+        $config1['source_image'] = 'assets/images/deneme1.jpg';
         $config1['new_image'] = $this->upload->upload_path.$this->upload->file_name;
         $config1['wm_type'] = 'overlay';
         $config1['wm_overlay_path'] = $this->upload->upload_path.$this->upload->file_name;
