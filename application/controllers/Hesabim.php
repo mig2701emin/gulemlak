@@ -417,7 +417,7 @@ class Hesabim extends CI_Controller{
         //  $this->db->query("insert into custom_fields (Id,ilanId,field_name,field_value) VALUES(null,'".$ilanId."','".$field_name."','".$field_value."')");
         }
         $this->session->set_flashdata('success', 'Değişiklikler Kaydedildi.');
-        redirect(base_url("hesabim/ilanduzenle_ok/".$ilanId));
+        redirect(base_url("resim/duzenle/".$ilanId));
 
       } else {
         //validation kontrolü error verirse
@@ -1188,6 +1188,6 @@ class Hesabim extends CI_Controller{
     }
     $data["ilanId"]=$ilanId;
     $data["ilan"]=$this->db->where("Id",$ilanId)->get("firmalar")->row();
-    $this->load->view("hesabim/ilanduzenle_ok",$data);
+    $this->load->view("resim/duzenle",$data);
   }
 }

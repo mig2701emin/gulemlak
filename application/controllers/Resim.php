@@ -33,6 +33,19 @@ class Resim extends CI_Controller{
     }
     $this->load->view("resim/ekle",$data);
   }
+  public function duzenle($ilanId)
+  {
+    $data["ilanId"]=$ilanId;
+    $ilan_kontrol=$this->firmalar->ilan_kontrol($ilanId,$this->session->userdata("userData")["userID"]);
+    if (!$ilan_kontrol) {
+      redirect(base_url());
+    }
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
+    $this->load->view("resim/duzenle",$data);
+  }
 
   public function yukle($ilanId)
   {
