@@ -159,7 +159,7 @@
 
                   <div class="mb-3">
                       <label for="<?php echo $field->seo_name; ?>"><?php echo $field->name; ?><?php if($field->required==1){?> <span style="color:#FF0000">*</span><?php }?></label>
-                      <input type="text" class="form-control" name="<?php echo $field->seo_name; ?>" <?php if($field->name=='m2'){?> size="6"<?php }?>
+                      <input type="text" class="form-control" name="<?php echo $field->seo_name; ?>" <?php if($field->name=='m²'){?> size="6"<?php }?>
                       <?php if($field->name=='ada'){?> size="5"<?php }?><?php if($field->name=='parsel'){?> size="5"<?php }?>
                       value="<?php echo set_value('$field->seo_name'); ?>" <?php if($field->required==1){?> required<?php }?>>
                   </div>

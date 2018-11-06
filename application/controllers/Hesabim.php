@@ -736,8 +736,6 @@ class Hesabim extends CI_Controller{
           if ($i == 0) {
             $field_kategori=$kategorys[0]->Id;
             $i++;
-
-
           } elseif(isset($kategorys[$i-1])){
             $yeni="field_kategori".$i;
             $$yeni=$kategorys[$i-1]->Id;
@@ -790,17 +788,11 @@ class Hesabim extends CI_Controller{
         foreach ($h2s as $h2) {
             $adress[]= curl_search('">', '</a>', $h2);
         }
-        //print_r($adress);
-        //print_r($h2s);
-
-        // echo seo_link($adress[0][2]);
-        // die();
         $mah=explode(" ",$adress[0][2])[count(explode(" ",$adress[0][2]))-1];
         $mahalle=$adress[0][2];
         if($mah="Mh."){
           $mahalle=str_replace("Mh.","Mah.",$adress[0][2]);
         }
-
         $ilan->il=konum(seo_link($adress[0][0]),seo_link($adress[0][1]),seo_link($mahalle))["il"];
         //echo $adress[0][1].'<br/>';
         $ilan->ilce=konum(seo_link($adress[0][0]),seo_link($adress[0][1]),seo_link($mahalle))["ilce"];
@@ -848,12 +840,21 @@ class Hesabim extends CI_Controller{
       $ilan_notu["Telefon"] =$prettyphonepart[0];
       $ilan_notu[$label[0]] =$value[0];
       $deger = array();
-      $aciklama="";
+      $aciklama1= array();
 
         for($i=2;$i<count($value);$i++){
-          $deger[trim($label[$i])] =trim($value[$i]);
-
-            $aciklama.=trim($label[$i]).': '.trim($value[$i]).'<br/>';
+          foreach ($fields as $field) {
+            if (seo_link2($label[$i])==$field->seo_name) {
+              $deger[seo_link2($label[$i])] =trim($value[$i]);
+            } else {
+              $aciklama1[seo_link2($label[$i])] =trim($value[$i]);
+            }
+          }
+            //$aciklama.=trim($label[$i]).': '.trim($value[$i]).'<br/>';
+        }
+        $aciklama="";
+        foreach ($aciklama1 as $key => $value) {
+          $aciklama.=$key.': '.$value.'<br/>';
         }
         $data["deger"]=$deger;
         $classifiedDescription=curl_search('<div id="classifiedDescription" class="uiBoxContainer">','</div>',$content);
@@ -1030,7 +1031,7 @@ class Hesabim extends CI_Controller{
             $magaza_var_mi=magaza_var_mi($userID);
             $add_to_store  = $this->security->xss_clean($this->input->post('add_to_store'));
 
-            if ($magaza_var_mi && $add_to_store) {
+            if ($magaza_var_mi) {
               $magazaId=$this->db->where("uyeId",$userID)->get("magaza_kullanicilari")->row()->magazaId;
               $magaza_ilanlari = array('Id' => null, 'magazaId' => $magazaId, 'ilanId' => $ilanId, 'uyeId' => $userID);
               $this->db->insert("magaza_ilanlari",$magaza_ilanlari);
@@ -1073,8 +1074,9 @@ class Hesabim extends CI_Controller{
             foreach ($fields as $field) {
               if($field->type=='checkbox'){
                 // hidden fields
-                $field_values[$field->seo_name]=implode($this->security->xss_clean($this->input->post($field->seo_name)),", ");
-
+                if ($this->input->post($field->seo_name)!="") {
+                  $field_values[$field->seo_name]=implode($this->security->xss_clean($this->input->post($field->seo_name)),", ");
+                }
               }elseif($field->type=='multiple_select'){
                 // hidden fields
                 $field_values[$field->seo_name]=$this->security->xss_clean($this->input->post($field->seo_name));

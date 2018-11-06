@@ -206,6 +206,11 @@
 					</div>
 				</div>
 		    <div class="col-12 col-sm-6 col-lg-10">
+					<?php if ($this->session->userdata("userData")["userID"] == $ilan->uyeId): ?>
+						<div class="col-12">
+							<p class="text text-danger"><?php echo $ilan->ilan_notu; ?></p>
+						</div>					
+					<?php endif; ?>
 						<div class="col-12 jumbotron">
 							<h2 class="text-uppercase"><?php echo $ilan->firma_adi; ?></h2>
 						</div>
@@ -289,6 +294,19 @@
 						</div>
 
 					</div>
+					<div class="col-12">
+						<hr class="mb-4"/>
+						<div class="row col-12 mb-3 mt-3">
+							<?php echo base64_decode($ilan->aciklama); ?>
+						</div>
+						<hr class="mb-4"/>
+						<div class="row col-12 mb-3">
+							<?php
+							echo $show_additional_fields;
+							?>
+						</div>
+
+					</div>
 				</div>
 				<div class="col-12 col-sm-6 col-lg-2" style="paddind-right:0;padding-left:0">
 				<?php if ($magaza_var_mi){ ?>
@@ -362,19 +380,6 @@
 					<!-- <div class="col-12 mar-bot">
 						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3185.951538138242!2d37.34923931510993!3d37.01095247990566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1531de263041cad9%3A0x2ea85746583f6db6!2sKarata%C5%9F+Mahallesi%2C+103424.+Cd.+24%2C+27470+%C5%9Eahinbey%2FGaziantep!5e0!3m2!1str!2str!4v1534592215147"  width="100%" height="250" frameborder="0" style="border:0; border-radius:30px;" allowfullscreen></iframe>
 					</div> -->
-				</div>
-				<div class="col-12">
-					<hr class="mb-4"/>
-					<div class="row col-12 mb-3 mt-3">
-						<?php echo base64_decode($ilan->aciklama); ?>
-					</div>
-					<hr class="mb-4"/>
-					<div class="row col-12 mb-3">
-						<?php
-						echo $show_additional_fields;
-						?>
-					</div>
-
 				</div>
 			</div>
 		</div>

@@ -147,6 +147,12 @@ function seo_link($url){
     $url = str_replace ('--', '-', $url);
     return $url;
 }
+function seo_link2($url)
+{
+  $url2=seo_link($url);
+  $url2 = str_replace ('-', '_', $url2);
+  return $url2;
+}
 function baslik_yap($url){
     $url = trim($url);
     $find = array('é', 'è', 'ë', 'ê', 'É', 'È', 'Ë', 'Ê');
