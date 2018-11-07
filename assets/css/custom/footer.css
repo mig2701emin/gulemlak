@@ -120,12 +120,12 @@ color:white;
 .footer-static-block li i.fa {
     float: left;
     font-size: 16px;
-    color: #ff5442;
+    color: #fff;
     margin-top: 4px;
 }
 
 .footer-right-side .footer-static-block li i.fa {
-    color: #555555;
+    color: #fff;
     margin-right: 4px;
 }
 

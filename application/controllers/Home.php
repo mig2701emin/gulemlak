@@ -143,12 +143,12 @@
 						// preview fields
 						$change_value=get_details($ilanId,$field->seo_name);
 						$change_value2=get_details($ilanId,$multiple_field_seo_name);
-						$show_fields.='<div class="col-12 mar-bot row"><div class="col-6">'.$field->name.'</div><div class="col-6">'.($change_value!=''?$change_value:'Belirtilmemiş').'</div></div>';
-						$show_fields.='<div class="col-12 mar-bot row"><div class="col-6">'.$field->multiple_field_name.'</div><div class="col-6">'.($change_value2!=''?$change_value2:'Belirtilmemiş').'</div></div>';
+						$show_fields.='<div class="col-12 mar-bot"><div class="row"><div class="col-6 bilgibaslik">'.$field->name.'</div><div class="col-6">'.($change_value!=''?$change_value:'Belirtilmemiş').'</div></div></div>';
+						$show_fields.='<div class="col-12 mar-bot"><div class="row"><div class="col-6 bilgibaslik">'.$field->multiple_field_name.'</div><div class="col-6">'.($change_value2!=''?$change_value2:'Belirtilmemiş').'</div></div></div>';
 					}else{
 						// preview fields
 						$change_value=get_details($ilanId,$field->seo_name);
-						$show_fields.='<div class="col-12 mar-bot row"><div class="col-6">'.$field->name.'</div><div class="col-6">'.($change_value!=''?$change_value:'Belirtilmemiş').'</div></div>';
+						$show_fields.='<div class="col-12 mar-bot"><div class="row"><div class="col-6 bilgibaslik">'.$field->name.'</div><div class="col-6">'.($change_value!=''?$change_value:'Belirtilmemiş').'</div></div></div>';
 					}
 			}
 
