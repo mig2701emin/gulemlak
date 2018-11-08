@@ -41,18 +41,15 @@
     .cont_breadcrumbs {
       width: 100%;
     }
-  @media (min-width: 768px){
     .cont_breadcrumbs_1 {
       position: relative;
       width: 100%;
       float: left;
-      /*margin: 20px;*/
-
+      /*margin: 20px 20px;*/
     }
     .cont_breadcrumbs_1 > ul {
       list-style-type: none;
     }
-
 
     .cont_breadcrumbs_1 > ul > li {
       position: relative;
@@ -61,69 +58,17 @@
       background-color: #fff;
       box-shadow: -2px 0px 20px -6px rgba(0,0,0,0.5);
       z-index: 1;
-      width: auto;
-      margin-left: -50px;
       transition: all 0.5s;
+    }
+
+    .cont_breadcrumbs_1 > ul > li:hover {
+     background-color: #CFD8DC;
     }
 
     .cont_breadcrumbs_1 > ul > li  > a {
       display: block;
       padding: 10px;
       /*font-size: 20px;*/
-      transform: skewX(15deg);
-      text-decoration:none;
-      color: #444;
-      font-weight: 300;
-    }
-
-    .cont_breadcrumbs_1 > ul > li:first-child {
-      margin-left: 0px;
-    }
-    .cont_breadcrumbs_1 > ul > li:hover {
-     background-color: #CFD8DC;
-    }
-
-    .cont_breadcrumbs_1 > ul > li:last-child {
-      background-color: #78909C;
-    }
-
-    .cont_breadcrumbs_1 > ul > li:last-child > a {
-      color: #fff;;
-    }
-
-    .cont_breadcrumbs_1 > ul:hover > li {
-      margin-left: 0px;
-    }
-  }
-  @media (max-width: 767px){
-    .cont_breadcrumbs_1 {
-      position: relative;
-      width: 100%;
-      float: left;
-      margin: 20px 20px;
-    }
-    .cont_breadcrumbs_1 > ul {
-      list-style-type: none;
-    }
-
-    .cont_breadcrumbs_1 > ul > li {
-      position: relative;
-      float: left;
-      transform: skewX(-15deg);
-      background-color: #fff;
-      box-shadow: -2px 0px 20px -6px rgba(0,0,0,0.5);
-      z-index: 1;
-      transition: all 0.5s;
-    }
-
-    .cont_breadcrumbs_1 > ul > li:hover {
-     background-color: #CFD8DC;
-    }
-
-    .cont_breadcrumbs_1 > ul > li  > a {
-      display: block;
-      padding: 10px;
-      font-size: 20px;
        transform: skewX(15deg);
        text-decoration:none;
        color: #444;
@@ -140,7 +85,6 @@
         color: #fff;
        transform: skewX(0deg);
     }
-  }
 
 </style>
 </head>
@@ -179,21 +123,21 @@
           }
           $favorisorgula=$this->db->query("select * from favoriler where ilanId='".$ilan->Id."'")->num_rows();
           ?>
-        <div class="row border border-secondary">
+        <div class="row border border-dark mt-3">
           <div class="col-12">
-            <a class="btn btn-dark" href="<?php echo base_url();?>ilan/<?php echo $ilan->seo_url;?>-<?php echo $ilan->Id;?>">
+            <a class="btn btn-dark btn-block" href="<?php echo base_url();?>ilan/<?php echo $ilan->seo_url;?>-<?php echo $ilan->Id;?>">
               <?php echo $ilan->firma_adi;?>
             </a>
           </div>
-          <div class="col-lg-4 col-md-5 col-sm-12 col-12">
+          <div class="col-lg-3 col-md-5 col-sm-12 col-12">
             <div class="row">
-              <div class="col-lg-9 col-md-10 col-sm-10 col-12">
+              <div class="col-lg-8 col-md-10 col-sm-10 col-12">
                 <a href="<?php echo base_url(); ?>ilan/<?php echo $ilan->seo_url;?>-<?php echo $ilan->Id;?>">
                   <img src="<?php if(ilk_resim($ilan->Id)!='' and file_exists('photos/thumbnail/'.ilk_resim($ilan->Id))){echo base_url().'photos/thumbnail/'.ilk_resim($ilan->Id);
                   }else{echo base_url();?>assets/images/yok_thumbnail.png<?php } ?>" border="0" alt="<?php echo $ilan->firma_adi;?>" title="<?php echo $ilan->firma_adi;?>" style="width:100%;height:auto">
                 </a>
               </div>
-              <div class="col-lg-3 col-md-2 col-sm-2 col-12 text-center pt-3 pb-3">
+              <div class="col-lg-4 col-md-2 col-sm-2 col-12 text-center">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-4">
                     Favori
@@ -211,7 +155,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-5 col-md-7 col-sm-12 col-12 text-center pt-3 pb-3">
+          <div class="col-lg-5 col-md-7 col-sm-12 col-12 text-center">
             <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                 <div class="row">
@@ -228,19 +172,20 @@
               <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-6 col-6">
-                    <p>Durumu</p>
-                    <h6><span class="badgen badge-pill badge-dark"><?php if($ilan->onay==0 and $ilan->suresi_doldu==1){?>Süresi Doldu<?php }elseif($ilan->onay==1){?>Yayında<?php }elseif($ilan->onay==2){?>İlan Durduruldu<?php }else{?>Onay Bekliyor<?php } ?></span></h6>
+                    Durumu
+                    <h6><span class="badgen badge-pill <?php if($ilan->onay==0 and $ilan->suresi_doldu==1){?>badge-secondary<?php }elseif($ilan->onay==1){?>badge-success<?php }elseif($ilan->onay==2){?>badge-danger<?php }else{?>badge-warning<?php } ?>"><?php if($ilan->onay==0 and $ilan->suresi_doldu==1){?>Süresi Doldu<?php }elseif($ilan->onay==1){?>Yayında<?php }elseif($ilan->onay==2){?>İlan Durduruldu<?php }else{?>Onay Bekliyor<?php } ?></span></h6>
                   </div>
-                  <div class="col-lg-12 col-md-12 col-sm-6 col-6 pt-3 pb-3">
+                  <div class="col-lg-12 col-md-12 col-sm-6 col-6">
+                    <br/>
                     <h4 class="text text-primary text-weight-bold"><?php echo number_format($ilan->fiyat,0, ',', '.');?> <?php echo $ilan->birim;?></h4>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-12 col-sm-12 col-12 pt-3 pb-3">
+          <div class="col-lg-4 col-md-12 col-sm-12 col-12">
             <div class="row">
-              <div class="col-lg-12 col-md-6 col-sm-6 col-12 pt-3 pb-3">
+              <div class="col-lg-12 col-md-6 col-sm-12 col-12">
                 <div class="cont_principal">
   								<div class="cont_breadcrumbs">
   									<div class="cont_breadcrumbs_1">
@@ -269,8 +214,10 @@
                  </div>
                </div>
               </div>
-              <div class="col-lg-12 col-md-6 col-sm-6 col-12 pt-3 pb-3">
-                <select class="col-12 form-control" name="islem" onchange="ilan_islemyap(this.options[selectedIndex].value,<?php echo $ilan->Id;?>,'<?php echo mb_strtolower($filter);?>');">
+
+              <div class="col-lg-12 col-md-6 col-sm-12 col-12">
+                <br/>
+                <select class="col-12 form-control bg-secondary" name="islem" onchange="ilan_islemyap(this.options[selectedIndex].value,<?php echo $ilan->Id;?>,'<?php echo mb_strtolower($filter);?>');">
                   <option value="0">Seçiniz</option>
                   <option value="1">İlanı Düzenle</option>
                   <option value="2">Doping Yap</option>

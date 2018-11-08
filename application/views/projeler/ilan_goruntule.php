@@ -148,9 +148,65 @@
 		 transform: skewX(0deg);
 	}
 }
-.bilgibaslik{
+/* .bilgibaslik{
 font-weight: bold;
+} */
+.bilgibaslik {
+    display: inline-block;
+    min-width: 10px;
+    padding: 6px 7px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-align: right;
+    white-space: nowrap;
+    vertical-align: middle;
+    /* background-color: #4F9026; */
+    /* background-color: #008a98; */
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    margin-top: 2px;
+    float: left !important;
 }
+.bilgiler {
+    display: inline-block;
+    min-width: 10px;
+    padding: 6px 7px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: middle;
+    /* background-color: #4F9026; */
+    /* background-color: #008a98; */
+    background-color: #D7CCC8;
+    border-radius: 10px;
+    margin-top: 2px;
+    float: left !important;
+}
+.linkler {
+    display: inline-block;
+    min-width: 10px;
+    padding: 6px 7px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    color: white;
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #ff5442;
+    border-radius: 10px;
+    margin-top: 2px;
+    /*float: left !important;*/
+}
+.beyazyazi{
+	color: white;
+}
+
 
 	</style>
 	<link href="<?php echo base_url('assets'); ?>/light/lightgallery.css" rel="stylesheet">
@@ -215,11 +271,24 @@ font-weight: bold;
 						<div class="row">
 						<div class="col-12 col-sm-12 col-md-8 col-lg-8">
 							<div class="row text-center">
+								<div class="col-12" style="background-color:#D7CCC8;">
+									<div class="row">
+										<div class="col-3 bg-danger text-white">
+											<a id="bigImage">Büyük Resim</a>
+										</div>
+										<div class="col-4">
+											Favori <span class="badge badge-pill badge-lg badge-dark"><?php echo $this->db->query("select * from favoriler where ilanId='".$ilan->Id."'")->num_rows(); ?></span>
+										</div>
+										<div class="col-5">
+											Görüntülenme <span class="badge badge-pill badge-lg badge-dark"><?php echo $ilan->toplam_ziyaretci;?></span>
+										</div>
+									</div>
+								</div>
 								<div class="col-12 border" style="background-color:#D7CCC8;">
 									<h3 class="text-uppercase"><?php echo $ilan->firma_adi; ?></h3>
 								</div>
-								<div class="col-12"><a  id="bigImage" class="label" style="background-color:#ff5442;color:white">Büyük Resim</a></div>
-								<div id="demo" class="carousel slide col-12" data-ride="carousel" >
+
+								<div id="demo" class="carousel slide col-12" data-ride="carousel" style="background-color:#D7CCC8;">
 									<!-- The slideshow -->
 									<div class="carousel-inner">
 										<?php $r=1; ?>
@@ -238,13 +307,14 @@ font-weight: bold;
 										<span class="carousel-control-next-icon"></span>
 									</a>
 								</div>
-								<div id="corusel" class="row col-12">
-
-									<?php foreach ($resimler as $resim){ ?>
-										<div class="col-4 col-md-3 col-lg-2 m-0 p-1">
-										<a><img src="<?php echo base_url('photos/thumbnail/'.$resim->name); ?>" class="img-rounded border border-secondary" style="border-radius:15px;background-color:#EFEBE9"  alt="Cinque Terre"></a>
-										</div>
-									<?php } ?>
+								<div id="corusel" class="col-12" style="background-color:#D7CCC8;">
+									<div class="row">
+										<?php foreach ($resimler as $resim){ ?>
+											<div class="col-4 col-md-3 col-lg-2 m-0 p-1">
+											<a><img src="<?php echo base_url('photos/thumbnail/'.$resim->name); ?>" class="img-rounded border border-secondary" style="border-radius:15px;background-color:#EFEBE9"  alt="Cinque Terre"></a>
+											</div>
+										<?php } ?>
+									</div>
 								</div>
 								<div class="demo-gallery" style="display: none;">
 									<row id="lightgallery" class="list-unstyled row">
@@ -262,14 +332,31 @@ font-weight: bold;
 
 							</div>
 						</div>
-						<div id="genelBilgi" class="col-12 col-sm-12 col-md-4 col-lg-4 border" style="background-color:#FCE4EC;">
+						<div id="genelBilgi" class="col-12 col-sm-12 col-md-4 col-lg-4 border" style="background-color:white">
 							<div class="row">
+								<div class="col-12">
+										<!-- AddToAny BEGIN -->
+										<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+										<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+										<a class="a2a_button_facebook"></a>
+										<a class="a2a_button_twitter"></a>
+										<a class="a2a_button_whatsapp"></a>
+										<a class="a2a_button_google_gmail"></a>
+										<a class="a2a_button_print"></a>
+										</div>
+										<script>
+										var a2a_config = a2a_config || {};
+										a2a_config.locale = "tr";
+										</script>
+										<script async src="https://static.addtoany.com/menu/page.js"></script>
+										<!-- AddToAny END -->
+								</div>
 								<div class="col-12 mar-bot">
 									<div class="row">
 										<div class="col-6 bilgibaslik">
-											İlan No:
+											İlan No
 										</div>
-										<div class="col-6">
+										<div class="col-6 bilgiler">
 											<?php echo $ilan->Id; ?>
 										</div>
 									</div>
@@ -277,19 +364,19 @@ font-weight: bold;
 								<div class="col-12 mar-bot">
 									<div class="row">
 										<div class="col-6 bilgibaslik">
-											Fiyat:
+											Fiyat
 										</div>
-										<div class="col-6">
-											<h4><span class="text-primary"><?php echo number_format($ilan->fiyat,0, ',', '.');?> <?php echo $ilan->birim;?></span></h4>
+										<div class="col-6 bilgiler" style="background-color: #ff5442;color:white">
+											<?php echo number_format($ilan->fiyat,0, ',', '.');?> <?php echo $ilan->birim;?>
 										</div>
 									</div>
 								</div>
 								<div class="col-12 mar-bot">
 									<div class="row">
 										<div class="col-6 bilgibaslik">
-											İlan Tarihi:
+											İlan Tarihi
 										</div>
-										<div class="col-6">
+										<div class="col-6 bilgiler">
 											<?php yeni_tarih($ilan->kayit_tarihi); ?>
 										</div>
 									</div>
@@ -300,12 +387,12 @@ font-weight: bold;
 							</div>
 						</div>
 					</div>
-					<div class="col-12">
+					<div class="col-12" style="background-color:#FFCDD2;">
 						<div class="row">
-							<div class="text-center border" style="background-color:#EEEEEE;">
+							<div class="text-center border mb-3 mt-3">
 								<?php echo base64_decode($ilan->aciklama); ?>
 							</div>
-							<div class="col-12">
+							<div class="col-12" style="background-color:#EF9A9A;">
 								<div class="row border">
 									<?php
 									echo $show_additional_fields;
@@ -315,7 +402,7 @@ font-weight: bold;
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-2 col-md-12">
+				<div class="col-lg-2 col-md-12" style="background-color:white">
 					<div class="row">
 						<div class="col-lg-12 col-md-6 col-12">
 							<div class="row text-center border">
@@ -342,53 +429,40 @@ font-weight: bold;
 						<div class="col-lg-12 col-md-6 col-12">
 							<div class="row text-center border">
 								<?php if($this->session->userdata("userData")["userID"] == $ilan->uyeId){?>
-								<div class="col-12 mar-bot2"><a href="<?php echo base_url(); ?>hesabim/ilanduzenle/<?php echo $ilan->Id; ?>">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> İlanı Düzenle</a></div>
-								<div class="col-12 mar-bot2"><a href="<?php echo base_url(); ?>hesabim/samekategoriilan/<?php echo $ilan->Id; ?>">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Aynı Kategoride İlan Ver</a></div>
-								<div class="col-12 mar-bot2"><a href="<?php echo base_url(); ?>doping/ilan/<?php echo $ilan->Id; ?>">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Doping Yap</a></div>
+								<div class="col-12 linkler"><a class="beyazyazi" href="<?php echo base_url(); ?>hesabim/ilanduzenle/<?php echo $ilan->Id; ?>">İlanı Düzenle</a></div>
+								<div class="col-12 linkler"><a class="beyazyazi" href="<?php echo base_url(); ?>hesabim/samekategoriilan/<?php echo $ilan->Id; ?>">Aynı Kategoride İlan Ver</a></div>
+								<div class="col-12 linkler"><a class="beyazyazi" href="<?php echo base_url(); ?>doping/ilan/<?php echo $ilan->Id; ?>">Doping Yap</a></div>
 								<?php if($ilan->onay==1){?>
-								<div class="col-12 mar-bot2"><a href="<?php echo base_url(); ?>hesabim/ilandurdur/<?php echo $ilan->Id; ?>">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Yayından Kaldır</a></div>
+								<div class="col-12 linkler"><a class="beyazyazi" href="<?php echo base_url(); ?>hesabim/ilandurdur/<?php echo $ilan->Id; ?>">Yayından Kaldır</a></div>
 								<?php }else{?>
-								<div class="col-12 mar-bot2"><a href="<?php echo base_url(); ?>hesabim/ilansil/<?php echo $ilan->Id; ?>" onclick="return window.confirm('İlanı Yayından Kaldırmak İstediğinizden Eminmisiniz?');">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Sil</a></div>
+								<div class="col-12 linkler"><a class="beyazyazi" href="<?php echo base_url(); ?>hesabim/ilansil/<?php echo $ilan->Id; ?>" onclick="return window.confirm('İlanı Yayından Kaldırmak İstediğinizden Eminmisiniz?');">Sil</a></div>
 								<?php }?>
 								<?php if($ilan->suresi_doldu==1 || $ilan->onay==2){?>
-								<div class="col-12 mar-bot2"><a href="<?php echo base_url(); ?>hesabim/<?php if($ilan->suresi_doldu==1){?>ilansureuzat/<?php }else{?>ilanaktiflestir/<?php }?><?php echo $ilan->Id;?>">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Yayına Al</a></div>
+								<div class="col-12 linkler"><a class="beyazyazi" href="<?php echo base_url(); ?>hesabim/<?php if($ilan->suresi_doldu==1){?>ilansureuzat/<?php }else{?>ilanaktiflestir/<?php }?><?php echo $ilan->Id;?>">Yayına Al</a></div>
 
 								<?php }else{?>
-								<div class="col-12 mar-bot2"><a href="<?php echo base_url(); ?>hesabim/guncelle/<?php echo $ilan->Id; ?>">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Güncelim</a></div>
+								<div class="col-12 linkler"><a class="beyazyazi" href="<?php echo base_url(); ?>hesabim/guncelle/<?php echo $ilan->Id; ?>">Güncelim</a></div>
 							<?php }}else{?>
 								<?php
 								if($magaza_var_mi){
 								?>
-								<div class="col-12 mar-bot2"><a href="<?php echo base_url().$magaza->username; ?>"> &nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png" > Üyenin Mağazası</a></div>
+								<div class="col-12 linkler"><a class="beyazyazi" href="<?php echo base_url().$magaza->username; ?>">Üyenin Mağazası</a></div>
 								<?php }?>
-								<div class="col-12 mar-bot2"><a href=""> &nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Diğer İlanları</a></div>
+								<div class="col-12 linkler"><a class="beyazyazi" href="">Diğer İlanları</a></div>
 								<?php if ($this->session->userdata("userData")["userID"]){ ?>
 									<?php $favsor = $this->db->query("select * from favoriler where ilanId='".$ilan->Id."' and uyeId='".$user->Id."'");
 									$favsorgu=$favsor->num_rows();
 									if($favsorgu==0){
 									?>
-									<div class="col-12 mar-bot2"><a id="favorilink" href="javascript:favori();">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Favorilerime Ekle</a></div>
+									<div class="col-12 linkler"><a class="beyazyazi" id="favorilink" href="javascript:favori();">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Favorilerime Ekle</a></div>
 									<?php }else{?>
-									<div class="col-12 mar-bot2"><a id="favorilink" href="javascript:favorisil();">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Favorilerimden Sil</a></div>
+									<div class="col-12 linkler"><a class="beyazyazi" id="favorilink" href="javascript:favorisil();">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Favorilerimden Sil</a></div>
 									<?php }?>
-								<div class="col-12 mar-bot2"><a href="javascript:mesaj_gonder(<?php echo $ilan->uyeId;?>,<?php echo $ilan->Id;?>);">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Mesaj Gönder</a></div>
-								<div class="col-12 mar-bot2"><a href="javascript:sikayet();">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> İlanla ilgili şikayet bildir</a></div>
+								<div class="col-12 linkler"><a class="beyazyazi" href="javascript:mesaj_gonder(<?php echo $ilan->uyeId;?>,<?php echo $ilan->Id;?>);">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Mesaj Gönder</a></div>
+								<div class="col-12 linkler"><a class="beyazyazi" href="javascript:sikayet();">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> İlanla ilgili şikayet bildir</a></div>
 							<?php } ?>
 						<?php }?>
-								<div class="col-12 mar-bot2"><a href="?yazdir=1">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> İlanı Yazdır</a></div>
-								<!-- AddToAny BEGIN -->
-								<div class="a2a_kit a2a_kit_size_32 a2a_default_style text-center">
-									<a class="a2a_button_facebook"></a>
-									<a class="a2a_button_twitter"></a>
-									<a class="a2a_button_google_plus"></a>
-									<a class="a2a_button_pinterest"></a>
-									<a class="a2a_button_whatsapp"></a>
-								</div>
-								<script>
-									var a2a_config = a2a_config || {};
-									a2a_config.locale = "tr";
-								</script>
-								<script async src="https://static.addtoany.com/menu/page.js"></script>
+								<!-- <div class="col-12"><a class="btn btn-sm btn-secondary" href="?yazdir=1">İlanı Yazdır</a></div> -->
 							</div>
 						</div>
 					</div>

@@ -13,7 +13,6 @@ class Magazaac extends CI_Controller{
     $this->load->model("kategoriler");
     $this->load->model("siparisler");
     $where = array("Id" => $this->session->userdata('userData')["userID"]);
-    $where = array("Id" => $this->session->userdata('userData')["userID"]);
     $this->user=$this->members->get($where);
     if(magaza_var_mi($this->user->Id)){
       $this->magaza=$this->magazalar->getMagaza($this->magazalar->getMagazaId($this->user->Id));
@@ -28,19 +27,15 @@ class Magazaac extends CI_Controller{
       redirect(base_url("hesabim/magazam"));
     }
     $data["user"]=$this->user;
-    if ($this->magaza!=null) {
-      $data["magaza"]=$this->magaza;
-    }
-    $this->load->view("magazaac/start");
+    $this->load->view("magazaac/start",$data);
   }
 
   public function kategorisec()
   {
     $data["user"]=$this->user;
-    if ($this->magaza!=null) {
-      $data["magaza"]=$this->magaza;
-    }
-    $this->load->view("magazaac/kategorisec");
+    $data["anaKategoriler"]=$this->kategoriler->getAnaKategoriler();
+    $this->load->view("magazaac/kategorisec",$data);
+
     if (isset($_POST) && !empty($_POST)) {
       $paket=$this->security->xss_clean($this->input->post("paket"));
       redirect(base_url("magazaac/settype/").encode($paket));
@@ -201,7 +196,7 @@ class Magazaac extends CI_Controller{
     if ($this->magaza!=null) {
       $data["magaza"]=$this->magaza;
     }
-    $this->load->view("magazaac/detay");
+    $this->load->view("magazaac/detay",$data);
   }
   public function magazaok($magazaId)
   {

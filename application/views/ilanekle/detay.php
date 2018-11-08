@@ -101,7 +101,7 @@
             <div class="row mb-3">
                 <div class="col-md-8" style="float: left">
                   <label for="fiyat1">Fiyat</label>
-                  <input type="text" class="form-control" name="fiyat1" placeholder="" value="">
+                  <input type="text" class="form-control fiyat" name="fiyat1" id="fiyat1" placeholder="" value="">
                 </div>
                 <div class="col-md-1" style="float: left">
                   <label for="fiyat2">Kuruş</label>
@@ -343,8 +343,8 @@
   <?php $this->load->view('layout/footer');?>
     </div>
 
-  <script src="<?php echo base_url('assets/dropzone/min/dropzone.min.js'); ?>"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://maps.google.com/maps/api/js?key=AIzaSyAgvcI5F7yEbzhTlj3HHwj7vnTZgQIdfqA&sensor=false"></script>
   <script src="<?php echo base_url(); ?>assets/map/add_ad_map.js"></script>
   <script src="<?php echo base_url('assets/');?>js/autoNumeric.js" defer></script>
@@ -418,6 +418,42 @@
   function adresgetir() {
     codeAddress($("#mahalle option:selected").html()+" "+$("#ilce option:selected").html()+" "+$("#il option:selected").html()+" Türkiye");
   }
+  function addCommas(nStr){
+
+   nStr += '';
+   var x1 = nStr.replace('.','')
+   // var x = nStr.split('.');
+   // var x1 = x[0];
+   if (x1.length>9) {
+     var rgx = /(\d+)(\d{3})(\d{3})(\d{3})/;
+     while (rgx.test(x1)) {
+      x1 = x1.replace(rgx, '$1' + '.' + '$2' + '.' + '$3' + '.' + '$4');
+     }
+   } else if (x1.length>6) {
+     var rgx = /(\d+)(\d{3})(\d{3})/;
+     while (rgx.test(x1)) {
+      x1 = x1.replace(rgx, '$1' + '.' + '$2' + '.' + '$3');
+     }
+   }else {
+     var rgx = /(\d+)(\d{3})/;
+     while (rgx.test(x1)) {
+      x1 = x1.replace(rgx, '$1' + '.' + '$2');
+     }
+   }
+
+   //return x1 + x2;
+   return x1;
+  }
+$(document).ready(function() {
+  $(".fiyat").keyup(function() {
+
+     var newValue =  addCommas(this.value);
+     // alert(newValue);
+     console.log(newValue);
+     document.querySelector('.fiyat').value = newValue;
+  });
+});
+
 
 
   </script>
