@@ -35,7 +35,8 @@ class Hesabim extends CI_Controller{
       $query=$this->db->where($where)->order_by("kayit_tarihi","DESC")->limit($config["per_page"],$page)->get("firmalar");
       $data["toplam_kayit"]=$this->db->where($where)->get("firmalar")->num_rows();
     }elseif ($filter == "pasif") {
-      $where = array("uyeId" => $this->user->Id,"onay"=>"0");
+      //$where = array("uyeId" => $this->user->Id,"onay"=>"0");
+      $where ="uyeId=".$this->user->Id." AND (onay='0' OR onay='2')";
       $filter2="Pasif";
       $urlstring="hesabim/anasayfa/pasif";
       $uri_segment=4;

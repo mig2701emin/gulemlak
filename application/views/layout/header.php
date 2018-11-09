@@ -84,13 +84,13 @@
             </div>
         </div>
     </div>
-    <div class="header-bottom">
+    <div class="header-bottom color_bgx">
         <div class="container">
             <div class="header-line">
                 <div class="row position-r">
                     <div class="col-xl-2 col-lg-3 bottom-part col-lgmd-20per position-initial">
                         <div class="sidebar-menu-dropdown home">
-                            <a href="<?php echo base_url('ilanekle'); ?>" class="btn-sidebar-menu-dropdown"><i class="fa fa-plus"></i>Ücretsiz İlan Ver</a>
+                            <a href="<?php echo base_url('ilanekle'); ?>" class="btn-sidebar-menu-dropdown color_bg3"><i class="fa fa-plus"></i>Ücretsiz İlan Ver</a>
                             <!-- <div id="cat" class="cat-dropdown">
                                 <div class="sidebar-contant">
                                     <div id="menu" class="navbar-collapse collapse">
@@ -150,7 +150,7 @@
                     <div class="col-xl-6 col-lg-6 bottom-part col-lgmd-60per">
                         <div class="header-right-part">
                             <div class="category-dropdown2 select-dropdown">
-                                <a class="btn-sidebar-menu-dropdown2" ><i class="fa fa-search" style="margin-right:5px;"></i>Detaylı Arama</a>
+                                <a class="btn-sidebar-menu-dropdown2 color_text3" ><i class="fa fa-search" style="margin-right:5px;"></i>Detaylı Arama</a>
 
                             </div>
                             <div class="main-search">
@@ -158,7 +158,7 @@
                                     <form action="<?php echo base_url(); ?>home/ara" method="post">
                                         <div class="search-box">
                                             <input name="search" class="input-text" type="text" placeholder="Kelime,ilan no Giriniz">
-                                            <button type="submit" class="search-btn"></button>
+                                            <button type="submit" class="search-btn color_bg3"></button>
                                         </div>
                                     </form>
                                 </div>
@@ -182,7 +182,7 @@
                                                       <li><a href="<?php echo base_url(); ?>hesabim/anasayfa">Bana Özel</a></li>
                                                       <li><a href="<?php echo base_url(); ?>cikis">Çıkış Yap</a></li>
                                                     <?php }else{ ?>
-                                                      <li><a href="<?php echo base_url(); ?>uyegiris">Giriş Yap</a></li>
+                                                      <li><a href="<?php echo base_url(); ?>uyegiris">Giriş</a></li>
                                                       <li><a href="<?php echo base_url(); ?>uyeol">Üye Ol</a></li>
                                                     <?php } ?>
                                                 </ul>
@@ -244,7 +244,7 @@
                               <?php else: ?>
                                 <li class="account-icon">
                                     <a href="#">
-                                        <span style="width:110px;"><i class="fa fa-user"></i> Giriş Yap</span>
+                                        <span class="color_bg3" style="width:90px;"><i class="fa fa-user"></i> Giriş</span>
                                     </a>
                                     <div class="header-link-dropdown account-link-dropdown">
                                         <ul class="link-dropdown-list">
@@ -255,7 +255,7 @@
                                                       <li><a href="<?php echo base_url(); ?>hesabim">Bana Özel</a></li>
                                                       <li><a href="<?php echo base_url(); ?>cikis">Çıkış Yap</a></li>
                                                     <?php }else{ ?>
-                                                      <li><a href="<?php echo base_url(); ?>uyegiris">Giriş Yap</a></li>
+                                                      <li><a class="color_bg3" href="<?php echo base_url(); ?>uyegiris">Giriş Yap</a></li>
                                                       <li><a href="<?php echo base_url(); ?>uyeol">Üye Ol</a></li>
                                                     <?php } ?>
                                                 </ul>
@@ -301,7 +301,7 @@
                 <li class="search">
                     <a class="popup-with-form" href="#search_popup"><span class="icon"><i class="fa fa-search"></i></span><span class="icon-text">Search</span></a>
                 </li> -->
-                <li class="scroll scrollup">
+                <li class="scroll scrollup color_bg3">
                     <a href="#"><span class="icon"><i class="fa fa-chevron-up"></i></span><span class="icon-text"></span></a>
                 </li>
             </ul>

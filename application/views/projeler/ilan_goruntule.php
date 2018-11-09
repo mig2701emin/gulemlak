@@ -12,6 +12,7 @@
 	<!-- CSS
     ================================================== -->
 	<?php $this->load->view('layout/styles');?>
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<style>
 
@@ -93,7 +94,7 @@
 
 	.cont_breadcrumbs_1 > ul > li:last-child {
 	  /* background-color: #78909C; */
-		background-color: #ff5442;
+		background-color: #4E978D;
 	}
 
 	.cont_breadcrumbs_1 > ul > li:last-child > a {
@@ -137,7 +138,7 @@
 	}
 	.cont_breadcrumbs_1 > ul > li:last-child {
 	  /* background-color: #78909C; */
-	  background-color: #ff5442;
+	  background-color: #4E978D;
 	  transform: skew(0deg);
 		margin-left: -5px;
 
@@ -162,9 +163,8 @@ font-weight: bold;
     text-align: right;
     white-space: nowrap;
     vertical-align: middle;
-    /* background-color: #4F9026; */
-    /* background-color: #008a98; */
-    background-color: #F5F5F5;
+    /* background-color: white; */
+    /* background-color: #F5F5F5; */
     border-radius: 10px;
     margin-top: 2px;
     float: left !important;
@@ -180,9 +180,8 @@ font-weight: bold;
     text-align: left;
     white-space: nowrap;
     vertical-align: middle;
-    /* background-color: #4F9026; */
-    /* background-color: #008a98; */
-    background-color: #D7CCC8;
+    background-color: white;
+    /* background-color: #D7CCC8; */
     border-radius: 10px;
     margin-top: 2px;
     float: left !important;
@@ -198,7 +197,7 @@ font-weight: bold;
     text-align: left;
     white-space: nowrap;
     vertical-align: middle;
-    background-color: #ff5442;
+    background-color: #4E978D;
     border-radius: 10px;
     margin-top: 2px;
     /*float: left !important;*/
@@ -213,7 +212,7 @@ font-weight: bold;
 </head>
 <body>
 	<div class="se-pre-con"></div>
-	<div class="main" style="background-color:#F3E5F5;">
+	<div class="main color_bgy">
 		<!-- HEADER START -->
 		<?php //if ($this->session->userdata("userData")["userID"] == $ilan->uyeId){ ?>
 			<?php //$this->load->view('layout/newuserheader');?>
@@ -257,44 +256,55 @@ font-weight: bold;
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-2 hidden-md hidden-sm hidden-xs">
+						<div class="col-lg-2 hidden-md hidden-sm-down">
 
 						</div>
 					</div>
 				</div>
-		    <div class="col-lg-10 col-md-12">
+		    <div class="col-lg-10 col-md-12 color_bg1 border">
 					<?php if ($this->session->userdata("userData")["userID"] == $ilan->uyeId): ?>
 						<div class="col-12">
 							<p class="text text-danger"><?php echo $ilan->ilan_notu; ?></p>
 						</div>
 					<?php endif; ?>
 						<div class="row">
-						<div class="col-12 col-sm-12 col-md-8 col-lg-8">
+						<div class="col-12 col-sm-12 col-md-8 col-lg-8 border">
 							<div class="row text-center">
-								<div class="col-12" style="background-color:#D7CCC8;">
+								<div class="col-12">
 									<div class="row">
-										<div class="col-3 bg-danger text-white">
+										<div class="col-3 color_bg3 text-white rounded">
 											<a id="bigImage">Büyük Resim</a>
 										</div>
-										<div class="col-4">
-											Favori <span class="badge badge-pill badge-lg badge-dark"><?php echo $this->db->query("select * from favoriler where ilanId='".$ilan->Id."'")->num_rows(); ?></span>
-										</div>
-										<div class="col-5">
-											Görüntülenme <span class="badge badge-pill badge-lg badge-dark"><?php echo $ilan->toplam_ziyaretci;?></span>
+										<div class="col-9">
+											<!-- AddToAny BEGIN -->
+											<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+											<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+											<a class="a2a_button_facebook"></a>
+											<a class="a2a_button_twitter"></a>
+											<a class="a2a_button_whatsapp"></a>
+											<a class="a2a_button_google_gmail"></a>
+											<a class="a2a_button_print"></a>
+											</div>
+											<script>
+											var a2a_config = a2a_config || {};
+											a2a_config.locale = "tr";
+											</script>
+											<script async src="https://static.addtoany.com/menu/page.js"></script>
+											<!-- AddToAny END -->
 										</div>
 									</div>
 								</div>
-								<div class="col-12 border" style="background-color:#D7CCC8;">
+								<div class="col-12">
 									<h3 class="text-uppercase"><?php echo $ilan->firma_adi; ?></h3>
 								</div>
 
-								<div id="demo" class="carousel slide col-12" data-ride="carousel" style="background-color:#D7CCC8;">
+								<div id="demo" class="carousel slide col-12" data-ride="carousel">
 									<!-- The slideshow -->
 									<div class="carousel-inner">
 										<?php $r=1; ?>
 										<?php foreach ($resimler as $resim): ?>
 											<div class="carousel-item<?php if ($r==1) {echo ' active';} ?>">
-												<img src="<?php echo base_url('photos/big/'.$resim->name); ?>" alt="Chicago" class="img-rounded border border-secondary" style="background-color:#EFEBE9">
+												<img src="<?php echo base_url('photos/big/'.$resim->name); ?>" alt="Chicago" class="img-rounded border border-secondary">
 											</div>
 											<?php $r++; ?>
 										<?php endforeach; ?>
@@ -307,7 +317,7 @@ font-weight: bold;
 										<span class="carousel-control-next-icon"></span>
 									</a>
 								</div>
-								<div id="corusel" class="col-12" style="background-color:#D7CCC8;">
+								<div id="corusel" class="col-12">
 									<div class="row">
 										<?php foreach ($resimler as $resim){ ?>
 											<div class="col-4 col-md-3 col-lg-2 m-0 p-1">
@@ -332,24 +342,19 @@ font-weight: bold;
 
 							</div>
 						</div>
-						<div id="genelBilgi" class="col-12 col-sm-12 col-md-4 col-lg-4 border" style="background-color:white">
+						<div id="genelBilgi" class="col-12 col-sm-12 col-md-4 col-lg-4 border">
 							<div class="row">
-								<div class="col-12">
-										<!-- AddToAny BEGIN -->
-										<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-										<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-										<a class="a2a_button_facebook"></a>
-										<a class="a2a_button_twitter"></a>
-										<a class="a2a_button_whatsapp"></a>
-										<a class="a2a_button_google_gmail"></a>
-										<a class="a2a_button_print"></a>
+								<div class="col-12 ">
+									<div class="row mar-bot">
+										<div class="col-5 text-center">
+											Favori
+											<p class="text-center"><span class="badge badge-pill badge-dark"><?php echo $this->db->query("select * from favoriler where ilanId='".$ilan->Id."'")->num_rows(); ?></span></p>
 										</div>
-										<script>
-										var a2a_config = a2a_config || {};
-										a2a_config.locale = "tr";
-										</script>
-										<script async src="https://static.addtoany.com/menu/page.js"></script>
-										<!-- AddToAny END -->
+										<div class="col-7 text-center">
+											Görüntülenme
+											<p class="text-center"><span class="badge badge-pill badge-dark"><?php echo $ilan->toplam_ziyaretci;?></span></p>
+										</div>
+									</div>
 								</div>
 								<div class="col-12 mar-bot">
 									<div class="row">
@@ -366,7 +371,7 @@ font-weight: bold;
 										<div class="col-6 bilgibaslik">
 											Fiyat
 										</div>
-										<div class="col-6 bilgiler" style="background-color: #ff5442;color:white">
+										<div class="col-6 bilgiler text-light color_bg5">
 											<?php echo number_format($ilan->fiyat,0, ',', '.');?> <?php echo $ilan->birim;?>
 										</div>
 									</div>
@@ -387,13 +392,13 @@ font-weight: bold;
 							</div>
 						</div>
 					</div>
-					<div class="col-12" style="background-color:#FFCDD2;">
+					<div class="col-12">
 						<div class="row">
-							<div class="text-center border mb-3 mt-3">
+							<div class="text-center mb-3 mt-3 border-bottom">
 								<?php echo base64_decode($ilan->aciklama); ?>
 							</div>
-							<div class="col-12" style="background-color:#EF9A9A;">
-								<div class="row border">
+							<div class="col-12">
+								<div class="row">
 									<?php
 									echo $show_additional_fields;
 									?>
@@ -402,7 +407,7 @@ font-weight: bold;
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-2 col-md-12" style="background-color:white">
+				<div class="col-lg-2 col-md-12 color_bg1">
 					<div class="row">
 						<div class="col-lg-12 col-md-6 col-12">
 							<div class="row text-center border">

@@ -360,7 +360,7 @@
                                                   <span class="m-menu__link-wrap">
                                                   <span class="m-menu__link-text">Pasif İlanlarım</span>
                                                   <span class="m-menu__link-badge">
-                                                    <span class="m-badge m-badge--success"><?php echo $this->db->where(array("uyeId" => $user->Id, "onay" =>"0"))->count_all_results("firmalar"); ?></span>
+                                                    <span class="m-badge m-badge--success"><?php echo $this->db->query("SELECT * FROM firmalar WHERE uyeId='".$user->Id."' AND ( onay='0' OR onay='2' ) ")->num_rows(); ?></span>
                                                   </span>
                                                 </span>
                                               </span>

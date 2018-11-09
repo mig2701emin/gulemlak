@@ -84,6 +84,7 @@
         <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-camera"></i> İçerik </a>	</div>
         <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-tags"></i>  Doping Al </a>	</div>
         <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-check-circle"></i> Tebrikler </a>	</div>
+        <div class="col-sm-12 col-md-2"></div>
       </div>
       <form action="" id="form" name="form" method="post" style="margin-bottom:20px">
         <input type="hidden" id="step" name="step" value="2">
