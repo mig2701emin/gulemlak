@@ -163,7 +163,7 @@ class Magazaac extends CI_Controller{
       }
 
       $insert_id=$this->magazalar->add($magazaekle);
-      $magazaUser = array("magazaId" => $insert_id, "uyeId" => $this->session->userdata("userData")["userID"],"yetkiler" => "1,1,1,1");
+      $magazaUser = array("magazaId" => $insert_id, "uyeId" => $this->session->userdata("userData")["userID"], "yetkiler" => "1,1,1,1");
       $insert=$this->magazalar->addUser($magazaUser);
       $islemno=rand(0,9999999);
       $tarih=date('Y-m-d');

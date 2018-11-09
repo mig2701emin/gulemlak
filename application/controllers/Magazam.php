@@ -151,7 +151,7 @@ class Magazam extends CI_Controller{
     if ($this->magaza!=null) {
       $data["magaza"]=$this->magaza;
     }
-    $this->load->view("magazam/magaza_user_add");
+    $this->load->view("magazam/magaza_user_add",$data);
   }
 
   public function magazauseredit($uyeId)
@@ -267,7 +267,7 @@ class Magazam extends CI_Controller{
     if ($this->magaza!=null) {
       $data["magaza"]=$this->magaza;
     }
-    $this->load->view("magazam/magaza_ilan_add");
+    $this->load->view("magazam/magaza_ilan_add",$data);
 
   }
   public function importallilan()
