@@ -1,260 +1,226 @@
-
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//TR" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-  <title>ticaretmeclisi.com</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-  <link href="http://www.ticaretmeclisi.com/screen.css" rel="stylesheet" type="text/css" />
-  <link href="http://www.ticaretmeclisi.com/css/slider.css" rel="stylesheet" type="text/css" />
-  <link href="http://www.ticaretmeclisi.com/css/breadcrumb.css" rel="stylesheet" type="text/css" />
-  <link href="http://www.ticaretmeclisi.com/css/my_account.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="http://www.ticaretmeclisi.com/js/ui/jquery-ui-1.10.3.custom.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="http://www.ticaretmeclisi.com/js/jquery-ui-1.10.3.custom.min.js"></script>
-  <script type="text/javascript" src="http://www.ticaretmeclisi.com/js/easing.js"></script>
-  <script type="text/javascript" src="http://www.ticaretmeclisi.com/js/bxslider/jquery.bxslider.min"></script>
-  <script type="text/javascript" src="http://www.ticaretmeclisi.com/js/jquery.cookie.1.4.0.js"></script>
-  <script type="text/javascript" src="http://www.ticaretmeclisi.com/js/jquery.maskedinput.min.js" defer></script>
-  <script type="text/javascript" src="http://www.ticaretmeclisi.com/js/jquery.ui.totop.min.js" defer></script>
-  <script type="text/javascript" src="http://www.ticaretmeclisi.com/js/custom.js"></script>
-</head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<style>
-#uiv {color:#ed1c24; background-color:white; padding: 5px; border-radius: 3px; font-weight: bold;}
-#uiv:hover {color:white; background-color: #ed1c24; padding: 5px; border-radius: 3px; font-weight: bold;}
-#logouiv {float:left; height:50px;}#logouiv:hover {float:left; height:50px; opacity:0.8;}
+  <title>Ticaret Meclisi</title>
+  <?php $this->load->view('layout/metas');?>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/'); ?>css/style.css"/>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>bootstrap-4.1.3/css/bootstrap.min.css" />
+  <style type="text/css">
+    .pagination a, .pagination strong{
+
+      padding: 5px;
+      border: 1px solid #ccc;
+      margin-left: 5px;
+      text-decoration: none;
+      box-shadow: 0px 0px 8px rgba(5,5,5,0.3);
+
+    }
+    .pagination strong{
+      background-color: #35a5f2;
+
+    }
+    .cont_principal {
+      margin: 0px auto;
+      text-align:center;
+      padding: 0px;
+      list-style: none;
+      font-family: 'Open Sans';
+      /*position: absolute;*/
+      width: 100%;
+      height: 100%;
+      /*background: rgb(212,228,239);
+      background: -moz-linear-gradient(top,  rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+      background: -webkit-linear-gradient(top,  rgba(212,228,239,1) 0%,rgba(134,174,204,1) 100%);
+      background: linear-gradient(to bottom,  rgba(212,228,239,1) 0%,rgba(134,174,204,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc',GradientType=0 );*/
+
+    }
+
+    .cont_breadcrumbs {
+      width: 100%;
+    }
+    .cont_breadcrumbs_1 {
+      position: relative;
+      width: 100%;
+      float: left;
+      /*margin: 20px 20px;*/
+    }
+    .cont_breadcrumbs_1 > ul {
+      list-style-type: none;
+    }
+
+    .cont_breadcrumbs_1 > ul > li {
+      position: relative;
+      float: left;
+      transform: skewX(-15deg);
+      background-color: #fff;
+      box-shadow: -2px 0px 20px -6px rgba(0,0,0,0.5);
+      z-index: 1;
+      transition: all 0.5s;
+    }
+
+    .cont_breadcrumbs_1 > ul > li:hover {
+     background-color: #CFD8DC;
+    }
+
+    .cont_breadcrumbs_1 > ul > li  > a {
+      display: block;
+      padding: 10px;
+      /*font-size: 20px;*/
+       transform: skewX(15deg);
+       text-decoration:none;
+       color: #444;
+      font-weight: 300;
+    }
+    .cont_breadcrumbs_1 > ul > li:last-child {
+      background-color: #78909C;
+      transform: skew(0deg);
+      margin-left: -5px;
+
+    }
+
+    .cont_breadcrumbs_1 > ul > li:last-child > a {
+        color: #fff;
+       transform: skewX(0deg);
+    }
+
 </style>
-<script>
-function show(a){
-  $("#div"+a).slideDown("slow");
-  $("#xdiv"+a).html('<a class="submenu_text" href="javascript:hide(\''+a+'\');">Gizle</a>');
-}
-function hide(a){
-  $("#div"+a).slideUp("slow");
-  $("#xdiv"+a).html('<a class="submenu_text" href="javascript:show(\''+a+'\');">Tümünü Göster</a>');
-}
-</script>
+</head>
 <body>
-<!--[if gte IE 9]> <style type="text/css"> .gradient { filter: none; } </style><![endif]-->
-<div class="siteContent">
-  <div style="width:100%; height:50px; border-bottom:2px solid white; background:#ed1c24; z-index:1000; position:fixed; top:0; left:0;">
-    <center>
-      <div style="width:950px; height:50px;">
-        <div style="float:left">
-          <a href="<?php echo base_url(); ?>">
-            <img id="logouiv" src="<?php echo base_url(); ?>assets/images/logo.png" alt="ticaretmeclisi.com" title="ticaretmeclisi.com" >
-          </a>
+  <div class="se-pre-con"></div>
+  <div class="main">
+    <?php $this->load->view('layout/newuserheader');?>
+    <div class="container">
+      <!--  -->
+      <div class="row">
+        <div class="col-12 bg-secondary text-center pt-3 pb-3"><h3><strong>Mağaza İlanları</strong></h3></div>
+      </div>
+      <?php if ($toplam_kayit==0){ ?>
+        <div class="col-12 border border-secondary">
+          <h5>Mağazada İlan Bulunamadı.</h5>
         </div>
-        <a style="margin-left: 250px; padding-top: 22px; position: absolute; color: #fff; font-size:16px;" href="http://www.ticaretmeclisi.com/index.php?page=ilanara">
-          Detaylı Arama
-        </a>
-        <div style="float:right">
-          <div class="login_bar">
-            <a href="<?php echo base_url(); ?>hesabim/anasayfa" style="color:white;">
-              <strong></strong>
-            </a>
-            <a href="<?php echo base_url(); ?>hesabim/anasayfa" style="color:white;">
-              <i class="fa fa-cog"></i> Hesabım
-            </a>
-            <a href="<?php echo base_url(); ?>cikis">
-              <i class="fa fa-sign-out"></i> Çıkış Yap
-            </a>
-            <a id="uiv" href="<?php echo base_url(); ?>ilanekle">
-              ÜCRETSİZ İLAN VER
+        <?php
+      }else{
+        foreach ($ilanlar as $ilan) {
+          $favorisorgula=$this->db->query("select * from favoriler where ilanId='".$ilan->Id."'")->num_rows();
+          ?>
+        <div class="row border border-dark mt-3">
+          <div class="col-12">
+            <a class="btn btn-dark btn-block" href="<?php echo base_url();?>ilan/<?php echo $ilan->seo_url;?>-<?php echo $ilan->Id;?>">
+              <?php echo $ilan->firma_adi;?>
             </a>
           </div>
-          <div style="clear:both"></div>
+          <div class="col-lg-3 col-md-5 col-sm-12 col-12">
+            <div class="row">
+              <div class="col-lg-8 col-md-10 col-sm-10 col-12">
+                <a href="<?php echo base_url(); ?>ilan/<?php echo $ilan->seo_url;?>-<?php echo $ilan->Id;?>">
+                  <img src="<?php if(ilk_resim($ilan->Id)!='' and file_exists('photos/thumbnail/'.ilk_resim($ilan->Id))){echo base_url().'photos/thumbnail/'.ilk_resim($ilan->Id);
+                  }else{echo base_url();?>assets/images/yok_thumbnail.png<?php } ?>" border="0" alt="<?php echo $ilan->firma_adi;?>" title="<?php echo $ilan->firma_adi;?>" style="width:100%;height:auto">
+                </a>
+              </div>
+              <div class="col-lg-4 col-md-2 col-sm-2 col-12 text-center">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-4">
+                    Favori
+                    <h6><span class="badge badge-pill badge-lg badge-dark"><?php echo $favorisorgula;?></span></h6>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-4">
+                    Sayaç
+                    <h6><span class="badge badge-pill badge-lg badge-dark"><?php echo $ilan->toplam_ziyaretci;?></span></h6>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-4">
+                    No
+                    <h6><span class="badge badge-pill badge-lg badge-dark"> <?php echo $ilan->Id;?> </span></h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-7 col-sm-12 col-12 text-center">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-6 col-6">
+                    Eklenme Tarihi
+                    <p><strong><?php echo yeni_tarih($ilan->kayit_tarihi);?></strong></p>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-6 col-6">
+                    Bitiş Tarihi
+                    <p><strong><?php echo yeni_tarih($ilan->bitis_tarihi);?></strong></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-6 col-6">
+                    Durumu
+                    <h6><span class="badgen badge-pill <?php if($ilan->onay==0 and $ilan->suresi_doldu==1){?>badge-secondary<?php }elseif($ilan->onay==1){?>badge-success<?php }elseif($ilan->onay==2){?>badge-danger<?php }else{?>badge-warning<?php } ?>"><?php if($ilan->onay==0 and $ilan->suresi_doldu==1){?>Süresi Doldu<?php }elseif($ilan->onay==1){?>Yayında<?php }elseif($ilan->onay==2){?>İlan Durduruldu<?php }else{?>Onay Bekliyor<?php } ?></span></h6>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-6 col-6">
+                    <br/>
+                    <h4 class="text text-primary text-weight-bold"><?php echo number_format($ilan->fiyat,0, ',', '.');?> <?php echo $ilan->birim;?></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+            <div class="row">
+              <div class="col-lg-12 col-md-4 col-sm-12 col-12">
+                <div class="cont_principal">
+  								<div class="cont_breadcrumbs">
+  									<div class="cont_breadcrumbs_1">
+  										<ul>
+                      <li><a href="#"><?php echo replace("kategoriler","kategori_adi","Id",$ilan->kategoriId);?></a></li>
+                      <?php if($ilan->kategori2!=0){?>
+                      <li><a href="#"><?php echo replace("kategoriler","kategori_adi","Id",$ilan->kategori2);?></a></li>
+                       <?php } ?>
+                       <?php if($ilan->kategori3!=0){?>
+                      <li><a href="#"><?php echo replace("kategoriler","kategori_adi","Id",$ilan->kategori3);?></a></li>
+                       <?php }?>
+                       <?php if($ilan->kategori4!=0){?>
+                      <li><a href="#"><?php echo replace("kategoriler","kategori_adi","Id",$ilan->kategori4);?></a></li>
+                       <?php }?>
+                     </ul>
+                   </div>
+                 </div>
+               </div>
+              </div>
+              <div class="col-lg-6 col-md-5 col-sm-8 col-6">
+                <br>
+                Ekleyen
+                <p><strong><?php echo replace("uyeler","ad","Id",$ilan->uyeId)." ".replace("uyeler","soyad","Id",$ilan->uyeId);?></strong></p>
+              </div>
+              <div class="col-lg-6 col-md-3 col-sm-4 col-6">
+                <br/>
+                <a class="btn btn-danger" href="<?php echo base_url('magazam/magazailansil/').encode($ilan->Id); ?>">Sil</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div style="clear:both"></div>
-        <form action="http://ticaretmeclisi.com/index.php" method="get" name="form9" id="form9">
-          <a href="http://ticaretmeclisi.com/index.php?page=ilanara" style="position:absolute;margin-left:680px;margin-top:11px;font-size:11pt;color:#fff;">
-          </a>
-          <input type="hidden" id="page" name="page" value="ara">
-          <input name="search" type="text" id="search" style="position:absolute;margin-top:-43px;margin-left:255px;width:235px;height:35px;font-family:Segoe UI;font-size:10pt;color:#2f2f2f;font-color;border:1px solid #C0C0C0;background-repeat:repeat-x;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:3px; font-size: 11px; font-family: arial;" placeholder="Kelime, ilan no veya mağaza adı ile ara" onFocus="this.value=''">
-          <input type="submit" id="submit" name="submit" value="" style="position:absolute;margin-top:-42px;margin-left:452px;font-weight:bold;border:0px;background-image:url(http://ticaretmeclisi.com/newbutonsearch.png);width:37px;cursor:hand;cursor:pointer;height:33px;" onClick="arama();">
-        </form>
+        <?php } ?>
+      <?php } ?>
+      <div class="col-12">
+          <p class="pagination"><?php echo $links; ?></p>
       </div>
-    </center>
   </div>
-  <div style="width:100%; height:50px;"></div>
-  <script src="http://www.ticaretmeclisi.com/js/jquery.banner-rotator.min.js"></script>
-  <script>
-  $(document).ready(function(){
-    var e={
-      width:510,
-      height:242,
-      playButton:false,
-      cpanelAlign:"bottomRight",
-      borderWidth:0,
-      delay:5000,
-      effect:"random",
-      tooltip:"text",
-      shuffle:true
-    };
-    $("#home_slider").bannerRotator(e);
-  });
-</script>
-<style>
-.listable { width:900px; }
-@media only screen and (min-width:960px){ /* styles for browsers larger than 960px; */
-.listable { width:900px; }
-}
-@media only screen and (min-width:1440px){ /* styles for browsers larger than 1440px; */
-.listable { width:900px; }
-}
-@media only screen and (min-width:2000px){ /* for sumo sized (mac) screens */
-.listable { width:900px; }
-}
-@media only screen and (max-device-width:480px){ /* styles for mobile browsers smaller than 480px; (iPhone) */
-.listable { width:670px; }
-}
-@media only screen and (device-width:768px){ /* default iPad screens */
-.listable { width:670px; }
-} /* different techniques for iPad screening */
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) { /* For portrait layouts only */
-.listable { width:670px; }
-}
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) { /* For landscape layouts only */
-.listable { width:900px; }
-}
-</style>
-<div class="siteContent" style="width:1200px;">
-  <?php $this->load->view("magazam/magaza_sidebar"); ?>
-  <div style="float:left;" class="listable">
-    <div class="genelbox">Mağaza İlanları</div>
-    <table border="0" width="100%" style="border-collapse: collapse">
-      <tr>
-        <td width="25" height="30" style="background:#000000;color:#FFFFFF;font-weight:bold;padding:3px;">Fotoğraf</td>
-        <td width="60" height="30" style="background:#000000;color:#FFFFFF;font-weight:bold;padding:3px;">İlan No</td>
-        <td width="400" height="30" style="background:#000000;color:#FFFFFF;font-weight:bold;padding:3px;">İlan Adı</td>
-        <td width="75" height="30" style="background:#000000;color:#FFFFFF;font-weight:bold;padding:3px;">Ekleyen</td>
-        <td width="50" height="30" style="background:#000000;color:#FFFFFF;font-weight:bold;padding:3px;">İşlemler</td>
-      </tr>
-      <?php foreach ($ilanlar as $ilan): ?>
-        <tr onclick="window.location='<?php echo base_url(); ?>ilan/<?php echo $ilan->seo_url; ?>-<?php echo $ilan->Id; ?>';" onmouseover="this.style.background='#DFEFFF';" onmouseout="this.style.background='#FFFFFF';" style="cursor:hand;cursor:pointer;">
-          <td height="85" style="border-bottom:1px solid #ccc;"><img src="<?php echo base_url();?><?php if(ilk_resim($ilan->Id)!='' and file_exists('photos/thumbnail/'.ilk_resim($ilan->Id))){?><?php echo 'photos/thumbnail/'.ilk_resim($ilan->Id);?><?php }else{?>assets/images/yok.png<?php }?>" width="85" height="75" title="<?php echo $ilan->firma_adi;?>" alt="<?php echo $ilan->firma_adi;?>"></td>
-          <td height="85" style="border-bottom:1px solid #ccc;"><strong style="color:brown;">#<?php echo $ilan->Id;?></strong></td>
-          <td height="85" style="border-bottom:1px solid #ccc;"><h3 style="color:brown;"><?php echo $ilan->firma_adi;?></h3><strong style="color:blue;"><?php echo replace("kategoriler","kategori_adi","Id",$ilan->kategoriId);?> > <?php echo replace("kategoriler","kategori_adi","Id",$ilan->kategori2);?></strong></td>
-          <td height="85" style="border-bottom:1px solid #ccc;"><strong style="color:brown;"><?php $user->username;?></strong></td>
-          <td height="85" style="border-bottom:1px solid #ccc;"><a href="<?php echo base_url('magazam/magazailansil/').encode($ilan->Id); ?>">Sil</a></td>
-        </tr>
-      <?php endforeach; ?>
-    </table>
-  </div>
-  <div style="clear:both"></div>
+
+  <?php $this->load->view('layout/footer');?>
 </div>
+<div id="ilan-sil" title="İlan Silme Onayı" style="display:none">
+  <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>İlanı Silmek İstediğinizden Emin Misiniz?</p>
 </div>
-<div style="clear:both"></div>
-<div class="footer2">
-  <div style="margin:auto;width:980px">
-    <div class="border" style="margin-left:173px"></div>
-    <div class="border" style="margin-left:370px"></div>
-    <div class="border" style="margin-left:565px"></div>
-    <div class="border" style="margin-left:772px"></div>
-    <ul class="footerTitles">
-      <li>Kurumsal</li>
-      <li>Hizmetlerimiz</li>
-      <li>Mağazalar</li>
-      <li>Gizlilik ve Kullanım</li>
-      <li><center>Sosyal Medyada Biz ?</center></li>
-    </ul>
-    <div style="clear:both"></div>
-    <ul class="footerSections">
-      <li class="footerSection">
-        <ul class="footerLinks"><li>
-          <a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=hakkimizda" style="color:#fff">Hakkımızda</a>
-        </li>
-        <li>
-          <a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=yardim&kategori=iletisim" style="color:#fff">İletişim</a>
-        </li>
-        <li>
-          <a href="http://www.ticaretmeclisi.com/index.php?page=destek" style="color:#fff">Destek</a>
-        </li>
-      </ul>
-    </li>
-    <li class="footerSection">
-      <ul class="footerLinks"><li>
-        <a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=doping" style="color:#fff">Doping</a>
-      </li>
-      <li>
-        <a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=reklam" style="color:#fff">Reklam</a>
-      </li>
-    </ul>
-  </li>
-  <li class="footerSection">
-    <ul class="footerLinks">
-      <li><a href="http://www.ticaretmeclisi.com/index.php?page=magazam" style="color:#fff">Mağazam</a></li>
-      <li><a href="http://www.ticaretmeclisi.com/index.php?page=magazaac" style="color:#fff">Mağaza Açmak İstiyorum</a></li>
-      <li><a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=magaza" style="color:#fff">Neden Mağaza?</a></li>
-      <li><a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=magazafiyatlari" style="color:#fff">Mağaza Fiyatları</a></li>
-    </ul>
-  </li>
-  <li class="footerSection">
-    <ul class="footerLinks">
-      <li><a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=hizmet-sozlesmesi" style="color:#fff">Hizmet Sözleşmesi</a></li>
-      <li><a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=guvenlik-ve-gizlilik" style="color:#fff">Güvenlik Ve Gizlilik</a></li>
-      <li><a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=hesap-numaralarimiz" style="color:#fff">Hesap Numaralarımız</a></li>
-      <li><a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=yardim" style="color:#fff">Yardım</a></li>
-    </ul>
-  </li>
-  <li class="footerSection">
-    <a href="http://www.ticaretmeclisi.com">
-      <img src="http://www.ticaretmeclisi.com/images/logo.jpg" alt="ticaretmeclisi.com" title="ticaretmeclisi.com" widtH="175" height="50" style="margin-left:10px">
-    </a>
-    <ul class="footerSocial">
-      <li><a href="https://www.facebook.com" target="_blank" rel="nofollow" class="social_link facebook" title="Facebook"></a></li>
-      <li><a href="#" target="_blank" rel="nofollow" class="social_link twitter" title="Twitter"></a></li>
-      <li><a href="#" target="_blank" rel="nofollow" class="social_link google" title="Google+"></a></li>
-      <li><a href="#" target="_blank" rel="nofollow" class="social_link youtube" title="Youtube"></a></li>
-      <li><a href="#" target="_blank" rel="nofollow" class="social_link linkedin" title="LinkedIn"></a></li>
-      <li><a href="#" target="_blank" rel="nofollow" class="social_link digg" title="Digg"></a></li>
-      <li><a href="#" target="_blank" rel="nofollow" class="social_link friendfeed" title="FriendFeed"></a></a></li>
-      <li><a href="#" target="_blank" rel="nofollow" class="social_link myspace" title="Myspace"></a></li>
-      <li><a href="#" target="_blank" rel="nofollow" class="social_link pinterest" title="Pinterest"></a></li>
-    </ul>
-  </li>
-</ul>
-<div style="clear:both"></div>
-<div class="contactBlockBg">
-  <ul class="contactBlock">
-    <li><strong style="font-size:16px">Bize Ulaşın</strong></li>
-    <li>0542 218 12 54</li>
-    <li><a href="mailto:destek@ticaretmeclisi.com" style="font-weight:bold;color:#fff">destek@ticaretmeclisi.com</a></li>
-  </ul>
-  <div style="clear:both"></div>
-</div>
-<div style="clear:both"></div>
-<div style="font-size:11px;border-top:1px dotted #DDD;padding:8px;margin-top:5px">
-  ticaretmeclisi.com'da Yer Alan Kullanıcıların Oluşturduğu Tüm İçerik, Görüş Ve Bilgilerin Doğruluğu, Eksiksiz Ve Değişmez Olduğu, Yayınlanması İle İlgili Yasal Yükümlülükler İçeriği Oluşturan Kullanıcıya Aittir.Bu İçeriğin, Görüş Ve Bilgilerin Yanlışlık, Eksiklik Veya Yasalarla Düzenlenmiş Kurallara Aykırılığından ticaretmeclisi.com Hiçbir Şekilde Sorumlu Değildir. Sorularınız İçin İlan Sahibi İle İrtibata Geçebilirsiniz.
-</div>
-</div>
-<div class="footer_copyright">
-  Copyright 2018 ticaretmeclisi.com Tüm Hakları Saklıdır
-  <div style="clear:both"></div>
-</div>
-</div>
-<script>
-function mesaj_gonder (uyeid,ilanid){window.location='http://www.ticaretmeclisi.com/index.php?page=mesajgonder&uyeid=&ilanid=';}
-function favori (){
-  $.ajax({
-    url: 'http://www.ticaretmeclisi.com/favoriekle.php?id=',
-    success: function(data) {
-      $('.result').html(data); alert('İlan favorilerinize eklendi !');
-      document.location.reload(true);
-    }
-  });
-}
-function favorisil (){$.ajax({
-  url: 'http://www.ticaretmeclisi.com/favorisil.php?id=',
-  success: function(data) {
-    $('.result').html(data);
-    alert('İlan favorilerden silindi !');
-    document.location.reload(true);
-  }
-});
-}
-</script>
-<style type="css/text">a{ font-family: 'Raleway', sans-serif;}</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="<?php echo base_url('assets/');?>js/script.js"></script>
+<script src="<?php echo base_url('assets/noty/packaged/jquery.noty.packaged.min.js'); ?>"></script>
+<?php if(flashdata()){ ?>
+    <script type="text/javascript">
+        generate(<?php echo flashdata(); ?>);
+    </script>
+<?php } ?>
 </body>
 </html>
