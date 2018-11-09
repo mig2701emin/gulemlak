@@ -23,14 +23,15 @@
   <div class="main">
     <?php $this->load->view('layout/newuserheader');?>
     <div class="container">
-      <div class="row d-flex justify-content-center" style="margin:50px 0 50px 0;">
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:mediumseagreen"><i class="far fa-thumbs-up"></i> Paket Seçimi</a> <br></div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:mediumseagreen"><i class="fas fa-file"></i> Mağaza Tipi </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-camera"></i> İçerik </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-tags"></i>  Doping Al </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-check-circle"></i> Tebrikler </a>	</div>
-        <div class="col-sm-12 col-md-2"></div>
+      <div class="row d-flex justify-content-center" style="margin-top: 50px;margin-bottom: 50px;">
+        <div class="col-sm-12 col-md-2 col"><a class="btn" style="font-weight:bold;"></i>  Paket Seçimi</a> <br></div>
+        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;color: orangered;"><i class="fas fa-caret-right">  Mağaza Tipi </a>	</div>
+        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;"> İçerik </a>	</div>
+        <!-- <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;" >  Ön İzleme </a>	</div> -->
+        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;">  Doping Al </a>	</div>
+        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold"> Tebrikler </a>	</div>
       </div>
+
       <form action="" method="post">
         <div class="row">
           <div class="col-md-6 col-sm-12 border border-success">
