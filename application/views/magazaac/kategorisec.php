@@ -3,122 +3,143 @@
 <head>
   <title>Ticaret Meclisi</title>
   <?php $this->load->view('layout/metas');?>
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>bootstrap-4.1.3/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/'); ?>css/style.css"/>
-  <style media="screen">
-    /******/
-  </style>
+  <style>
+	/* The container */
+	.radyocontainer {
+	    display: block;
+	    position: relative;
+	    padding-left: 35px;
+	    margin-bottom: 12px;
+	    cursor: pointer;
+	    /*font-size: 22px;*/
+	    -webkit-user-select: none;
+	    -moz-user-select: none;
+	    -ms-user-select: none;
+	    user-select: none;
+			/*float:left;*/
+	}
+
+	/* Hide the browser's default radio button */
+	.radyocontainer input {
+	    position: absolute;
+	    opacity: 0;
+	    cursor: pointer;
+	}
+
+	/* Create a custom radio button */
+	.checkmark {
+	    position: absolute;
+	    top: 25px;
+	    left: 0;
+	    height: 25px;
+	    width: 25px;
+	    background-color: #eee;
+	    border-radius: 50%;
+	}
+
+	/* On mouse-over, add a grey background color */
+	.radyocontainer:hover input ~ .checkmark {
+	    background-color: #ccc;
+	}
+
+	/* When the radio button is checked, add a blue background */
+	.radyocontainer input:checked ~ .checkmark {
+	    background-color: #2196F3;
+	}
+
+	/* Create the indicator (the dot/circle - hidden when not checked) */
+	.checkmark:after {
+	    content: "";
+	    position: absolute;
+	    display: none;
+	}
+
+	/* Show the indicator (dot/circle) when checked */
+	.radyocontainer input:checked ~ .checkmark:after {
+	    display: block;
+	}
+
+	/* Style the indicator (dot/circle) */
+	.radyocontainer .checkmark:after {
+	 	top: 9px;
+		left: 9px;
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: white;
+	}
+	</style>
 </head>
 <body>
   <div class="se-pre-con"></div>
   <div class="main">
-    <?php $this->load->view('layout/userheader');?>
+    <?php $this->load->view('layout/newuserheader');?>
     <div class="container">
-      <div class=" row d-flex justify-content-center" style="margin:50px 0 50px 0;">
-        <div class="col-sm-12 col-md-2 col"><a class="btn" style="color:mediumseagreen"><i class="far fa-thumbs-up"></i> Paket Seçimi</a> <br></div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-file"></i> Mağaza Tipi </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-camera"></i> İçerik </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-tags"></i>  Doping Al </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="color:lightgray"><i class="fas fa-check-circle"></i> Tebrikler </a>	</div>
+      <div class="row d-flex justify-content-center" style="margin-top: 50px;margin-bottom: 50px;">
+        <div class="col-sm-12 col-md-2 col"><a class="btn" style="font-weight:bold;color: orangered;"><i class="fas fa-caret-right"></i>  Paket Seçimi</a> <br></div>
+        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;">  Mağaza Tipi </a>	</div>
+        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;"> İçerik </a>	</div>
+        <!-- <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;" >  Ön İzleme </a>	</div> -->
+        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;">  Doping Al </a>	</div>
+        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold"> Tebrikler </a>	</div>
       </div>
-      <form action="" id="form" name="form" method="post">
+
+      <form action="" id="form" name="form" method="post" style="margin-bottom:20px">
         <input type="hidden" id="step" name="step" value="2">
         <?php
-        $paketSQL=$this->db->query("select * from kategoriler where ust_kategori='0'")->result();
-        foreach ($paketSQL as $paket) {
+        $j=0;
+        foreach ($anaKategoriler as $paket) {
           $categories[]=$paket->kategori_adi;
           ?>
-          <table cellpadding="0" cellspacing="0" width="970" style="margin-bottom:25px">
-            <tr>
-              <td width="25" align="center">
-                <input name="paket" value="<?php echo $paket->Id;?>" type="radio" id="magaza_paket<?php echo $paket->Id;?>" onclick="show_promo();">
-              </td>
-              <td width="98">
-                <label for="magaza_paket<?php echo $paket->Id;?>">
-                  <div class="store_category_select">
-                    <?php echo $paket->kategori_adi;?>
-                  </div>
-                </label>
-              </td>
-              <td id="mgz_paket<?php echo $paket->Id;?>" style="border-bottom:2px #8AC524 solid" width="970">
-                <table cellpadding="0" cellspacing="0" border="0">
-                  <tr>
-                    <td align="center" width="150px" valign="top">
-                      <label for="magaza_paket<?php echo $paket->Id;?>">
-                        <img src="<?php echo base_url('assets/'); ?>images/category_icon/<?php echo $paket->icon;?>" border="0" width="32px" height="32px">
-                        <br />
-                        <?php echo $paket->kategori_adi;?>
-                      </label>
-                    </td>
-                    <td>
-                      <img src="<?php echo base_url('assets/');?>images/sag_ok.gif">
-                    </td>
-                    <td style="padding-left:20px;" class="f10">
-                      <?php
-                      $subcatSQL=$this->db->query("select * from kategoriler where ust_kategori='".$paket->Id."' LIMIT 10");
-                      $count_subcat=$subcatSQL->num_rows();
-                      $subcatSQL=$subcatSQL->result();
-                      $i=1;
-                      foreach ($subcatSQL as $subcat) {
-                        ?>
-                        <?php echo $subcat->kategori_adi;?><?php if($i!=$count_subcat){ ?>, <?php } ?>
-                        <?php $i++;
-                      }?>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-        <?php }?>
-        <table cellpadding="0" cellspacing="0" width="970" style="margin-bottom:25px">
-          <tr>
-            <td width="25" align="center">
-              <input name="paket" value="hepsi"  type="radio" id="magaza_pakethepsi" onclick="show_promo();">
-            </td>
-            <td width="98">
-              <label for="magaza_pakethepsi">
-                <div class="store_category_select">
-                  HepsiBir
-                </div>
+          <div class="row<?php if($j%2==0){?> bg-secondary<?php }else{?> bg-warning<?php } ?>" style="padding:5px">
+            <div class="col-lg-2 col-md-2 col-sm-3 col-4" style="padding:5px">
+              <label for="magaza_paket<?php echo $paket->Id;?>" class="radyocontainer"><img src="<?php echo base_url('assets/'); ?>images/category_icon/<?php echo $paket->icon;?>">
+              <br />
+              <?php echo $paket->kategori_adi;?>
+                <input type="radio" name=paket id="magaza_paket<?php echo $paket->Id;?>" value="<?php echo $paket->Id;?>" <?php if($paket->Id==45){ ?>checked="checked"<?php } ?>align="center">
+                <span class="checkmark"></span>
               </label>
-            </td>
-            <td id="mgz_paket_hepsi" style="border-bottom:2px #907D3A solid" width="970">
-              <table cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td align="center" width="150px" valign="top">
-                    <label for="magaza_pakethepsi">
-                      <img src="<?php echo base_url('assets/'); ?>images/category_icon/tum_kat_paket.gif" border="0" width="32px" height="32px">
-                      <br />
-                      HepsiBir
-                    </label>
-                  </td>
-                  <td>
-                    <img src="<?php echo base_url('assets/') ?>images/sag_ok.gif">
-                  </td>
-                  <td style="padding-left:20px;" class="f10">
-                    <?php echo implode(", ",$categories);?>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
-        <h2 style="color:#68A717;width:970px;text-align:center;">
-          Lütfen mağazanızı açacağınız kategoriyi belirleyerek içinde bulunduğu paketi seçiniz.
-        </h2>
-        <p align="right"><input type="button" name="devam" value="Devam" class="v4_special_button" onclick="validateme()"></p>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-9 col-8">
+                  <?php
+                  $subcatSQL=$this->db->query("select * from kategoriler where ust_kategori='".$paket->Id."' LIMIT 10");
+                  $count_subcat=$subcatSQL->num_rows();
+                  $subcatSQL=$subcatSQL->result();
+                  $i=1;
+                  foreach ($subcatSQL as $subcat) {
+                    ?>
+                    <?php echo $subcat->kategori_adi;?><?php if($i!=$count_subcat){ ?>, <?php } ?>
+                    <?php $i++;
+                  }?>
+            </div>
+          </div>
+        <?php $j++; }?>
+        <div class="row<?php if($j%2==0){?> bg-secondary<?php }else{?> bg-warning<?php } ?>" style="padding:5px">
+          <div class="col-lg-2 col-md-2 col-sm-3 col-4" style="padding:5px">
+            <label for="magaza_pakethepsi" class="radyocontainer"><img src="<?php echo base_url('assets/'); ?>images/category_icon/tum_kat_paket.gif" border="0" width="32px" height="32px">
+            <br />
+            HepsiBir
+              <input type="radio" name=paket id="magaza_pakethepsi" value="hepsi">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div class="col-lg-10 col-md-10 col-sm-9 col-8">
+                <?php echo implode(", ",$categories);?>
+          </div>
+        </div>
+        <div class="row">
+          <h2 style="color:#68A717;width:970px;text-align:center;">
+            Lütfen mağazanızı açacağınız kategoriyi belirleyerek içinde bulunduğu paketi seçiniz.
+          </h2>
+        </div>
+        <div class="row text-center">
+          <button class="btn btn-success btn-block" type="submit" name="devam" onclick="validateme()">Devam</button>
+        </div>
       </form>
       <script>
-      function show_promo(){
-        for(var i=1; i<=7; i++){
-          if (document.getElementById('magaza_paket'+i).checked){
-            document.getElementById('mgz_paket'+i).style.backgroundColor='#FEE9EB';
-          }else{
-            document.getElementById('mgz_paket'+i).style.backgroundColor='#f8f8f8';
-          }
-        }
-      }
       function validateme() {
         var l = document.form.paket.length;
         var s = 0;

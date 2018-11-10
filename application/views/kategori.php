@@ -560,7 +560,7 @@
 
               ?>
 
-              <td width="91" style="text-align:center"><?php echo $il->il_ad;?><br/><?php echo $mahalle->mahalle_ad; ?></td>
+              <td width="91" style="text-align:center"><?php if ($il) { echo $il->il_ad;}?><br/><?php if($mahalle){echo $mahalle->mahalle_ad;}?></td>
               </tr>
               <?php
               $i++;

@@ -151,7 +151,7 @@ class Magazam extends CI_Controller{
     if ($this->magaza!=null) {
       $data["magaza"]=$this->magaza;
     }
-    $this->load->view("magazam/magaza_user_add");
+    $this->load->view("magazam/magaza_user_add",$data);
   }
 
   public function magazauseredit($uyeId)
@@ -218,12 +218,31 @@ class Magazam extends CI_Controller{
   }
   public function magazailanlari()
   {
-    $ilanlar = array();
-    $magaza_ilanlar=$this->db->where("magazaId",$this->magaza->Id)->get("magaza_ilanlari")->result();
-    foreach ($magaza_ilanlar as $magaza_ilan) {
-      $ilanlar[]=$this->db->where("Id",$magaza_ilan->ilanId)->get("firmalar")->row();
+    $this->load->library("pagination");
+    $config["per_page"] = 40;
+    $urlstring="magazam/magaza_ilanlari";
+    $uri_segment=3;
+    $page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
+    $sql="SELECT magaza_ilanlari.*, firmalar.* FROM magaza_ilanlari JOIN firmalar ";
+    $sql.="WHERE magaza_ilanlari.ilanId=firmalar.Id AND magaza_ilanlari.magazaId=";
+    $sql.="(SELECT magazaId FROM magaza_kullanicilari WHERE uyeId=";
+    $sql.=$this->user->Id;
+    $sql.=")";
+    $data["toplam_kayit"]=$this->db->query($sql)->num_rows();
+    $sql.=" LIMIT ";
+    $sql.=$page;
+    $sql.=", ";
+    $sql.=$config["per_page"];
+    if ($data["toplam_kayit"] > 0) {
+      $data["ilanlar"]=$this->db->query($sql)->result();
     }
-    $data["ilanlar"]=$ilanlar;
+    $config["uri_segment"] = $uri_segment;
+    $config["base_url"] = base_url($urlstring);
+    $config["total_rows"] = $data["toplam_kayit"];
+    $config["num_links"] = 20;
+    $this->pagination->initialize($config);
+    $data["links"] = $this->pagination->create_links();
+
     $data["user"]=$this->user;
     if ($this->magaza!=null) {
       $data["magaza"]=$this->magaza;
@@ -267,7 +286,7 @@ class Magazam extends CI_Controller{
     if ($this->magaza!=null) {
       $data["magaza"]=$this->magaza;
     }
-    $this->load->view("magazam/magaza_ilan_add");
+    $this->load->view("magazam/magaza_ilan_add",$data);
 
   }
   public function importallilan()

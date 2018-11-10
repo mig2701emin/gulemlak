@@ -13,13 +13,13 @@
     <div class="container">
       <div class="p-3 mb-2 bg-secondary text-white text-center"><strong>Bilgilerim</strong></div>
       <div class="content_style">
-        <form name="form1" id="form1" method="post" class="mega_size_fields">
-          <div class="jumbotron jumbotron-fluid text-center">
-            <div class="container">
-              <h1 class="display-4">Türkiye'nin ilan ve e-ticaret platformunda yerinizi alın!</h1>
-              <p class="lead">Üyelik formunu eksiksizce doldurarak üyelik hizmetlerinden hemen yararlanmaya başlayabilirsiniz.</p>
-            </div>
+        <div class="jumbotron jumbotron-fluid text-center">
+          <div class="container">
+            <h1 class="display-4">Türkiye'nin ilan ve e-ticaret platformunda yerinizi alın!</h1>
+            <p class="lead">Üyelik formunu eksiksizce doldurarak üyelik hizmetlerinden hemen yararlanmaya başlayabilirsiniz.</p>
           </div>
+        </div>
+        <form name="form1" id="form1" method="post" class="mega_size_fields">
           <div class="mb-3">
               <label for="username">Kullanıcı Adı :</label>
               <input type="text" class="form-control" name="username" placeholder="" value="<?php echo $user->username;?>" disabled>
@@ -33,7 +33,7 @@
               <input type="text" class="form-control" name="soyad" placeholder="" value="<?php echo $user->soyad;?>" required>
           </div>
           <div class="mb-3">
-              <label for="email">E-Mail Adresiniz :</label>
+              <label for="email">E-Posta Adresiniz :</label>
               <input type="text" class="form-control" name="email" placeholder="" value="<?php echo $user->email;?>" disabled>
           </div>
           <div class="mb-3">

@@ -147,6 +147,21 @@ function seo_link($url){
     $url = str_replace ('--', '-', $url);
     return $url;
 }
+function seo_link2($url)
+{
+  $url2=seo_link($url);
+  $url2 = str_replace ('-', '_', $url2);
+  return $url2;
+}
+function cleanword($url){
+    $url = trim($url);
+    $find = array('<b>', '</b>');
+    $url = str_replace ($find, '', $url);
+    $url = preg_replace('/<(\/{0,1})img(.*?)(\/{0,1})\>/', 'image', $url);
+    $find = array('&amp;amp;amp;quot;', '&amp;amp;amp;amp;', '&amp;amp;amp;', '\r\n', '\n', '/', '\\', '+', '<', '>','&nbsp;');
+    $url = str_replace ($find, '', $url);
+    return $url;
+}
 function baslik_yap($url){
     $url = trim($url);
     $find = array('é', 'è', 'ë', 'ê', 'É', 'È', 'Ë', 'Ê');

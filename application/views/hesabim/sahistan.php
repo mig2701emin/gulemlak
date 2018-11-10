@@ -21,26 +21,21 @@
                     <div class="panel panel-default">
                       <div class="panel-heading">
 
-                        <div class="p-3 mb-2 bg-dark text-white text-center"><strong>Şifre Yenileme</strong></div>
+                        <div class="p-3 mb-2 bg-secondary text-white text-center"><strong>Sahibinden</strong></div>
                       </div>
 
                       <div class="panel-body">
-                        <form method="post">
+                        <form method="post" action="<?php echo base_url(); ?>hesabim/sahistanilan">
                             <div class="well">Kullanıcı: <strong><?php echo $user->ad." ".$user->soyad; ?></strong></div>
                             <hr/>
                             <div class="form-group">
-                                <label>Yeni Parola<sup class="text-danger"> * </sup></label>
-                                <input type="password" class="form-control" name="new_password" value="<?php echo set_value('new_password'); ?>" />
+                                <label>URL yi giriniz..</label>
+                                <input type="text" class="form-control" name="url"/>
                             </div>
 
-                            <div class="form-group">
-                                <label>Yeni Parola Tekrar</label>
-                                <input type="password" class="form-control" name="re_password" value="<?php echo set_value('re_password'); ?>" />
-                            </div>
                             <button type="submit" class="btn btn-success">Gönder</button>
                         </form>
                         <br/>
-                        <p class="text-danger">(<sup> * </sup>) Parola en az bir büyük harf, bir küçük harf ve bir rakam içermelidir ve minimum 8 karekterden meydana gelmelidir.</p>
 
                       </div>
                     </div>

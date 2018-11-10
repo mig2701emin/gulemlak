@@ -25,6 +25,14 @@ class Ilanekle extends CI_Controller{
   }
   public function index()
   {
+    if ($this->user->gsm=="") {
+      $this->session->set_flashdata("error","İlan eklemeden önce lütfen cep telefonu numaranızı ekleyiniz");
+      redirect(base_url("hesabim/bilgilerim"));
+    }
+    $data["user"]=$this->user;
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $settings=$this->db->get("ayarlar")->row();
     //session daki kategoriyi siliyoruz.
     if ($this->session->userdata("kategori")) {
@@ -32,10 +40,7 @@ class Ilanekle extends CI_Controller{
     }
     //ana kategorileri view e gönderiyoruz
     $data['anaKategoriler']=$this->kategoriler->getAnaKategoriler();
-    $data["user"]=$this->user;
-    if ($this->magaza!=null) {
-      $data["magaza"]=$this->magaza;
-    }
+
 
     $this->load->view('ilanekle/kategorisec',$data);
   }
@@ -100,16 +105,24 @@ class Ilanekle extends CI_Controller{
       $data["fields"]=$fields;
       //post başlangıcı
       if (isset($_POST) && !empty($_POST)) {
-        $res = post_captcha($_POST['g-recaptcha-response']);
-        if ($res['success']) {
+        // $res = post_captcha($_POST['g-recaptcha-response']);
+        // if ($res['success']) {
           //recaptcha onaylanmışsa
           $formvalid = array(
+              array('field' => 'ad_rules',                'label' => 'Sözleşme Kabul',        'rules' => 'required'),
               array('field' => 'ilanadi',                 'label' => 'İlan Başlığı',          'rules' => 'required'),
               array('field' => 'aciklama',                'label' => 'İlan Açıklaması',       'rules' => 'required'),
               array('field' => 'fiyat1',                  'label' => 'Fiyat',                 'rules' => 'required'),
-              array('field' => 'ad_rules',                'label' => 'Sözleşme Okuma',        'rules' => 'required'),
-              array('field' => 'bitis_suresi',            'label' => 'İlan Süresi',           'rules' => 'required')
+              array('field' => 'bitis_suresi',            'label' => 'İlan Süresi',           'rules' => 'required'),
+              array('field' => 'il',                      'label' => 'İl',                    'rules' => 'required'),
+              array('field' => 'ilce',                    'label' => 'İlce',                  'rules' => 'required'),
+              array('field' => 'mahalle',                 'label' => 'Mahalle',               'rules' => 'required'),
           );
+          foreach ($fields as $field) {
+            if ($field->required==1) {
+              $formvalid[]=  array('field' => $field->seo_name, 'label' => $field->name,'rules' => 'required');
+            }
+          }
           $this->form_validation->set_rules($formvalid);
           $this->form_validation->set_error_delimiters('<p>', '</p>');
           $this->form_validation->set_message('required', '<strong>%s</strong> Gerekli Bir Alandır.');
@@ -135,7 +148,7 @@ class Ilanekle extends CI_Controller{
             $firmalar["il"] = $this->security->xss_clean($this->input->post('il'));
             $seo_url.="-".replace("tbl_il","seo_il","il_id",$firmalar["il"]);
             $firmalar["ilce"] = $this->security->xss_clean($this->input->post('ilce'));
-            $seo_url.="-".replace("tbl_ilce","seo_icel","ilce_id",$firmalar["ilce"]);
+            $seo_url.="-".replace("tbl_ilce","seo_ilce","ilce_id",$firmalar["ilce"]);
             $firmalar["mahalle"] = $this->security->xss_clean($this->input->post('mahalle'));
             $seo_url.="-".replace("tbl_mahalle","seo_mahalle","mahalle_id",$firmalar["mahalle"]);
             //$seo_url.="-".$ilanId;
@@ -239,10 +252,10 @@ class Ilanekle extends CI_Controller{
           } else {
             //validation kontrolü error verirse
           }
-        } else {
-          //recaptcha onaylanmışsa.
-          $this->session->set_flashdata('error', 'Lütfen robot olmadığınızı doğrulayın.');
-        }
+        // } else {
+        //   //recaptcha onaylanmışsa.
+        //   $this->session->set_flashdata('error', 'Lütfen robot olmadığınızı doğrulayın.');
+        // }
       }
       //post sonu
       $data["user"]=$this->user;
@@ -260,10 +273,10 @@ class Ilanekle extends CI_Controller{
   //ilan önizleme
   public function onizleme($ilanId)
   {
-    /*$ilan_kontrol=$this->firmalar->ilan_kontrol($ilanId,$this->session->userdata("userData")["userID"]);
+    $ilan_kontrol=$this->firmalar->ilan_kontrol($ilanId,$this->user->Id);
     if (!$ilan_kontrol) {
       redirect(base_url());
-    }*/
+    }
     $ilan=$this->firmalar->get_ilan($ilanId);
     $data["ilan"]=$ilan;
     $show_fields="";

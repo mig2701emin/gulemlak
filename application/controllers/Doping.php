@@ -26,11 +26,6 @@ class Doping extends CI_Controller{
   }
   public function ilan($ilanId)
   {
-    //$ilan=$this->firmalar->get_ilan($ilanId);
-    /*if($this->user->Id != $ilan->uyeId){
-      redirect(base_url());
-    }*/
-    //$user=$this->session->userdata("userData");
     if ($ilanId) {
       for ($i=1; $i < 11; $i++) {
         $this->session->unset_userdata("doping_".$i);
@@ -128,7 +123,6 @@ class Doping extends CI_Controller{
   public function magaza($magazaId)
   {
     $data["magazaId"]=$magazaId;
-    //$user=$this->session->userdata("userData");
     $magaza_kontrol=$this->magazalar->magaza_kontrol($magazaId,$this->user->Id);
     if (!$magaza_kontrol) {
       redirect(base_url());
@@ -146,9 +140,9 @@ class Doping extends CI_Controller{
           $degisken="mdoping_".$d;
           $degisken2="mprice_".$d;
           $$degisken=$this->security->xss_clean($this->input->post('mdoping_'.$d));
-          if ($$degisken) {
+          if ($$degisken > 0) {
             $this->session->set_userdata($degisken,$$degisken);
-            $$degisken2=$$degisken*$ilan_doping->ucret;
+            $$degisken2=$$degisken*$magaza_doping->ucret;
             $this->session->set_userdata($degisken2,$$degisken2);
             $tutar+=$$degisken2;
           }
@@ -205,7 +199,7 @@ class Doping extends CI_Controller{
           if ($this->session->userdata("mdoping_".$d)) {
             $sql="insert into siparis (id,islemno,uyeId,firmaId,doping,sure,tutar,";
             $sql.="magaza,durum,tarih) values(null,'".$siparis['islemno']."','".$this->user->Id;
-            $sql.="','','".$magaza_dopings->doping."','".$this->session->userdata('mdoping_'.$d);
+            $sql.="','','".$magaza_doping->doping."','".$this->session->userdata('mdoping_'.$d);
             $sql.="m','".$this->session->userdata('mprice_'.$d)."','".$magazaId."','0','".$tarih."')";
             $this->db->query($sql);
             $this->session->unset_userdata('mdoping_'.$d);
