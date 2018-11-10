@@ -1,12 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-  //if(SUBDOMAIN === FALSE) {
       $route['default_controller'] = 'home';
-  //} else {
-      //$route['default_controller'] = "subdeneme";
-  //}
-      //$route['default_controller'] = 'home';
 
       require_once (BASEPATH.'database/DB.php');
       $db=& DB();
@@ -30,7 +25,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $route[$magaza->username.'/(:any)/(:any)']='home/magaza_goruntule/'.$magaza->username.'/$1/$2';
       }
 
-      $route['sitemap\.xml'] = 'sitemap';
+      $route['sitemap\.xml'] = 'sitemap/sitemap';
+      $route['sitemap1\.xml'] = 'sitemap/sitemap1';
+      $route['sitemap2\.xml'] = 'sitemap/sitemap2';
+      $route['sitemap3\.xml'] = 'sitemap/sitemap3';
+      $route['sitemap4\.xml'] = 'sitemap/sitemap4';
+      $route['sitemap5\.xml'] = 'sitemap/sitemap5';
+      $route['sitemap6\.xml'] = 'sitemap/sitemap6';
+      $route['sitemap7\.xml'] = 'sitemap/sitemap7';
+      $route['sitemap8\.xml'] = 'sitemap/sitemap8';
+      $route['sitemap9\.xml'] = 'sitemap/sitemap9';
+      $route['sitemap10\.xml'] = 'sitemap/sitemap10';
+
 
       $route['uyegiris'] = 'login';
       $route['uyeol'] = 'login/add';

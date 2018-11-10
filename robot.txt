@@ -1,0 +1,13 @@
+User-Agent: *
+Allow:
+Disallow: /panel
+Disallow: /takip
+Disallow: /muhasebe
+Disallow: /protect_page.php
+Disallow: /config.php
+Disallow: /config_includes.php
+Disallow: /setting.php
+Disallow: /libs.php
+
+
+Sitemap: https://www.emlakmeclisi.com/sitemap.xml
