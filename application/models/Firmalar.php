@@ -123,7 +123,7 @@ class Firmalar extends CI_Model{
 
   public function add($string){
 		$insert = $this->db->insert('firmalar', $string);
-		if(!$insert){ return false; }else{ return true; }
+    return $this->db->insert_id();
 	}
   public function get_ilan($ilanId)
   {

@@ -80,11 +80,11 @@
 													</div>
 													<br>
                           <div class="m-widget7__button">
-                              <a class="m-btn m-btn--pill btn btn-danger" href="<?php echo base_url(); ?>ilan/<?php echo $ilan->seo_url; ?>-<?php echo $ilanId; ?>" role="button">İlanı incele</a>
+                              <a class="m-btn m-btn--pill btn btn-danger" href="<?php echo base_url(); ?>ilan/<?php echo $ilan->seo_url; ?>-<?php echo $ilan->Id; ?>" role="button">İlanı incele</a>
                           </div>
                           <b>
 														<div class="ad_id_box">
-															İlan no :<?php echo $ilanId; ?>
+															İlan no :<?php echo $ilan->ilanId; ?>
 														</div>
 													</b>
 												</div>
@@ -161,7 +161,7 @@
                           <li><a href="index.php?page=sayfa&sayfa=doping-cesitleri">> Doping Çeşitleri</a></li>
 	                      </ul>
                         <div class="m-widget19__action">
-                            <a href="<?php echo base_url() ?>doping/ilan/<?php echo $ilanId; ?>" class="btn m-btn--pill btn-secondary m-btn m-btn--hover-brand m-btn--custom">Doping Satın Al</a>
+                            <a href="<?php echo base_url() ?>doping/ilan/<?php echo $ilan->Id; ?>" class="btn m-btn--pill btn-secondary m-btn m-btn--hover-brand m-btn--custom">Doping Satın Al</a>
                         </div>
 	                    </div>
 		                </div>

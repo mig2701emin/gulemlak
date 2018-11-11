@@ -133,8 +133,7 @@ class Ilanekle extends CI_Controller{
               redirect(base_url("account/ilanekle"));
             }
             $firmalar = array();
-            $ilanId=ilan_id_al();
-            $firmalar["Id"]=$ilanId;
+            $firmalar["ilanId"]=ilan_id_al();
             $firmalar["kategoriId"]=$field_kategori;
             $firmalar["uyeId"]=$userID;
             $ilanadi       = $this->security->xss_clean($this->input->post('ilanadi'));
@@ -151,7 +150,6 @@ class Ilanekle extends CI_Controller{
             $seo_url.="-".replace("tbl_ilce","seo_ilce","ilce_id",$firmalar["ilce"]);
             $firmalar["mahalle"] = $this->security->xss_clean($this->input->post('mahalle'));
             $seo_url.="-".replace("tbl_mahalle","seo_mahalle","mahalle_id",$firmalar["mahalle"]);
-            //$seo_url.="-".$ilanId;
             $firmalar["seo_url"]=$seo_url;
             $firmalar["kayit_tarihi"]=date("Y-m-d H:i:s");
             $bitis_suresi  = $this->security->xss_clean($this->input->post('bitis_suresi'));
@@ -202,9 +200,6 @@ class Ilanekle extends CI_Controller{
             $add_to_store  = $this->security->xss_clean($this->input->post('add_to_store'));
 
             if ($magaza_var_mi && $add_to_store) {
-              $magazaId=$this->db->where("uyeId",$userID)->get("magaza_kullanicilari")->row()->magazaId;
-              $magaza_ilanlari = array('Id' => null, 'magazaId' => $magazaId, 'ilanId' => $ilanId, 'uyeId' => $userID);
-              $this->db->insert("magaza_ilanlari",$magaza_ilanlari);
               $onay_durum=1;
               $kucuk_fotograf=1;
             } else {
@@ -226,7 +221,13 @@ class Ilanekle extends CI_Controller{
             $firmalar["kucuk_fotograf"] = $kucuk_fotograf;
             $firmalar["ilan_turu"] = 0;
             $firmalar["ilan_notu"] = $this->security->xss_clean($this->input->post('ilan_notu'));
-            $insert=$this->firmalar->add($firmalar);
+            $ilanId=$this->firmalar->add($firmalar);
+            if ($magaza_var_mi && $add_to_store) {
+              $magazaId=$this->db->where("uyeId",$userID)->get("magaza_kullanicilari")->row()->magazaId;
+              $magaza_ilanlari = array('Id' => null, 'magazaId' => $magazaId, 'ilanId' => $ilanId, 'uyeId' => $userID);
+              $this->db->insert("magaza_ilanlari",$magaza_ilanlari);
+            }
+
             $field_values = array();
             foreach ($fields as $field) {
               if($field->type=='checkbox'){
@@ -394,7 +395,7 @@ class Ilanekle extends CI_Controller{
     if (!$ilan_kontrol) {
       redirect(base_url());
     }
-    $data["ilanId"]=$ilanId;
+    //$data["ilanId"]=$ilanId;
     $ilan=$this->firmalar->get_ilan($ilanId);
     $data["ilan"]=$ilan;
     $data["ilan_turu"]=0;

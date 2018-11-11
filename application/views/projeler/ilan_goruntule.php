@@ -362,7 +362,7 @@ font-weight: bold;
 											İlan No
 										</div>
 										<div class="col-6 bilgiler">
-											<?php echo $ilan->Id; ?>
+											<?php echo $ilan->ilanId; ?>
 										</div>
 									</div>
 								</div>

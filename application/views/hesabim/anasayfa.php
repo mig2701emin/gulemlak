@@ -149,7 +149,7 @@
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-4">
                     No
-                    <h6><span class="badge badge-pill badge-lg badge-dark"> <?php echo $ilan->Id;?> </span></h6>
+                    <h6><span class="badge badge-pill badge-lg badge-dark"> <?php echo $ilan->ilanId;?> </span></h6>
                   </div>
                 </div>
               </div>

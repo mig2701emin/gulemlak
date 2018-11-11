@@ -278,7 +278,7 @@
 									İlan No:
 								</div>
 								<div class="col-6">
-									<?php echo $ilan->Id; ?>
+									<?php echo $ilan->ilanId; ?>
 								</div>
 							</div>
 							<div class="col-12 mar-bot row">
