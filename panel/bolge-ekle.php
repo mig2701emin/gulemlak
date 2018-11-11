@@ -1,6 +1,6 @@
-<?php 
-include('header.php'); 
-include('helper.php'); 
+<?php
+include('header.php');
+include('helper.php');
 $ust=guvenlik($_GET['ust']);
 $type_Get=guvenlik($_GET['type']);
 $action=guvenlik($_GET['action']);
@@ -10,7 +10,7 @@ if(isset($_POST) && !empty($_POST)){
 	if($type_Get=='ilce'){
 		$sql="insert into tbl_ilce (ilce_id,il_id,ilce_ad,seo_ilce) VALUES(NULL,'$ust','$bolge_ad','$seo_bolge');";
 		/////////////////////////////////////////////////
-		klasorleme("../emlak");
+		/*klasorleme("../emlak");
 		$emlaklar=$mysqli->query("SELECT * FROM kategoriler where Id='46' or Id='47' or Id='48' order by Id");
 		foreach($emlaklar as $emlak){
 			$seo_emlak=permalink($emlak["kategori_adi"]);
@@ -27,10 +27,10 @@ if(isset($_POST) && !empty($_POST)){
 						$il=$mysqli->query("SELECT * FROM tbl_il where il_id='$ust'")->fetch_assoc();
 						$seo_il=$il['seo_il'];
 						klasorleme("../emlak/".$seo_emlak."/".$seo_konut."/".$seo_kiralaSat."/".$seo_il);
-						klasorleme("../emlak/".$seo_emlak."/".$seo_konut."/".$seo_kiralaSat."/".$seo_il."/".$seo_bolge);	
+						klasorleme("../emlak/".$seo_emlak."/".$seo_konut."/".$seo_kiralaSat."/".$seo_il."/".$seo_bolge);
 					}
 				}
-			}else{		
+			}else{
 				$kiralaSatlar=$mysqli->query("SELECT * FROM kategoriler where ust_kategori='$emlak[Id]' order by Id asc limit 2");
 				foreach($kiralaSatlar as $kiralaSat){
 					$seo_kiralaSat=permalink($kiralaSat["kategori_adi"]);
@@ -38,17 +38,17 @@ if(isset($_POST) && !empty($_POST)){
 					$il=$mysqli->query("SELECT * FROM tbl_il where il_id='$ust'")->fetch_assoc();
 					$seo_il=$il['seo_il'];
 					klasorleme("../emlak/".$seo_emlak."/".$seo_kiralaSat."/".$seo_il);
-					klasorleme("../emlak/".$seo_emlak."/".$seo_kiralaSat."/".$seo_il."/".$seo_bolge);	
-				}	
+					klasorleme("../emlak/".$seo_emlak."/".$seo_kiralaSat."/".$seo_il."/".$seo_bolge);
+				}
 			}
-		}
-		///////////////////////////////////////////////////////  
+		}*/
+		///////////////////////////////////////////////////////
 	}elseif($type_Get=='mahalle'){
 		$sonkayit=$mysqli->query("select mahalle_id from tbl_mahalle order by mahalle_id desc limit 1")->fetch_assoc();
 		$sonid=$sonkayit['mahalle_id']+1;
 		$sql="insert into tbl_mahalle (mahalle_id,ilce_id,mahalle_ad,seo_mahalle) VALUES('$sonid','$ust','$bolge_ad','$seo_bolge');";
 		/////////////////////////////////////////////////
-		klasorleme("../emlak");
+		/*klasorleme("../emlak");
 		$emlaklar=$mysqli->query("SELECT * FROM kategoriler where Id='46' or Id='47' or Id='48' order by Id");
 		foreach($emlaklar as $emlak){
 			$seo_emlak=permalink($emlak["kategori_adi"]);
@@ -70,7 +70,7 @@ if(isset($_POST) && !empty($_POST)){
 						klasorleme("../emlak/".$seo_emlak."/".$seo_konut."/".$seo_kiralaSat."/".$seo_il);
 						klasorleme("../emlak/".$seo_emlak."/".$seo_konut."/".$seo_kiralaSat."/".$seo_il."/".$seo_ilce);
 						klasorleme("../emlak/".$seo_emlak."/".$seo_konut."/".$seo_kiralaSat."/".$seo_il."/".$seo_ilce."/".$seo_bolge);
-						
+
 						$metin='<!doctype html> <html lang="tr"> <head> <meta name="description" content=';
 						$metin.=$bolge_ad;
 						$kiralaSatTurk=$kiralaSat["kategori_adi"];
@@ -114,10 +114,10 @@ if(isset($_POST) && !empty($_POST)){
 							fwrite($acilanDosya,$metin);
 							fclose($acilanDosya);
 						}
-						
+
 					}
 				}
-			}else{		
+			}else{
 				$kiralaSatlar=$mysqli->query("SELECT * FROM kategoriler where ust_kategori='$emlak[Id]' order by Id asc limit 2");
 				foreach($kiralaSatlar as $kiralaSat){
 					$seo_kiralaSat=permalink($kiralaSat["kategori_adi"]);
@@ -130,7 +130,7 @@ if(isset($_POST) && !empty($_POST)){
 					klasorleme("../emlak/".$seo_emlak."/".$seo_kiralaSat."/".$seo_il);
 					klasorleme("../emlak/".$seo_emlak."/".$seo_kiralaSat."/".$seo_il."/".$seo_ilce);
 					klasorleme("../emlak/".$seo_emlak."/".$seo_kiralaSat."/".$seo_il."/".$seo_ilce."/".$seo_bolge);
-					
+
 					$metin='<!doctype html> <html lang="tr"> <head> <meta name="description" content=';
 						$metin.=$bolge_ad;
 						$kiralaSatTurk=$kiralaSat["kategori_adi"];
@@ -172,9 +172,9 @@ if(isset($_POST) && !empty($_POST)){
 							fwrite($acilanDosya,$metin);
 							fclose($acilanDosya);
 						}
-				}	
+				}
 			}
-		}
+		}*/
 		///////////////////////////////////////////////////////
 	}else{
 		$sql="insert into tbl_il (il_id,il_ad) VALUES(NULL,'$bolge_ad');";
@@ -192,11 +192,11 @@ if(isset($_POST) && !empty($_POST)){
 				</ul>
 			</div>
 <?
-if($action=='ok'){	
+if($action=='ok'){
 process_mysql($sql,"bolge-yonetimi.html?type=".$type_Get."&Id=".$ust);
 }
 ?>
-			<div class="row-fluid sortable">		
+			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
 						<h2><i class="icon-user"></i> Bölge Ekle</h2>
@@ -204,7 +204,7 @@ process_mysql($sql,"bolge-yonetimi.html?type=".$type_Get."&Id=".$ust);
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 						</div>
 					</div>
-					
+
 					<div class="box-content">
 <form action="?action=ok&type=<?=$type_Get;?>&ust=<?=$ust;?>" method="post" class="form-horizontal">
 <fieldset>
@@ -214,12 +214,12 @@ process_mysql($sql,"bolge-yonetimi.html?type=".$type_Get."&Id=".$ust);
 								<div class="controls">
 								  <input name="bolge_ad" type="text">
 								</div>
-							  </div>											  
+							  </div>
 							<div class="form-actions">
 							  <button type="submit" class="btn btn-primary">Ekle</button>
 							</div>
 </fieldset>
-</form>							
+</form>
 					</div>
 				</div>
 			</div>
