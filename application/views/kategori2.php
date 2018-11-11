@@ -34,7 +34,8 @@
 <div class="container">
     <div class="row mt-60 mb-60" >
 
-        <div class="col-md-3 mb-sm-30 col-lgmd-20per">
+        <div class="col-md-3">
+
             <div class="sidebar-block">
                 <div class="sidebar-box listing-box mb-40">
                     <span class="opener plus"></span>
@@ -45,10 +46,13 @@
 
 
                         <div class="categoryheader cathead3"><?php echo $kategori->kategori_adi;?></div>
-                        <div style="float:left;margin-right:15px">
-                            <div class="grey_border">
+                        <div>
+                            <div >
 
-<div class="mb-5" style="font-size: 13px;">
+<div class="row">
+
+
+<div class="col-12">
                                 <!-- Kategori Liste başlangıç.....................................................-->
                                 <script src="<?php echo base_url(); ?>js/autoNumeric.js" defer></script>
                                 <script>
@@ -184,55 +188,61 @@
                                     }
                                     ?>
                                 </div>
-                                    <div class="searchSeperator"></div>
 
 
-                                    <form name="AdvancedSearchForm" id="AdvancedSearchForm" action="" method="post">
+</div>
 
 
-                                        <div onclick="aramaGoster('1','<?php echo $kat1;?>');" class="category_fieldName font-weight-bold">
+                                    <div class=" col-12 searchSeperator"></div>
+
+<div class="col-12">
+                                    <form name="AdvancedSearchForm" id="AdvancedSearchForm" action="" method="post" >
+
+                                        <div class="row" >
+                                        <div class="col-12 font-weight-bold" onclick="aramaGoster('1','<?php echo $kat1;?>');">
                                             Konum
 
                                         </div>
-                                        <div id="field_1" class="category_openField" style="display:block;">
 
+
+                                            <div class="col-12 mt-2">
                                             <select name="sehir" onchange="ilcegetir(this.options[selectedIndex].value);">
-                                                <option value="">Seçiniz</option>
+                                                <option value="">İl Seçiniz</option>
                                                 <?php
                                                 foreach($iller as $bolge){
                                                     ?>
                                                     <option value="<?php echo $bolge->il_id;?>"<?php if(isset($sehir) && $bolge->il_id==$sehir){?> selected<?php }?>><?php echo $bolge->il_ad;?></option>
                                                 <?php }?>
                                             </select>
-
-                                            <select name="ilce" id="ilce" style="margin-top:5px" onchange="mahallegetir(this.options[selectedIndex].value);">
-                                                <option value="">İl Seçiniz</option>
-                                            </select>
-                                            <select name="mahalle" style="margin-top:5px" id="mahalle">
+                                            </div>
+                                        <div class="col-12 mt-2">
+                                            <select name="ilce" id="ilce" onchange="mahallegetir(this.options[selectedIndex].value);">
                                                 <option value="">İlçe Seçiniz</option>
-                                            </select>
+                                            </select></div>
+
+                                        <div class="col-12 mt-2">
+                                            <select name="mahalle" id="mahalle">
+                                                <option value="">Semt Seçiniz</option>
+                                            </select></div>
                                         </div>
 
-                                        <div class="mb-5">
-                                        <div onclick="aramaGoster('2','<?php echo $kategori->Id; ?>');" class="category_fieldName mt-3">
-                                            Fiyat
+
+                                        <div class="row">
+
+                                        <div class="col-12 mt-2">
+                                            <label for="exampleFormControlSelect1">Fiyat</label>
                                         </div>
 
-                                        <div  class="row">
-                                           <div class="col-5"><input style="width:100%" type="text" name="fiyat_1" class="price_format" value="<?php if(isset($fiyat_1)){echo $fiyat_1;}?>"></div>
-<div class="col-2">-</div>
-                                            <div class="col-5"><input style="width:100%" type="text" name="fiyat_2" class="price_format" value="<?php if(isset($fiyat_2)){echo $fiyat_2;} ?>"></div>
+
+                                           <div class="col-6"><input  type="text" placeholder="En az" name="fiyat_1" class="price_format" style="width:100%" value="<?php if(isset($fiyat_1)){echo $fiyat_1;}?>"></div>
+
+                                            <div class="col-6"><input type="text"  placeholder="En çok" name="fiyat_2" class="price_format" style="width:100% " value="<?php if(isset($fiyat_2)){echo $fiyat_2;} ?>"></div>
+
+
                                         </div>
 
-                                        </div>
 
-                                            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="width: 100%">
-                                                Diğer Filtreler
-                                            </a>
-
-
-                                        <div class="collapse" id="collapseExample">
-
+                                        <div class="row">
 
 
                                         <?php // fields baslangıç ?>
@@ -241,25 +251,29 @@
                                         foreach ($fields as $field) {
                                             if($field->arama=='1'){
                     ?>
-                    <div onclick="aramaGoster('<?php echo md5($field->name);?>');" class="category_fieldName">
+                    <div class="col-12 mt-3 font-weight-bold" onclick="aramaGoster('<?php echo md5($field->name);?>');" class="category_fieldName mt-2">
                       <?php echo $field->name;?>
-                      <span style="float:right;" id="field_i_<?php echo md5($field->name);?>">
-                        <img src="http://www.ticaretmeclisi.com/images/close_field.png" width="16" height="15" title="Göster" alt="Göster">
-                      </span>
+
                     </div>
-                    <div id="field_<?php echo md5($field->name);?>" class="category_openField">
+                    <div class="col-12 " id="field_<?php echo md5($field->name);?>" class="category_openField">
+
+
+
                     <?php
                     if($field->type=='text'){
                       if($field->aralik=='1'){
                         ?>
-                        <input type="text" name="<?php echo $field->seo_name;?>_1" style="width:60px" value="<?php if (isset($field_posted_data[$field->seo_name.'_1'])) {echo $field_posted_data[$field->seo_name.'_1'];} ?>"> - <input type="text" name="<?php echo $field->seo_name;?>_2" value="<?php if (isset($field_posted_data[$field->seo_name.'_2'])) {echo $field_posted_data[$field->seo_name.'_2'];} ?>" style="width:60px">
-                        <?php
+                          <div class="row">   <div class="col-6">  <input type="text" name="<?php echo $field->seo_name;?>_1" style="width:100%" placeholder="En az" value="<?php if (isset($field_posted_data[$field->seo_name.'_1'])) {echo $field_posted_data[$field->seo_name.'_1'];} ?>"> </div> <div class="col-6"><input type="text" name="<?php echo $field->seo_name;?>_2" value="<?php if (isset($field_posted_data[$field->seo_name.'_2'])) {echo $field_posted_data[$field->seo_name.'_2'];} ?>" placeholder="En çok" style="width:100%"></div>
+                   </div> <?php
                       }else{
                         ?>
                         <input type="text" name="<?php echo $field->seo_name;?>" value="<?php if (isset($field_posted_data[$field->seo_name])) {echo $field_posted_data[$field->seo_name];}?>">
                         <?php
                       }
                       ?>
+
+
+
                       <?php
                     }elseif($field->type=='select' or $field->type=='radio'){
                       if (isset($field_posted_data[$field->seo_name])) {
@@ -270,7 +284,13 @@
                         }
                       }
                       ?>
-                      <select name="<?php echo $field->seo_name;?><?php if($field->multiple==1){?>[]" size="5" onchange="select_check('<?php echo $field->seo_name;?>');" multiple<?php }else{?>"<?php }?>>
+
+
+
+
+
+
+                      <select class="form-control" name="<?php echo $field->seo_name;?><?php if($field->multiple==1){?>[]"  onchange="select_check('<?php echo $field->seo_name;?>');"<?php }else{?>"<?php }?>>
                       <option value=""<?php if(isset($all_selected) && $all_selected==1){echo " selected"; }?>>Hepsi</option>
                       <?php
                       $new_values=explode("||",$field->field_values);
@@ -296,7 +316,7 @@
                       }
                       ?>
                       <script>$(document).ready(function(){multiple_field_values('<?php echo $field->seo_name;?>','<?php echo $field->Id;?>','<?php echo sha1($field->multiple_field_name);?>','<?php if (isset($posted_values[$field->multiple_field_seo_name])) {echo $posted_values[$field->multiple_field_seo_name];} ?>','Hepsi','../../');});</script>
-                      <select name="<?php $field->seo_name;?>" onchange="multiple_field_values('<?php echo $field->seo_name;?>','<?php echo $field->Id;?>','<?php echo sha1($field->multiple_field_name);?>','','Hepsi','../../');">
+                      <select class="form-control" name="<?php $field->seo_name;?>" onchange="multiple_field_values('<?php echo $field->seo_name;?>','<?php echo $field->Id;?>','<?php echo sha1($field->multiple_field_name);?>','','Hepsi','../../');">
                       <option value="">Hepsi</option>
                       <?php
                       if (isset($field_posted_data[$field->seo_name])) {
@@ -327,12 +347,16 @@
                                         }
                                         ?>
 
-                                        </div>
-                                        <div onclick="aramaGoster('adDate','<?php echo $kategori->Id; ?>');" class="category_fieldName">
+</div>
+
+
+
+                                        <div class="row">
+                                        <div class="col-12 font-weight-bold mt-3" onclick="aramaGoster('adDate','<?php echo $kategori->Id; ?>');" class="category_fieldName">
                                             İlan Tarihi
 
                                         </div>
-                                        <div id="field_adDate" class="category_openField" style="display:none;">
+                                        <div id="field_adDate" class="col-12  category_openField">
                                             <select name="ilan_tarihi" size="1">
                                                 <option value="">Hepsi</option>
                                                 <option value="<?php echo base64_encode('Son 24 Saat');?>"<?php if($ilan_tarihi=='Son 24 Saat'){?> selected<?php }?>>Son 24 Saat</option>
@@ -342,17 +366,21 @@
                                                 <option value="<?php echo base64_encode('Son 30 Gün');?>"<?php if($ilan_tarihi=='Son 30 Gün'){?> selected<?php }?>>Son 30 Gün</option>
                                             </select>
                                         </div>
-                                        <div class="category_fieldSep"></div>
+
+                                        </div>
+
+<div class="row">
+                                        <div class="col-12 mt-3 category_fieldSep"></div>
 
 
-                                        <div class="form-row">
+                                        <div class="col-12">
                                             <div class="form-group">
                                                 <div class="form-group">
                                                     <div class="form-check">
                                                         <!-- Default unchecked -->
                                                         <div class="custom-control custom-checkbox">
                                                             <input name="remember_me" type="checkbox" class="custom-control-input" id="defaultUnchecked" <?php echo (isset($member)) ? "checked" : ""; ?>>
-                                                            <label class="custom-control-label" for="defaultUnchecked">Beni Hatırla</label>
+                                                            <label class="custom-control-label" for="defaultUnchecked">Sadece Haritalı İlanlar</label>
 
                                                         </div>
                                                     </div>
@@ -360,14 +388,14 @@
 
                                             </div>
                                         </div>
-                                        <div class="form-row">
+                                        <div class="col-12">
                                             <div class="form-group">
                                                 <div class="form-group">
                                                     <div class="form-check">
                                                         <!-- Default unchecked -->
                                                         <div class="custom-control custom-checkbox">
-                                                            <input name="remember_me" type="checkbox" class="custom-control-input" id="defaultUnchecked" <?php echo (isset($member)) ? "checked" : ""; ?>>
-                                                            <label class="custom-control-label" for="defaultUnchecked">Sadece Fotoğraflı İlanlar</label>
+                                                            <input name="remember_me" type="checkbox" class="custom-control-input" id="OnlyPhoto" <?php echo (isset($member)) ? "checked" : ""; ?>>
+                                                            <label class="custom-control-label" for="OnlyPhoto">Sadece Fotoğraflı İlanlar</label>
 
                                                         </div>
                                                     </div>
@@ -375,21 +403,17 @@
 
                                             </div>
                                         </div>
-                                        <input type="checkbox" name="fotograf" id="fotograf" value="1"<?php if(isset($fotograf) && $fotograf==1){?> checked<?php }?>>
-                                        <label for="fotograf">Sadece Fotoğraflı İlanlar</label>
-                                        <br>
-                                        <input type="checkbox" name="harita" id="harita" value="1"<?php if(isset($harita) && $harita==1){?> checked<?php }?>>
-                                        <label for="harita">Sadece Haritalı İlanlar</label>
-                                        <input type="submit" class="v4_special_button" style="margin:10px auto 0 auto ;width:120px; "  value="Ara">
 
 
-
-
-
-
-
+</div>
 
                                     </form>
+
+
+</div>
+<div class="col-12">
+    <input type="button" class="btn btn-primary" value="Ara" style="width: 100%">
+</div>
                                 </div>
                                 <!-- Kategori Liste bitiş ........................................................-->
                             </div>
@@ -404,6 +428,18 @@
 
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
         <div class="col-md-9">
 
@@ -474,8 +510,8 @@
                 </div>
 
             </div>
-            <div class="col-md-3">
-                <div class="col-12"><?php if ($il) { echo $il->il_ad;}?><br/><?php if($mahalle){echo $mahalle->mahalle_ad;}?></div>
+            <div class="col-md-3 ">
+                <div class="col-12 font-weight-bold " style="font-size:12px;font-family: "Raleway", sans-serif"><i class="fas fa-map-marker-alt"></i><?php if ($il) { echo $il->il_ad;}?><br/><?php if($mahalle){echo $mahalle->mahalle_ad;}?></div>
                   </div>
 
             </div>
@@ -571,5 +607,8 @@
     </script>
 
 <?php $this->load->view('layout/scripts');?>
+
+
+
   </body>
   </html>
