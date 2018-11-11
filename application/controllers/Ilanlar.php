@@ -287,7 +287,7 @@ class Ilanlar extends CI_Controller{
 
           $add_query_to_sql.=" and firmalar.ilce='".$konum['ilce']."'";
           $data["ilce"]=$konum["ilce"];
-          
+
           $add_query_to_sql.=" and firmalar.mahalle='".$konum['mahalle']."'";
           $data["mahalle"]=$konum["mahalle"];
 
@@ -325,8 +325,8 @@ class Ilanlar extends CI_Controller{
     }
     $data["search"]="";
     $data["sayfa"]=0;
-
-    $this->load->view("kategori",$data);
+    $data["title"]="Ticaret Meclisi";
+    $this->load->view("kategori2",$data);
   }
 
 
