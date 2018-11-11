@@ -1,0 +1,1 @@
+function ilan_grup_degistir(e,d,f){window.location=e+"?grupno="+d+"&ilanid="+f};

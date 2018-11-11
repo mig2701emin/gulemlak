@@ -1,0 +1,5 @@
+include_once('config.php'); 
+		
+		if(!isset($_SESSION["login"]) || $_SESSION["uye_id"] != 1){
+			header("location: index.php");
+		}

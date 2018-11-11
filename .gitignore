@@ -1,14 +1,7 @@
-/ilanlar/
 /application/config/config.php
 /application/config/database.php
-/photos/
 /.idea/
 /application/config/facebook.php
 /application/config/google.php
-/panel/
-/libs/
-/takip/
-/setting.php
 /config.php
-/config_includes.php
-/protect_page.php
+/photos/
