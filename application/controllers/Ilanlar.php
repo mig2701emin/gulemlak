@@ -20,7 +20,7 @@ class Ilanlar extends CI_Controller{
       $konum=konum($val5,$val6,$val7);
       $data['firmalar']=$this->firmalar->konut_ilanlari($key1,$val1,$key2,$val2,$key3,$val3,$key4,$val4,$key5,$konum['il'],$key6,$konum['ilce'],$key7,$konum['mahalle']);
     }else {
-      $konum=konum($val4,$val5,$val5);
+      $konum=konum($val4,$val5,$val6);
       $data['firmalar']=$this->firmalar->is_arsa_ilanlari($key1,$val1,$key2,$val2,$key3,$val3,$key4,$konum['il'],$key5,$konum['ilce'],$key6,$konum['mahalle']);
     }
     $this->load->view('ilanlar',$data);
@@ -50,7 +50,7 @@ class Ilanlar extends CI_Controller{
       $konum=konum($val5,$val6,$val7);
     }else {
       $kategori=$val3;
-      $konum=konum($val4,$val5,$val5);
+      $konum=konum($val4,$val5,$val6);
     }
 
     $this->load->library("pagination");
@@ -89,21 +89,6 @@ class Ilanlar extends CI_Controller{
     if ($field_kategori3!="") {
       $sql.=" or (kategori3='".$field_kategori3."' and kategori4='0')";
     }
-    if ($field_kategori4!="") {
-      $sql.=" or (kategori4='".$field_kategori4."' and kategori5='0')";
-    }
-    if ($field_kategori5!="") {
-      $sql.=" or (kategori5='".$field_kategori5."' and kategori6='0')";
-    }
-    if ($field_kategori6!="") {
-      $sql.=" or (kategori6='".$field_kategori6."' and kategori7='0')";
-    }
-    if ($field_kategori7!="") {
-      $sql.=" or (kategori7='".$field_kategori7."' and kategori8='0')";
-    }
-    if ($field_kategori8!="") {
-      $sql.=" or (kategori8='".$field_kategori8."')";
-    }
     $sql.=") order by siralama";
 
     $fields = $this->fields->getfields($sql);
@@ -116,21 +101,6 @@ class Ilanlar extends CI_Controller{
     }
     if ($field_kategori3!="") {
       $sql.=" and firmalar.kategori3='".$field_kategori3."'";
-    }
-    if ($field_kategori4!="") {
-      $sql2.=" and firmalar.kategori4='".$field_kategori4."'";
-    }
-    if ($field_kategori5!="") {
-      $sql2.=" and firmalar.kategori5='".$field_kategori5."'";
-    }
-    if ($field_kategori6!="") {
-      $sql2.=" and firmalar.kategori6='".$field_kategori6."'";
-    }
-    if ($field_kategori7!="") {
-      $sql2.=" and firmalar.kategori7='".$field_kategori7."'";
-    }
-    if ($field_kategori8!="") {
-      $sql2.=" and firmalar.kategori8='".$field_kategori8."'";
     }
 
       $add_query_to_sql="";
@@ -183,8 +153,10 @@ class Ilanlar extends CI_Controller{
           $add_query_to_sql.=" and firmalar.mahalle='".$mahalle."'";
           $data["mahalle"]=$mahalle;
         }else {
-          $add_query_to_sql.=" and firmalar.mahalle='".$konum['mahalle']."'";
-          $data["mahalle"]=$konum["mahalle"];
+          if ($konum['mahalle']!=0) {
+            $add_query_to_sql.=" and firmalar.mahalle='".$konum['mahalle']."'";
+            $data["mahalle"]=$konum["mahalle"];
+          }
         }
         $fotograf=$this->security->xss_clean($this->input->post("fotograf"));
         $data["fotograf"]=$fotograf;
@@ -305,6 +277,11 @@ class Ilanlar extends CI_Controller{
       // fields sonu
     $config["uri_segment"] = $uri_segment;
     $page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
+    if ($page=="index.html") {
+      $uri_segment++;
+      $config["uri_segment"] = $uri_segment;
+      $page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
+    }
     $config["per_page"] = $limit;
     $config["num_links"] = 10;
     $config["base_url"] = base_url($urlstring);

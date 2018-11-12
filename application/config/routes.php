@@ -47,20 +47,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $route['daire/satilik/(:any)/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/49/kategori4/149/il/$1/ilce/$2/mahalle/$4';
       $route['daire/kiralik/(:any)/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/67/kategori4/75/il/$1/ilce/$2/mahalle/$4';
 
-      $route['is-yeri/satilik/(:any)/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/47/kategori3/164/il/$1/ilce/$2/mahalle/$3';
-      $route['is-yeri/kiralik/(:any)/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/47/kategori3/165/il/$1/ilce/$2/mahalle/$3';
-      $route['is-yeri/satilik/(:any)/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/47/kategori3/164/il/$1/ilce/$2/mahalle/$3';
-      $route['is-yeri/kiralik/(:any)/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/47/kategori3/165/il/$1/ilce/$2/mahalle/$3';
+      $route['is-yeri/satilik/(:any)/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/47/kategori3/164/il/$1/ilce/$2/mahalle/$4';
+      $route['is-yeri/kiralik/(:any)/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/47/kategori3/165/il/$1/ilce/$2/mahalle/$4';
+      $route['is-yeri/satilik/(:any)/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/47/kategori3/164/il/$1/ilce/$2/mahalle/$4';
+      $route['is-yeri/kiralik/(:any)/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/47/kategori3/165/il/$1/ilce/$2/mahalle/$4';
 
-      $route['arsa/satilik/(:any)/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/167/il/$1/ilce/$2/mahalle/$3';
-      $route['arsa/kiralik/(:any)/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/168/il/$1/ilce/$2/mahalle/$3';
-      $route['arsa/satilik/(:any)/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/167/il/$1/ilce/$2/mahalle/$3';
-      $route['arsa/kiralik/(:any)/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/168/il/$1/ilce/$2/mahalle/$3';
+      $route['arsa/satilik/(:any)/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/167/il/$1/ilce/$2/mahalle/$4';
+      $route['arsa/kiralik/(:any)/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/168/il/$1/ilce/$2/mahalle/$4';
+      $route['arsa/satilik/(:any)/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/167/il/$1/ilce/$2/mahalle/$4';
+      $route['arsa/kiralik/(:any)/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/168/il/$1/ilce/$2/mahalle/$4';
 
       $route['emlak/konut/satilik/daire/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/49/kategori4/149/il/$1/ilce/$2/mahalle/$3';
       $route['emlak/konut/satilik/daire/(:any)/(:any)/(:any)/(:num)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/49/kategori4/149/il/$1/ilce/$2/mahalle/$3';
-      $route['emlak/konut/kiralik/daire/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/67/kategori4/75/il/$1/ilce/$2/mahalle/$4';
-      $route['emlak/konut/kiralik/daire/(:any)/(:any)/(:any)/(:num)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/67/kategori4/75/il/$1/ilce/$2/mahalle/$4';
+      $route['emlak/konut/kiralik/daire/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/67/kategori4/75/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/konut/kiralik/daire/(:any)/(:any)/(:any)/(:num)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/67/kategori4/75/il/$1/ilce/$2/mahalle/$3';
       $route['emlak/konut/satilik/mustakil-ev/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/49/kategori4/155/il/$1/ilce/$2/mahalle/$3';
       $route['emlak/konut/satilik/mustakil-ev/(:any)/(:any)/(:any)/(:num)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/49/kategori4/155/il/$1/ilce/$2/mahalle/$3';
       $route['emlak/konut/kiralik/mustakil-ev/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/67/kategori4/728/il/$1/ilce/$2/mahalle/$3';
@@ -77,6 +77,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $route['emlak/arsa/satilik/(:any)/(:any)/(:any)/(:num)']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/167/il/$1/ilce/$2/mahalle/$3';
       $route['emlak/arsa/kiralik/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/168/il/$1/ilce/$2/mahalle/$3';
       $route['emlak/arsa/kiralik/(:any)/(:any)/(:any)/(:num)']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/168/il/$1/ilce/$2/mahalle/$3';
+
+      $route['emlak/konut/daire/satilik/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/49/kategori4/149/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/konut/daire/kiralik/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/67/kategori4/75/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/konut/mustakil-ev/satilik/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/49/kategori4/155/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/konut/mustakil-ev/kiralik/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/67/kategori4/728/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/konut/ciftlik-evi/satilik/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/49/kategori4/157/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/konut/ciftlik-evi/kiralik(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/67/kategori4/726/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/is-yeri/satilik/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/47/kategori3/164/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/is-yeri/kiralik/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/47/kategori3/165/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/arsa/satilik/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/167/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/arsa/kiralik/(:any)/(:any)/(:any)/index\.html']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/168/il/$1/ilce/$2/mahalle/$3';
+
+
+      $route['emlak/konut/daire/satilik/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/49/kategori4/149/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/konut/daire/kiralik/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/67/kategori4/75/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/konut/mustakil-ev/satilik/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/49/kategori4/155/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/konut/mustakil-ev/kiralik/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/67/kategori4/728/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/konut/ciftlik-evi/satilik/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/49/kategori4/157/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/konut/ciftlik-evi/kiralik(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/46/kategori3/67/kategori4/726/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/is-yeri/satilik/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/47/kategori3/164/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/is-yeri/kiralik/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/47/kategori3/165/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/arsa/satilik/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/167/il/$1/ilce/$2/mahalle/$3';
+      $route['emlak/arsa/kiralik/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/168/il/$1/ilce/$2/mahalle/$3';
       $route['ilan/(:any)-(:num)']='home/ilan_goruntule/$2';
 
       $route['404_override'] = '';

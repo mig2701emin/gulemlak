@@ -214,9 +214,9 @@ function konum($seo_il,$seo_ilce,$seo_mahalle)
 
   $ci->db->where('seo_mahalle',$seo_mahalle);
   $ci->db->where('ilce_id',$ilce_id);
-  $mahalle_id=$ci->db->get('tbl_mahalle')->row()->mahalle_id;
+  $mahalle=$ci->db->get('tbl_mahalle');
+  $mahalle_id=$mahalle->row()->mahalle_id;
   return $konum = array('il' =>$il_id ,'ilce' =>$ilce_id ,'mahalle' =>$mahalle_id  );
-
 }
 
 function post_captcha($user_response) {
