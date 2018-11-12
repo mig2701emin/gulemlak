@@ -3,17 +3,17 @@
   function goster(a){
 
   $("#div"+a).slideDown("slow");
-  $("#xdiv"+a).html('<li><div class="row"><div class="col-10"><span><a onclick="gizle(\''+a+'\');">Gizle</a></span></div><div class="col-2" style="padding:3px"><span class="badge badge-secondary" style="width:40px;"></span></div></div></li>');
+  $("#xdiv"+a).html('<li><div class="row"><div class="col-10"><span><a onclick="gizle(\''+a+'\');">Gizle</a></span></div><div class="col-2" style="padding:3px"><span class="badge color_bg4 text-light" style="width:40px;"></span></div></div></li>');
 
   }
   function gizle(a){
   $("#div"+a).slideUp("slow");
-  $("#xdiv"+a).html('<li><div class="row"><div class="col-10"><span><a onclick="goster(\''+a+'\');">Tümünü Göster</a></span></div><div class="col-2" style="padding:3px"><span class="badge badge-secondary" style="width:40px;"></span></div></div></li>');
+  $("#xdiv"+a).html('<li><div class="row"><div class="col-10"><span><a onclick="goster(\''+a+'\');">Tümünü Göster</a></span></div><div class="col-2" style="padding:3px"><span class="badge color_bg4 text-light" style="width:40px;"></span></div></div></li>');
 }
 </script>
 
 <section class="mtb-30">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
            <!-- slider-->
             <div class="col-xl-2 col-lg-3 mb-sm-30 col-lgmd-20per">
@@ -43,7 +43,7 @@
                                           </span>
                                         </div>
                                         <div class="col-2" style="padding:3px">
-                                            <span class="badge badge-secondary" style="width:40px;"><?php echo countDB('firmalar','kategori2',$firstSub->Id); ?></span>
+                                            <span class="badge color_bg4 text-light" style="width:40px;"><?php echo countDB('firmalar','kategori2',$firstSub->Id); ?></span>
                                         </div>
 
                                       </div>
@@ -62,7 +62,7 @@
                                           </span>
                                         </div>
                                         <div class="col-2" style="padding:3px">
-                                            <span class="badge badge-secondary" style="width:40px;"><?php echo countDB('firmalar','kategori2',$firstSub->Id); ?></span>
+                                            <span class="badge color_bg4 text-light" style="width:40px;"><?php echo countDB('firmalar','kategori2',$firstSub->Id); ?></span>
                                         </div>
                                       </div>
                                   </li>
@@ -80,7 +80,7 @@
                                         </span>
                                       </div>
                                       <div class="col-2" style="padding:3px">
-                                          <span class="badge badge-secondary" style="width:40px;"></span>
+                                          <span class="badge color_bg4 text-light" style="width:40px;"></span>
                                       </div>
                                     </div>
                                 </li>
@@ -147,7 +147,7 @@
                     <div class="col-xl-6">
                       <div class="view">
                           <div class="list-types grid active ">
-                              <div class="compare float-left-sm"> <a href="#" class="btn btn-color">Anasayfa Vitrini</a> </div>
+                              <div class="compare float-left-sm"> <a href="#" class="btn btn-color color_bg3">Anasayfa Vitrini</a> </div>
                               <a>
                                   <div class="grid-icon list-types-icon"></div>
                               </a>
@@ -203,7 +203,7 @@
                                                 </a>
                                             </div>
                                             <div class="col"><div class="price-box">
-                                            <span class="price"><?php echo $item->fiyat.' '.$item->birim; ?></span></div>
+                                            <span class="price color_text4"><?php echo number_format($item->fiyat,0, ',', '.').' '.$item->birim; ?></span></div>
                                             </div>
                                         </div>
 
@@ -245,7 +245,7 @@
                     <div class="col-xl-6">
                       <div class="view">
                           <div class="list-types grid active ">
-                              <div class="compare float-left-sm"> <a href="#" class="btn btn-color">Acil Acil Vitrini</a> </div>
+                              <div class="compare float-left-sm"> <a href="#" class="btn btn-color color_bg3">Acil Acil Vitrini</a> </div>
                               <a>
                                   <div class="grid-icon list-types-icon"></div>
                               </a>
@@ -301,7 +301,7 @@
                                                 </a>
                                             </div>
                                             <div class="col"><div class="price-box">
-                                            <span class="price"><?php echo $item->fiyat.' '.$item->birim; ?></span></div>
+                                            <span class="price color_text4"><?php echo number_format($item->fiyat,0, ',', '.').' '.$item->birim; ?></span></div>
                                             </div>
                                         </div>
 
@@ -343,7 +343,7 @@
                     <div class="col-xl-6">
                       <div class="view">
                           <div class="list-types grid active ">
-                              <div class="compare float-left-sm"> <a href="#" class="btn btn-color">Son Eklenenler</a> </div>
+                              <div class="compare float-left-sm"> <a href="#" class="btn btn-color color_bg3">Son Eklenenler</a> </div>
                               <a>
                                   <div class="grid-icon list-types-icon"></div>
                               </a>
@@ -399,7 +399,7 @@
                                                 </a>
                                             </div>
                                             <div class="col"><div class="price-box">
-                                            <span class="price"><?php echo $item->fiyat.' '.$item->birim; ?></span></div>
+                                            <span class="price color_text4"><?php echo number_format($item->fiyat,0, ',', '.').' '.$item->birim; ?></span></div>
                                             </div>
                                         </div>
 
@@ -441,7 +441,7 @@
                     <div class="col-xl-6">
                       <div class="view">
                           <div class="list-types grid active ">
-                              <div class="compare float-left-sm"> <a href="#" class="btn btn-color">Mağaza Vitrini</a> </div>
+                              <div class="compare float-left-sm"> <a href="#" class="btn btn-color color_bg3">Mağaza Vitrini</a> </div>
                               <a>
                                   <div class="grid-icon list-types-icon"></div>
                               </a>
@@ -686,7 +686,7 @@
                                                                     <ul>
                                                                         <li class="pro-cart-icon">
                                                                             <form>
-                                                                                <button title="Add to Cart" class="btn-color"><i class="fa fa-shopping-basket"></i></button>
+                                                                                <button title="Add to Cart" class="btn-color color_bg3"><i class="fa fa-shopping-basket"></i></button>
                                                                             </form>
                                                                         </li>
                                                                     </ul>

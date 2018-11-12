@@ -12,11 +12,8 @@
 			$this->load->model('fields');
 			$this->load->model('magazalar');
 		}
-
 		public function index()
 		{
-
-
 			$data['title']='Emlak Meclisi | Anasayfa';
 			$data['anaKategoriler']=$this->kategoriler->getAnaKategoriler();
 			$data['mainVitrins']=$this->firmalar->getMainVitrins();
@@ -258,14 +255,14 @@
 			$order="";
 			$kategorys=getustkategorys($kategori);
 			$urlstring="";
-
+			$uri_segment=0;
 			$data["kategorys"]=$kategorys;
 			for ($i=0; $i < 9 ; $i++) {
 				if ($i == 0) {
 					$field_kategori=$kategorys[0]->Id;
 					$i++;
 					$urlstring=$kategorys[0]->seo;
-
+					$uri_segment=$i+2;
 				} elseif(isset($kategorys[$i-1])){
 					$yeni="field_kategori".$i;
 					$$yeni=$kategorys[$i-1]->Id;
@@ -310,7 +307,7 @@
 				$sql2.=" and firmalar.kategori2='".$field_kategori2."'";
 			}
 			if ($field_kategori3!="") {
-				$sql.=" and firmalar.kategori3='".$field_kategori3."'";
+				$sql2.=" and firmalar.kategori3='".$field_kategori3."'";
 			}
 			if ($field_kategori4!="") {
 				$sql2.=" and firmalar.kategori4='".$field_kategori4."'";

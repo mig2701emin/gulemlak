@@ -100,7 +100,7 @@ class Ilanlar extends CI_Controller{
       $sql2.=" and firmalar.kategori2='".$field_kategori2."'";
     }
     if ($field_kategori3!="") {
-      $sql.=" and firmalar.kategori3='".$field_kategori3."'";
+      $sql2.=" and firmalar.kategori3='".$field_kategori3."'";
     }
 
       $add_query_to_sql="";
