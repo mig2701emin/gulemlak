@@ -1,5 +1,6 @@
 <?php
 date_default_timezone_set ('Europe/Istanbul');
+ini_set('error_reporting', E_ALL);
 /***************************************************************/
 // Host address
 /*$host = $_SERVER['HTTP_HOST'];

@@ -3,7 +3,7 @@
 <html>
 <!--<![endif]-->
 <head>
-  <title>Ticaret Meclisi</title>
+  <title><?php echo $title; ?></title>
   <?php $this->load->view('layout/metas');?>
   <!-- CSS
   ================================================== -->
@@ -473,7 +473,7 @@
     </div>
   </div>
 </div>
-  <?php $this->load->view('layout/footer');?>
+  <?php $this->load->view('layout/footer2');?>
 </div>
     <script>
       function mesaj_gonder (uyeid,ilanid){alert('Mesaj gönderebilmek için giriş yapmalısınız.');}

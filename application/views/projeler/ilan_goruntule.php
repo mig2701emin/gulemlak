@@ -5,7 +5,7 @@
 <head>
 	<!-- Basic Page Needs
       ================================================== -->
-	<title>Ticaret Meclisi</title>
+	<title><?php echo $title; ?></title>
 	<!-- SEO Meta
     ================================================== -->
 	<?php $this->load->view('layout/metas');?>

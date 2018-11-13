@@ -63,11 +63,11 @@
           </div>
           <div class="mb-3">
             <label for="gsm">Cep :</label>
-            <input class="form-control" type="tel" id="gsm" name="gsm" placeholder="(5xx)-xxx-xx-xx" pattern="([0-9]{3})-[0-9]{3}-[0-9]{2}-[0-9]{2}" value="<?php echo $user->gsm;?>" required />
+            <input class="form-control" type="tel" id="gsm" name="gsm" placeholder="5xx-xxx-xx-xx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" value="<?php echo $user->gsm;?>" required />
           </div>
           <div class="mb-3">
             <label for="istel">İş Telefonu :</label>
-            <input class="form-control" type="tel" id="istel" name="istel" placeholder="(xxx)-xxx-xx-xx" pattern="([0-9]{3})-[0-9]{3}-[0-9]{2}-[0-9]{2}" value="<?php echo $user->istel;?>"/>
+            <input class="form-control" type="tel" id="istel" name="istel" placeholder="xxx-xxx-xx-xx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" value="<?php echo $user->istel;?>"/>
           </div>
           <button type="submit" class="btn btn-success btn-block"/>Güncelle</button>
         </form>
