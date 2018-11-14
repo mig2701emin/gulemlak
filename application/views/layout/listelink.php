@@ -28,7 +28,7 @@
     }else {
       $metin.=$kategorys[1]->kategori_adi;
     }
-    $metin.=', ticaretmeclisi" style="font-size:0.0001em;color:#000909 !important">';
+    $metin.=', ticaretmeclisi" style="font-size:0.1em;color:#588585 !important">';
     $metin.=mb_convert_case(mb_strtolower($mah->mahalle_ad), MB_CASE_TITLE, 'UTF-8');
     $metin.='</a>';
     echo $metin;

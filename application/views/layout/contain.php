@@ -172,7 +172,7 @@
                                 <div class="product-item">
                                     <div class="product-image">
                                         <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
-                                            <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok_b.png');?>"  alt="<?php echo $item->firma_adi; ?>">
+                                            <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
                                         </a>
                                         <div class="product-detail-inner">
                                             <div class="detail-inner-left align-center">
@@ -270,7 +270,7 @@
                                 <div class="product-item">
                                     <div class="product-image">
                                         <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
-                                            <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok_b.png');?>"  alt="<?php echo $item->firma_adi; ?>">
+                                            <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
                                         </a>
                                         <div class="product-detail-inner">
                                             <div class="detail-inner-left align-center">
@@ -368,7 +368,7 @@
                                 <div class="product-item">
                                     <div class="product-image">
                                         <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
-                                            <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok_b.png');?>"  alt="<?php echo $item->firma_adi; ?>">
+                                            <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
                                         </a>
                                         <div class="product-detail-inner">
                                             <div class="detail-inner-left align-center">

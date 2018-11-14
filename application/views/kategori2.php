@@ -37,7 +37,7 @@
     }
   </script>
 </head>
-<body>
+<body class="color_bg1">
   <div class="se-pre-con"></div>
   <div class="main">
     <!-- HEADER START -->
@@ -391,7 +391,7 @@
                     </form>
                   </div>
                   <div class="col-12">
-                    <input type="button" class="btn btn-primary" value="Ara" style="width: 100%">
+                    <input type="button" class="btn color_bg3 text-light" value="Ara" style="width: 100%">
                   </div>
                 </div>
               <!-- Kategori Liste bitiş ........................................................-->
@@ -427,12 +427,12 @@
         $ilan_no=$a->Id;
         $mahalle=$this->db->query("select * from tbl_mahalle where mahalle_id='".$a->mahalle."'")->row();
         ?>
-        <div class="row mt-1 border-bottom" onclick="window.location='<?php echo base_url();?><?php echo "ilan/".$seolink2;?>-<?php echo $ilan_no;?>';">
+        <div class="row mt-1 border-bottom<?php if($i%2==0){ ?> color_bg-1<?php }else{ ?> color_bg-2<?php } ?>" onclick="window.location='<?php echo base_url();?><?php echo "ilan/".$seolink2;?>-<?php echo $ilan_no;?>';">
           <div class="col-md-3">
             <?php if($a->kucuk_fotograf==1 and ilk_resim($a->Id)!='' and file_exists('photos/thumbnail/'.ilk_resim($a->Id))){?>
               <img src = "<?php echo base_url();?>photos/thumbnail/<?php echo ilk_resim($a->Id);?>" height = "150" width="220" border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
             <?php }else{?>
-              <img src = "<?php echo base_url();?>assets/images/ad_photo.png" height = "150" width="220" border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
+              <img src = "<?php echo base_url();?>assets/images/yok_thumbnail.png" height = "150" width="220" border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
             <?php }?>
           </div>
           <div class="col-md-6">
