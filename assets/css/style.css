@@ -106,7 +106,7 @@
     color:#91D0C7 !important;
 }
 .color_text3{
-    color:#4E978D !important;
+    color:#855858 !important;
 }
 .color_text4{
     color:#246A61 !important;
@@ -115,13 +115,13 @@
     color:#09312C !important;
 }
 .color_bg1{
-    background-color:#E3FBF8 !important;
+    background-color:#bccece !important;
 }
 .color_bg2{
     background-color:#91D0C7 !important;
 }
 .color_bg3{
-    background-color:#4E978D !important;
+    background-color:#855858 !important;
 }
 .color_bg4{
     background-color:#246A61 !important;
@@ -130,8 +130,11 @@
     background-color:#09312C !important;
 }
 .color_bgx{
-  background-color: #000909 !important;
+  background-color: #588585 !important;
 }
 .color_bgy{
   background-color: #9DB7B8 !important;
+}
+.border_1 {
+    border: 1px solid #efecd9 !important;
 }

@@ -9,6 +9,14 @@
 	<!-- SEO Meta
     ================================================== -->
 	<?php $this->load->view('layout/metas');?>
+	<meta property="og:site_name" content="www.ticaretmeclisi.com" />
+	<meta property="og:title" content="<?php echo $ilan->firma_adi; ?>" />
+	<meta property="og:description" content="<?php echo $ilan->firma_adi; ?>" />
+	<meta property="og:image" itemprop="image" content="<?php echo base_url(); ?>photos/big/<?php echo ilk_resim($ilan->Id); ?>"/>
+	<meta property="og:image:secure_url" content="<?php echo base_url(); ?>photos/thumbnail/<?php echo ilk_resim($ilan->Id); ?>" />
+	<meta property="og:type" content="website" />
+
+
 	<!-- CSS
     ================================================== -->
 	<?php $this->load->view('layout/styles');?>
@@ -94,7 +102,7 @@
 
 	.cont_breadcrumbs_1 > ul > li:last-child {
 	  /* background-color: #78909C; */
-		background-color: #4E978D;
+		background-color: #855858;
 	}
 
 	.cont_breadcrumbs_1 > ul > li:last-child > a {
@@ -138,7 +146,7 @@
 	}
 	.cont_breadcrumbs_1 > ul > li:last-child {
 	  /* background-color: #78909C; */
-	  background-color: #4E978D;
+	  background-color: #855858;
 	  transform: skew(0deg);
 		margin-left: -5px;
 
@@ -159,7 +167,7 @@ font-weight: bold;
     font-size: 11px;
     font-weight: 700;
     line-height: 1;
-    color: #000;
+    color: white;
     text-align: right;
     white-space: nowrap;
     vertical-align: middle;
@@ -180,7 +188,7 @@ font-weight: bold;
     text-align: left;
     white-space: nowrap;
     vertical-align: middle;
-    background-color: white;
+    background-color:#efecd9;
     /* background-color: #D7CCC8; */
     border-radius: 10px;
     margin-top: 2px;
@@ -210,9 +218,9 @@ font-weight: bold;
 	</style>
 	<link href="<?php echo base_url('assets'); ?>/light/lightgallery.css" rel="stylesheet">
 </head>
-<body>
+<body class="color_bg1">
 	<div class="se-pre-con"></div>
-	<div class="main color_bgy">
+	<div class="main">
 		<!-- HEADER START -->
 		<?php //if ($this->session->userdata("userData")["userID"] == $ilan->uyeId){ ?>
 			<?php //$this->load->view('layout/newuserheader');?>
@@ -261,18 +269,18 @@ font-weight: bold;
 						</div>
 					</div>
 				</div>
-		    <div class="col-lg-10 col-md-12 color_bg1 border">
+		    <div class="col-lg-10 col-md-12 border_1">
 					<?php if ($this->session->userdata("userData")["userID"] == $ilan->uyeId): ?>
 						<div class="col-12">
 							<p class="text text-danger"><?php echo $ilan->ilan_notu; ?></p>
 						</div>
 					<?php endif; ?>
 						<div class="row">
-						<div class="col-12 col-sm-12 col-md-8 col-lg-8 border">
+						<div class="col-12 col-sm-12 col-md-8 col-lg-8 border_1">
 							<div class="row text-center">
 								<div class="col-12">
 									<div class="row">
-										<div class="col-3 color_bg3 text-white rounded">
+										<div class="col-3 text-white rounded color_bg3">
 											<a id="bigImage">Büyük Resim</a>
 										</div>
 										<div class="col-9">
@@ -304,7 +312,7 @@ font-weight: bold;
 										<?php $r=1; ?>
 										<?php foreach ($resimler as $resim): ?>
 											<div class="carousel-item<?php if ($r==1) {echo ' active';} ?>">
-												<img src="<?php echo base_url('photos/big/'.$resim->name); ?>" alt="Chicago" class="img-rounded border border-secondary">
+												<img src="<?php echo base_url('photos/big/'.$resim->name); ?>" alt="Chicago" class="img-rounded border_1">
 											</div>
 											<?php $r++; ?>
 										<?php endforeach; ?>
@@ -321,7 +329,7 @@ font-weight: bold;
 									<div class="row">
 										<?php foreach ($resimler as $resim){ ?>
 											<div class="col-4 col-md-3 col-lg-2 m-0 p-1">
-											<a><img src="<?php echo base_url('photos/thumbnail/'.$resim->name); ?>" class="img-rounded border border-secondary" style="border-radius:15px;background-color:#EFEBE9"  alt="Cinque Terre"></a>
+											<a><img src="<?php echo base_url('photos/thumbnail/'.$resim->name); ?>" class="img-rounded border_1" style="border-radius:15px;background-color:#EFEBE9"  alt="Cinque Terre"></a>
 											</div>
 										<?php } ?>
 									</div>
@@ -342,17 +350,17 @@ font-weight: bold;
 
 							</div>
 						</div>
-						<div id="genelBilgi" class="col-12 col-sm-12 col-md-4 col-lg-4 border">
+						<div id="genelBilgi" class="col-12 col-sm-12 col-md-4 col-lg-4 border_1 color_bgx">
 							<div class="row">
 								<div class="col-12 ">
 									<div class="row mar-bot">
-										<div class="col-5 text-center">
+										<div class="col-5 text-center text-light">
 											Favori
-											<p class="text-center"><span class="badge badge-pill badge-dark"><?php echo $this->db->query("select * from favoriler where ilanId='".$ilan->Id."'")->num_rows(); ?></span></p>
+											<p class="text-center"><span class="badge badge-pill color_bg3 text-light"><?php echo $this->db->query("select * from favoriler where ilanId='".$ilan->Id."'")->num_rows(); ?></span></p>
 										</div>
-										<div class="col-7 text-center">
+										<div class="col-7 text-center text-light">
 											Görüntülenme
-											<p class="text-center"><span class="badge badge-pill badge-dark"><?php echo $ilan->toplam_ziyaretci;?></span></p>
+											<p class="text-center"><span class="badge badge-pill color_bg3 text-light"><?php echo $ilan->toplam_ziyaretci;?></span></p>
 										</div>
 									</div>
 								</div>
@@ -371,7 +379,7 @@ font-weight: bold;
 										<div class="col-6 bilgibaslik">
 											Fiyat
 										</div>
-										<div class="col-6 bilgiler text-light color_bg5">
+										<div class="col-6 bilgiler text-light color_bg3">
 											<?php echo number_format($ilan->fiyat,0, ',', '.');?> <?php echo $ilan->birim;?>
 										</div>
 									</div>
@@ -407,10 +415,10 @@ font-weight: bold;
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-2 col-md-12 color_bg1">
+				<div class="col-lg-2 col-md-12">
 					<div class="row">
 						<div class="col-lg-12 col-md-6 col-12">
-							<div class="row text-center border">
+							<div class="row text-center border_1">
 								<?php if ($magaza_var_mi){ ?>
 									<center>
 									<div class="col-12"><h3><?php echo $magaza->magazaadi; ?></h3></div>
@@ -432,7 +440,7 @@ font-weight: bold;
 							</div>
 						</div>
 						<div class="col-lg-12 col-md-6 col-12">
-							<div class="row text-center border">
+							<div class="row text-center border_1">
 								<?php if($this->session->userdata("userData")["userID"] == $ilan->uyeId){?>
 								<div class="col-12 linkler"><a class="beyazyazi" href="<?php echo base_url(); ?>hesabim/ilanduzenle/<?php echo $ilan->Id; ?>">İlanı Düzenle</a></div>
 								<div class="col-12 linkler"><a class="beyazyazi" href="<?php echo base_url(); ?>hesabim/samekategoriilan/<?php echo $ilan->Id; ?>">Aynı Kategoride İlan Ver</a></div>

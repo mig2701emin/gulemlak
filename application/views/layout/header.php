@@ -5,7 +5,7 @@
 
         </div>
     </div>
-    <div class="header-middle">
+    <div class="header-middle color_bg1">
         <div class="container">
             <div class="row">
                 <div class="col-xl-2 col-lg-3 col-lgmd-20per">
@@ -21,7 +21,7 @@
                     <div class="bottom-inner right-side float-none-sm">
                         <div class="position-r">
                             <div class="nav_sec position-r">
-                                <div class="mobilemenu-title mobilemenu">
+                                <div class="mobilemenu-title mobilemenu color_bgx">
                                     <span>Menu</span>
                                     <i class="fa fa-bars pull-right"></i>
                                 </div>
@@ -275,7 +275,7 @@
                                     <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button"><i class="fa fa-plus"></i></button>
                                 </li> -->
                                 <li class="side-toggle" title="Ücretsiz İlan Ver">
-                                  <a href="<?php echo base_url('ilanekle'); ?>"><span><i class="fa fa-plus"></i></span></a>
+                                  <a href="<?php echo base_url('ilanekle'); ?>"><span class="color_bg3"><i class="fa fa-plus"></i></span></a>
 
                                 </li>
                             </ul>
