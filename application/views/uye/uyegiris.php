@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/custom/login.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/style.css" />
 
 
 
@@ -73,7 +74,7 @@
                         </div>
 
                         <div class="form-row">
-                            <button type="submit" class="btn btn-danger" style="width:100%; ">Üye Girişi</button>
+                            <button type="submit" class="btn color_bg3 text-light" style="width:100%; ">Üye Girişi</button>
                         </div>
                     </form>
                     <div class="giris col-12">

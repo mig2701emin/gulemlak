@@ -955,7 +955,7 @@ header#header {
 
 .navbar-toggle {
     border: none;
-    background: #ff5442;
+    background: #855858;
     color: #ffffff;
     height: 35px;
     margin-right: 0;
@@ -1308,7 +1308,7 @@ button:focus {
 }
 
 .mobilemenu-content {
-  	background: #ff5442;
+  	background: #588585;
   	transition: none 0s ease 0s ;
   	width: 100%;
   	position: absolute;
@@ -1323,7 +1323,7 @@ button:focus {
 }
 
 .mobilemenu-content ul li {
-  	border-bottom: 1px solid #fc6656;
+  	border-bottom: 1px solid #588585;
   	float: left;
   	width: 100%;
 }

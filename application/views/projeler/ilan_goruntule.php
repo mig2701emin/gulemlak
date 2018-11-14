@@ -9,11 +9,14 @@
 	<!-- SEO Meta
     ================================================== -->
 	<?php $this->load->view('layout/metas');?>
+	<meta name="description" content="<?php echo trSubstr(base64_decode($ilan->aciklama)); ?>">
 	<meta property="og:site_name" content="www.ticaretmeclisi.com" />
 	<meta property="og:title" content="<?php echo $ilan->firma_adi; ?>" />
-	<meta property="og:description" content="<?php echo $ilan->firma_adi; ?>" />
-	<meta property="og:image" itemprop="image" content="<?php echo base_url(); ?>photos/big/<?php echo ilk_resim($ilan->Id); ?>"/>
-	<meta property="og:image:secure_url" content="<?php echo base_url(); ?>photos/thumbnail/<?php echo ilk_resim($ilan->Id); ?>" />
+	<meta property="og:description" content="<?php echo trSubstr(base64_decode($ilan->aciklama)); ?>" />
+	<?php foreach ($resimler as $resim): ?>
+		<meta property="og:image" itemprop="image" content="<?php echo base_url(); ?>photos/big/<?php echo $resim->name; ?>"/>
+		<meta property="og:image:secure_url" content="<?php echo base_url(); ?>photos/big/<?php echo $resim->name; ?>" />
+	<?php endforeach; ?>
 	<meta property="og:type" content="website" />
 
 
@@ -312,7 +315,7 @@ font-weight: bold;
 										<?php $r=1; ?>
 										<?php foreach ($resimler as $resim): ?>
 											<div class="carousel-item<?php if ($r==1) {echo ' active';} ?>">
-												<img src="<?php echo base_url('photos/big/'.$resim->name); ?>" alt="Chicago" class="img-rounded border_1">
+												<img src="<?php echo base_url('photos/big/'.$resim->name); ?>" alt="<?php echo $ilan->firma_adi ?>" class="img-rounded border_1">
 											</div>
 											<?php $r++; ?>
 										<?php endforeach; ?>
@@ -329,7 +332,7 @@ font-weight: bold;
 									<div class="row">
 										<?php foreach ($resimler as $resim){ ?>
 											<div class="col-4 col-md-3 col-lg-2 m-0 p-1">
-											<a><img src="<?php echo base_url('photos/thumbnail/'.$resim->name); ?>" class="img-rounded border_1" style="border-radius:15px;background-color:#EFEBE9"  alt="Cinque Terre"></a>
+											<a><img src="<?php echo base_url('photos/thumbnail/'.$resim->name); ?>" class="img-rounded border_1" style="border-radius:15px;background-color:#EFEBE9"  alt="<?php echo $ilan->firma_adi ?>"></a>
 											</div>
 										<?php } ?>
 									</div>
@@ -340,7 +343,7 @@ font-weight: bold;
 										<?php foreach ($resimler as $resim){ ?>
 											<div class="col-4 col-sm-6 col-md-4" data-responsive="<?php echo base_url('photos/big/'.$resim->name); ?> 375, <?php echo base_url('photos/big/'.$resim->name); ?> 480, <?php echo base_url('photos/big/'.$resim->name); ?> 800" data-src="<?php echo base_url('photos/big/'.$resim->name); ?>" data-sub-html="<h4 class='text-success'><?php echo $ilan->firma_adi; ?></h4><p></p>">
 												<a href="">
-													<img <?php if ($r==1) {echo ' id="lightImg" ';} ?> class="img-responsive" style="border-radius:20px;" src="<?php echo base_url('photos/big/'.$resim->name); ?>">
+													<img <?php if ($r==1) {echo ' id="lightImg" ';} ?> class="img-responsive" style="border-radius:20px;" src="<?php echo base_url('photos/big/'.$resim->name); ?>" alt="<?php echo $ilan->firma_adi ?>">
 												</a>
 											</div>
 											<?php $r++; ?>
@@ -423,13 +426,13 @@ font-weight: bold;
 									<center>
 									<div class="col-12"><h3><?php echo $magaza->magazaadi; ?></h3></div>
 									<div class="col-12">
-										<img class="img-responsive" style="border-radius:20px;" src="<?php if ($magaza->logo) {echo base_url('photos/magaza/').$magaza->logo;} else {echo base_url('assets/images/company/c1.png');}?>">
+										<img class="img-responsive" style="border-radius:20px;" src="<?php if ($magaza->logo) {echo base_url('photos/magaza/').$magaza->logo;} else {echo base_url('assets/images/company/c1.png');}?>" alt="<?php echo $magaza->magazaadi; ?>">
 									</div>
 									<div class="col-12 mar-bot">Yetkili:<br/><strong><?php echo $user->ad." ".$user->soyad; ?></strong></div>
 								<?php }else{ ?>
 									<div class="col-12"><h3><?php echo $user->ad." ".$user->soyad; ?></h3></div>
 									<div class="col-12">
-										<img class="img-responsive" style="border-radius:20px;" src="<?php if ($user->picture) {echo $user->picture;} else {echo base_url('assets/images/picto_profil.png');}?>">
+										<img class="img-responsive" style="border-radius:20px;" src="<?php if ($user->picture) {echo $user->picture;} else {echo base_url('assets/images/picto_profil.png');}?>" alt="<?php echo $user->ad." ".$user->soyad; ?>">
 									</div>
 								<?php } ?>
 									<div class="col-12 mar-bot">Üyelik Tarihi:<br/><strong><?php yeni_tarih($user->kayit_tarihi); ?></strong></div>

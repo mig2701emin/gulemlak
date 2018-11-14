@@ -11,12 +11,13 @@
   <!-- SEO Meta
   ================================================== -->
   <?php $this->load->view('layout/metas');?>
+  <meta name="description" content="TicaretMeclisi, Gaziantepte kurulan ve Türkiyede adını duyurmaya başlayan ticaretin yeni merkezidir.">
   <!-- CSS
   ================================================== -->
   <?php $this->load->view('layout/styles');?>
 
 </head>
-<body>
+<body class="color_bg1">
     <div class="se-pre-con"></div>
     <div class="main">
       <!-- HEADER START -->

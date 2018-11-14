@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/font-awesome.min.css" />
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/custom/uyeol.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/style.css" />
 
 
 
@@ -87,14 +88,14 @@
                             </div>
                             <div class="col-6" style="text-align:right">
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn  btn-sm" data-toggle="modal" data-target="#myModal" style="color:red;background-color:transparent;">
+                                <button type="button" class="btn  btn-sm" data-toggle="modal" data-target="#myModal" style="color:#588585;background-color:transparent;">
                                     Üyelik Sözleşmesi
                                 </button>
                             </div>
                         </div>
                         <div class="g-recaptcha" data-sitekey="6LdibXAUAAAAAKHsHSsa7SRfCIFS8Ax1M3PzjfDz"></div>
                         <div class="form-row">
-                            <button type="submit" class="btn btn-danger" style="width:100%; ">Kaydet</button>
+                            <button type="submit" class="btn color_bg3 text-light" style="width:100%; ">Kaydet</button>
                         </div>
 
                     </form>
@@ -105,7 +106,7 @@
 
                     <div class="giris col-12">Eğer kayıtlı kullanıcı iseniz   <a href="<?php echo base_url(); ?>uyegiris">Giriş Yap</a></div>
                 </div>
-                <div class="col-md-4 py-5 text-white text-left" style=" background-image: linear-gradient(150deg, #b10007 0%, #ffa908 100%); background-repeat: repeat-x;" >
+                <div class="col-md-4 py-5 text-white text-left" style=" background-image: linear-gradient(150deg, #3a5757 0%, #7faaaa 100%); background-repeat: repeat-x;" >
 
                     <div class="card-body" >
 

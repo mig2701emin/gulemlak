@@ -255,7 +255,7 @@
                                                       <li><a href="<?php echo base_url(); ?>hesabim">Bana Özel</a></li>
                                                       <li><a href="<?php echo base_url(); ?>cikis">Çıkış Yap</a></li>
                                                     <?php }else{ ?>
-                                                      <li><a class="color_bg3" href="<?php echo base_url(); ?>uyegiris">Giriş Yap</a></li>
+                                                      <li><a href="<?php echo base_url(); ?>uyegiris">Giriş Yap</a></li>
                                                       <li><a href="<?php echo base_url(); ?>uyeol">Üye Ol</a></li>
                                                     <?php } ?>
                                                 </ul>

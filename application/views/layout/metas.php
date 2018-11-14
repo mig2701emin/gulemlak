@@ -1,6 +1,5 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="description" content="">
-<meta name="keywords" content="satılık daire,kiralık daire, satılık işyeri, kiralık işyeri, satılık arsa">
+<meta name="keywords" content="ticaret meclisi, ticaretmeclisi, ticaretmeclisi.com, satılık daire,kiralık daire, satılık işyeri, kiralık işyeri, satılık arsa">
 <meta name="distribution" content="global">
 <meta name="revisit-after" content="2 Days">
 <meta name="robots" content="ALL">

@@ -43,7 +43,7 @@
                                           </span>
                                         </div>
                                         <div class="col-2" style="padding:3px">
-                                            <span class="badge color_bg4 text-light" style="width:40px;"><?php echo countDB('firmalar','kategori2',$firstSub->Id); ?></span>
+                                            <span class="badge color_bg3 text-light" style="width:40px;"><?php echo countDB('firmalar','kategori2',$firstSub->Id); ?></span>
                                         </div>
 
                                       </div>
@@ -508,7 +508,7 @@
                                           <?php //echo replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle).'';?>
                                         </div>-->
                                         <div class="product-des">
-                                            <p><?php echo trSubstr(decode($item->aciklama)); ?></p>
+                                            <p><?php echo trSubstr(base64_decode($item->aciklama)); ?></p>
                                         </div>
                                         <div class="product-detail-inner">
                                             <div class="detail-inner-left">

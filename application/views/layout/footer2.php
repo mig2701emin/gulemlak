@@ -89,5 +89,5 @@
 </div>
 
 <div class="scroll-top">
-    <div class="scrollup"></div>
+    <div class="scrollup color_bg3"></div>
 </div>

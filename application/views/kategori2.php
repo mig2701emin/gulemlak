@@ -5,6 +5,7 @@
 <head>
   <title><?php echo $title; ?></title>
   <?php $this->load->view('layout/metas');?>
+  <meta name="description" content="<?php echo $description; ?>">
   <!-- CSS
   ================================================== -->
   <?php $this->load->view('layout/styles');?>

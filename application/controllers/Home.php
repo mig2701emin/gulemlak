@@ -501,7 +501,21 @@
 			}
 			$data["search"]="";
 			$data["sayfa"]=0;
-            $data["title"]="konut";
+			if (count($kategorys) > 3) {
+				$title="Ticaret Meclisi - ".$kategorys[2]->kategori_adi." ".$kategorys[3]->kategori_adi;
+				$description="Tüm ".$kategorys[2]->kategori_adi." ".$kategorys[3]->kategori_adi." ilanlarını www.ticaretmeclisi.com adresinde bulabilirsiniz";
+			} elseif(count($kategorys) > 2) {
+				$title="Ticaret Meclisi - ".$kategorys[2]->kategori_adi." ".$kategorys[1]->kategori_adi;
+				$description="Tüm ".$kategorys[2]->kategori_adi." ".$kategorys[1]->kategori_adi." ilanlarını www.ticaretmeclisi.com adresinde bulabilirsiniz";
+			}elseif(count($kategorys) > 1) {
+				$title="Ticaret Meclisi - ".$kategorys[1]->kategori_adi;
+				$description="Tüm ".$kategorys[1]->kategori_adi." ilanlarını www.ticaretmeclisi.com adresinde bulabilirsiniz";
+			}elseif(count($kategorys) > 0) {
+				$title="Ticaret Meclisi - ".$kategorys[0]->kategori_adi;
+				$description="Tüm ".$kategorys[0]->kategori_adi." ilanlarını www.ticaretmeclisi.com adresinde bulabilirsiniz";
+			}
+			$data["title"]=$title;
+			$data["description"]=$description;
 			$this->load->view("kategori2",$data);
 		}
 		public function ara()
