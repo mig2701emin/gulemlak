@@ -305,10 +305,10 @@ class Ilanlar extends CI_Controller{
     $data["sayfa"]=0;
     if ($kategori==$val4) {
       $title="Ticaret Meclisi - ".replace("tbl_mahalle","mahalle_ad","mahalle_id",$data["mahalle"])." ".$kategorys[2]->kategori_adi." ".$kategorys[3]->kategori_adi." ".replace("tbl_il","il_ad","il_id",$data["sehir"]);
-      $description=replace("tbl_il","il_ad","il_id",$data["sehir"])." ili, ".replace("tbl_ilce","ilce_ad","ilce_id",$data["ilce"])." ilçesi, ".replace("tbl_mahalle","mahalle_ad","mahalle_id",$data["mahalle"])."'nde yer alan tüm ".$kategorys[2]->kategori_adi." ".$kategorys[3]->kategori_adi." ilanlarını www.ticaretmeclisi.com adresinde bulabilirsiniz";
+      $description=replace("tbl_il","il_ad","il_id",$data["sehir"])." ili, ".replace("tbl_ilce","ilce_ad","ilce_id",$data["ilce2"])." ilçesi, ".replace("tbl_mahalle","mahalle_ad","mahalle_id",$data["mahalle"])."'nde yer alan tüm ".$kategorys[2]->kategori_adi." ".$kategorys[3]->kategori_adi." ilanlarını www.ticaretmeclisi.com adresinde bulabilirsiniz";
     } else {
       $title="Ticaret Meclisi - ".replace("tbl_mahalle","mahalle_ad","mahalle_id",$data["mahalle"])." ".$kategorys[2]->kategori_adi." ".$kategorys[1]->kategori_adi." ".replace("tbl_il","il_ad","il_id",$data["sehir"]);
-      $description=replace("tbl_il","il_ad","il_id",$data["sehir"])." ili, ".replace("tbl_ilce","ilce_ad","ilce_id",$data["ilce"])." ilçesi, ".replace("tbl_mahalle","mahalle_ad","mahalle_id",$data["mahalle"])."'nde yer alan tüm ".$kategorys[2]->kategori_adi." ".$kategorys[1]->kategori_adi." ilanlarını www.ticaretmeclisi.com adresinde bulabilirsiniz";
+      $description=replace("tbl_il","il_ad","il_id",$data["sehir"])." ili, ".replace("tbl_ilce","ilce_ad","ilce_id",$data["ilce2"])." ilçesi, ".replace("tbl_mahalle","mahalle_ad","mahalle_id",$data["mahalle"])."'nde yer alan tüm ".$kategorys[2]->kategori_adi." ".$kategorys[1]->kategori_adi." ilanlarını www.ticaretmeclisi.com adresinde bulabilirsiniz";
     }
 
     $data["title"]=$title;
