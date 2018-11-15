@@ -497,9 +497,9 @@ font-weight: bold;
             $( "#lightImg").trigger( "click" );
            console.log($( "#lightImg" ));
         });
-		$('#corusel>div>a').click(function () {
-           console.log($('#corusel>div>a').index(this));
-           var indexnum=$('#corusel>div>a').index(this);
+		$('#corusel>div>div>a').click(function () {
+           console.log($('#corusel>div>div>a').index(this));
+           var indexnum=$('#corusel>div>div>a').index(this);
             $('.carousel').carousel(indexnum);
         })
 	});
