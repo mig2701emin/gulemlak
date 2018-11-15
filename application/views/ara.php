@@ -1,6 +1,6 @@
 
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//TR" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+﻿<!DOCTYPE html>
+<html lang="tr">
 <head>
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-9485987807181530", enable_page_level_ads: true });</script>

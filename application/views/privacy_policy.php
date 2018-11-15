@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html><head></head>
+<html>
+<head></head>
 <body><h1>Privacy Policy of emlakmeclisi</h1>
 
 <p>emlakmeclisi operates the http://www.emlakmeclisi.com website, which provides the SERVICE.</p>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--[if (gte IE 9)|!(IE)]><!-->
-<html>
+<html lang="tr">
 <!--<![endif]-->
 <head>
   <title><?php echo $title; ?></title>
