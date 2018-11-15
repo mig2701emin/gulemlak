@@ -430,9 +430,9 @@
         <div class="row mt-1 border-bottom<?php if($i%2==0){ ?> color_bg-1<?php }else{ ?> color_bg-2<?php } ?>" onclick="window.location='<?php echo base_url();?><?php echo "ilan/".$seolink2;?>-<?php echo $ilan_no;?>';">
           <div class="col-md-3">
             <?php if($a->kucuk_fotograf==1 and ilk_resim($a->Id)!='' and file_exists('photos/thumbnail/'.ilk_resim($a->Id))){?>
-              <img src = "<?php echo base_url();?>photos/thumbnail/<?php echo ilk_resim($a->Id);?>" height = "150" width="220" border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
+              <img src = "<?php echo base_url();?>photos/thumbnail/<?php echo ilk_resim($a->Id);?>" height = "110" width="178" border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
             <?php }else{?>
-              <img src = "<?php echo base_url();?>assets/images/yok_thumbnail.png" height = "150" width="220" border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
+              <img src = "<?php echo base_url();?>assets/images/yok_thumbnail.png" height = "110" width="178" border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
             <?php }?>
           </div>
           <div class="col-md-6">

@@ -290,12 +290,12 @@
                                                                     <span class="m-nav__link-badge"><span class="m-badge m-badge--success">2</span></span>
                                                                 </a>
                                                             </li>
-                                                            <!-- <li class="m-nav__item">
-                                                                <a href="<?php //echo base_url(); ?>cikis" class="m-nav__link">
+                                                            <li class="m-nav__item">
+                                                                <a href="<?php echo base_url(); ?>hesabim/sahistan" class="m-nav__link">
                                                                     <i class="m-nav__link-icon flaticon-lifebuoy"></i>
-                                                                    <span class="m-nav__link-text">Güvenli Çıkış</span>
+                                                                    <span class="m-nav__link-text">sahibinden.com</span>
                                                                 </a>
-                                                            </li> -->
+                                                            </li>
                                                             <li class="m-nav__separator m-nav__separator--fit">
                                                             </li>
                                                             <li class="m-nav__item">
@@ -510,12 +510,6 @@
                                   <a href="<?php echo base_url(); ?>ilanekle" class="m-menu__link ">
                                     <span class="m-menu__item-here"></span>
                                     <span class="m-menu__link-text font-weight-bold text-danger">ÜCRETSİZ İLAN VER</span>
-                                  </a>
-                                </li>
-                                <li class="m-menu__item " aria-haspopup="true">
-                                  <a href="<?php echo base_url(); ?>hesabim/sahistan" class="m-menu__link ">
-                                    <span class="m-menu__item-here"></span>
-                                    <span class="m-menu__link-text text-warning">Sahibinden.com</span>
                                   </a>
                                 </li>
                                 <li class="m-menu__item " aria-haspopup="true"><a href="<?php echo base_url() ?>hesabim/favorilerim" class="m-menu__link "><span class="m-menu__item-here"></span><span class="m-menu__link-text " >Favori ilanlarım</span></a></li>

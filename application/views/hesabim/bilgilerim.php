@@ -63,11 +63,11 @@
           </div>
           <div class="mb-3">
             <label for="gsm">Cep :</label>
-            <input class="form-control" type="text" id="gsm" name="gsm" min="11" max="11"value="<?php echo $user->gsm;?>" required />
+            <input class="form-control" type="tel" id="gsm" name="gsm" placeholder="5xxxxxxxxx" value="<?php echo $user->gsm;?>" required />
           </div>
           <div class="mb-3">
             <label for="istel">İş Telefonu :</label>
-            <input class="form-control" type="tel" id="istel" name="istel" min="11" max="11" value="<?php echo $user->istel;?>"/>
+            <input class="form-control" type="tel" id="istel" name="istel" placeholder="5xxxxxxxxx" value="<?php echo $user->istel;?>"/>
           </div>
           <button type="submit" class="btn btn-success btn-block"/>Güncelle</button>
         </form>
@@ -83,5 +83,38 @@
           generate(<?php echo flashdata(); ?>);
       </script>
   <?php } ?>
+  <script type="text/javascript">
+  function addHyphens(nStr){
+
+   nStr += '';
+   var x1 = nStr.replace('-','')
+   // var x = nStr.split('.');
+   // var x1 = x[0];
+
+     var rgx = /(\d{3})(\d{3})(\d{4})/;
+     while (rgx.test(x1)) {
+      x1 = x1.replace(rgx, '$1' + '-' + '$2' + '-' + '$3');
+     }
+
+   //return x1 + x2;
+   return x1;
+  }
+$(document).ready(function() {
+  $("#gsm").keyup(function() {
+
+     var newValue =  addHyphens(this.value);
+     // alert(newValue);
+     console.log(newValue);
+     document.querySelector('#gsm').value = newValue;
+  });
+  $("#istel").keyup(function() {
+
+     var newValue =  addHyphens(this.value);
+     // alert(newValue);
+     console.log(newValue);
+     document.querySelector('#istel').value = newValue;
+  });
+});
+  </script>
 </body>
 </html>

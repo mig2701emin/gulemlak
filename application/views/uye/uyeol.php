@@ -23,7 +23,7 @@
 
     <script src='https://www.google.com/recaptcha/api.js?hl=tr'></script>
 </head>
-<body>
+<body class="color_bg1">
 
 <div class="se-pre-con"></div>
 <div class="main">
@@ -93,7 +93,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="g-recaptcha" data-sitekey="6LdibXAUAAAAAKHsHSsa7SRfCIFS8Ax1M3PzjfDz"></div>
+                        <div class="g-recaptcha" data-sitekey="6LcLF3sUAAAAAIDZeDgfJMMGE7ze2PmtH0Ksy70L"></div>
                         <div class="form-row">
                             <button type="submit" class="btn color_bg3 text-light" style="width:100%; ">Kaydet</button>
                         </div>
@@ -106,7 +106,7 @@
 
                     <div class="giris col-12">Eğer kayıtlı kullanıcı iseniz   <a href="<?php echo base_url(); ?>uyegiris">Giriş Yap</a></div>
                 </div>
-                <div class="col-md-4 py-5 text-white text-left" style=" background-image: linear-gradient(150deg, #3a5757 0%, #7faaaa 100%); background-repeat: repeat-x;" >
+                <div class="col-md-4 py-5 text-white text-left" style=" background-image: linear-gradient(150deg, #eef2f2 0%, #3a5757 100%); background-repeat: repeat-x;" >
 
                     <div class="card-body" >
 

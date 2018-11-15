@@ -10,12 +10,12 @@
     ================================================== -->
 	<?php $this->load->view('layout/metas');?>
 	<meta name="description" content="<?php echo trSubstr(base64_decode($ilan->aciklama)); ?>">
-	<!-- <meta property="og:site_name" content="www.ticaretmeclisi.com" /> -->
+	<meta property="og:site_name" content="www.ticaretmeclisi.com" />
 	<meta property="og:title" content="<?php echo $ilan->firma_adi; ?>" />
 	<meta property="og:description" content="<?php echo trSubstr(base64_decode($ilan->aciklama)); ?>" />
-	<meta property="og:image" itemprop="image" content="<?php echo base_url(); ?>photos/crop/<?php echo ilk_resim($ilan->Id); ?>"/>
-	<meta property="og:image:secure_url" content="<?php echo base_url(); ?>photos/crop/<?php echo ilk_resim($ilan->Id); ?>" />
-	<!-- <meta property="og:type" content="website" /> -->
+	<meta property="og:image" itemprop="image" content="<?php echo base_url(); ?>photos/big/<?php echo ilk_resim($ilan->Id); ?>"/>
+	<meta property="og:image:secure_url" content="<?php echo base_url(); ?>photos/big/<?php echo ilk_resim($ilan->Id); ?>" />
+	<meta property="og:type" content="website" />
 
 
 	<!-- CSS
@@ -48,12 +48,6 @@
 	  /*position: absolute;*/
 	  width: 100%;
 	  height: 100%;
-	  /*background: rgb(212,228,239);
-		background: -moz-linear-gradient(top,  rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-		background: -webkit-linear-gradient(top,  rgba(212,228,239,1) 0%,rgba(134,174,204,1) 100%);
-		background: linear-gradient(to bottom,  rgba(212,228,239,1) 0%,rgba(134,174,204,1) 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc',GradientType=0 );*/
-
 	}
 
 	.cont_breadcrumbs {
@@ -222,12 +216,7 @@ font-weight: bold;
 <body class="color_bg1">
 	<div class="se-pre-con"></div>
 	<div class="main">
-		<!-- HEADER START -->
-		<?php //if ($this->session->userdata("userData")["userID"] == $ilan->uyeId){ ?>
-			<?php //$this->load->view('layout/newuserheader');?>
-		<?php //}else{ ?>
 			<?php $this->load->view('layout/header');?>
-		<?php //} ?>
 		<!-- HEADER END -->
 		<div class="container">
 			<div class="row">
@@ -287,12 +276,11 @@ font-weight: bold;
 										<div class="col-9">
 											<!-- AddToAny BEGIN -->
 											<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-											<!-- <a class="a2a_dd" href="https://www.addtoany.com/share"></a> -->
 											<a class="a2a_button_facebook"></a>
 											<a class="a2a_button_twitter"></a>
+											<a class="a2a_button_google_plus"></a>
+											<a class="a2a_button_pinterest"></a>
 											<a class="a2a_button_whatsapp"></a>
-											<a class="a2a_button_google_gmail"></a>
-											<a class="a2a_button_print"></a>
 											</div>
 											<script>
 											var a2a_config = a2a_config || {};
