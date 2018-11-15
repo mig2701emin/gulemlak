@@ -528,10 +528,10 @@
 			$config["per_page"] = $limit;
 			$search=$this->security->xss_clean($this->input->post("search"));
 			$this->db->like('firma_adi', $search);
-			$this->db->or_like('Id', $search);
+			$this->db->or_like('ilanId', $search);
 			$config["total_rows"] = $this->db->get('firmalar')->num_rows();
 			$this->db->like('firma_adi', $search);
-			$this->db->or_like('Id', $search);
+			$this->db->or_like('ilanId', $search);
 			$this->db->order_by('kayit_tarihi', 'DESC');
 			$this->db->limit($limit, $page);
 			$ilanlar=$this->db->get('firmalar')->result();

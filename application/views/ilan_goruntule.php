@@ -312,13 +312,19 @@ font-weight: bold;
 								<div id="demo" class="carousel slide col-12" data-ride="carousel">
 									<!-- The slideshow -->
 									<div class="carousel-inner">
-										<?php $r=1; ?>
-										<?php foreach ($resimler as $resim): ?>
-											<div class="carousel-item<?php if ($r==1) {echo ' active';} ?>">
-												<img src="<?php echo base_url('photos/big/'.$resim->name); ?>" alt="<?php echo $ilan->firma_adi ?>" class="img-rounded border_1">
+										<?php if (count($resimler) > 0): ?>
+											<?php $r=1; ?>
+											<?php foreach ($resimler as $resim): ?>
+												<div class="carousel-item<?php if ($r==1) {echo ' active';} ?>">
+													<img src="<?php echo base_url('photos/big/'.$resim->name); ?>" alt="<?php echo $ilan->firma_adi ?>" class="img-rounded border_1">
+												</div>
+												<?php $r++; ?>
+											<?php endforeach; ?>
+										<?php else: ?>
+											<div class="carousel-item active">
+												<img src="<?php echo base_url('assets/images/yok.png'); ?>" alt="<?php echo $ilan->firma_adi ?>" class="img-rounded border_1">
 											</div>
-											<?php $r++; ?>
-										<?php endforeach; ?>
+										<?php endif; ?>
 									</div>
 									<!-- Left and right controls -->
 									<a class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -330,24 +336,38 @@ font-weight: bold;
 								</div>
 								<div id="corusel" class="col-12">
 									<div class="row">
-										<?php foreach ($resimler as $resim){ ?>
+										<?php if (count($resimler) > 0): ?>
+											<?php foreach ($resimler as $resim){ ?>
+												<div class="col-4 col-md-3 col-lg-2 m-0 p-1">
+												<a><img src="<?php echo base_url('photos/thumbnail/'.$resim->name); ?>" class="img-rounded border_1" style="border-radius:15px;background-color:#EFEBE9"  alt="<?php echo $ilan->firma_adi ?>"></a>
+												</div>
+											<?php } ?>
+										<?php else: ?>
 											<div class="col-4 col-md-3 col-lg-2 m-0 p-1">
-											<a><img src="<?php echo base_url('photos/thumbnail/'.$resim->name); ?>" class="img-rounded border_1" style="border-radius:15px;background-color:#EFEBE9"  alt="<?php echo $ilan->firma_adi ?>"></a>
+											<a><img src="<?php echo base_url('assets/images/yok_thumbnail.png'); ?>" class="img-rounded border_1" style="border-radius:15px;background-color:#EFEBE9"  alt="<?php echo $ilan->firma_adi ?>"></a>
 											</div>
-										<?php } ?>
+										<?php endif; ?>
 									</div>
 								</div>
 								<div class="demo-gallery" style="display: none;">
 									<row id="lightgallery" class="list-unstyled row">
-										<?php $r=1; ?>
-										<?php foreach ($resimler as $resim){ ?>
-											<div class="col-4 col-sm-6 col-md-4" data-responsive="<?php echo base_url('photos/big/'.$resim->name); ?> 375, <?php echo base_url('photos/big/'.$resim->name); ?> 480, <?php echo base_url('photos/big/'.$resim->name); ?> 800" data-src="<?php echo base_url('photos/big/'.$resim->name); ?>" data-sub-html="<h4 class='text-success'><?php echo $ilan->firma_adi; ?></h4><p></p>">
+										<?php if (count($resimler) > 0): ?>
+											<?php $r=1; ?>
+											<?php foreach ($resimler as $resim){ ?>
+												<div class="col-4 col-sm-6 col-md-4" data-responsive="<?php echo base_url('photos/big/'.$resim->name); ?> 375, <?php echo base_url('photos/big/'.$resim->name); ?> 480, <?php echo base_url('photos/big/'.$resim->name); ?> 800" data-src="<?php echo base_url('photos/big/'.$resim->name); ?>" data-sub-html="<h4 class='text-success'><?php echo $ilan->firma_adi; ?></h4><p></p>">
+													<a href="">
+														<img <?php if ($r==1) {echo ' id="lightImg" ';} ?> class="img-responsive" style="border-radius:20px;" src="<?php echo base_url('photos/big/'.$resim->name); ?>" alt="<?php echo $ilan->firma_adi ?>">
+													</a>
+												</div>
+												<?php $r++; ?>
+											<?php } ?>
+										<?php else: ?>
+											<div class="col-4 col-sm-6 col-md-4" data-responsive="<?php echo base_url('assets/images/yok_b.png'); ?> 375, <?php echo base_url('assets/images/yok_b.png'); ?> 480, <?php echo base_url('assets/images/yok_b.png'); ?> 800" data-src="<?php echo base_url('assets/images/yok_b.png'); ?>" data-sub-html="<h4 class='text-success'><?php echo $ilan->firma_adi; ?></h4><p></p>">
 												<a href="">
-													<img <?php if ($r==1) {echo ' id="lightImg" ';} ?> class="img-responsive" style="border-radius:20px;" src="<?php echo base_url('photos/big/'.$resim->name); ?>" alt="<?php echo $ilan->firma_adi ?>">
+													<img  id="lightImg" class="img-responsive" style="border-radius:20px;" src="<?php echo base_url('assets/images/yok_b.png'); ?>" alt="<?php echo $ilan->firma_adi ?>">
 												</a>
 											</div>
-											<?php $r++; ?>
-										<?php } ?>
+										<?php endif; ?>
 									</row>
 								</div>
 
