@@ -1,330 +1,398 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//TR" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
+<!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="tr">
+<!--<![endif]-->
 <head>
-  <title>ticaretmeclisi.com</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-  <link href="http://www.ticaretmeclisi.com/screen.css" rel="stylesheet" type="text/css" />
-  <link href="http://www.ticaretmeclisi.com/css/slider.css" rel="stylesheet" type="text/css" />
-  <link href="http://www.ticaretmeclisi.com/css/breadcrumb.css" rel="stylesheet" type="text/css" />
-  <link href="http://www.ticaretmeclisi.com/css/my_account.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="http://www.ticaretmeclisi.com/js/ui/jquery-ui-1.10.3.custom.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="http://www.ticaretmeclisi.com/js/jquery-ui-1.10.3.custom.min.js"></script>
-  <script type="text/javascript" src="http://www.ticaretmeclisi.com/js/easing.js"></script>
-  <script type="text/javascript" src="http://www.ticaretmeclisi.com/js/bxslider/jquery.bxslider.min"></script>
-  <script type="text/javascript" src="http://www.ticaretmeclisi.com/js/jquery.cookie.1.4.0.js"></script>
-  <script type="text/javascript" src="http://www.ticaretmeclisi.com/js/jquery.maskedinput.min.js" defer></script>
-  <script type="text/javascript" src="http://www.ticaretmeclisi.com/js/jquery.ui.totop.min.js" defer></script>
-  <script type="text/javascript" src="http://www.ticaretmeclisi.com/js/custom.js"></script>
-</head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<style>
-#uiv {color:#ed1c24; background-color:white; padding: 5px; border-radius: 3px; font-weight: bold;}
-#uiv:hover {color:white; background-color: #ed1c24; padding: 5px; border-radius: 3px; font-weight: bold;}
-#logouiv {float:left; height:50px;}#logouiv:hover {float:left; height:50px; opacity:0.8;}
-.pagination a, .pagination strong{
-  padding: 5px;
-  border: 1px solid #ccc;
-  margin-left: 5px;
-  text-decoration: none;
-  box-shadow: 0px 0px 8px rgba(5,5,5,0.3);
-}
-.pagination strong{
-  background-color: #35a5f2;
-}
-</style>
-<script>
-function show(a){
-  $("#div"+a).slideDown("slow");
-  $("#xdiv"+a).html('<a class="submenu_text" href="javascript:hide(\''+a+'\');">Gizle</a>');
-}
-function hide(a){
-  $("#div"+a).slideUp("slow");
-  $("#xdiv"+a).html('<a class="submenu_text" href="javascript:show(\''+a+'\');">Tümünü Göster</a>');
-}
-</script>
-<body>
-<!--[if gte IE 9]> <style type="text/css"> .gradient { filter: none; } </style><![endif]-->
-<div class="siteContent">
-  <div style="width:100%; height:50px; border-bottom:2px solid white; background:#ed1c24; z-index:1000; position:fixed; top:0; left:0;">
-    <center>
-      <div style="width:950px; height:50px;">
-        <div style="float:left">
-          <a href="<?php echo base_url(); ?>">
-            <img id="logouiv" src="<?php echo base_url(); ?>assets/images/logo.png" alt="ticaretmeclisi.com" title="ticaretmeclisi.com" >
-          </a>
-        </div>
-        <a style="margin-left: 250px; padding-top: 22px; position: absolute; color: #fff; font-size:16px;" href="http://www.ticaretmeclisi.com/index.php?page=ilanara">
-          Detaylı Arama
-        </a>
-        <div style="float:right">
-          <div class="login_bar">
-            <a href="<?php echo base_url(); ?>hesabim/anasayfa" style="color:white;">
-              <strong></strong>
-            </a>
-            <a href="<?php echo base_url(); ?>hesabim/anasayfa" style="color:white;">
-              <i class="fa fa-cog"></i> Hesabım
-            </a>
-            <a href="<?php echo base_url(); ?>cikis">
-              <i class="fa fa-sign-out"></i> Çıkış Yap
-            </a>
-            <a id="uiv" href="<?php echo base_url(); ?>ilanekle">
-              ÜCRETSİZ İLAN VER
-            </a>
-          </div>
-          <div style="clear:both"></div>
-        </div>
-        <div style="clear:both"></div>
-        <form action="http://ticaretmeclisi.com/index.php" method="get" name="form9" id="form9">
-          <a href="http://ticaretmeclisi.com/index.php?page=ilanara" style="position:absolute;margin-left:680px;margin-top:11px;font-size:11pt;color:#fff;">
-          </a>
-          <input type="hidden" id="page" name="page" value="ara">
-          <input name="search" type="text" id="search" style="position:absolute;margin-top:-43px;margin-left:255px;width:235px;height:35px;font-family:Segoe UI;font-size:10pt;color:#2f2f2f;font-color;border:1px solid #C0C0C0;background-repeat:repeat-x;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:3px; font-size: 11px; font-family: arial;" placeholder="Kelime, ilan no veya mağaza adı ile ara" onFocus="this.value=''">
-          <input type="submit" id="submit" name="submit" value="" style="position:absolute;margin-top:-42px;margin-left:452px;font-weight:bold;border:0px;background-image:url(http://ticaretmeclisi.com/newbutonsearch.png);width:37px;cursor:hand;cursor:pointer;height:33px;" onClick="arama();">
-        </form>
-      </div>
-    </center>
-  </div>
-  <div style="width:100%; height:50px;"></div>
-  <script src="http://www.ticaretmeclisi.com/js/jquery.banner-rotator.min.js"></script>
-  <script>
-    $(document).ready(function(){
-      var e={
-        width:510,
-        height:242,
-        playButton:false,
-        cpanelAlign:"bottomRight",
-        borderWidth:0,
-        delay:5000,
-        effect:"random",
-        tooltip:"text",
-        shuffle:true
-      };
-      $("#home_slider").bannerRotator(e);
-    });
-  </script>
-  <style>
-    .listable { width:900px; }
-    @media only screen and (min-width:960px){ /* styles for browsers larger than 960px; */
-    .listable { width:900px; }
+  <!-- Basic Page Needs
+    ================================================== -->
+
+
+  <title><?php echo $magaza->magazaadi; ?> | Ticaret Meclisi</title>
+  <!-- SEO Meta
+  ================================================== -->
+  <?php $this->load->view('layout/metas');?>
+  <meta name="description" content="TicaretMeclisi, <?php echo $magaza->magazaadi; ?>, <?php echo base64_decode($magaza->aciklama); ?>">
+  <!-- CSS
+  ================================================== -->
+  <?php $this->load->view('layout/styles');?>
+  <style type="text/css">
+
+    .pagination a, .pagination strong{
+
+      padding: 5px;
+      border: 1px solid #ccc;
+      margin-left: 5px;
+      text-decoration: none;
+      box-shadow: 0px 0px 8px rgba(5,5,5,0.3);
+
     }
-    @media only screen and (min-width:1440px){ /* styles for browsers larger than 1440px; */
-    .listable { width:900px; }
-    }
-    @media only screen and (min-width:2000px){ /* for sumo sized (mac) screens */
-    .listable { width:900px; }
-    }
-    @media only screen and (max-device-width:480px){ /* styles for mobile browsers smaller than 480px; (iPhone) */
-    .listable { width:670px; }
-    }
-    @media only screen and (device-width:768px){ /* default iPad screens */
-    .listable { width:670px; }
-    } /* different techniques for iPad screening */
-    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) { /* For portrait layouts only */
-    .listable { width:670px; }
-    }
-    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) { /* For landscape layouts only */
-    .listable { width:900px; }
+    .pagination strong{
+      background-color: #35a5f2;
+
     }
   </style>
-  <div style="background:url(<?php echo base_url(); ?>assets/images/magaza-resimler/<?php echo $magaza->stil; ?>.jpg) repeat-x left top;margin-top:-5px;height:125px;padding-top:20px;padding-left:15px;">
-    <form method="GET" action="" style="position:absolute;margin:35px 0 0 300px">
-      <input name="aranacak" id="store_search" onkeyup="check_search_store();" class="head_search_input" type="text" placeholder="Mağazada Ara" value="">
-      <input type="submit" value="Ara" class="search_button">
-    </form>
-    <a href="">
-      <img border="0" src="<?php echo base_url() ?>photos/magaza/<?php echo $magaza->logo ?>" width="264" height="100" title="<?php echo $magaza->magazaadi; ?>" alt="<?php echo $magaza->magazaadi; ?>">
-    </a>
-  </div>
-  <div style="float:left;width:21.2%;border-right:1px solid #e1e1e1">
-    <div class="genelbox">
-      <a href="<?php echo base_url().$magaza->username; ?>/<?php echo encode($kategori->Id); ?>" style="background:url('<?php echo base_url(); ?>assets/images/category_icon/<?php echo $kategori->icon; ?>') no-repeat center left;background-size:20px 20px;padding-left:25px"><?php echo $kategori->kategori_adi; ?></a>
-      ( <?php echo magaza_ilan_say($magaza->Id,$kategori->Id); ?> )
-    </div>
-    <div style="clear:both"></div>
-    <?php foreach ($altKategoriler as $altKategori): ?>
-      <div class="subcat">
-        <a href="<?php echo base_url().$magaza->username; ?>/<?php echo encode($kategori->Id); ?>/<?php echo encode($altKategori->Id); ?>" class="submenu_text"><?php echo $altKategori->kategori_adi; ?></a>
-        ( <?php echo magaza_ilan_say($magaza->Id,$kategori->Id,$altKategori->Id); ?> )
-      </div>
-    <?php endforeach; ?>
-    <div class="genelbox">Hakkımızda</div>
-    <div class="custom_content">
-      <font face="Arial" size="3pt"><strong><?php echo $magaza->magazaadi; ?></strong></font>
-      <div style="width:200px;max-width:200px;">
-        <font face="Calibri" size="2.5pt"><?php echo base64_decode($magaza->aciklama); ?></font>
-      </div>
-    </div>
-  </div>
-  <div style="float:left;width:77%">
-    <table border="0" width="100%" height="158" cellpadding="0" style="border-collapse: collapse">
-      <?php $count=1; ?>
-      <tr>
-        <?php foreach ($ilanlar as $ilan){
-          if (ilk_resim($ilan->Id) != ""){
-            $resim = '<a href="'.base_url().'ilan/'.$ilan->seo_url.'-'.$ilan->Id.'"><img src = "'.base_url().'photos/thumbnail/'.ilk_resim($ilan->Id).'" width = "100" height="75" border = "0" style="margin-top:10px;"></a>';
-            } else {
-            $resim = '<a href="'.base_url().'ilan/'.$ilan->seo_url.'-'.$ilan->Id.'"><img src = "'.base_url().'assets/images/yok.png" width="100" height = "75" border = "0" style="margin-top:10px;"></a>';
-          }
-        ?>
-        <td>
-          <table border="0" width="100%" height="100" cellpadding="0" style="cursor:hand;cursor:pointer; border-collapse:collapse" bgcolor="#FFFFFF" onmouseover="this.style.background='#F5F5F5'" onmouseout="this.style.background='#FFFFFF'" onclick="top.window.location='<?php echo base_url(); ?>ilan/<?php echo $ilan->seo_url; ?>-<?php echo $ilan->Id; ?>'">
-            <tr>
-              <td width="150" align="center" valign="middle">
-                <?php echo $resim; ?>
-              </td>
-              <td valign="top" style="text-align:left">
-                <font color="red" style="font-size:9pt;">#<?php echo $ilan->Id; ?></font>
-                <br/>
-                <?php
-                  $yazi = $ilan->firma_adi;
-                  $uzunluk=strlen($yazi);
-                  if($uzunluk>25){
-                    $icerik = mb_substr($yazi,0,25,"UTF-8").'...';
-                  }else{
-                    $icerik=$yazi;
-                  }
-                ?>
-                <font color="#000080" style="text-transform: uppercase;font-size:9pt;"><?php echo $icerik; ?></font>
-                <br>
-                <font color="brown" style="font-size:9pt;"><?php echo write_price($ilan->fiyat,$ilan->fiyat2);?> <?php echo $ilan->birim;?></font>
-                <br>
-                <font color="brown" style="font-size:9pt;">İlan Tarihi : <?php echo $ilan->kayit_tarihi;?></font>
-                <br>
-                <font color="#000080" style="font-size:9pt;">İl : <?php echo replace("tbl_il","il_ad","il_id",$ilan->il);?></font>
-              </td>
-            </tr>
-          </table>
-        </td>
-        <?php
-        $count++;
-        if($count%2){echo "</tr><tr>";}
+
+</head>
+<body class="color_bg1">
+    <div class="se-pre-con"></div>
+    <div class="main">
+      <!-- HEADER START -->
+      <?php $this->load->view('layout/header');?>
+      <!-- HEADER END -->
+      <!-- Bread Crumb STRAT -->
+
+      <!-- Bread Crumb END -->
+      <!-- CONTAIN START -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script>
+        function goster(a){
+
+        $("#div"+a).slideDown("slow");
+        $("#xdiv"+a).html('<li><div class="row"><div class="col-10"><span><a onclick="gizle(\''+a+'\');">Gizle</a></span></div><div class="col-2" style="padding:3px"><span class="badge color_bg4 text-light" style="width:40px;"></span></div></div></li>');
+
         }
-        ?>
-      </tr>
-      <tr>
-        <td align="center" colspan="2">
-          <hr color="#DADADA" size="1">
-          <div style="display: table;margin: auto;margin-top:5px;">
-            <p class="pagination"><?php echo $links; ?></p>
+        function gizle(a){
+        $("#div"+a).slideUp("slow");
+        $("#xdiv"+a).html('<li><div class="row"><div class="col-10"><span><a onclick="goster(\''+a+'\');">Tümünü Göster</a></span></div><div class="col-2" style="padding:3px"><span class="badge color_bg4 text-light" style="width:40px;"></span></div></div></li>');
+      }
+      </script>
+
+      <section class="mtb-30">
+          <div class="container">
+              <div class="row">
+                 <!-- slider-->
+                  <div class="col-lg-12">
+                      <div class="row">
+                          <div class="col-sm-8">
+                              <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                  <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100" src="<?php echo base_url('assets/');?>images/magaza_fon.jpg" alt="First slide" style="height:300px;" />
+                                        <div class="carousel-caption d-md-block">
+                                            <h2><?php echo $magaza->magazaadi; ?></h2>
+                                            <p><?php echo base64_decode($magaza->aciklama); ?></p>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="carousel-item">
+                                        <img class="d-block w-100" style="height:300px;" src="<?php //echo base_url('assets/');?>images/1slider.jpg" alt="Second slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" style="height:300px;" src="<?php //echo base_url('assets/');?>images/10.jpg" alt="Third slide">
+                                    </div> -->
+                                  </div>
+                                  <!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                      <span class="sr-only">Previous</span>
+                                  </a>
+                                  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                      <span class="sr-only">Next</span>
+                                  </a> -->
+                              </div>
+                          </div>
+                          <div class="col-sm-4">
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                              <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="<?php echo base_url() ?>photos/magaza/<?php echo $magaza->logo ?>" alt="First slide" style="height:300px;" />
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" style="height:300px;" src="<?php echo base_url() ?>photos/magaza/<?php echo $magaza->logo ?>" alt="Second slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" style="height:300px;" src="<?php echo base_url() ?>photos/magaza/<?php echo $magaza->logo ?>" alt="Third slide">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="shorting mb-20">
+                        <div class="row" style="margin-top:10px;">
+                          <div class="col-xl-6">
+                            <div class="view">
+                                <div class="list-types grid active ">
+                                    <div class="compare float-left-sm"> <a href="#" class="btn btn-color color_bg3">Mağazanın Tüm İlanları</a> </div>
+                                    <a>
+                                        <div class="grid-icon list-types-icon"></div>
+                                    </a>
+                                </div>
+                                <div class="list-types list">
+                                    <a>
+                                        <div class="list-icon list-types-icon"></div>
+                                    </a>
+                                </div>
+                            </div>
+                          </div>
+                          <div class="col-xl-6">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product-listing grid-type">
+                          <div class="inner-listing">
+                              <div class="row">
+
+                                <?php foreach ($ilanlar as $item){ ?>
+                                  <div class="col-md-4 col-6 item-width mb-30">
+                                      <div class="product-item">
+                                          <div class="product-image">
+                                              <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                                  <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
+                                              </a>
+                                              <div class="product-detail-inner">
+                                                  <div class="detail-inner-left align-center">
+                                                      <ul>
+                                                          <li class="pro-cart-icon">
+                                                              <form>
+                                                                  <button title="Add to Cart"><i class="fa fa-heart"></i></button>
+                                                              </form>
+                                                          </li>
+                                                          <li class="pro-wishlist-icon"><a href="wishlist.html" title="Wishlist"><i class="fa fa-heart"></i></a></li>
+                                                          <li class="pro-compare-icon"><a href="compare.html" title="Compare"><i class="fa fa-refresh"></i></a></li>
+                                                          <li class="pro-quick-view-icon"><a class="popup-with-product" href="#product_popup" title="quick-view"><i class="fa fa-eye"></i></a></li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="product-item-details">
+                                              <div class="product-item-name">
+                                                  <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>"><?php echo $item->firma_adi; ?></a>
+                                              </div>
+                                              <div class="row">
+                                                  <div class="col">
+                                                      <a href="product-page.html">
+                                                        <?php if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}?>
+                                                        <?php if ($item->kategori2) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
+                                                        <?php if ($item->kategori3) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
+                                                        <?php if ($item->kategori4) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}?>
+                                                      </a>
+                                                  </div>
+                                                  <div class="col"><div class="price-box">
+                                                  <span class="price color_text4"><?php echo number_format($item->fiyat,0, ',', '.').' '.$item->birim; ?></span></div>
+                                                  </div>
+                                              </div>
+
+                                              <div class="product-item-name">
+
+                                              </div>
+                                              <div class="rating-summary-block">
+                                                  <div class="rating-result" title="53%"> <span style="width:53%"></span> </div>
+                                              </div>
+                                              <div class="location">
+                                                <?php if ($item->il) {echo replace('tbl_il', 'il_ad','il_id', $item->il);}?>
+                                                <?php if ($item->ilce) {echo ' > '.replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce);}?>
+                                                <?php if ($item->mahalle) {echo ' > '.replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle);}?>
+                                              </div>
+                                              <div class="product-detail-inner">
+                                                  <div class="detail-inner-left">
+                                                      <ul>
+                                                          <li class="pro-cart-icon">
+                                                              <form>
+                                                                  <button title="Add to Cart"><i class="fa fa-heart"></i></button>
+                                                              </form>
+                                                          </li>
+                                                          <li class="pro-wishlist-icon"><a title="Wishlist" href="wishlist.html"><i class="fa fa-heart"></i></a></li>
+                                                          <li class="pro-compare-icon"><a title="Compare" href="compare.html"><i class="fa fa-refresh"></i></a></li>
+                                                          <li class="pro-quick-view-icon"><a title="quick-view" href="#product_popup" class="popup-with-product"><i class="fa fa-eye"></i></a></li>
+                                                      </ul>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                <?php } ?>
+                                <p class="pagination"><?php echo $links; ?></p>
+                              </div>
+                          </div>
+                      </div>
+                      <div id="product_popup" class="quick-view-popup white-popup-block mfp-hide popup-position ">
+                          <div class="popup-detail">
+                              <div class="container-fluid">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                          <div class="row">
+                                              <div class="col-lg-5 col-md-5 mb-xs-30">
+                                                  <div class="fotorama" data-nav="thumbs" data-allowfullscreen="native">
+                                                      <a href="#"><img src="<?php echo base_url('assets/');?>images/1.jpg" alt="Ezone"></a>
+                                                      <a href="#"><img src="<?php echo base_url('assets/');?>images/2.jpg" alt="Ezone"></a>
+                                                      <a href="#"><img src="<?php echo base_url('assets/');?>images/3.jpg" alt="Ezone"></a>
+                                                      <a href="#"><img src="<?php echo base_url('assets/');?>images/4.jpg" alt="Ezone"></a>
+                                                      <a href="#"><img src="<?php echo base_url('assets/');?>images/5.jpg" alt="Ezone"></a>
+                                                      <a href="#"><img src="<?php echo base_url('assets/');?>images/6.jpg" alt="Ezone"></a>
+                                                      <a href="#"><img src="<?php echo base_url('assets/');?>images/4.jpg" alt="Ezone"></a>
+                                                      <a href="#"><img src="<?php echo base_url('assets/');?>images/5.jpg" alt="Ezone"></a>
+                                                      <a href="#"><img src="<?php echo base_url('assets/');?>images/6.jpg" alt="Ezone"></a>
+                                                  </div>
+                                              </div>
+                                              <div class="col-lg-7 col-md-7">
+                                                  <div class="row">
+                                                      <div class="col-12">
+                                                          <div class="product-detail-main">
+                                                              <div class="product-item-details">
+                                                                  <h1 class="product-item-name">Gaziantep Kiralık Lüx Daire</h1>
+                                                                  <div class="rating-summary-block">
+                                                                      <div title="53%" class="rating-result"> <span style="width:53%"></span> </div>
+                                                                  </div>
+                                                                  <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$120.00</del> </div>
+                                                                  <div class="product-info-stock-sku">
+                                                                      <div>
+                                                                          <label>Özellikleri: </label>
+                                                                          <span class="info-deta">In stock</span>
+                                                                      </div>
+                                                                      <div>
+                                                                          <label>SKU: </label>
+                                                                          <span class="info-deta">20MVC-18</span>
+                                                                      </div>
+                                                                  </div>
+                                                                  <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus.</p>
+                                                                  <ul class="product-list">
+                                                                      <li><i class="fa fa-check"></i> Satisfaction 100% Guaranteed</li>
+                                                                      <li><i class="fa fa-check"></i> Free shipping on orders over $99</li>
+                                                                      <li><i class="fa fa-check"></i> 14 day easy Return</li>
+                                                                  </ul>
+                                                                  <div class="select-size">
+                                                                      <span>Select Size :</span>
+                                                                      <ul>
+                                                                          <li>
+                                                                              <label class="size-option ">
+                                                                                  <input class="pro-size" type="radio" value="[object Object]" name="size">
+                                                                                  <span>S</span>
+                                                                              </label>
+                                                                          </li>
+                                                                          <li>
+                                                                              <label class="size-option ">
+                                                                                  <input class="pro-size" type="radio" value="[object Object]" name="size">
+                                                                                  <span>M</span>
+                                                                              </label>
+                                                                          </li>
+                                                                          <li>
+                                                                              <label class="size-option ">
+                                                                                  <input class="pro-size" type="radio" value="[object Object]" name="size">
+                                                                                  <span>L</span>
+                                                                              </label>
+                                                                          </li>
+                                                                          <li>
+                                                                              <label class="size-option ">
+                                                                                  <input class="pro-size" type="radio" value="[object Object]" name="size">
+                                                                                  <span>XL</span>
+                                                                              </label>
+                                                                          </li>
+                                                                          <li>
+                                                                              <label class="size-option ">
+                                                                                  <input class="pro-size" type="radio" value="[object Object]" name="size">
+                                                                                  <span>XXl</span>
+                                                                              </label>
+                                                                          </li>
+                                                                      </ul>
+                                                                  </div>
+                                                                  <div class="select-color">
+                                                                      <span>Select Color :</span>
+                                                                      <ul>
+                                                                          <li>
+                                                                              <div class="check-box">
+                                                                                  <div class="position-r">
+                                                                                      <div class="color-tooltip">
+                                                                                          <span class="color-arrow"></span>red
+                                                                                      </div>
+                                                                                      <input type="checkbox" class="checkbox" id="red1" name="red">
+                                                                                      <label for="red1" class="red"></label>
+                                                                                  </div>
+                                                                              </div>
+                                                                          </li>
+                                                                          <li>
+                                                                              <div class="check-box">
+                                                                                  <div class="position-r">
+                                                                                      <div class="color-tooltip">
+                                                                                          <span class="color-arrow"></span>black
+                                                                                      </div>
+                                                                                      <input type="checkbox" class="checkbox" id="black1" name="black">
+                                                                                      <label for="black1" class="black"></label>
+                                                                                  </div>
+                                                                              </div>
+                                                                          </li>
+                                                                          <li>
+                                                                              <div class="check-box">
+                                                                                  <div class="position-r">
+                                                                                      <div class="color-tooltip">
+                                                                                          <span class="color-arrow"></span>navyblue
+                                                                                      </div>
+                                                                                      <input type="checkbox" class="checkbox" id="navyblue1" name="navyblue">
+                                                                                      <label for="navyblue1" class="navyblue"></label>
+                                                                                  </div>
+                                                                              </div>
+                                                                          </li>
+                                                                          <li>
+                                                                              <div class="check-box">
+                                                                                  <div class="position-r">
+                                                                                      <div class="color-tooltip">
+                                                                                          <span class="color-arrow"></span>green
+                                                                                      </div>
+                                                                                      <input type="checkbox" class="checkbox" id="green1" name="green">
+                                                                                      <label for="green1" class="green"></label>
+                                                                                  </div>
+                                                                              </div>
+                                                                          </li>
+                                                                          <li>
+                                                                              <div class="check-box">
+                                                                                  <div class="position-r">
+                                                                                      <div class="color-tooltip">
+                                                                                          <span class="color-arrow"></span>blue
+                                                                                      </div>
+                                                                                      <input type="checkbox" class="checkbox" id="blue1" name="blue">
+                                                                                      <label for="blue1" class="blue"></label>
+                                                                                  </div>
+                                                                              </div>
+                                                                          </li>
+                                                                      </ul>
+                                                                  </div>
+                                                                  <div class="mb-20">
+                                                                      <div class="product-qty">
+                                                                          <label for="qty">Qty:</label>
+                                                                          <div class="custom-qty">
+                                                                              <button onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;" class="reduced items" type="button"> <i class="fa fa-minus"></i> </button>
+                                                                              <input type="text" class="input-text qty" title="Qty" value="1" maxlength="8" id="qty" name="qty">
+                                                                              <button onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="increase items" type="button"> <i class="fa fa-plus"></i> </button>
+                                                                          </div>
+                                                                      </div>
+                                                                      <div class="bottom-detail cart-button">
+                                                                          <ul>
+                                                                              <li class="pro-cart-icon">
+                                                                                  <form>
+                                                                                      <button title="Add to Cart" class="btn-color color_bg3"><i class="fa fa-shopping-basket"></i></button>
+                                                                                  </form>
+                                                                              </li>
+                                                                          </ul>
+                                                                      </div>
+                                                                  </div>
+                                                                  <div class="bottom-detail">
+                                                                      <ul>
+                                                                          <li class="pro-wishlist-icon"><a href="wishlist.html"><span><i class="fa fa-heart"></i></span>Wishlist</a></li>
+                                                                          <li class="pro-compare-icon"><a href="compare.html"><span><i class="fa fa-refresh"></i></span>Compare</a></li>
+                                                                          <li class="pro-email-icon"><a href="#"><span><i class="fa fa-envelope"></i></span>Email to Friends</a></li>
+                                                                      </ul>
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
           </div>
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div style="clear:both"></div>
-</div>
-<div style="clear:both"></div>
-<div class="footer2">
-  <div style="margin:auto;width:980px">
-    <div class="border" style="margin-left:173px"></div>
-    <div class="border" style="margin-left:370px"></div>
-    <div class="border" style="margin-left:565px"></div>
-    <div class="border" style="margin-left:772px"></div>
-    <ul class="footerTitles">
-      <li>Kurumsal</li>
-      <li>Hizmetlerimiz</li>
-      <li>Mağazalar</li>
-      <li>Gizlilik ve Kullanım</li>
-      <li><center>Sosyal Medyada Biz ?</center></li>
-    </ul>
-    <div style="clear:both"></div>
-    <ul class="footerSections">
-      <li class="footerSection">
-        <ul class="footerLinks"><li>
-          <a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=hakkimizda" style="color:#fff">Hakkımızda</a>
-        </li>
-        <li>
-          <a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=yardim&kategori=iletisim" style="color:#fff">İletişim</a>
-        </li>
-        <li>
-          <a href="http://www.ticaretmeclisi.com/index.php?page=destek" style="color:#fff">Destek</a>
-        </li>
-      </ul>
-    </li>
-    <li class="footerSection">
-      <ul class="footerLinks"><li>
-        <a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=doping" style="color:#fff">Doping</a>
-      </li>
-      <li>
-        <a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=reklam" style="color:#fff">Reklam</a>
-      </li>
-    </ul>
-  </li>
-  <li class="footerSection">
-    <ul class="footerLinks">
-      <li><a href="http://www.ticaretmeclisi.com/index.php?page=magazam" style="color:#fff">Mağazam</a></li>
-      <li><a href="http://www.ticaretmeclisi.com/index.php?page=magazaac" style="color:#fff">Mağaza Açmak İstiyorum</a></li>
-      <li><a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=magaza" style="color:#fff">Neden Mağaza?</a></li>
-      <li><a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=magazafiyatlari" style="color:#fff">Mağaza Fiyatları</a></li>
-    </ul>
-  </li>
-  <li class="footerSection">
-    <ul class="footerLinks">
-      <li><a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=hizmet-sozlesmesi" style="color:#fff">Hizmet Sözleşmesi</a></li>
-      <li><a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=guvenlik-ve-gizlilik" style="color:#fff">Güvenlik Ve Gizlilik</a></li>
-      <li><a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=hesap-numaralarimiz" style="color:#fff">Hesap Numaralarımız</a></li>
-      <li><a href="http://www.ticaretmeclisi.com/index.php?page=sayfa&sayfa=yardim" style="color:#fff">Yardım</a></li>
-    </ul>
-  </li>
-  <li class="footerSection">
-    <a href="http://www.ticaretmeclisi.com">
-      <img src="http://www.ticaretmeclisi.com/images/logo.jpg" alt="ticaretmeclisi.com" title="ticaretmeclisi.com" widtH="175" height="50" style="margin-left:10px">
-    </a>
-    <ul class="footerSocial">
-      <li><a href="https://www.facebook.com" target="_blank" rel="nofollow" class="social_link facebook" title="Facebook"></a></li>
-      <li><a href="#" target="_blank" rel="nofollow" class="social_link twitter" title="Twitter"></a></li>
-      <li><a href="#" target="_blank" rel="nofollow" class="social_link google" title="Google+"></a></li>
-      <li><a href="#" target="_blank" rel="nofollow" class="social_link youtube" title="Youtube"></a></li>
-      <li><a href="#" target="_blank" rel="nofollow" class="social_link linkedin" title="LinkedIn"></a></li>
-      <li><a href="#" target="_blank" rel="nofollow" class="social_link digg" title="Digg"></a></li>
-      <li><a href="#" target="_blank" rel="nofollow" class="social_link friendfeed" title="FriendFeed"></a></a></li>
-      <li><a href="#" target="_blank" rel="nofollow" class="social_link myspace" title="Myspace"></a></li>
-      <li><a href="#" target="_blank" rel="nofollow" class="social_link pinterest" title="Pinterest"></a></li>
-    </ul>
-  </li>
-</ul>
-<div style="clear:both"></div>
-<div class="contactBlockBg">
-  <ul class="contactBlock">
-    <li><strong style="font-size:16px">Bize Ulaşın</strong></li>
-    <li>0542 218 12 54</li>
-    <li><a href="mailto:destek@ticaretmeclisi.com" style="font-weight:bold;color:#fff">destek@ticaretmeclisi.com</a></li>
-  </ul>
-  <div style="clear:both"></div>
-</div>
-<div style="clear:both"></div>
-<div style="font-size:11px;border-top:1px dotted #DDD;padding:8px;margin-top:5px">
-  ticaretmeclisi.com'da Yer Alan Kullanıcıların Oluşturduğu Tüm İçerik, Görüş Ve Bilgilerin Doğruluğu, Eksiksiz Ve Değişmez Olduğu, Yayınlanması İle İlgili Yasal Yükümlülükler İçeriği Oluşturan Kullanıcıya Aittir.Bu İçeriğin, Görüş Ve Bilgilerin Yanlışlık, Eksiklik Veya Yasalarla Düzenlenmiş Kurallara Aykırılığından ticaretmeclisi.com Hiçbir Şekilde Sorumlu Değildir. Sorularınız İçin İlan Sahibi İle İrtibata Geçebilirsiniz.
-</div>
-</div>
-<div class="footer_copyright">
-  Copyright 2018 ticaretmeclisi.com Tüm Hakları Saklıdır
-  <div style="clear:both"></div>
-</div>
-</div>
-<script>
-function mesaj_gonder (uyeid,ilanid){window.location='http://www.ticaretmeclisi.com/index.php?page=mesajgonder&uyeid=&ilanid=';}
-function favori (){
-  $.ajax({
-    url: 'http://www.ticaretmeclisi.com/favoriekle.php?id=',
-    success: function(data) {
-      $('.result').html(data); alert('İlan favorilerinize eklendi !');
-      document.location.reload(true);
-    }
-  });
-}
-function favorisil (){$.ajax({
-  url: 'http://www.ticaretmeclisi.com/favorisil.php?id=',
-  success: function(data) {
-    $('.result').html(data);
-    alert('İlan favorilerden silindi !');
-    document.location.reload(true);
-  }
-});
-}
-</script>
-<style type="css/text">a{ font-family: 'Raleway', sans-serif;}</style>
+      </section>
+      <!-- CONTAINER END -->
+      <!-- News Letter Start -->
+
+      <!-- News Letter End -->
+      <!-- FOOTER START -->
+      <?php $this->load->view('layout/footer');?>
+      <!-- FOOTER END -->
+    </div>
+    <?php $this->load->view('layout/scripts');?>
 </body>
 </html>

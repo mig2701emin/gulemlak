@@ -12,7 +12,7 @@
                     <div class="header-middle-left">
                         <div class="navbar-header float-none-sm">
                             <a class="navbar-brand page-scroll" href="<?php echo base_url(); ?>">
-                                <img  alt="<?php echo $title; ?>" src="<?php echo base_url('assets/');?>images/logo.png" />
+                                <img  alt="www.ticaretmeclisi.com" src="<?php echo base_url('assets/');?>images/logo.png" />
                             </a>
                         </div>
                     </div>

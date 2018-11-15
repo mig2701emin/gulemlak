@@ -246,6 +246,7 @@
 			$altKategoriler=$this->kategoriler->getSubs($magaza->kategoriId);
 			$data["kategori"]=$kategori;
 			$data["altKategoriler"]=$altKategoriler;
+			$data['anaKategoriler']=$this->kategoriler->getAnaKategoriler();
 			$this->load->view("magaza",$data);
 		}
 
