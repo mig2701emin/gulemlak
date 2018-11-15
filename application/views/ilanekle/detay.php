@@ -17,7 +17,7 @@
   </style>
   <!-- <script src='https://www.google.com/recaptcha/api.js?hl=tr'></script> -->
 </head>
-<body>
+<body class="color_bg1">
   <div class="se-pre-con"></div>
   <div class="main">
     <?php $this->load->view('layout/newuserheader');?>

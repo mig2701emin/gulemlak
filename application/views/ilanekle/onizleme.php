@@ -209,7 +209,7 @@
 
 	</style>
 </head>
-<body>
+<body class="color_bg1">
 	<div class="se-pre-con"></div>
 	<div class="main">
 		<!-- HEADER START -->

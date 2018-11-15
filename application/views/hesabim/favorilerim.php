@@ -15,7 +15,7 @@
       background:url(<?php echo base_url(); ?>assets/images/delete_image.png) no-repeat}
   </style>
 </head>
-<body>
+<body class="color_bg1">
   <div class="se-pre-con"></div>
   <div class="main">
     <?php $this->load->view('layout/newuserheader');?>

@@ -159,6 +159,7 @@ class Hesabim extends CI_Controller{
 
   public function favorilerim()
   {
+    $data["user"]=$this->user;
     $favoriler=$this->db->where("uyeId",$this->user->Id)->get("favoriler");
     $ilans = array();
     if ($favoriler->num_rows() > 0) {
