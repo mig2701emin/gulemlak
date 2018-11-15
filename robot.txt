@@ -7,7 +7,9 @@ Disallow: /protect_page.php
 Disallow: /config.php
 Disallow: /config_includes.php
 Disallow: /setting.php
-Disallow: /libs.php
+Disallow: /libs
+Disallow: /ilanekle
+Disallow: /magazaac
+Disallow: /resim
 
-
-Sitemap: https://www.emlakmeclisi.com/sitemap.xml
+Sitemap: https://www.ticaretmeclisi.com/sitemap.xml

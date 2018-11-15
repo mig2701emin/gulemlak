@@ -10,14 +10,12 @@
     ================================================== -->
 	<?php $this->load->view('layout/metas');?>
 	<meta name="description" content="<?php echo trSubstr(base64_decode($ilan->aciklama)); ?>">
-	<meta property="og:site_name" content="www.ticaretmeclisi.com" />
+	<!-- <meta property="og:site_name" content="www.ticaretmeclisi.com" /> -->
 	<meta property="og:title" content="<?php echo $ilan->firma_adi; ?>" />
 	<meta property="og:description" content="<?php echo trSubstr(base64_decode($ilan->aciklama)); ?>" />
-	<?php foreach ($resimler as $resim): ?>
-		<meta property="og:image" itemprop="image" content="<?php echo base_url(); ?>photos/big/<?php echo $resim->name; ?>"/>
-		<meta property="og:image:secure_url" content="<?php echo base_url(); ?>photos/big/<?php echo $resim->name; ?>" />
-	<?php endforeach; ?>
-	<meta property="og:type" content="website" />
+	<meta property="og:image" itemprop="image" content="<?php echo base_url(); ?>photos/crop/<?php echo ilk_resim($ilan->Id); ?>"/>
+	<meta property="og:image:secure_url" content="<?php echo base_url(); ?>photos/crop/<?php echo ilk_resim($ilan->Id); ?>" />
+	<!-- <meta property="og:type" content="website" /> -->
 
 
 	<!-- CSS
@@ -289,7 +287,7 @@ font-weight: bold;
 										<div class="col-9">
 											<!-- AddToAny BEGIN -->
 											<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-											<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+											<!-- <a class="a2a_dd" href="https://www.addtoany.com/share"></a> -->
 											<a class="a2a_button_facebook"></a>
 											<a class="a2a_button_twitter"></a>
 											<a class="a2a_button_whatsapp"></a>
@@ -442,8 +440,8 @@ font-weight: bold;
 					<div class="row">
 						<div class="col-lg-12 col-md-6 col-12">
 							<div class="row text-center border_1">
+								<center>
 								<?php if ($magaza_var_mi){ ?>
-									<center>
 									<div class="col-12"><h3><?php echo $magaza->magazaadi; ?></h3></div>
 									<div class="col-12">
 										<img class="img-responsive" style="border-radius:20px;" src="<?php if ($magaza->logo) {echo base_url('photos/magaza/').$magaza->logo;} else {echo base_url('assets/images/company/c1.png');}?>" alt="<?php echo $magaza->magazaadi; ?>">
@@ -457,9 +455,12 @@ font-weight: bold;
 								<?php } ?>
 									<div class="col-12 mar-bot">Üyelik Tarihi:<br/><strong><?php yeni_tarih($user->kayit_tarihi); ?></strong></div>
 									<?php if ($ilan->yayinla==1){ ?>
-										<div class="col-12 mar-bot">Telefon:<br/><strong><?php echo $user->gsm; ?></strong></div>
-									</center>
+										<div class="col-12 mar-bot">Cep Telefon:<br/><strong><?php echo $user->gsm; ?></strong></div>
+										<?php if ($user->istel!="" && $user->istel!=null): ?>
+											<div class="col-12 mar-bot">İş Telefon:<br/><strong><?php echo $user->istel; ?></strong></div>
+										<?php endif; ?>
 									<?php } ?>
+									</center>
 							</div>
 						</div>
 						<div class="col-lg-12 col-md-6 col-12">

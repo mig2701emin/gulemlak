@@ -3,49 +3,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc><?php echo base_url();?></loc>
-    <priority>1.0</priority>
+    <priority>0.5</priority>
   </url>
-    <!-- Sitemap -->
+  <?php
+    $magazalar=$this->db->query("select Id, magazaadi, username from magazalar")->result();
+    foreach ($magazalar as $magaza) {?>
+      <url>
+          <loc><?php echo base_url(); ?><?php echo $magaza->username; ?></loc>
+      </url>
+    <?php }
+  ?>
     <?php
-    $mainKategori= 'emlak';
-    $item1 = 'konut';
-    $item2 = 'is-yeri';
-    $item3 = 'arsa';
-    $firstSubs=array($item1,$item2,$item3);
-
-    foreach ($firstSubs as $firstSub) {
-          $item1 = 'satilik';
-          $item2 = 'kiralik';
-          $secondSubs=array($item1,$item2);
-
-      foreach ($secondSubs as $secondSub) {
-        switch($firstSub){
-          case 'is-yeri':
-          case 'arsa':
-          $link=$mainKategori."/".$firstSub."/".$secondSub;
-    ?>
-
-  <url>
-      <loc><?php echo base_url().$link; ?></loc>
-  </url>
-    <?php
-          break;
-          case 'konut':
-            $item1 = 'daire';
-            $item2 = 'mustakil-ev';
-            $item3 = 'ciftlik-evi';
-            $thirdSubs=array($item1,$item2,$item3);
-            foreach ($thirdSubs as $thirdSub) {
-              $link=$mainKategori."/".$firstSub."/".$secondSub."/".$thirdSub;
-
-    ?>
-
-  <url>
-      <loc><?php echo base_url().$link; ?></loc>
-  </url>
-    <?php
-            }
-          break;
+    $anaKategoriler=$this->db->query("select Id, kategori_adi, seo from kategoriler where ust_kategori=0");
+    foreach ($anaKategoriler->result() as $anaKategori) {?>
+      <url>
+        <loc><?php echo base_url(); ?><?php echo $anaKategori->seo; ?>/<?php echo encode($anaKategori->Id); ?></loc>
+      </url>
+      <?php
+      $firstSubs=$this->db->query("select Id, kategori_adi, seo from kategoriler where ust_kategori=".$anaKategori->Id);
+      foreach ($firstSubs->result() as $firstSub) {?>
+        <url>
+          <loc><?php echo base_url(); ?><?php echo $anaKategori->seo; ?>/<?php echo $firstSub->seo; ?>/<?php echo encode($firstSub->Id); ?></loc>
+        </url>
+        <?php
+        $secondSubs=$this->db->query("select Id, kategori_adi, seo from kategoriler where ust_kategori=".$firstSub->Id);
+        foreach ($secondSubs->result() as $secondSub) {?>
+          <url>
+            <loc><?php echo base_url(); ?><?php echo $anaKategori->seo; ?>/<?php echo $firstSub->seo; ?>/<?php echo $secondSub->seo; ?>/<?php echo encode($secondSub->Id); ?></loc>
+          </url>
+          <?php
+          $thirdSubs=$this->db->query("select Id, kategori_adi, seo from kategoriler where ust_kategori=".$secondSub->Id);
+          if ($thirdSubs->num_rows() > 0) {
+            foreach ($thirdSubs->result() as $thirdSub) {?>
+              <url>
+                  <loc><?php echo base_url(); ?><?php echo $anaKategori->seo; ?>/<?php echo $firstSub->seo; ?>/<?php echo $secondSub->seo; ?>/<?php echo $thirdSub->seo; ?>/<?php echo encode($thirdSub->Id); ?></loc>
+              </url>
+            <?php }
+          }
         }
       }
     }
