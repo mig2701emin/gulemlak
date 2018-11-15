@@ -168,7 +168,7 @@
 	    $title=mb_convert_case(mb_strtolower($ilan->firma_adi), MB_CASE_TITLE, "UTF-8")." | Ticaret Meclisi";
 
 			$data["title"]=$title;
-			$this->load->view('projeler/ilan_goruntule',$data);
+			$this->load->view('ilan_goruntule',$data);
 
 		}
 		public function magaza_goruntule($username,$anaKategori="",$subKategori="")
