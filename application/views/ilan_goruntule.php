@@ -292,9 +292,15 @@ font-weight: bold;
 										<?php if (count($resimler) > 0): ?>
 											<?php $r=1; ?>
 											<?php foreach ($resimler as $resim): ?>
-												<div class="carousel-item<?php if ($r==1) {echo ' active';} ?>">
-													<img src="<?php echo base_url('photos/big/'.$resim->name); ?>" alt="<?php echo $ilan->firma_adi ?>" class="img-rounded">
-												</div>
+												<?php if(file_exists('photos/big/'.$resim->name)){?>
+													<div class="carousel-item<?php if ($r==1) {echo ' active';} ?>">
+														<img src="<?php echo base_url('photos/big/'.$resim->name); ?>" alt="<?php echo $ilan->firma_adi ?>" class="img-rounded">
+													</div>
+						            <?php }else{?>
+													<div class="carousel-item active">
+														<img src="<?php echo base_url('assets/images/yok.png'); ?>" alt="<?php echo $ilan->firma_adi ?>" class="img-rounded">
+													</div>
+						            <?php }?>
 												<?php $r++; ?>
 											<?php endforeach; ?>
 										<?php else: ?>

@@ -268,11 +268,12 @@ class Magazam extends CI_Controller{
     }
     if (isset($_POST) && !empty($_POST)) {
       $ilanId=$this->security->xss_clean($this->input->post("ilanid"));
-      $check_exists=$this->db->query("select * from firmalar where uyeId='".$this->user->Id."' and Id='".$ilanId."'")->num_rows();
+      $ilan=$this->db->query("select * from firmalar where uyeId='".$this->user->Id."' and ilanId='".$ilanId."'");
+      $check_exists=$ilan->num_rows();
       if($check_exists==0){
         $this->session->set_flashdata("error","İlan Geçersiz.");
       }else{
-        $addQuery=$this->db->query("insert into magaza_ilanlari (Id,magazaId,ilanId,uyeId) VALUES(NULL,'".$this->magaza->Id."','".$ilanId."','".$this->user->Id."')");
+        $addQuery=$this->db->query("insert into magaza_ilanlari (Id,magazaId,ilanId,uyeId) VALUES(NULL,'".$this->magaza->Id."','".$ilan->Id."','".$this->user->Id."')");
         if($addQuery){
           $this->session->set_flashdata("success","İlan Mağazaya Eklendi.");
           redirect(base_url("magazam/magazailanlari"));
