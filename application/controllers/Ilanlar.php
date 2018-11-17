@@ -136,18 +136,22 @@ class Ilanlar extends CI_Controller{
         if(!empty($sehir) and is_numeric($sehir)){
           $add_query_to_sql.=" and firmalar.il='".$sehir."'";
           $data["sehir"]=$sehir;
+          $data["ilceler"]=$this->db->where("il_id",$sehir)->get("tbl_ilce")->result();
         }else {
           $add_query_to_sql.=" and firmalar.il='".$konum['il']."'";
           $data["sehir"]=$konum["il"];
+          $data["ilceler"]=$this->db->where("il_id",$konum["il"])->get("tbl_ilce")->result();
         }
 
         $ilce=$this->security->xss_clean($this->input->post("ilce"));
         if(!empty($ilce) and is_numeric($ilce)){
           $add_query_to_sql.=" and firmalar.ilce='".$ilce."'";
           $data["ilce"]=$ilce;
+          $data["mahalleler"]=$this->db->where("ilce_id",$ilce)->get("tbl_mahalle")->result();
         }else {
           $add_query_to_sql.=" and firmalar.ilce='".$konum['ilce']."'";
           $data["ilce"]=$konum["ilce"];
+          $data["mahalleler"]=$this->db->where("ilce_id",$konum["ilce"])->get("tbl_mahalle")->result();
         }
         $mahalle=$this->security->xss_clean($this->input->post("mahalle"));
         if(!empty($mahalle) and is_numeric($mahalle)){
@@ -257,10 +261,10 @@ class Ilanlar extends CI_Controller{
       }else {
           $add_query_to_sql.=" and firmalar.il='".$konum['il']."'";
           $data["sehir"]=$konum["il"];
-
+          $data["ilceler"]=$this->db->where("il_id",$konum["il"])->get("tbl_ilce")->result();
           $add_query_to_sql.=" and firmalar.ilce='".$konum['ilce']."'";
-          $data["ilce2"]=$konum["ilce"];
-
+          $data["ilce"]=$konum["ilce"];
+          $data["mahalleler"]=$this->db->where("ilce_id",$konum["ilce"])->get("tbl_mahalle")->result();
           $add_query_to_sql.=" and firmalar.mahalle='".$konum['mahalle']."'";
           $data["mahalle"]=$konum["mahalle"];
 
@@ -305,10 +309,10 @@ class Ilanlar extends CI_Controller{
     $data["sayfa"]=0;
     if ($kategori==$val4) {
       $title="Ticaret Meclisi - ".replace("tbl_mahalle","mahalle_ad","mahalle_id",$data["mahalle"])." ".$kategorys[2]->kategori_adi." ".$kategorys[3]->kategori_adi." ".replace("tbl_il","il_ad","il_id",$data["sehir"]);
-      $description=replace("tbl_il","il_ad","il_id",$data["sehir"])." ili, ".replace("tbl_ilce","ilce_ad","ilce_id",$data["ilce2"])." ilçesi, ".replace("tbl_mahalle","mahalle_ad","mahalle_id",$data["mahalle"])."'nde yer alan tüm ".$kategorys[2]->kategori_adi." ".$kategorys[3]->kategori_adi." ilanlarını www.ticaretmeclisi.com adresinde bulabilirsiniz";
+      $description=replace("tbl_il","il_ad","il_id",$data["sehir"])." ili, ".replace("tbl_ilce","ilce_ad","ilce_id",$data["ilce"])." ilçesi, ".replace("tbl_mahalle","mahalle_ad","mahalle_id",$data["mahalle"])."'nde yer alan tüm ".$kategorys[2]->kategori_adi." ".$kategorys[3]->kategori_adi." ilanlarını www.ticaretmeclisi.com adresinde bulabilirsiniz";
     } else {
       $title="Ticaret Meclisi - ".replace("tbl_mahalle","mahalle_ad","mahalle_id",$data["mahalle"])." ".$kategorys[2]->kategori_adi." ".$kategorys[1]->kategori_adi." ".replace("tbl_il","il_ad","il_id",$data["sehir"]);
-      $description=replace("tbl_il","il_ad","il_id",$data["sehir"])." ili, ".replace("tbl_ilce","ilce_ad","ilce_id",$data["ilce2"])." ilçesi, ".replace("tbl_mahalle","mahalle_ad","mahalle_id",$data["mahalle"])."'nde yer alan tüm ".$kategorys[2]->kategori_adi." ".$kategorys[1]->kategori_adi." ilanlarını www.ticaretmeclisi.com adresinde bulabilirsiniz";
+      $description=replace("tbl_il","il_ad","il_id",$data["sehir"])." ili, ".replace("tbl_ilce","ilce_ad","ilce_id",$data["ilce"])." ilçesi, ".replace("tbl_mahalle","mahalle_ad","mahalle_id",$data["mahalle"])."'nde yer alan tüm ".$kategorys[2]->kategori_adi." ".$kategorys[1]->kategori_adi." ilanlarını www.ticaretmeclisi.com adresinde bulabilirsiniz";
     }
 
     $data["title"]=$title;

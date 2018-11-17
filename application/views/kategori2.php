@@ -211,7 +211,7 @@
                         </div>
                         <div class="col-12 mt-2">
                           <select name="sehir" onchange="ilcegetir(this.options[selectedIndex].value);">
-                            <option value="">İl Seçiniz</option>
+                            <option value="">Seçiniz</option>
                             <?php
                             foreach($iller as $bolge){
                               ?>
@@ -221,12 +221,22 @@
                         </div>
                         <div class="col-12 mt-2">
                           <select name="ilce" id="ilce" onchange="mahallegetir(this.options[selectedIndex].value);">
-                              <option value="">İlçe Seçiniz</option>
+                              <option value="">Seçiniz</option>
+                              <?php if (isset($ilceler)): ?>
+                                <?php foreach ($ilceler as $item): ?>
+                                  <option value="<?php echo $item->ilce_id;?>"<?php if(isset($ilce) && $item->ilce_id==$ilce){?> selected<?php }?>><?php echo $item->ilce_ad;?></option>
+                                <?php endforeach; ?>
+                              <?php endif; ?>
                           </select>
                         </div>
                         <div class="col-12 mt-2">
                           <select name="mahalle" id="mahalle">
-                              <option value="">Semt Seçiniz</option>
+                              <option value="">Seçiniz</option>
+                              <?php if (isset($mahalleler)): ?>
+                                <?php foreach ($mahalleler as $item): ?>
+                                  <option value="<?php echo $item->mahalle_id;?>"<?php if(isset($mahalle) && $item->mahalle_id==$mahalle){?> selected<?php }?>><?php echo $item->mahalle_ad;?></option>
+                                <?php endforeach; ?>
+                              <?php endif; ?>
                           </select>
                         </div>
                       </div>
@@ -388,10 +398,10 @@
                           </div>
                         </div>
                       </div>
+                      <div class="col-12">
+                        <button type="submit" class="btn color_bg3 text-light" style="width: 100%">Ara</button>
+                      </div>
                     </form>
-                  </div>
-                  <div class="col-12">
-                    <input type="button" class="btn color_bg3 text-light" value="Ara" style="width: 100%">
                   </div>
                 </div>
               <!-- Kategori Liste bitiş ........................................................-->

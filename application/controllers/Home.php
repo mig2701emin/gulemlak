@@ -338,18 +338,20 @@
 					$getirilen = array();
 
 					$sehir=$this->security->xss_clean($this->input->post("sehir"));
-					$data["sehir"]=$sehir;
 					if(!empty($sehir) and is_numeric($sehir)){
+						$data["sehir"]=$sehir;
 						$add_query_to_sql.=" and firmalar.il='".$sehir."'";
+						$data["ilceler"]=$this->db->where("il_id",$sehir)->get("tbl_ilce")->result();
 					}
 					$ilce=$this->security->xss_clean($this->input->post("ilce"));
-					$data["ilce"]=$ilce;
 					if(!empty($ilce) and is_numeric($ilce)){
+						$data["ilce"]=$ilce;
 						$add_query_to_sql.=" and firmalar.ilce='".$ilce."'";
+						$data["mahalleler"]=$this->db->where("ilce_id",$ilce)->get("tbl_mahalle")->result();
 					}
 					$mahalle=$this->security->xss_clean($this->input->post("mahalle"));
-					$data["mahalle"]=$mahalle;
 					if(!empty($mahalle) and is_numeric($mahalle)){
+						$data["mahalle"]=$mahalle;
 						$add_query_to_sql.=" and firmalar.mahalle='".$mahalle."'";
 					}
 					$fotograf=$this->security->xss_clean($this->input->post("fotograf"));
