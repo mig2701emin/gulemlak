@@ -9,10 +9,10 @@
 	<!-- SEO Meta
     ================================================== -->
 	<?php $this->load->view('layout/metas');?>
-	<meta name="description" content="<?php echo trSubstr(base64_decode($ilan->aciklama)); ?>">
+	<meta name="description" content="<?php echo trSubstr(strip_tags(base64_decode($ilan->aciklama))); ?>"/>
 	<meta property="og:site_name" content="www.ticaretmeclisi.com" />
 	<meta property="og:title" content="<?php echo $ilan->firma_adi; ?>" />
-	<meta property="og:description" content="<?php echo trSubstr(base64_decode($ilan->aciklama)); ?>" />
+	<meta property="og:description" content="<?php echo trSubstr(strip_tags(base64_decode($ilan->aciklama))); ?>" />
 	<meta property="og:image" itemprop="image" content="<?php echo base_url(); ?>photos/big/<?php echo ilk_resim($ilan->Id); ?>"/>
 	<meta property="og:image:secure_url" content="<?php echo base_url(); ?>photos/big/<?php echo ilk_resim($ilan->Id); ?>" />
 	<meta property="og:type" content="website" />

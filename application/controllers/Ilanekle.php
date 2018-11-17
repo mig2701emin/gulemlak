@@ -123,6 +123,7 @@ class Ilanekle extends CI_Controller{
               $formvalid[]=  array('field' => $field->seo_name, 'label' => $field->name,'rules' => 'required');
             }
           }
+
           $this->form_validation->set_rules($formvalid);
           $this->form_validation->set_error_delimiters('<p>', '</p>');
           $this->form_validation->set_message('required', '<strong>%s</strong> Gerekli Bir Alandır.');
@@ -252,7 +253,20 @@ class Ilanekle extends CI_Controller{
             redirect(base_url("resim/set/".$ilanId));
 
           } else {
-            //validation kontrolü error verirse
+            $il_id = $this->security->xss_clean($this->input->post('il'));
+            if(!empty($il_id) and is_numeric($il_id)){
+              $data["ilceler"]=$this->db->where("il_id",$il_id)->get("tbl_ilce")->result();
+  					}
+            $ilce_id = $this->security->xss_clean($this->input->post('ilce'));
+            if(!empty($ilce_id) and is_numeric($ilce_id)){
+              $data["mahalleler"]=$this->db->where("ilce_id",$ilce_id)->get("tbl_mahalle")->result();
+              $data["ilce_id"]=$ilce_id;
+  					}
+            $mahalle_id = $this->security->xss_clean($this->input->post('mahalle'));
+            if(!empty($mahalle_id) and is_numeric($mahalle_id)){
+              $data["mahalle_id"]=$mahalle_id;
+  					}
+
           }
         // } else {
         //   //recaptcha onaylanmışsa.
