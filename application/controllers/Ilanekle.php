@@ -208,6 +208,7 @@ class Ilanekle extends CI_Controller{
             }
             $firmalar["onay"]=$onay_durum;
             $firmalar["yayinla"]=$this->security->xss_clean($this->input->post('yayinla'));
+            $firmalar["yenilensin"]=$this->security->xss_clean($this->input->post('yenilensin'));
             $firmalar["kategori2"] = ($field_kategori2!="") ? $field_kategori2 : 0 ;
             $firmalar["kategori3"] = ($field_kategori3!="") ? $field_kategori3 : 0 ;
             $firmalar["kategori4"] = ($field_kategori4!="") ? $field_kategori4 : 0 ;

@@ -66,7 +66,7 @@ h5{
  position: absolute;
     height: 100%;
     width: 100%;
-    background-color:white;
+    background-color:#dde6e6;
     display: none;
     z-index: 9999999;
     padding-top: 50px;
@@ -74,12 +74,12 @@ h5{
 </style>
 
     <div class="row d-flex justify-content-center" style="margin-top: 50px;margin-bottom: 50px;">
-        <div class="col-sm-12 col-md-2 col"><a class="btn" style="font-weight:bold;color: orangered"><i class="fas fa-caret-right"></i>  Kategori</a> <br></div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;"> İlan Detay </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;"> Fotoğraf </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;" >  Ön İzleme </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;">  Doping Al </a>	</div>
-        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold"> Tebrikler </a>	</div>
+        <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;color: orangered"><i class="fas fa-caret-right"></i>  Kategori</a> <br></div>
+        <div class="col-sm-12 col-md-2 d-none d-sm-block"><a class="btn" style="font-weight:bold;"> İlan Detay </a>	</div>
+        <div class="col-sm-12 col-md-2 d-none d-sm-block"><a class="btn" style="font-weight:bold;"> Fotoğraf </a>	</div>
+        <div class="col-sm-12 col-md-2 d-none d-sm-block"><a class="btn" style="font-weight:bold;" >  Ön İzleme </a>	</div>
+        <div class="col-sm-12 col-md-2 d-none d-sm-block"><a class="btn" style="font-weight:bold;">  Doping Al </a>	</div>
+        <div class="col-sm-12 col-md-2 d-none d-sm-block"><a class="btn" style="font-weight:bold"> Tebrikler </a>	</div>
     </div>
 
     <div class="row" style="margin-top: 50px;margin-bottom:100px; ">

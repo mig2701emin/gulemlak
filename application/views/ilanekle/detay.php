@@ -23,12 +23,12 @@
     <?php $this->load->view('layout/newuserheader');?>
     <div class="container" style="margin-top:20px; margin-bottom:100px;  ">
         <div class="row d-flex justify-content-center" style="margin-top: 50px;margin-bottom: 50px;">
-            <div class="col-sm-12 col-md-2 col"><a class="btn" style="font-weight:bold;">  Kategori</a> <br></div>
+            <div class="col-sm-12 col-md-2 d-none d-sm-block"><a class="btn" style="font-weight:bold;">  Kategori</a> <br></div>
             <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;color: orangered"><i class="fas fa-caret-right"></i> İlan Detay </a>	</div>
-            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;"> Fotoğraf </a>	</div>
-            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;" >  Ön İzleme </a>	</div>
-            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;">  Doping Al </a>	</div>
-            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold"> Tebrikler </a>	</div>
+            <div class="col-sm-12 col-md-2 d-none d-sm-block"><a class="btn" style="font-weight:bold;"> Fotoğraf </a>	</div>
+            <div class="col-sm-12 col-md-2 d-none d-sm-block"><a class="btn" style="font-weight:bold;" >  Ön İzleme </a>	</div>
+            <div class="col-sm-12 col-md-2 d-none d-sm-block"><a class="btn" style="font-weight:bold;">  Doping Al </a>	</div>
+            <div class="col-sm-12 col-md-2 d-none d-sm-block"><a class="btn" style="font-weight:bold"> Tebrikler </a>	</div>
         </div>
       <?php if (isset($kategorinames)): ?>
         <div class="col-md-12 order-md-1 text-primary font-weight-bold" style="margin-bottom:30px;">
@@ -61,6 +61,10 @@
                 <label for="gsm">Cep Telefonu</label>
                 <input type="text" class="form-control" name="gsm" value="<?php if($user['gsm']!=''){echo $user['gsm'];}else{echo "Belirtilmemiş";}?>">
             </div>
+            <div class="mb-3">
+                <label for="gsm">Cep Telefonu</label>
+                <input type="text" class="form-control" name="gsm" value="<?php if($user['gsm']!=''){echo $user['gsm'];}else{echo "Belirtilmemiş";}?>">
+            </div>
             <div class="custom-control custom-checkbox mb-3">
               <input type="checkbox"  class="custom-control-input" name="yayinla" id="yayinla" value="1" checked/>
               <label class="custom-control-label" for="yayinla">Telefonum ilanımda yayınlansın</label>
@@ -69,12 +73,32 @@
               <a href="<?php echo base_url(); ?>hesabim/bilgilerim" class="btn btn-primary" type="submit">Güncelle <i class="fas fa-caret-right"></i></a>
             </div>
             <hr class="mb-4"/>
+
             <h2 class="text-center">İlan Detayları</h2>
+
+            <!--magaza sahipleri başlangıç-->
+            <?php if ($magaza_var_mi): ?>
+              <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox"  class="custom-control-input" name="add_to_store" id="add_to_store" value="1" checked/>
+                <label class="custom-control-label" for="add_to_store">İlanı Mağazaya Ekle</label>
+              </div>
+            <?php endif; ?>
+            <!--magaza sahipleri bitiş-->
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox"  class="custom-control-input" name="yenilensin" id="yenilensin" value="1" checked/>
+              <label class="custom-control-label" for="add_to_store">Süre Bitiminde İlan Yenilensin</label>
+            </div>
+            <div class="mb-3">
+              <label for="ilan_notu">Gizli İlan Notu :</label>
+              <input class="form-control" type="text" value="<?php echo set_value('ilan_notu'); ?>" name="ilan_notu"/>
+            </div>
+            <!------------------------------------------------------------------------------>
+
 
               <!--başlık --------->
             <div class="mb-3">
                 <label for="ilanadi">İlan Başlığı</label>
-                <input type="text" class="form-control" name="ilanadi" placeholder="" value="" required>
+                <input type="text" class="form-control" name="ilanadi" placeholder="" value="<?php echo set_value('ilanadi'); ?>" required>
                 <!--<div class="invalid-feedback">
                     Valid first name is required.
                 </div>-->
@@ -92,7 +116,7 @@
 
                 <label for="aciklama">İlan Bilgileri<span class="text-muted"></span></label>
                 <textarea name="aciklama" id="aciklama" style="width: 100%;min-height:300px;">
-
+                  <?php echo set_value('aciklama'); ?>
                 </textarea>
                 <br />
               </div>
@@ -101,7 +125,7 @@
             <div class="row mb-3">
                 <div class="col-md-8" style="float: left">
                   <label for="fiyat1">Fiyat</label>
-                  <input type="text" class="form-control fiyat" name="fiyat1" id="fiyat1" placeholder="" value="">
+                  <input type="text" class="form-control fiyat" name="fiyat1" id="fiyat1" placeholder="" value="<?php echo set_value('fiyat1'); ?>">
                 </div>
                 <div class="col-md-1" style="float: left">
                   <label for="fiyat2">Kuruş</label>
@@ -111,9 +135,9 @@
                 <div class="col-md-3" style="float:right;">
                   <label for="birim">Birim</label>
                   <select class="custom-select d-block w-100" name="birim" required="">
-                      <option value="TL">TL</option>
-                      <option value="USD">USD</option>
-                      <option value="EURO">EURO</option>
+                      <option value="TL"<?php if(set_value('birim') == "TL"){ echo ' selected="selected"'; } ?>>TL</option>
+                      <option value="USD"<?php if(set_value('birim') == "USD"){ echo ' selected="selected"'; } ?>>USD</option>
+                      <option value="EURO"<?php if(set_value('birim') == "EURO"){ echo ' selected="selected"'; } ?>>EURO</option>
                   </select>
                 </div>
             </div>
@@ -122,35 +146,21 @@
               <div class="mb-3">
                 <label for="bitis_suresi">İlan Süresi</label>
                 <select class="custom-select d-block w-100" name="bitis_suresi" required="">
-                    <option value="1 Ay">1 Ay</option>
-                    <option value="2 Ay">2 Ay</option>
-                    <option value="3 Ay">3 Ay</option>
-                    <option value="4 Ay">4 Ay</option>
-                    <option value="5 Ay">5 Ay</option>
-                    <option value="6 Ay">6 Ay</option>
-                    <option value="7 Ay">7 Ay</option>
-                    <option value="8 Ay">8 Ay</option>
-                    <option value="9 Ay">9 Ay</option>
-                    <option value="10 Ay">10 Ay</option>
-                    <option value="11 Ay">11 Ay</option>
-                    <option value="1 Yıl">1 Yıl</option>
+                    <option value="1 Ay"<?php if(set_value('bitis_suresi') == "1 Ay"){ echo ' selected="selected"'; } ?>>1 Ay</option>
+                    <option value="2 Ay"<?php if(set_value('bitis_suresi') == "2 Ay"){ echo ' selected="selected"'; } ?>>2 Ay</option>
+                    <option value="3 Ay"<?php if(set_value('bitis_suresi') == "3 Ay"){ echo ' selected="selected"'; } ?>>3 Ay</option>
+                    <option value="4 Ay"<?php if(set_value('bitis_suresi') == "4 Ay"){ echo ' selected="selected"'; } ?>>4 Ay</option>
+                    <option value="5 Ay"<?php if(set_value('bitis_suresi') == "5 Ay"){ echo ' selected="selected"'; } ?>>5 Ay</option>
+                    <option value="6 Ay"<?php if(set_value('bitis_suresi') == "6 Ay"){ echo ' selected="selected"'; } ?>>6 Ay</option>
+                    <option value="7 Ay"<?php if(set_value('bitis_suresi') == "7 Ay"){ echo ' selected="selected"'; } ?>>7 Ay</option>
+                    <option value="8 Ay"<?php if(set_value('bitis_suresi') == "8 Ay"){ echo ' selected="selected"'; } ?>>8 Ay</option>
+                    <option value="9 Ay"<?php if(set_value('bitis_suresi') == "9 Ay"){ echo ' selected="selected"'; } ?>>9 Ay</option>
+                    <option value="10 Ay"<?php if(set_value('bitis_suresi') == "10 Ay"){ echo ' selected="selected"'; } ?>>10 Ay</option>
+                    <option value="11 Ay"<?php if(set_value('bitis_suresi') == "11 Ay"){ echo ' selected="selected"'; } ?>>11 Ay</option>
+                    <option value="1 Yıl"<?php if(set_value('bitis_suresi') == "1 Yıl"){ echo ' selected="selected"'; } ?>>1 Yıl</option>
                 </select>
               </div>
 
-              <!--magaza sahipleri başlangıç-->
-              <?php if ($magaza_var_mi): ?>
-                <div class="custom-control custom-checkbox mb-3">
-                  <input type="checkbox"  class="custom-control-input" name="add_to_store" id="add_to_store" value="1" checked/>
-                  <label class="custom-control-label" for="add_to_store">İlanı Mağazaya Ekle</label>
-                </div>
-              <?php endif; ?>
-              <!--magaza sahipleri bitiş-->
-
-              <div class="mb-3">
-                <label for="ilan_notu">İlan Notu :</label>
-                <input class="form-control" type="text" name="ilan_notu"/>
-              </div>
-              <!------------------------------------------------------------------------------>
               <hr class="mb-4"/>
               <?php
               foreach ($fields as $field) {
@@ -167,7 +177,7 @@
                 }elseif($field->type=='textarea'){
                   ?>
                   <dt><?php echo $field->name;?><?php if($field->required==1){?> <span style="color:#FF0000">*</span><?php }?></dt>
-                  <dd><textarea name="<?php echo $field->seo_name;?>" style="width:185px;height:50px"<?php if($field->required==1){?> required<?php }?>></textarea></dd>
+                  <dd><textarea name="<?php echo $field->seo_name;?>" value="<?php echo set_value('$field->seo_name'); ?>" style="width:185px;height:50px"<?php if($field->required==1){?> required<?php }?>></textarea></dd>
                   <div style="clear:both"></div>
                   <?php
                 }elseif($field->type=='radio'){
@@ -181,7 +191,7 @@
                   $new_values=explode("||",$field->field_values);
                   for ($i=0; $i <= count($new_values)-1; $i++) {?>
                     <div class="custom-control custom-radio">
-                      <input class="custom-control-input" type="radio" name="<?php echo $field->seo_name; ?>" id="<?php echo md5($field->seo_name."_".$i);?>" value="<?php echo $new_values[$i];?>" <?php if($field->required==1){?> required<?php }?>>
+                      <input class="custom-control-input" type="radio" name="<?php echo $field->seo_name; ?>" id="<?php echo md5($field->seo_name."_".$i);?>" value="<?php echo $new_values[$i];?>"<?php if(set_value($field->seo_name) == $new_values[$i]){ echo ' selected="selected"'; } ?> <?php if($field->required==1){?> required<?php }?>>
                       <label class="custom-control-label" for="<?php echo md5($field->seo_name."_".$i);?>"><?php echo " ".$new_values[$i];?></label>
                     </div>
                     <?php
@@ -207,7 +217,7 @@
                       $new_values=explode("||",$field->field_values);
                       for ($i = 0; $i <= count($new_values)-1; $i++) {
                         ?>
-                        <option value="<?php echo $new_values[$i];?>"><?php echo $new_values[$i];?></option>
+                        <option value="<?php echo $new_values[$i];?>"<?php if(set_value($field->seo_name) == $new_values[$i]){ echo ' selected="selected"'; } ?>><?php echo $new_values[$i];?></option>
                         <?php
                       }
                       ?>
@@ -298,7 +308,7 @@
                       <select class="custom-select d-block w-100" name="il" id="il" onchange="ilcegetir(this.options[selectedIndex].value)" required>
                           <option value="">Seçiniz..</option>
                           <?php foreach ($iller as $il): ?>
-                            <option value="<?php echo $il->il_id; ?>"><?php echo $il->il_ad; ?></option>
+                            <option value="<?php echo $il->il_id; ?>"<?php if(set_value('il') == $il->il_id){ echo ' selected="selected"'; } ?>><?php echo $il->il_ad; ?></option>
                           <?php endforeach; ?>
                       </select>
                   </div>
