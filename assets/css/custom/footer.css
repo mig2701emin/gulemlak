@@ -6,12 +6,12 @@
 }*/
 
 .footer a:hover {
-    color: lightgray;
+    color: #c2abab;
 
 
 }
 .footer a {
-    color:white;
+    color:#855858;
     font-family: "Poppins", Helvetica, Arial, sans-serif;
     font-size: 13px;
     font-stretch: condensed;
@@ -85,7 +85,7 @@ ul.social-icon li i.fab.fa-pinterest:hover {
 
 .footer-static-block .title {
     font-size: 20px;
-color:white;
+    color: #855858;
     letter-spacing: 1px;
     margin-bottom: 20px;
     position: relative;
@@ -120,12 +120,12 @@ color:white;
 .footer-static-block li i.fa {
     float: left;
     font-size: 16px;
-    color: #fff;
+    color: #855858;
     margin-top: 4px;
 }
 
 .footer-right-side .footer-static-block li i.fa {
-    color: #fff;
+    color: #855858;
     margin-right: 4px;
 }
 
@@ -135,7 +135,7 @@ color:white;
 
 .footer-static-block li p {
     margin: 0 0 10px 30px;
-    color: whitesmoke;
+    color: #9d7979;
     font-family: "Poppins", Helvetica, Arial, sans-serif;
     font-size: 13px;
 

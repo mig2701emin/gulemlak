@@ -25,27 +25,6 @@
 			$this->load->view('layout/home', $data);
 		}
 
-
-		public function detay()
-		{
-			$data['title']='Emlak Meclisi | Detay';
-			$data['ayarlar'] = "Merhaba";
-			$this->load->view('projeler/detay2', $data);
-		}
-		public function deneme()
-		{
-			$data['title']='Emlak Meclisi | Deneme';
-			$data['ayarlar'] = "Merhaba";
-			$this->load->view('projeler/deneme', $data);
-		}
-
-		public function liste()
-		{
-			$data['title']='Emlak Meclisi | Liste';
-			$data['ayarlar'] = "Merhaba";
-			$this->load->view('projeler/liste', $data);
-		}
-
 		public function ilan_goruntule($ilanId)
 		{
 			$ilan_kontrol=$this->firmalar->ilan_kontrol($ilanId);
@@ -121,14 +100,14 @@
 					$check_values=get_details($ilanId,$field->seo_name);
 					$explode_check=explode("||",$check_values);
 					$new_values=explode("||",$field->field_values);
-					$show_additional_fields.='<div class="col-12 col-sm-6 col-md-3 col-lg-2"><h4 class="mb-3">'.$field->name.'</h4>';
+					$show_additional_fields.='<div class="col-12 col-sm-6 col-md-3"><h4 class="mb-3">'.$field->name.'</h4>';
 					if($show_ok[$field->name]!=1){
 						$show_additional_fields.='<div class="row">';
 					}
 					for ($i = 0; $i <= count($new_values)-1; $i++) {
 						//$show_additional_fields.='<div class="custom-control custom-checkbox col-6 col-md-3"';
 						if (sorgula2($ilanId,$field->seo_name,$new_values[$i])) {
-							$show_additional_fields.='<div class="custom-control custom-checkbox"';//yeni ekledim
+							$show_additional_fields.='<div class="col-12 custom-control custom-checkbox"';//yeni ekledim
 							$show_additional_fields.=' style="background:url('.base_url().'assets/images/evet.png) no-repeat 0px -2px"';
 							$show_additional_fields.='>&nbsp;'.$new_values[$i].'</div>';//yeni ekledim
 						}

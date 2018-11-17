@@ -27,8 +27,8 @@
 
     <section class="testimonial py-5" id="testimonial">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row color_bg1">
+                <div class="col-md-12 color_bgx">
                     <div class="menu"><a href="#">iletişim</a></div>
                     <div class="menu"><a href="#">Destek</a></div>
                     <div class="menu"><a href="<?php echo base_url(); ?>">Anasayfa</a></div>
@@ -90,7 +90,7 @@
                         <a href="<?php echo $loginURL; ?>" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i>Google+ ile devam et</a>
                     </div>
                 </div>
-                <div class="col-md-6 py-5 text-white text-left" style=" ;" >
+                <div class="col-md-6 py-5 text-left" style=" ;" >
 
                     <div class="card-body" >
 

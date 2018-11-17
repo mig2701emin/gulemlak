@@ -1,7 +1,6 @@
-
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/custom/footer.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-<div class="footer color_bgx">
+<div class="footer color_bg2 color_text3">
     <div class="container">
         <div class="footer-inner">
             <div class="footer-middle">
@@ -78,7 +77,7 @@
                     <div class="col-xl-4">
                         <div class="footer_social center-md">
                             <ul class="social-icon">
-                                <li><div class="title text-light">Bizi Takip Edin:</div></li>
+                                <li><div class="title">Bizi Takip Edin:</div></li>
                                 <li><a title="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a title="Twitter" class="twitter"><i class="fab fa-twitter"></i></a></li>
                                 <li><a title="Linkedin" class="linkedin"><i class="fab fa-linkedin"> </i></a></li>
@@ -88,7 +87,7 @@
                         </div>
                     </div>
                     <div class="col-xl-4">
-                        <div class="align-center text-light">
+                        <div class="align-center">
                             <div class="copy-right">© 2018 <a href="#">Ticaret Meclisi</a> Tüm Hakları Saklıdır  </div>
                         </div>
                     </div>

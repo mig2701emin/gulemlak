@@ -1,3 +1,48 @@
+<style media="screen">
+.cont_breadcrumbs_1 {
+  position: relative;
+  width: 100%;
+  float: left;
+  margin: 20px 20px;
+}
+
+.cont_breadcrumbs_1 > ul > li {
+  position: relative;
+  float: left;
+  transform: skewX(-15deg);
+  background-color: #fff;
+  box-shadow: -2px 0px 20px -6px rgba(0,0,0,0.5);
+  z-index: 1;
+  transition: all 0.5s;
+}
+
+.cont_breadcrumbs_1 > ul > li:hover {
+ background-color: #CFD8DC;
+}
+
+.cont_breadcrumbs_1 > ul > li  > a {
+  display: block;
+  padding: 10px;
+  font-size: 0.8em;
+   transform: skewX(15deg);
+   text-decoration:none;
+   color: #444;
+  font-weight: 300;
+}
+.cont_breadcrumbs_1 > ul > li:last-child {
+  /* background-color: #78909C; */
+  background-color: #855858;
+  transform: skew(0deg);
+  margin-left: -5px;
+
+}
+
+.cont_breadcrumbs_1 > ul > li:last-child > a {
+    color: #fff;
+   transform: skewX(0deg);
+}
+</style>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
   function goster(a){
@@ -16,7 +61,7 @@
     <div class="container">
         <div class="row">
            <!-- slider-->
-            <div class="col-xl-2 col-lg-3 mb-sm-30 col-lgmd-20per">
+            <div class="col-xl-2 col-lg-3 mb-sm-30 col-lgmd-20per color_bgz">
                 <div class="sidebar-block">
                   <?php foreach ($anaKategoriler as $anaKategori){ ?>
                     <div class="sidebar-box listing-box mb-40">
@@ -96,7 +141,7 @@
               </div>
             </div>
              <!-- slider-->
-            <div class="col-xl-10 col-lg-9 col-lgmd-80per">
+            <div class="col-xl-10 col-lg-9 col-lgmd-80per color_bgz">
                 <div class="row">
                     <div class="col-sm-8">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -169,7 +214,7 @@
 
                           <?php foreach ($mainVitrins as $item){ ?>
                             <div class="col-md-4 col-6 item-width mb-30">
-                                <div class="product-item">
+                                <div class="product-item color_bgz">
                                     <div class="product-image">
                                         <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
                                             <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
@@ -265,7 +310,7 @@
 
                           <?php foreach ($emergencyVitrins as $item){ ?>
                             <div class="col-md-4 col-6 item-width mb-30">
-                                <div class="product-item">
+                                <div class="product-item color_bgz">
                                     <div class="product-image">
                                         <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
                                             <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
@@ -361,7 +406,7 @@
 
                           <?php foreach ($sonEklenenler as $item){ ?>
                             <div class="col-md-4 col-6 item-width mb-30">
-                                <div class="product-item color_bg2">
+                                <div class="product-item color_bg1" style="min-height:400px">
                                     <div class="product-image">
                                         <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
                                             <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
@@ -393,10 +438,7 @@
                                           </div>
                                           <div class="col-12">
                                               <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
-                                                <?php if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}?>
-                                                <?php if ($item->kategori2) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
-                                                <?php if ($item->kategori3) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
-                                                <?php if ($item->kategori4) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}?>
+                                                <?php if ($item->kategori4) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori3)." ".replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}else{echo replace('kategoriler', 'kategori_adi','Id', $item->kategori3)." ".replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
                                               </a>
                                           </div>
 
@@ -405,9 +447,17 @@
                                             <div class="rating-result" title="53%"> <span style="width:53%"></span> </div>
                                         </div> -->
                                         <div class="location">
-                                          <?php if ($item->il) {echo replace('tbl_il', 'il_ad','il_id', $item->il);}?>
-                                          <?php if ($item->ilce) {echo ' > '.replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce);}?>
-                                          <?php if ($item->mahalle) {echo ' > '.replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle);}?>
+                                          <div class="cont_principal">
+                                            <div class="cont_breadcrumbs">
+                                              <div class="cont_breadcrumbs_1">
+                                                <ul>
+                                                  <li><a href="#"><?php if ($item->il) {echo replace('tbl_il', 'il_ad','il_id', $item->il);}?></a></li>
+                                                  <li><a href="#"><?php if ($item->ilce) {echo replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce);}?></a></li>
+                                                  <li><a href="#"><?php if ($item->mahalle) {echo replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle);}?></a></li>
+                                                </ul>
+                                              </div>
+                                            </div>
+                                          </div>
                                         </div>
                                         <div class="product-detail-inner">
                                             <div class="detail-inner-left">
@@ -458,7 +508,7 @@
 
                           <?php foreach ($magazaVitrin as $item){ ?>
                             <div class="col-md-4 col-6 item-width mb-30">
-                                <div class="product-item">
+                                <div class="product-item color_bgz">
                                     <div class="product-image">
                                         <a href="#">
                                             <img src="<?php echo fileControl('photos/magaza',$item->logo,'yeral_mgz.png');?>"  alt="<?php echo $item->magazaadi; ?>">

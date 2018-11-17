@@ -5,7 +5,7 @@ html {
 body{
     /* background-image: linear-gradient(150deg, #b10007 0%, #ffd106 100%); background-repeat: repeat-x; */
     /* background-image: linear-gradient(150deg, #799d9d 0%, #fff 100%); background-repeat: repeat-x; */
-background-color: #8aa9a9;
+background-color: #eef2f2;
 }
 
 *{
@@ -20,12 +20,12 @@ background-color: #8aa9a9;
 
 h2,h4{
     font-weight: 700;
-    color: white;
+    /* color: white; */
 }
 
 a{
     display: :block;
-    color:white;
+    /* color:white; */
     margin: :20px;
 }
 a:hover{
@@ -49,13 +49,13 @@ a:hover{
 }
 .giris a{
 
-    color:white;
+    /* color:white; */
     font-size: :12px;
 }
 
 .uyeol a{
 
-    color: white;
+    /* color: white; */
     font-weight:700;
     font-size:46px;
 }
@@ -69,7 +69,7 @@ a:hover{
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
     background-color: #dc3545;
 }
-.custom-control-label{color:white}
+/* .custom-control-label{color:white} */
 button[type="submit"]{
 
     font-weight:700;
