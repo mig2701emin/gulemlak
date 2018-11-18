@@ -363,7 +363,7 @@ function ilan_id_al($cls_id=0)
     $cls_id=rand(1000,999999);
   }
   $ci=& get_instance();
-  $sorgula=$ci->db->query("select * from firmalar where Id='".$cls_id."'")->num_rows();
+  $sorgula=$ci->db->query("select * from firmalar where ilanId='".$cls_id."'")->num_rows();
   if($sorgula=='0'){
   return $cls_id;
   }else{
