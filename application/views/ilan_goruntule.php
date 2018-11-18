@@ -317,9 +317,11 @@ font-weight: bold;
 									<div class="row">
 										<?php if (count($resimler) > 0): ?>
 											<?php foreach ($resimler as $resim){ ?>
-												<div class="col-4 col-md-3 col-lg-2 m-0 p-1">
-												<a><img src="<?php echo base_url('photos/thumbnail/'.$resim->name); ?>" class="img-rounded" style="border-radius:15px;background-color:#EFEBE9"  alt="<?php echo $ilan->firma_adi ?>"></a>
-												</div>
+												<?php if (file_exists('photos/big/'.$resim->name)): ?>
+													<div class="col-4 col-md-3 col-lg-2 m-0 p-1">
+													<a><img src="<?php echo base_url('photos/thumbnail/'.$resim->name); ?>" class="img-rounded" style="border-radius:15px;background-color:#EFEBE9"  alt="<?php echo $ilan->firma_adi ?>"></a>
+													</div>
+												<?php endif; ?>
 											<?php } ?>
 										<?php else: ?>
 											<div class="col-4 col-md-3 col-lg-2 m-0 p-1">
@@ -333,12 +335,14 @@ font-weight: bold;
 										<?php if (count($resimler) > 0): ?>
 											<?php $r=1; ?>
 											<?php foreach ($resimler as $resim){ ?>
-												<div class="col-4 col-sm-6 col-md-4" data-responsive="<?php echo base_url('photos/big/'.$resim->name); ?> 375, <?php echo base_url('photos/big/'.$resim->name); ?> 480, <?php echo base_url('photos/big/'.$resim->name); ?> 800" data-src="<?php echo base_url('photos/big/'.$resim->name); ?>" data-sub-html="<h4 class='text-success'><?php echo $ilan->firma_adi; ?></h4><p></p>">
-													<a href="">
-														<img <?php if ($r==1) {echo ' id="lightImg" ';} ?> class="img-responsive" style="border-radius:20px;" src="<?php echo base_url('photos/big/'.$resim->name); ?>" alt="<?php echo $ilan->firma_adi ?>">
-													</a>
-												</div>
-												<?php $r++; ?>
+												<?php if (file_exists('photos/big/'.$resim->name)): ?>
+													<div class="col-4 col-sm-6 col-md-4" data-responsive="<?php echo base_url('photos/big/'.$resim->name); ?> 375, <?php echo base_url('photos/big/'.$resim->name); ?> 480, <?php echo base_url('photos/big/'.$resim->name); ?> 800" data-src="<?php echo base_url('photos/big/'.$resim->name); ?>" data-sub-html="<h4 class='text-success'><?php echo $ilan->firma_adi; ?></h4><p></p>">
+														<a href="">
+															<img <?php if ($r==1) {echo ' id="lightImg" ';} ?> class="img-responsive" style="border-radius:20px;" src="<?php echo base_url('photos/big/'.$resim->name); ?>" alt="<?php echo $ilan->firma_adi ?>">
+														</a>
+													</div>
+													<?php $r++; ?>
+												<?php endif; ?>
 											<?php } ?>
 										<?php else: ?>
 											<div class="col-4 col-sm-6 col-md-4" data-responsive="<?php echo base_url('assets/images/yok_b.png'); ?> 375, <?php echo base_url('assets/images/yok_b.png'); ?> 480, <?php echo base_url('assets/images/yok_b.png'); ?> 800" data-src="<?php echo base_url('assets/images/yok_b.png'); ?>" data-sub-html="<h4 class='text-success'><?php echo $ilan->firma_adi; ?></h4><p></p>">

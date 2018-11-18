@@ -53,17 +53,16 @@
             <!--iletişim bilgileri --------->
             <h2 class="text-center">İletişim Bilgileri</h2>
             <div class="mb-3">
-              <?php $user=$this->session->userdata("userData");?>
                 <label for="ilanadi">Adı Soyadı</label>
-                <input type="text" class="form-control" name="adsoyad" value="<?php echo $user['ad'];?> <?php echo $user['soyad'];?>" disabled>
+                <input type="text" class="form-control" name="adsoyad" value="<?php echo $user->ad;?> <?php echo $user->soyad;?>" disabled>
             </div>
             <div class="mb-3">
                 <label for="gsm">Cep Telefonu</label>
-                <input type="text" class="form-control" name="gsm" value="<?php if($user['gsm']!=''){echo $user['gsm'];}else{echo "Belirtilmemiş";}?>" disabled>
+                <input type="text" class="form-control" name="gsm" value="<?php if($user->gsm!=''){echo $user->gsm;}else{echo "Belirtilmemiş";}?>" disabled>
             </div>
             <div class="mb-3">
                 <label for="istel">İş Telefonu</label>
-                <input type="text" class="form-control" name="istel" value="<?php if($user['istel']!=''){echo $user['istel'];}else{echo "Belirtilmemiş";}?>" disabled>
+                <input type="text" class="form-control" name="istel" value="<?php if($user->istel!=''){echo $user->istel;}else{echo "Belirtilmemiş";}?>" disabled>
             </div>
             <div class="custom-control custom-checkbox mb-3">
               <input type="checkbox"  class="custom-control-input" name="yayinla" id="yayinla" value="1" checked/>
