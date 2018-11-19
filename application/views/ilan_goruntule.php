@@ -193,19 +193,19 @@ font-weight: bold;
     float: left !important;
 }
 .linkler {
-    display: inline-block;
-    min-width: 10px;
-    padding: 6px 7px;
-    font-size: 11px;
-    font-weight: 700;
-    line-height: 1;
-    color: white;
-    text-align: left;
-    white-space: nowrap;
-    vertical-align: middle;
-    background-color: #bccece;
-    border-radius: 10px;
-    margin-top: 2px;
+    /* display: inline-block; */
+    /* min-width: 10px; */
+    /* padding: 6px 7px; */
+    font-size: 0.7em;
+    /* font-weight: 700; */
+    /* line-height: 1; */
+    /* color: white; */
+    /* text-align: left; */
+    /* white-space: nowrap; */
+    /* vertical-align: middle; */
+    /* background-color: #bccece; */
+    /* border-radius: 10px; */
+    /* margin-top: 2px; */
     /*float: left !important;*/
 }
 
@@ -446,62 +446,62 @@ font-weight: bold;
 						<div class="col-lg-12 col-md-6 col-12 color_bgz">
 							<div class="row text-center pt-3">
 								<center>
-								<?php if ($magaza_var_mi){ ?>
-									<div class="col-12"><h3><?php echo $magaza->magazaadi; ?></h3></div>
+								<?php if (isset($ilanmagaza)){ ?>
+									<div class="col-12"><h3><?php echo $ilanmagaza->magazaadi; ?></h3></div>
 									<div class="col-12">
-										<img class="img-responsive" style="border-radius:20px;" src="<?php if ($magaza->logo) {echo base_url('photos/magaza/').$magaza->logo;} else {echo base_url('assets/images/company/c1.png');}?>" alt="<?php echo $magaza->magazaadi; ?>">
+										<img class="img-responsive" style="border-radius:20px;" src="<?php if ($ilanmagaza->logo) {echo base_url('photos/magaza/').$ilanmagaza->logo;} else {echo base_url('assets/images/company/c1.png');}?>" alt="<?php echo $ilanmagaza->magazaadi; ?>">
 									</div>
-									<div class="col-12 mar-bot">Yetkili:<br/><strong><?php echo $user->ad." ".$user->soyad; ?></strong></div>
+									<div class="col-12 mar-bot">Yetkili:<br/><strong><?php echo $ilansahibi->ad." ".$ilansahibi->soyad; ?></strong></div>
 								<?php }else{ ?>
-									<div class="col-12"><h3><?php echo $user->ad." ".$user->soyad; ?></h3></div>
+									<div class="col-12"><h3><?php echo $ilansahibi->ad." ".$ilansahibi->soyad; ?></h3></div>
 									<div class="col-12">
-										<img class="img-responsive" style="border-radius:20px;" src="<?php if ($user->picture) {echo $user->picture;} else {echo base_url('assets/images/picto_profil.png');}?>" alt="<?php echo $user->ad." ".$user->soyad; ?>">
+										<img class="img-responsive" style="border-radius:20px;" src="<?php if ($ilansahibi->picture) {echo $ilansahibi->picture;} else {echo base_url('assets/images/picto_profil.png');}?>" alt="<?php echo $ilansahibi->ad." ".$ilansahibi->soyad; ?>">
 									</div>
 								<?php } ?>
-									<div class="col-12 mar-bot">Üyelik Tarihi:<br/><strong><?php yeni_tarih($user->kayit_tarihi); ?></strong></div>
+									<div class="col-12 mar-bot">Üyelik Tarihi:<br/><strong><?php yeni_tarih($ilansahibi->kayit_tarihi); ?></strong></div>
 									<?php if ($ilan->yayinla==1){ ?>
-										<div class="col-12 mar-bot">Cep Telefon:<br/><strong><?php echo $user->gsm; ?></strong></div>
-										<?php if ($user->istel!="" && $user->istel!=null): ?>
-											<div class="col-12 mar-bot">İş Telefon:<br/><strong><?php echo $user->istel; ?></strong></div>
+										<div class="col-12 mar-bot">Cep Telefon:<br/><strong><?php echo "0".$ilansahibi->gsm; ?></strong></div>
+										<?php if ($ilansahibi->istel!="" && $ilansahibi->istel!=null): ?>
+											<div class="col-12 mar-bot">İş Telefon:<br/><strong><?php echo "0".$ilansahibi->istel; ?></strong></div>
 										<?php endif; ?>
 									<?php } ?>
 									</center>
 							</div>
 						</div>
 						<div class="col-lg-12 col-md-6 col-12 color_bgz">
-							<div class="row text-center m-1">
+							<div class="row text-center">
 								<?php if($this->session->userdata("userData")["userID"] == $ilan->uyeId){?>
-								<div class="col-12 linkler"><a class="" href="<?php echo base_url(); ?>hesabim/ilanduzenle/<?php echo $ilan->Id; ?>">İlanı Düzenle</a></div>
-								<div class="col-12 linkler"><a class="" href="<?php echo base_url(); ?>hesabim/samekategoriilan/<?php echo $ilan->Id; ?>">Aynı Kategoride İlan Ver</a></div>
-								<div class="col-12 linkler"><a class="" href="<?php echo base_url(); ?>doping/ilan/<?php echo $ilan->Id; ?>">Doping Yap</a></div>
+								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/ilanduzenle/<?php echo $ilan->Id; ?>">İlanı Düzenle</a></div>
+								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/samekategoriilan/<?php echo $ilan->Id; ?>">Aynı Kategoride İlan Ver</a></div>
+								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>doping/ilan/<?php echo $ilan->Id; ?>">Doping Yap</a></div>
 								<?php if($ilan->onay==1){?>
-								<div class="col-12 linkler"><a class="" href="<?php echo base_url(); ?>hesabim/ilandurdur/<?php echo $ilan->Id; ?>">Yayından Kaldır</a></div>
+								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/ilandurdur/<?php echo $ilan->Id; ?>">Yayından Kaldır</a></div>
 								<?php }else{?>
-								<div class="col-12 linkler"><a class="" href="<?php echo base_url(); ?>hesabim/ilansil/<?php echo $ilan->Id; ?>" onclick="return window.confirm('İlanı Yayından Kaldırmak İstediğinizden Eminmisiniz?');">Sil</a></div>
+								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/ilansil/<?php echo $ilan->Id; ?>" onclick="return window.confirm('İlanı Yayından Kaldırmak İstediğinizden Eminmisiniz?');">Sil</a></div>
 								<?php }?>
 								<?php if($ilan->suresi_doldu==1 || $ilan->onay==2){?>
-								<div class="col-12 linkler"><a class="" href="<?php echo base_url(); ?>hesabim/<?php if($ilan->suresi_doldu==1){?>ilansureuzat/<?php }else{?>ilanaktiflestir/<?php }?><?php echo $ilan->Id;?>">Yayına Al</a></div>
+								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/<?php if($ilan->suresi_doldu==1){?>ilansureuzat/<?php }else{?>ilanaktiflestir/<?php }?><?php echo $ilan->Id;?>">Yayına Al</a></div>
 
 								<?php }else{?>
-								<div class="col-12 linkler"><a class="" href="<?php echo base_url(); ?>hesabim/guncelle/<?php echo $ilan->Id; ?>">Güncelim</a></div>
+								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/guncelle/<?php echo $ilan->Id; ?>">Güncelim</a></div>
 							<?php }}else{?>
 								<?php
 								if($magaza_var_mi){
 								?>
-								<div class="col-12 linkler"><a class="" href="<?php echo base_url().$magaza->username; ?>">Üyenin Mağazası</a></div>
+								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url().$magaza->username; ?>">Üyenin Mağazası</a></div>
 								<?php }?>
-								<div class="col-12 linkler"><a class="" href="">Diğer İlanları</a></div>
+								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="">Diğer İlanları</a></div>
 								<?php if ($this->session->userdata("userData")["userID"]){ ?>
 									<?php $favsor = $this->db->query("select * from favoriler where ilanId='".$ilan->Id."' and uyeId='".$user->Id."'");
 									$favsorgu=$favsor->num_rows();
 									if($favsorgu==0){
 									?>
-									<div class="col-12 linkler"><a class="" id="favorilink" href="javascript:favori();">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Favorilerime Ekle</a></div>
+									<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" id="favorilink" href="javascript:favori();">Favorilerime Ekle</a></div>
 									<?php }else{?>
-									<div class="col-12 linkler"><a class="" id="favorilink" href="javascript:favorisil();">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Favorilerimden Sil</a></div>
+									<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" id="favorilink" href="javascript:favorisil();">Favorilerimden Sil</a></div>
 									<?php }?>
-								<div class="col-12 linkler"><a class="" href="javascript:mesaj_gonder(<?php echo $ilan->uyeId;?>,<?php echo $ilan->Id;?>);">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> Mesaj Gönder</a></div>
-								<div class="col-12 linkler"><a class="" href="javascript:sikayet();">&nbsp;<img border="0" src="<?php echo base_url() ?>assets/images/cursor_image_right.png"> İlanla ilgili şikayet bildir</a></div>
+								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="javascript:mesaj_gonder(<?php echo $ilan->uyeId;?>,<?php echo $ilan->Id;?>);">Mesaj Gönder</a></div>
+								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="javascript:sikayet();">Şikayet Et</a></div>
 							<?php } ?>
 						<?php }?>
 								<!-- <div class="col-12"><a class="btn btn-sm btn-secondary" href="?yazdir=1">İlanı Yazdır</a></div> -->

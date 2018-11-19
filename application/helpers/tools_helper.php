@@ -107,7 +107,7 @@ function decode($input){
     return base64_decode(strtr($input, '-_S', '+/='));
 }
 
-function countDB($db,$field,$where){
+function countDB($db,$field,$where=0){
   $ci = & get_instance();
   if($where != 0){
       $ci->db->where($field,$where);
