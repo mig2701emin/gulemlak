@@ -607,3 +607,50 @@ function resim_sil()
     }
   }
 }
+function fit_image($src_image, $dst_image)
+{
+  $src_width = imagesx($src_image);
+  $src_height = imagesy($src_image);
+
+  $dst_width = imagesx($dst_image);
+  $dst_height = imagesy($dst_image);
+
+  $new_width = $dst_width;
+  $new_height = round($new_width*($src_height/$src_width));
+  $new_x = 0;
+  $new_y = round(($dst_height-$new_height)/2);
+
+      $next = $new_height > $dst_height;
+  if ($new_height > $dst_height) {
+      $new_height = $dst_height;
+      $new_width = round($new_height*($src_width/$src_height));
+      $new_x = round(($dst_width - $new_width)/2);
+      $new_y = 0;
+  }
+  imagecopyresampled($dst_image, $src_image , $new_x, $new_y, 0, 0, $new_width, $new_height, $src_width, $src_height);
+}
+
+function create_image($src_image, $dst_image,$type,$width,$height)
+{
+  if($type=='image/gif'){
+  $src = imagecreatefromgif($src_image);
+  $fileExtension="gif";
+  }elseif($type=='image/png'){
+  $src = imagecreatefrompng($src_image);
+  $fileExtension="png";
+  }else{
+  $src = imagecreatefromjpeg($src_image);
+  $fileExtension="jpg";
+  }
+  $dst = imagecreatetruecolor($width, $height);
+  imagefill($dst, 0, 0, imagecolorallocate($dst, 255, 255, 255));
+  fit_image($src, $dst);
+  $newname=$dst_image;
+  if($type=='image/gif'){
+  imagegif($dst,$newname);
+  }elseif($type=='image/png'){
+  imagepng($dst,$newname);
+  }else{
+  imagejpeg($dst,$newname);
+  }
+}

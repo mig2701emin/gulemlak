@@ -112,6 +112,9 @@
 		float: left;
 		margin: 20px 20px;
 	}
+	.cont_breadcrumbs_1 > ul {
+		list-style-type: none;
+	}
 
 	.cont_breadcrumbs_1 > ul > li {
 		position: relative;
@@ -503,9 +506,9 @@
             $( "#lightImg").trigger( "click" );
            console.log($( "#lightImg" ));
         });
-		$('#corusel>a').click(function () {
-           console.log($('#corusel>a').index(this));
-           var indexnum=$('#corusel>a').index(this);
+		$('#corusel>div>div>a').click(function () {
+           console.log($('#corusel>div>div>a').index(this));
+           var indexnum=$('#corusel>div>div>a').index(this);
             $('.carousel').carousel(indexnum);
         })
 	});
