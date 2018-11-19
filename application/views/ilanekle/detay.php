@@ -84,7 +84,7 @@
             <?php endif; ?>
             <!--magaza sahipleri bitiş-->
             <div class="custom-control custom-checkbox mb-3">
-              <input type="checkbox"  class="custom-control-input" name="yenilensin" id="yenilensin" value="1" checked/>
+              <input type="checkbox"  class="custom-control-input" name="yenilensin" id="yenilensin" value="1"/>
               <label class="custom-control-label" for="yenilensin">Süre Bitiminde İlan Yenilensin</label>
             </div>
             <div class="mb-3">
@@ -334,14 +334,14 @@
                       </select>
                   </div>
                   <hr class="mb-4"/>
-                  <div style="float:left;width:25%">
+                  <!-- <div style="float:left;width:25%">
                     <input type="checkbox" name="use_map" id="use_map_option" value="1"/>
                     <label for="use_map_option">Harita Özelliğini Kullanmak İstiyorum.</label>
                   </div>
-                  <div style="clear:both"></div>
+                  <div style="clear:both"></div> -->
                 </div>
-                <div id="use_map_overlay">Harita Özelliğini Kullanmak İçin Tıklayınız</div>
-                <div id="gmap" style="height:575px"></div>
+                <!-- <div id="use_map_overlay">Harita Özelliğini Kullanmak İçin Tıklayınız</div> -->
+                <div class="col-12" id="gmap" style="height:575px"></div>
               </div>
               <hr class="mb-4"/>
               <div class="custom-control custom-checkbox">

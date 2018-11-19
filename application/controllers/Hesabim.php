@@ -1047,6 +1047,7 @@ class Hesabim extends CI_Controller{
             }
             $firmalar["onay"]=$onay_durum;
             $firmalar["yayinla"]=$this->security->xss_clean($this->input->post('yayinla'));
+            $firmalar["yenilensin"]=$this->security->xss_clean($this->input->post('yenilensin'));
             $firmalar["kategori2"] = ($this->security->xss_clean($this->input->post('kategori2'))!="") ? $this->security->xss_clean($this->input->post('kategori2')) : 0 ;
             $firmalar["kategori3"] = ($this->security->xss_clean($this->input->post('kategori3'))!="") ? $this->security->xss_clean($this->input->post('kategori3')) : 0 ;
             $firmalar["kategori4"] = ($this->security->xss_clean($this->input->post('kategori4'))!="") ? $this->security->xss_clean($this->input->post('kategori4')) : 0 ;

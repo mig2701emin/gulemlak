@@ -440,6 +440,9 @@ font-weight: bold;
 							</div>
 						</div>
 					</div>
+					<div class="row pt-3 mb-3">
+						<div class="col-12" id="gmap" style="width:100%;height:400px;"></div>
+					</div>
 				</div>
 				<div class="col-lg-2 col-md-12">
 					<div class="row pl-3 pr-3">
@@ -486,13 +489,13 @@ font-weight: bold;
 								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/guncelle/<?php echo $ilan->Id; ?>">Güncelim</a></div>
 							<?php }}else{?>
 								<?php
-								if($magaza_var_mi){
+								if(isset($ilanmagaza)){
 								?>
-								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url().$magaza->username; ?>">Üyenin Mağazası</a></div>
+								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url().$ilanmagaza->username; ?>">Üyenin Mağazası</a></div>
 								<?php }?>
 								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="">Diğer İlanları</a></div>
 								<?php if ($this->session->userdata("userData")["userID"]){ ?>
-									<?php $favsor = $this->db->query("select * from favoriler where ilanId='".$ilan->Id."' and uyeId='".$user->Id."'");
+									<?php $favsor = $this->db->query("select * from favoriler where ilanId='".$ilan->Id."' and uyeId='".$ilansahibi->Id."'");
 									$favsorgu=$favsor->num_rows();
 									if($favsorgu==0){
 									?>
@@ -583,10 +586,11 @@ font-weight: bold;
 		});
 	}
 </script>
-
 <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
 <script src="<?php echo base_url('assets'); ?>/light/lightgallery-all.min.js"></script>
 <script src="<?php echo base_url('assets'); ?>/light/jquery.mousewheel.min.js"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyAgvcI5F7yEbzhTlj3HHwj7vnTZgQIdfqA&sensor=false"></script>
+<script src="<?php echo base_url(); ?>assets/map/map_show.php?currentlatlong=<?php echo base64_encode($ilan->map);?>" defer></script>
 <style>
   .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
        background-color: #007bff;

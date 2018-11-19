@@ -419,6 +419,9 @@ font-weight: bold;
 							</div>
 						</div>
 					</div>
+					<div class="row pt-3 mb-3">
+						<div class="col-12" id="gmap" style="width:100%;height:400px;"></div>
+					</div>
 				</div>
 				<div class="col-lg-2 col-md-12">
 					<div class="row pl-3 pr-3">
@@ -566,6 +569,8 @@ font-weight: bold;
 <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
 <script src="<?php echo base_url('assets'); ?>/light/lightgallery-all.min.js"></script>
 <script src="<?php echo base_url('assets'); ?>/light/jquery.mousewheel.min.js"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyAgvcI5F7yEbzhTlj3HHwj7vnTZgQIdfqA&sensor=false"></script>
+<script src="<?php echo base_url(); ?>assets/map/map_show.php?currentlatlong=<?php echo base64_encode($ilan->map);?>" defer></script>
 <style>
   .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
        background-color: #007bff;

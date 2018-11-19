@@ -68,9 +68,9 @@
             </div>
             <hr class="mb-4"/>
             <h2 class="text-center">İlan Detayları</h2>
-            
+
             <div class="custom-control custom-checkbox mb-3">
-              <input type="checkbox"  class="custom-control-input" name="yenilensin" id="yenilensin" value="1" checked/>
+              <input type="checkbox"  class="custom-control-input" name="yenilensin" id="yenilensin" value="1"/>
               <label class="custom-control-label" for="yenilensin">Süre Bitiminde İlan Yenilensin</label>
             </div>
             <div class="mb-3">
