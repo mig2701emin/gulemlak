@@ -21,7 +21,7 @@
 		      $this->magaza=null;
 		    }
 			}else {
-				$this->$user=null;
+				$this->user=null;
 			}
 
 		}
@@ -248,6 +248,7 @@
 			$data["kategori"]=$kategori;
 			$data["altKategoriler"]=$altKategoriler;
 			$data['anaKategoriler']=$this->kategoriler->getAnaKategoriler();
+			$data["user"]=$this->user;
 			$this->load->view("magaza",$data);
 		}
 

@@ -93,15 +93,17 @@
                           <div class="col-sm-4">
                             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                               <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="<?php echo base_url() ?>photos/magaza/<?php echo $magaza->logo ?>" alt="First slide" style="height:300px;" />
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" style="height:300px;" src="<?php echo base_url() ?>photos/magaza/<?php echo $magaza->logo ?>" alt="Second slide">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" style="height:300px;" src="<?php echo base_url() ?>photos/magaza/<?php echo $magaza->logo ?>" alt="Third slide">
-                                </div>
+                                <?php if (isset($magaza->logo) && file_exists(base_url()."photos/magaza/".$magaza->logo)): ?>
+                                  <div class="carousel-item active">
+                                      <img class="d-block w-100" src="<?php echo base_url() ?>photos/magaza/<?php echo $magaza->logo ?>" alt="First slide" style="height:300px;" />
+                                  </div>
+                                  <div class="carousel-item">
+                                      <img class="d-block w-100" style="height:300px;" src="<?php echo base_url() ?>photos/magaza/<?php echo $magaza->logo ?>" alt="Second slide">
+                                  </div>
+                                  <div class="carousel-item">
+                                      <img class="d-block w-100" style="height:300px;" src="<?php echo base_url() ?>photos/magaza/<?php echo $magaza->logo ?>" alt="Third slide">
+                                  </div>
+                                <?php endif; ?>
                               </div>
                             </div>
                           </div>
