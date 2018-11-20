@@ -189,6 +189,7 @@
 
                                         </div>
                                         <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+
                                             <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
                                         </a>
                                         <div class="product-detail-inner">
@@ -210,7 +211,9 @@
                                         <div class="product-item-name">
 
 
+
                                             <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>"><?php echo $item->firma_adi; ?></a>
+
                                         </div>
                                         <div class="row">
                                           <div class="col-12 align-right">
@@ -218,6 +221,7 @@
                                               <span class="price color_text4 " style="font-family:Montserrat;font-size: 15px;"><?php echo number_format($item->fiyat,0, ',', '.').' '.$item->birim; ?></span>
                                             </div>
                                           </div>
+
                                           <div class="col-12" style="min-height:30px;margin-bottom:4px;margin-top: 4px; ">
 
                                               <div class="row">
@@ -324,9 +328,6 @@
                 <div class="product-listing grid-type">
                     <div class="inner-listing">
                         <div class="row">
-
-
-
                             <?php foreach ($emergencyVitrins as $item){ ?>
 
                                 <div  class="products col-md-3  item-width mb-30">
@@ -362,6 +363,7 @@
                                                     </ul>
                                                 </div>
                                             </div>
+
                                         </div>
                                         <div class="product-item-details col-12 ">
 
@@ -484,9 +486,6 @@
                 <div class="product-listing grid-type">
                     <div class="inner-listing">
                         <div class="row">
-
-
-
                             <?php foreach ($sonEklenenler as $item){ ?>
 
                                 <div  class="products col-md-3  item-width mb-30">
@@ -580,6 +579,7 @@
                                                     </a>
 
                                                 </div>
+
 
                                             </div>
                                             <div class="product-detail-inner">

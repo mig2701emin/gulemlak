@@ -36,9 +36,9 @@
           <?php
           foreach ($ilanlar as $ilan) {
             if (ilk_resim($ilan->Id)!= "" and file_exists("photos/thumbnail/".ilk_resim($ilan->Id))){
-              $resim = '<a href="'.base_url().'ilan/'.$ilan->seo_url.'-'.$ilan->Id.'"><img src = "'.base_url().'photos/thumbnail/'.ilk_resim($ilan->Id).'" height = "80" width="80" border = "0" style="margin-top:10px;"></a>';
+              $resim = '<a href="'.base_url().$ilan->seo_url.'/'.encode($ilan->Id).'"><img src = "'.base_url().'photos/thumbnail/'.ilk_resim($ilan->Id).'" height = "80" width="80" border = "0" style="margin-top:10px;"></a>';
             } else {
-              $resim = '<a href="'.base_url().'ilan/'.$ilan->seo_url.'-'.$ilan->Id.'"><img src = "'.base_url().'assets/images/yok.png" height = "80" width="80" border = "0" style="margin-top:10px;"></a>';
+              $resim = '<a href="'.base_url().$ilan->seo_url.'/'.encode($ilan->Id).'"><img src = "'.base_url().'assets/images/yok.png" height = "80" width="80" border = "0" style="margin-top:10px;"></a>';
             }
             $firma_adi = html_entity_decode($ilan->firma_adi);
             $uzunluk=strlen($firma_adi);
@@ -55,20 +55,9 @@
               <?php echo $resim; ?>
               <br>
               <br>
-              <a href="<?php echo base_url(); ?>ilan/<?php echo $ilan->seo_url; ?>-<?php echo $ilan->Id; ?>"><?php echo $firma_adi; ?></a>
+              <a href="<?php echo base_url(); ?><?php echo $ilan->seo_url; ?>/<?php echo encode($ilan->Id); ?>"><?php echo $firma_adi; ?></a>
             </center>
           </div>
-          <!-- <div class="col-md-3" id="fav_Ad661061">
-            <a title="İlanı Favorilerden Sil" alt="İlanı Favorilerden Sil" href="javascript:favori_sil(661061);" class="delete_adFav"></a>
-            <center>
-              <a href="http://www.ticaretmeclisi.com/ilan/Emlak-Konut-Daire-Satilik-Gaziantep-Sehitkamil-BEYLERBEYI_MAH.-661061">
-                <img src = "http://www.ticaretmeclisi.com/show_image.php?src=ilanlar/661061_1.jpg&q=100&w=80&h=80" height = "80" width="80" border = "0" style="margin-top:10px;">
-              </a>
-              <br>
-              <br>
-              <a href="http://www.ticaretmeclisi.com/ilan/Emlak-Konut-Daire-Satilik-Gaziantep-Sehitkamil-BEYLERBEYI_MAH.-661061">beykent mah sat... </a>
-            </center>
-          </div> -->
         <?php } ?>
         </div>
             <br style="clear:both">

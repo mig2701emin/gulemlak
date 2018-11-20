@@ -87,7 +87,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       $route['emlak/is-yeri/kiralik/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/47/kategori3/165/il/$1/ilce/$2/mahalle/$3';
       $route['emlak/arsa/satilik/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/167/il/$1/ilce/$2/mahalle/$3';
       $route['emlak/arsa/kiralik/(:any)/(:any)/(:any)']='ilanlar/kategori/kategoriId/45/kategori2/48/kategori3/168/il/$1/ilce/$2/mahalle/$3';
-      $route['ilan/(:any)-(:num)']='home/ilan_goruntule/$2';
+      //$route['ilan/(:any)-(:num)']='home/ilan_goruntule/$2';
+      $route['emlak/konut/satilik/daire/(:any)/(:any)/(:any)/(:any)']='home/ilan_goruntule/$4';
+      $route['emlak/konut/kiralik/daire/(:any)/(:any)/(:any)/(:any)']='home/ilan_goruntule/$4';
+      $route['emlak/konut/satilik/mustakil-ev/(:any)/(:any)/(:any)/(:any)']='home/ilan_goruntule/$4';
+      $route['emlak/konut/kiralik/mustakil-ev/(:any)/(:any)/(:any)/(:any)']='home/ilan_goruntule/$4';
+      $route['emlak/konut/satilik/ciftlik-evi/(:any)/(:any)/(:any)/(:any)']='home/ilan_goruntule/$4';
+      $route['emlak/konut/kiralik/ciftlik-evi/(:any)/(:any)/(:any)/(:any)']='home/ilan_goruntule/$4';
+      $route['emlak/isyeri/satilik/(:any)/(:any)/(:any)/(:any)']='home/ilan_goruntule/$4';
+      $route['emlak/isyeri/kiralik/(:any)/(:any)/(:any)/(:any)']='home/ilan_goruntule/$4';
+      $route['emlak/arsa/satilik/(:any)/(:any)/(:any)/(:any)']='home/ilan_goruntule/$4';
+      $route['emlak/arsa/kiralik/(:any)/(:any)/(:any)/(:any)']='home/ilan_goruntule/$4';
 
       $route['sitemap\.xml'] = 'sitemap/sitemap';
       $route['sitemap1\.xml'] = 'sitemap/sitemap1';

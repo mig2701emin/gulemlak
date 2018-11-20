@@ -1,7 +1,9 @@
 <?
 include("../protect_page.php");
 //include("../setting.php");
-$bugun=date("Y-m-d");
+$bugun=date("Y-m-d H:i:s");
+$yenitarih = strtotime('2 month',strtotime($bugun));
+$yenitarih = date('Y-m-d' ,$yenitarih );
 $mysqli->query("delete from mesajlar where gonderensil='1' and alicisil='1' and bildirildi='0'");
 $mysqli->query("update firmalar set ust_siradayim='0' where ust_siradayim='1' and ust_siradayim_bitis<='$bugun'");
 $mysqli->query("delete from acilacilvitrin where bitis_tarihi<='$bugun'");
@@ -13,13 +15,14 @@ $mysqli->query("delete from mkvitrin where bitis_tarihi<='$bugun'");
 $mysqli->query("delete from mvitrin where bitis_tarihi<='$bugun'");
 $mysqli->query("update firmalar set onay='0',suresi_doldu='1' where bitis_tarihi<='$bugun'");
 $mysqli->query("update reklam set status='0' where end<='$bugun'");
+$mysqli->query("update firmalar set onay='1',suresi_doldu='0',kayit_tarihi='$bugun',bitis_tarihi='$yenitarih' where onay='0' and suresi_doldu='1' and yenilensin='1'");
 /*$bitis_tarih=date("Y-m-d",strtotime("+3 day"));
 $ilanlar=$mysqli->query("select Id,uyeId,firma_adi from firmalar where bitis_tarihi='$bitis_tarih'");
 while($sorgula=$ilanlar->fetch_assoc()){
 $uyedetay=$mysqli->query("select * from uyeler where Id='$sorgula[uyeId]'")->fetch_assoc();
 require("../class.phpmailer.php");
 $mail = new PHPMailer();
-$mail->IsSMTP(true); 
+$mail->IsSMTP(true);
 $mail->Port = "587";
 $mail->Host = $mailhost;
 $mail->SMTPAuth = true;
@@ -52,7 +55,7 @@ $mail->Body    = '
 </html>
 ';
 
-$mail->AltBody = "";											
+$mail->AltBody = "";
 $mail->Send();
 }*/
 clearstatcache();

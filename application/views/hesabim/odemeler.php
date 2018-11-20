@@ -62,7 +62,7 @@
       			  <tr style="background:#<?php echo $status_bg;?>">
       			    <td><?php echo $odeme->islemno;?></td>
       			    <td><?php echo $odeme->doping;?></td>
-      			    <td><?php if($odeme->firmaId==0){?>Yok<?php }else{$iln_detay=$this->db->query("select firma_adi from firmalar where Id='".$odeme->firmaId."'")->row();?><a href="<?php echo base_url();?>ilan/<?php echo seo_link($iln_detay->firma_adi)."-".$odeme->firmaId;?>"><?php echo $odeme->firmaId;?></a><?php }?></td>
+      			    <td><?php if($odeme->firmaId==0){?>Yok<?php }else{$iln_detay=$this->db->query("select firma_adi,seo_url from firmalar where Id='".$odeme->firmaId."'")->row();?><a href="<?php echo base_url();?><?php echo seo_link($iln_detay->seo_url)."/".encode($odeme->firmaId);?>"><?php echo $odeme->firmaId;?></a><?php }?></td>
       			    <td><?php echo doping_time($odeme->sure);?></td>
       			    <td><?php echo $odeme->tutar;?> TL</td>
       			    <td><?php echo yeni_tarih($odeme->tarih);?></td>
