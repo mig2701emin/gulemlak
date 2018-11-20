@@ -97,45 +97,6 @@ class Ajax extends CI_Controller{
       //echo json_encode($data);
   }
 
-  public function seomahalle()
-  {
-      //ajaxta post ile gelen ilce id'si
-      $mahalle_id = $this->input->post('mahalle_id');
-
-      if ( empty($mahalle_id) )
-      {
-          $data = array('status' => 'error', 'message' => 'Mahalle ID Bilgisi Alınamadı..!');
-      }
-      else
-      {
-          //ilçeye göre mahalleler çekiliyor...
-          //$mahalleler = $this->db->where('ilce_id', $ilce_id)->orber_by('mahalle_ad','ASC')->get('tbl_mahalle');
-          $this->db->where("ilce_id",$ilce_id);
-          $this->db->order_by("mahalle_ad","ASC");
-          $mahalleler=$this->db->get("tbl_mahalle");
-          if ( $mahalleler->num_rows() > 0 )
-          {
-              $mahalleList = array();
-              foreach ($mahalleler->result() as $item) {
-                  $mahalleList[] = array('mahalle_id' => $item->mahalle_id, 'mahalle_ad' => $item->mahalle_ad);
-              }
-
-              //var olan mahalleler data keyine aktarılıyor...
-              $data = array('status' => 'ok', 'message' => '', 'data' => $mahalleList);
-
-          }
-          else
-          {
-              $data = array('status' => 'error', 'message' => 'İlçe Bulunamadı..!');
-          }
-
-      }
-
-      //çıktıyı jsona uygun bir yapıda set ediyoruz...
-      $this->output->set_content_type('application/json')->set_output(json_encode($data,JSON_UNESCAPED_UNICODE));
-      //echo json_encode($data);
-  }
-
   public function altkategoriler()
   {
 
@@ -169,4 +130,6 @@ class Ajax extends CI_Controller{
     }
       echo json_encode($json,JSON_UNESCAPED_UNICODE);
   }
+
+
 }

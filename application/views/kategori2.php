@@ -549,37 +549,38 @@
     }
     </script>
     <script type="text/javascript">
-    function mahalleyap(mahalle) {
-      $.post('<?php echo base_url(); ?>ajax/seomahalle', {mahalle_id : mahalle_id}, function(result){
-          //gelen cevapta hata yoksa listeleme yapılıyor..
-          if ( result && result.status != 'error' )
-          {
-            var mahalleler = result.data;
-            var select = '<option value="">Seçiniz..</option>';
-            for( var i = 0; i < mahalleler.length; i++)
-            {
-              select += '<option value="'+ mahalleler[i].mahalle_id +'">'+ mahalleler[i].mahalle_ad +'</option>';
-            }
-            select += '</select>';
-
-            $('#mahalle').empty().html(select);
-          }
-          else
-          {
-            alert('Hata : ' + result.message );
-          }
-        });
+    function seokelime(kelime) {
+      var seo_kelime=kelime.trim();
+      seo_kelime=seo_kelime.replace(/Ç/g,"c");
+      seo_kelime=seo_kelime.replace(/ç/g,"c");
+      seo_kelime=seo_kelime.replace(/Ğ/g,"g");
+      seo_kelime=seo_kelime.replace(/ğ/g,"g");
+      seo_kelime=seo_kelime.replace(/İ/g,"i");
+      seo_kelime=seo_kelime.replace(/ı/g,"i");
+      seo_kelime=seo_kelime.replace(/Ö/g,"o");
+      seo_kelime=seo_kelime.replace(/ö/g,"o");
+      seo_kelime=seo_kelime.replace(/Ş/g,"s");
+      seo_kelime=seo_kelime.replace(/ş/g,"s");
+      seo_kelime=seo_kelime.replace(/Ü/g,"u");
+      seo_kelime=seo_kelime.replace(/ü/g,"u");
+      seo_kelime=seo_kelime.replace("(","");
+      seo_kelime=seo_kelime.replace(")","");
+      seo_kelime=seo_kelime.replace(".","");
+      seo_kelime=seo_kelime.replace(/ /g,"-");
+      seo_kelime=seo_kelime.toLowerCase();
+      return seo_kelime;
     }
     function yenisayfa() {
       var iller = document.getElementById("sehir");
-      var il_id = iller.options[iller.selectedIndex].value;
-      var seo_il = '/' + linkyap(il_id);
+      var il_ad = iller.options[iller.selectedIndex].text;
+      var seo_il = "/" + seokelime(il_ad);
+      //alert(seo_il);
       var ilceler = document.getElementById("ilce");
-      var ilce_id = ilceler.options[ilceler.selectedIndex].value;
-      var seo_ilce = '/' + linkyap(ilce_id);
+      var ilce_ad = ilceler.options[ilceler.selectedIndex].text;
+      var seo_ilce = "/" + seokelime(ilce_ad);
       var mahalleler = document.getElementById("mahalle");
-      var mahalle_id = mahalleler.options[mahalleler.selectedIndex].value;
-      var seo_mahalle = '/' + mahalleyap(ilce_id,mahalle_id);
+      var mahalle_ad = mahalleler.options[mahalleler.selectedIndex].text;
+      var seo_mahalle = "/" + seokelime(mahalle_ad);
       window.location.assign('<?php echo base_url().$linkkategori; ?>' + seo_il + seo_ilce + seo_mahalle);
     }
     </script>
