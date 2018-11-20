@@ -280,6 +280,7 @@
 					$$yeni="";
 				}
 			}
+			$data["linkkategori"]=$urlstring;
 			$urlstring.="/".$kat;
 			$sql="select * from fields where ((kategori='".$field_kategori."' and kategori2='0')";
 			if ($field_kategori2!="") {

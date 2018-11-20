@@ -204,42 +204,45 @@
                   </div>
                   <div class=" col-12 searchSeperator"></div>
                   <div class="col-12">
-                    <form name="AdvancedSearchForm" id="AdvancedSearchForm" action="" method="post" >
-                      <div class="row" >
-                        <div class="col-12 font-weight-bold" onclick="aramaGoster('1','<?php echo $kat1;?>');">
-                          Konum
-                        </div>
-                        <div class="col-12 mt-2">
-                          <select name="sehir" onchange="ilcegetir(this.options[selectedIndex].value);">
-                            <option value="">Seçiniz</option>
-                            <?php
-                            foreach($iller as $bolge){
-                              ?>
-                              <option value="<?php echo $bolge->il_id;?>"<?php if(isset($sehir) && $bolge->il_id==$sehir){?> selected<?php }?>><?php echo $bolge->il_ad;?></option>
-                            <?php }?>
-                          </select>
-                        </div>
-                        <div class="col-12 mt-2">
-                          <select name="ilce" id="ilce" onchange="mahallegetir(this.options[selectedIndex].value);">
-                              <option value="">Seçiniz</option>
-                              <?php if (isset($ilceler)): ?>
-                                <?php foreach ($ilceler as $item): ?>
-                                  <option value="<?php echo $item->ilce_id;?>"<?php if(isset($ilce) && $item->ilce_id==$ilce){?> selected<?php }?>><?php echo $item->ilce_ad;?></option>
-                                <?php endforeach; ?>
-                              <?php endif; ?>
-                          </select>
-                        </div>
-                        <div class="col-12 mt-2">
-                          <select name="mahalle" id="mahalle">
-                              <option value="">Seçiniz</option>
-                              <?php if (isset($mahalleler)): ?>
-                                <?php foreach ($mahalleler as $item): ?>
-                                  <option value="<?php echo $item->mahalle_id;?>"<?php if(isset($mahalle) && $item->mahalle_id==$mahalle){?> selected<?php }?>><?php echo $item->mahalle_ad;?></option>
-                                <?php endforeach; ?>
-                              <?php endif; ?>
-                          </select>
-                        </div>
+                    <div class="row" >
+                      <div class="col-12 font-weight-bold" onclick="aramaGoster('1','<?php echo $kat1;?>');">
+                        Konum
                       </div>
+                      <div class="col-12 mt-2">
+                        <select name="sehir" id="sehir" onchange="ilcegetir(this.options[selectedIndex].value);">
+                          <option value="">Seçiniz</option>
+                          <?php
+                          foreach($iller as $bolge){
+                            ?>
+                            <option value="<?php echo $bolge->il_id;?>"<?php if(isset($sehir) && $bolge->il_id==$sehir){?> selected<?php }?>><?php echo $bolge->il_ad;?></option>
+                          <?php }?>
+                        </select>
+                      </div>
+                      <div class="col-12 mt-2">
+                        <select name="ilce" id="ilce" onchange="mahallegetir(this.options[selectedIndex].value);">
+                            <option value="">Seçiniz</option>
+                            <?php if (isset($ilceler)): ?>
+                              <?php foreach ($ilceler as $item): ?>
+                                <option value="<?php echo $item->ilce_id;?>"<?php if(isset($ilce) && $item->ilce_id==$ilce){?> selected<?php }?>><?php echo $item->ilce_ad;?></option>
+                              <?php endforeach; ?>
+                            <?php endif; ?>
+                        </select>
+                      </div>
+                      <div class="col-12 mt-2">
+                        <select name="mahalle" id="mahalle" onchange="yenisayfa();">
+                            <option value="">Seçiniz</option>
+                            <?php if (isset($mahalleler)): ?>
+                              <?php foreach ($mahalleler as $item): ?>
+                                <option value="<?php echo $item->mahalle_id;?>"<?php if(isset($mahalle) && $item->mahalle_id==$mahalle){?> selected<?php }?>><?php echo $item->mahalle_ad;?></option>
+                              <?php endforeach; ?>
+                            <?php endif; ?>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" col-12 searchSeperator"></div>
+                  <div class="col-12">
+                    <form name="AdvancedSearchForm" id="AdvancedSearchForm" action="" method="post" >
                       <div class="row">
                         <div class="col-12 mt-2">
                           <label for="exampleFormControlSelect1">Fiyat</label>
@@ -361,11 +364,11 @@
                         <div id="field_adDate" class="col-12  category_openField">
                           <select name="ilan_tarihi" size="1">
                             <option value="">Hepsi</option>
-                            <option value="<?php echo base64_encode('Son 24 Saat');?>"<?php if($ilan_tarihi=='Son 24 Saat'){?> selected<?php }?>>Son 24 Saat</option>
-                            <option value="<?php echo base64_encode('Son 3 Gün');?>"<?php if($ilan_tarihi=='Son 3 Gün'){?> selected<?php }?>>Son 3 Gün</option>
-                            <option value="<?php echo base64_encode('Son 7 Gün');?>"<?php if($ilan_tarihi=='Son 7 Gün'){?> selected<?php }?>>Son 7 Gün</option>
-                            <option value="<?php echo base64_encode('Son 15 Gün');?>"<?php if($ilan_tarihi=='Son 15 Gün'){?> selected<?php }?>>Son 15 Gün</option>
-                            <option value="<?php echo base64_encode('Son 30 Gün');?>"<?php if($ilan_tarihi=='Son 30 Gün'){?> selected<?php }?>>Son 30 Gün</option>
+                            <option value="<?php echo base64_encode('Son 24 Saat');?>"<?php if(isset($ilan_tarihi) && $ilan_tarihi=='Son 24 Saat'){?> selected<?php }?>>Son 24 Saat</option>
+                            <option value="<?php echo base64_encode('Son 3 Gün');?>"<?php if(isset($ilan_tarihi) && $ilan_tarihi=='Son 3 Gün'){?> selected<?php }?>>Son 3 Gün</option>
+                            <option value="<?php echo base64_encode('Son 7 Gün');?>"<?php if(isset($ilan_tarihi) && $ilan_tarihi=='Son 7 Gün'){?> selected<?php }?>>Son 7 Gün</option>
+                            <option value="<?php echo base64_encode('Son 15 Gün');?>"<?php if(isset($ilan_tarihi) && $ilan_tarihi=='Son 15 Gün'){?> selected<?php }?>>Son 15 Gün</option>
+                            <option value="<?php echo base64_encode('Son 30 Gün');?>"<?php if(isset($ilan_tarihi) && $ilan_tarihi=='Son 30 Gün'){?> selected<?php }?>>Son 30 Gün</option>
                           </select>
                         </div>
                       </div>
@@ -516,7 +519,6 @@
         });
       }
     }
-
     function mahallegetir(parametre) {
       if (parametre>0){
         var ilce_id = parametre;
@@ -544,6 +546,41 @@
     }
     function order_by() {
       $("#sort").submit();
+    }
+    </script>
+    <script type="text/javascript">
+    function mahalleyap(mahalle) {
+      $.post('<?php echo base_url(); ?>ajax/seomahalle', {mahalle_id : mahalle_id}, function(result){
+          //gelen cevapta hata yoksa listeleme yapılıyor..
+          if ( result && result.status != 'error' )
+          {
+            var mahalleler = result.data;
+            var select = '<option value="">Seçiniz..</option>';
+            for( var i = 0; i < mahalleler.length; i++)
+            {
+              select += '<option value="'+ mahalleler[i].mahalle_id +'">'+ mahalleler[i].mahalle_ad +'</option>';
+            }
+            select += '</select>';
+
+            $('#mahalle').empty().html(select);
+          }
+          else
+          {
+            alert('Hata : ' + result.message );
+          }
+        });
+    }
+    function yenisayfa() {
+      var iller = document.getElementById("sehir");
+      var il_id = iller.options[iller.selectedIndex].value;
+      var seo_il = '/' + linkyap(il_id);
+      var ilceler = document.getElementById("ilce");
+      var ilce_id = ilceler.options[ilceler.selectedIndex].value;
+      var seo_ilce = '/' + linkyap(ilce_id);
+      var mahalleler = document.getElementById("mahalle");
+      var mahalle_id = mahalleler.options[mahalleler.selectedIndex].value;
+      var seo_mahalle = '/' + mahalleyap(ilce_id,mahalle_id);
+      window.location.assign('<?php echo base_url().$linkkategori; ?>' + seo_il + seo_ilce + seo_mahalle);
     }
     </script>
   <?php $this->load->view('layout/scripts');?>

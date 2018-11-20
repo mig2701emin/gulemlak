@@ -205,17 +205,10 @@ function seoKategori()
 function konum($seo_il,$seo_ilce,$seo_mahalle)
 {
   $ci=& get_instance();
-  $ci->db->where('seo_il',$seo_il);
-  $il_id=$ci->db->get('tbl_il')->row()->il_id;
-
-  $ci->db->where('seo_ilce',$seo_ilce);
-  $ci->db->where('il_id',$il_id);
-  $ilce_id=$ci->db->get('tbl_ilce')->row()->ilce_id;
-
-  $ci->db->where('seo_mahalle',$seo_mahalle);
-  $ci->db->where('ilce_id',$ilce_id);
-  $mahalle=$ci->db->get('tbl_mahalle');
-  $mahalle_id=$mahalle->row()->mahalle_id;
+  $il_id=$ci->db->where('seo_il',$seo_il)->get('tbl_il')->row()->il_id;
+  $ilce_id=$ci->db->where('seo_ilce',$seo_ilce)->where('il_id',$il_id)->get('tbl_ilce')->row()->ilce_id;
+  $mahalle_id=$ci->db->where('seo_mahalle',$seo_mahalle)->where('ilce_id',$ilce_id)->get('tbl_mahalle')->row()->mahalle_id;
+  //$mahalle_id=$ci->db->query("select * from tbl_mahalle where ilce_id=".$ilce_id." and seo_mahalle=".$seo_mahalle)->row()->mahalle_id;
   return $konum = array('il' =>$il_id ,'ilce' =>$ilce_id ,'mahalle' =>$mahalle_id  );
 }
 
