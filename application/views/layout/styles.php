@@ -1,5 +1,4 @@
-<link href="https://fonts.googleapis.com/css?family=Lato|Raleway" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700&amp;subset=latin-ext" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Montserrat:200,300,400,600,700,900|Open+Sans:400,600,700,800&amp;subset=latin-ext" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>bootstrap-4.1.3/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/jquery-ui.css">

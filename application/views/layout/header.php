@@ -5,7 +5,7 @@
 
         </div>
     </div>
-    <div class="header-middle color_bg1">
+    <div class="header-middle">
         <div class="container">
             <div class="row">
                 <div class="col-xl-2 col-lg-3 col-lgmd-20per">
@@ -21,7 +21,7 @@
                     <div class="bottom-inner right-side float-none-sm">
                         <div class="position-r">
                             <div class="nav_sec position-r">
-                                <div class="mobilemenu-title mobilemenu color_bgx">
+                                <div class="mobilemenu-title mobilemenu">
                                     <span>Menu</span>
                                     <i class="fa fa-bars pull-right"></i>
                                 </div>
@@ -90,7 +90,7 @@
                 <div class="row position-r">
                     <div class="col-xl-2 col-lg-3 bottom-part col-lgmd-20per position-initial">
                         <div class="sidebar-menu-dropdown home">
-                            <a href="<?php echo base_url('ilanekle'); ?>" class="btn-sidebar-menu-dropdown color_bg3"><i class="fa fa-plus"></i>Ücretsiz İlan Ver</a>
+                            <a href="<?php echo base_url('ilanekle'); ?>" class="btn-sidebar-menu-dropdown " style="background-color:green;"><i class="fa fa-plus"></i>Ücretsiz İlan Ver</a>
                             <!-- <div id="cat" class="cat-dropdown">
                                 <div class="sidebar-contant">
                                     <div id="menu" class="navbar-collapse collapse">
@@ -244,9 +244,9 @@
                               <?php else: ?>
                                 <li class="account-icon">
                                     <a href="#">
-                                        <span class="color_bg3" style="width:90px;"><i class="fa fa-user"></i> Giriş</span>
+                                        <span class="color_bg3" style="width:150px;"><i class="fa fa-user"></i> Giriş</span>
                                     </a>
-                                    <div class="header-link-dropdown account-link-dropdown">
+                                    <div class="header-link-dropdown account-link-dropdown" style="width:170px;">
                                         <ul class="link-dropdown-list">
                                             <li>
                                                 <span class="dropdown-title">Hesabım</span>
