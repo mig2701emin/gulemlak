@@ -216,7 +216,7 @@
                             <div class="col-md-4 col-6 item-width mb-30">
                                 <div class="product-item color_bgz">
                                     <div class="product-image">
-                                        <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                        <a href="<?php echo base_url().$item->seo_url.'/'.encode($item->Id); ?>">
                                             <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
                                         </a>
                                         <div class="product-detail-inner">
@@ -236,7 +236,7 @@
                                     </div>
                                     <div class="product-item-details">
                                         <div class="product-item-name">
-                                            <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>"><?php echo $item->firma_adi; ?></a>
+                                            <a href="<?php echo base_url().$item->seo_url.'/'.encode($item->Id); ?>"><?php echo $item->firma_adi; ?></a>
                                         </div>
                                         <div class="row">
                                           <div class="col-12">
@@ -245,7 +245,7 @@
                                             </div>
                                           </div>
                                           <div class="col-12">
-                                              <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                              <a href="<?php echo base_url().$item->seo_url.'/'.encode($item->Id); ?>">
                                                 <?php if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}?>
                                                 <?php if ($item->kategori2) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
                                                 <?php if ($item->kategori3) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
@@ -312,7 +312,7 @@
                             <div class="col-md-4 col-6 item-width mb-30">
                                 <div class="product-item color_bgz">
                                     <div class="product-image">
-                                        <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                        <a href="<?php echo base_url().$item->seo_url.'/'.encode($item->Id); ?>">
                                             <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
                                         </a>
                                         <div class="product-detail-inner">
@@ -332,7 +332,7 @@
                                     </div>
                                     <div class="product-item-details">
                                         <div class="product-item-name">
-                                            <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>"><?php echo $item->firma_adi; ?></a>
+                                            <a href="<?php echo base_url().$item->seo_url.'/'.encode($item->Id); ?>"><?php echo $item->firma_adi; ?></a>
                                         </div>
                                         <div class="row">
                                           <div class="col-12">
@@ -341,7 +341,7 @@
                                             </div>
                                           </div>
                                           <div class="col-12">
-                                              <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                              <a href="<?php echo base_url().$item->seo_url.'/'.encode($item->Id); ?>">
                                                 <?php if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}?>
                                                 <?php if ($item->kategori2) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
                                                 <?php if ($item->kategori3) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
@@ -408,7 +408,7 @@
                             <div class="col-md-4 col-6 item-width mb-30">
                                 <div class="product-item color_bg1" style="min-height:400px">
                                     <div class="product-image">
-                                        <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                        <a href="<?php echo base_url().$item->seo_url.'/'.encode($item->Id); ?>">
                                             <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
                                         </a>
                                         <div class="product-detail-inner">
@@ -428,7 +428,7 @@
                                     </div>
                                     <div class="product-item-details">
                                         <div class="product-item-name">
-                                            <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>"><?php echo $item->firma_adi; ?></a>
+                                            <a href="<?php echo base_url().$item->seo_url.'/'.encode($item->Id); ?>"><?php echo $item->firma_adi; ?></a>
                                         </div>
                                         <div class="row">
                                           <div class="col-12">
@@ -437,7 +437,7 @@
                                             </div>
                                           </div>
                                           <div class="col-12">
-                                              <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                              <a href="<?php echo base_url().$item->seo_url.'/'.encode($item->Id); ?>">
                                                 <?php if ($item->kategori4) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori3)." ".replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}else{echo replace('kategoriler', 'kategori_adi','Id', $item->kategori3)." ".replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
                                               </a>
                                           </div>

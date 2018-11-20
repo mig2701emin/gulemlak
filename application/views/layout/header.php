@@ -208,7 +208,7 @@
                                                         <img alt="<?php echo $ilan->firma_adi; ?>" src="<?php echo base_url().'photos/thumbnail/'. ilk_resim($ilan->Id) ; ?>">
                                                       </a>
                                                       <div class="media-body">
-                                                          <span><a href="<?php echo base_url('ilan/'.$ilan->seo_url).'-'.$ilan->Id; ?>"><?php echo $ilan->firma_adi; ?></a></span>
+                                                          <span><a href="<?php echo base_url().$ilan->seo_url.'/'.encode($ilan->Id); ?>"><?php echo $ilan->firma_adi; ?></a></span>
                                                           <p class="cart-price"><?php echo number_format($ilan->fiyat,0, ',', '.').' '.$ilan->birim; ?></p>
                                                           <!-- <div class="product-qty">
                                                               <label>Qty:</label>

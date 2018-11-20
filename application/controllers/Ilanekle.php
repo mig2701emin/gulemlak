@@ -70,7 +70,7 @@ class Ilanekle extends CI_Controller{
         } elseif(isset($kategorys[$i-1])){
           $yeni="field_kategori".$i;
           $$yeni=$kategorys[$i-1]->Id;
-          $seo_url.="-".$kategorys[$i-1]->seo;
+          $seo_url.="/".$kategorys[$i-1]->seo;
         }else {
           $yeni="field_kategori".$i;
           $$yeni="";
@@ -146,11 +146,11 @@ class Ilanekle extends CI_Controller{
             $aciklama      = $this->security->xss_clean($this->input->post('aciklama'));
             $firmalar["aciklama"] = base64_encode($aciklama);
             $firmalar["il"] = $this->security->xss_clean($this->input->post('il'));
-            $seo_url.="-".replace("tbl_il","seo_il","il_id",$firmalar["il"]);
+            $seo_url.="/".replace("tbl_il","seo_il","il_id",$firmalar["il"]);
             $firmalar["ilce"] = $this->security->xss_clean($this->input->post('ilce'));
-            $seo_url.="-".replace("tbl_ilce","seo_ilce","ilce_id",$firmalar["ilce"]);
+            $seo_url.="/".replace("tbl_ilce","seo_ilce","ilce_id",$firmalar["ilce"]);
             $firmalar["mahalle"] = $this->security->xss_clean($this->input->post('mahalle'));
-            $seo_url.="-".replace("tbl_mahalle","seo_mahalle","mahalle_id",$firmalar["mahalle"]);
+            $seo_url.="/".replace("tbl_mahalle","seo_mahalle","mahalle_id",$firmalar["mahalle"]);
             $firmalar["seo_url"]=$seo_url;
             $firmalar["kayit_tarihi"]=date("Y-m-d H:i:s");
             $bitis_suresi  = $this->security->xss_clean($this->input->post('bitis_suresi'));

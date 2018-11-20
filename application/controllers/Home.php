@@ -44,8 +44,9 @@
 			$this->load->view('layout/home', $data);
 		}
 
-		public function ilan_goruntule($ilanId)
+		public function ilan_goruntule($ilanId1)
 		{
+			$ilanId=decode($ilanId1);
 			$ilan_kontrol=$this->firmalar->ilan_kontrol($ilanId);
 			if (!$ilan_kontrol) {
 				$this->session->set_flashdata('error', 'İlan Geçersiz veya Süresi Dolmuş.');

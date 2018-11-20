@@ -137,7 +137,7 @@
                                   <div class="col-md-4 col-6 item-width mb-30">
                                       <div class="product-item">
                                           <div class="product-image">
-                                              <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                              <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>">
                                                   <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
                                               </a>
                                               <div class="product-detail-inner">
@@ -157,7 +157,7 @@
                                           </div>
                                           <div class="product-item-details">
                                               <div class="product-item-name">
-                                                  <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>"><?php echo $item->firma_adi; ?></a>
+                                                  <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>"><?php echo $item->firma_adi; ?></a>
                                               </div>
                                               <div class="row">
                                                   <div class="col">
