@@ -188,7 +188,7 @@
                                             <i class="fas fa-caret-right"></i><?php if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}?>
 
                                         </div>
-                                        <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                        <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>">
 
                                             <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
                                         </a>
@@ -212,7 +212,7 @@
 
 
 
-                                            <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>"><?php echo $item->firma_adi; ?></a>
+                                            <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>"><?php echo $item->firma_adi; ?></a>
 
                                         </div>
                                         <div class="row">
@@ -228,7 +228,7 @@
                                                   <div class="col-1" style="color:#ff0052"></div>
                                                   <div class="col-10">
 
-                                                      <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                                      <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>">
                                                           <?php if ($item->kategori2) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
                                                           <?php if ($item->kategori3) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
                                                           <?php if ($item->kategori4) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}?>
@@ -347,7 +347,7 @@
                                                 <i class="fas fa-caret-right"></i><?php if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}?>
 
                                             </div>
-                                            <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                            <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>">
                                                 <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
                                             </a>
                                             <div class="product-detail-inner">
@@ -370,7 +370,7 @@
                                             <div class="product-item-name">
 
 
-                                                <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>"><?php echo $item->firma_adi; ?></a>
+                                                <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>"><?php echo $item->firma_adi; ?></a>
                                             </div>
                                             <div class="row">
                                                 <div class="col-12 align-right">
@@ -384,7 +384,7 @@
                                                         <div class="col-1" style="color:#ff0052"><i class="fas fa-caret-right"></i></div>
                                                         <div class="col-10">
 
-                                                            <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                                            <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>">
                                                                 <?php if ($item->kategori2) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
                                                                 <?php if ($item->kategori3) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
                                                                 <?php if ($item->kategori4) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}?>
@@ -505,7 +505,7 @@
                                                 <i class="fas fa-caret-right"></i><?php if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}?>
 
                                             </div>
-                                            <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                            <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>">
                                                 <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
                                             </a>
                                             <div class="product-detail-inner">
@@ -527,7 +527,7 @@
                                             <div class="product-item-name">
 
 
-                                                <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>"><?php echo $item->firma_adi; ?></a>
+                                                <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>"><?php echo $item->firma_adi; ?></a>
                                             </div>
                                             <div class="row">
                                                 <div class="col-12 align-right">
@@ -541,7 +541,7 @@
                                                         <div class="col-1" style="color:#ff0052"><i class="fas fa-caret-right"></i></div>
                                                         <div class="col-10">
 
-                                                            <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                                            <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>">
                                                                 <?php if ($item->kategori2) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
                                                                 <?php if ($item->kategori3) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
                                                                 <?php if ($item->kategori4) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}?>
