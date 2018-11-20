@@ -14,10 +14,11 @@
   <meta name="description" content="TicaretMeclisi, Gaziantepte kurulan ve Türkiyede adını duyurmaya başlayan ticaretin yeni merkezidir.">
   <!-- CSS
   ================================================== -->
+
   <?php $this->load->view('layout/styles');?>
 
 </head>
-<body class="color_bg1">
+<body>
     <div class="se-pre-con"></div>
     <div class="main">
       <!-- HEADER START -->
