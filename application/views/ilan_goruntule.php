@@ -480,7 +480,7 @@ font-weight: bold;
 									</center>
 							</div>
 						</div>
-						<div class="col-lg-12 col-md-6 col-12 color_bgz">
+						<div class="col-lg-12 col-md-6 col-12">
 							<div class="row text-center">
 								<?php if($this->session->userdata("userData")["userID"] == $ilan->uyeId){?>
 								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/ilanduzenle/<?php echo $ilan->Id; ?>">İlanı Düzenle</a></div>
