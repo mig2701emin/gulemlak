@@ -214,15 +214,22 @@ font-weight: bold;
 	</style>
 	<link href="<?php echo base_url('assets'); ?>/light/lightgallery.css" rel="stylesheet">
 </head>
-<body class="color_bg1">
-	<div class="se-pre-con"></div>
-	<div class="main">
-			<?php $this->load->view('layout/header');?>
-		<!-- HEADER END -->
-		<div class="container-fluid p-5">
-			<div class="row p-3">
-				<div class="col-12 color_bgz">
-					<div class="row">
+
+
+
+
+
+                        <body >
+                        <div class="se-pre-con"></div>
+                        <div class="main">
+                            <?php $this->load->view('layout/header');?>
+                            <!-- HEADER END -->
+                            <div class="container">
+                                <div class="row p-1">
+                                    <div class="col-12">
+                                        <div class="row">
+
+
 						<?php if (isset($kategorinames)){ ?>
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="cont_principal">
@@ -261,16 +268,18 @@ font-weight: bold;
 				</div>
 			</div>
 			<?php if ($this->session->userdata("userData")["userID"] == $ilan->uyeId): ?>
-				<div class="row p-3">
-					<div class="col-12 color_bgz">
+                <div class="row p-1">
+                    <div class="col-12 ">
 						<p class="text text-danger"><?php echo $ilan->ilan_notu; ?></p>
 					</div>
 				</div>
 			<?php endif; ?>
-			<div class="row pt-3 pb-3 pl-3">
-		    <div class="col-lg-10 col-md-12">
+
+
+                <div class="row pt-1 pb-1 pl-1">
+                    <div class="col-lg-9 col-md-12">
 						<div class="row">
-						<div class="col-12 col-sm-12 col-md-7 col-lg-7 color_bgz">
+						<div class="col-12 col-sm-12 col-md-7 col-lg-7">
 							<div class="row text-center">
 								<div class="col-12">
 									<div class="row color_bg2 resimbuton pt-3">
@@ -444,10 +453,10 @@ font-weight: bold;
 						<div class="col-12" id="gmap" style="width:100%;height:400px;"></div>
 					</div>
 				</div>
-				<div class="col-lg-2 col-md-12">
-					<div class="row pl-3 pr-3">
-						<div class="col-lg-12 col-md-6 col-12 color_bgz">
-							<div class="row text-center pt-3">
+                    <div class="col-lg-3 col-md-12">
+                        <div class="row pl-3 pr-3">
+                            <div class="col-lg-12 col-md-6 col-12 ">
+                                <div class="row text-center pt-3">
 								<center>
 								<?php if (isset($ilanmagaza)){ ?>
 									<div class="col-12"><h3><?php echo $ilanmagaza->magazaadi; ?></h3></div>
