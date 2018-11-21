@@ -258,7 +258,7 @@ class Hesabim extends CI_Controller{
       } elseif(isset($kategorys[$i-1])){
         $yeni="field_kategori".$i;
         $$yeni=$kategorys[$i-1]->Id;
-        $seo_url.="/".$kategorys[$i-1]->seo;
+        $seo_url.="-".$kategorys[$i-1]->seo;
       }else {
         $yeni="field_kategori".$i;
         $$yeni="";
@@ -329,11 +329,11 @@ class Hesabim extends CI_Controller{
         $aciklama      = $this->security->xss_clean($this->input->post('aciklama'));
         $firmalar["aciklama"] = base64_encode($aciklama);
         $firmalar["il"] = $this->security->xss_clean($this->input->post('il'));
-        $seo_url.="/".replace("tbl_il","seo_il","il_id",$firmalar["il"]);
+        $seo_url.="-".replace("tbl_il","seo_il","il_id",$firmalar["il"]);
         $firmalar["ilce"] = $this->security->xss_clean($this->input->post('ilce'));
-        $seo_url.="/".replace("tbl_ilce","seo_ilce","ilce_id",$firmalar["ilce"]);
+        $seo_url.="-".replace("tbl_ilce","seo_ilce","ilce_id",$firmalar["ilce"]);
         $firmalar["mahalle"] = $this->security->xss_clean($this->input->post('mahalle'));
-        $seo_url.="/".replace("tbl_mahalle","seo_mahalle","mahalle_id",$firmalar["mahalle"]);
+        $seo_url.="-".replace("tbl_mahalle","seo_mahalle","mahalle_id",$firmalar["mahalle"]);
         //$seo_url.="-".$ilanId;
         $firmalar["seo_url"]=$seo_url;
         $firmalar["kayit_tarihi"]=date("Y-m-d H:i:s");
@@ -391,7 +391,6 @@ class Hesabim extends CI_Controller{
         }
         $firmalar["onay"]=$onay_durum;
         $firmalar["yayinla"]=$this->security->xss_clean($this->input->post('yayinla'));
-        $firmalar["yenilensin"]=$this->security->xss_clean($this->input->post('yenilensin'));
         $firmalar["fiyat"] = $this->security->xss_clean($this->input->post('fiyat1'));
         $firmalar["fiyat2"] = $this->security->xss_clean($this->input->post('fiyat2'));
         $firmalar["birim"] = $this->security->xss_clean($this->input->post('birim'));
@@ -1047,7 +1046,6 @@ class Hesabim extends CI_Controller{
             }
             $firmalar["onay"]=$onay_durum;
             $firmalar["yayinla"]=$this->security->xss_clean($this->input->post('yayinla'));
-            $firmalar["yenilensin"]=$this->security->xss_clean($this->input->post('yenilensin'));
             $firmalar["kategori2"] = ($this->security->xss_clean($this->input->post('kategori2'))!="") ? $this->security->xss_clean($this->input->post('kategori2')) : 0 ;
             $firmalar["kategori3"] = ($this->security->xss_clean($this->input->post('kategori3'))!="") ? $this->security->xss_clean($this->input->post('kategori3')) : 0 ;
             $firmalar["kategori4"] = ($this->security->xss_clean($this->input->post('kategori4'))!="") ? $this->security->xss_clean($this->input->post('kategori4')) : 0 ;
@@ -1056,17 +1054,17 @@ class Hesabim extends CI_Controller{
             $firmalar["kategori7"] = ($this->security->xss_clean($this->input->post('kategori7'))!="") ? $this->security->xss_clean($this->input->post('kategori7')) : 0 ;
             $firmalar["kategori8"] = ($this->security->xss_clean($this->input->post('kategori8'))!="") ? $this->security->xss_clean($this->input->post('kategori8')) : 0 ;
             $seo_url=replace("kategoriler","seo","Id",$firmalar["kategoriId"]);
-            $seo_url.="/".replace("kategoriler","seo","Id",$firmalar["kategori2"]);
-            $seo_url.="/".replace("kategoriler","seo","Id",$firmalar["kategori3"]);
+            $seo_url.="-".replace("kategoriler","seo","Id",$firmalar["kategori2"]);
+            $seo_url.="-".replace("kategoriler","seo","Id",$firmalar["kategori3"]);
             if ($firmalar["kategori4"]!=0) {
-              $seo_url.="/".replace("kategoriler","seo","Id",$firmalar["kategori4"]);
+              $seo_url.="-".replace("kategoriler","seo","Id",$firmalar["kategori4"]);
             }
             if ($firmalar["kategori5"]!=0) {
-              $seo_url.="/".replace("kategoriler","seo","Id",$firmalar["kategori5"]);
+              $seo_url.="-".replace("kategoriler","seo","Id",$firmalar["kategori5"]);
             }
-            $seo_url.="/".replace("tbl_il","seo_il","il_id",$firmalar["il"]);
-            $seo_url.="/".replace("tbl_ilce","seo_ilce","ilce_id",$firmalar["ilce"]);
-            $seo_url.="/".replace("tbl_mahalle","seo_mahalle","mahalle_id",$firmalar["mahalle"]);
+            $seo_url.="-".replace("tbl_il","seo_il","il_id",$firmalar["il"]);
+            $seo_url.="-".replace("tbl_ilce","seo_ilce","ilce_id",$firmalar["ilce"]);
+            $seo_url.="-".replace("tbl_mahalle","seo_mahalle","mahalle_id",$firmalar["mahalle"]);
             $firmalar["seo_url"]=$seo_url;
             $firmalar["fiyat"] = $this->security->xss_clean($this->input->post('fiyat1'));
             $firmalar["fiyat2"] = $this->security->xss_clean($this->input->post('fiyat2'));
@@ -1112,7 +1110,7 @@ class Hesabim extends CI_Controller{
                 // die();
                 $upload=copy($resim,FCPATH.'photos/big/'.$name);
                 if ($upload) {
-                  /*$config['image_library'] = 'gd2';
+                  $config['image_library'] = 'gd2';
                   $config['source_image'] = FCPATH.'photos/big/'.$name;
                   $config['maintain_ratio'] = false;
                   $config['width'] = 890;
@@ -1126,24 +1124,9 @@ class Hesabim extends CI_Controller{
                     //echo "hata";
                     $this->session->set_flashdata('error', $this->image_lib->display_errors('error', 'İlk boyutlandırma Yapılamadı'));
                   }
-                  $this->image_lib->clear();*/
-                  $src_image= FCPATH.'photos/big/'.$name;
-                  $dst_image=FCPATH.'photos/big/'.$name;
-                  switch ($uzanti) {
-                    case 'png':
-                      $type="image/png";
-                      break;
-                    case 'gif':
-                      $type="image/gif";
-                      break;
-                    default:
-                      $type="image/jpg";
-                      break;
-                  }
-                  $width=890;
-                  $height=550;
-                  create_image($src_image, $dst_image,$type,$width,$height);
-                  /*$config1['image_library'] = 'gd2';
+                  $this->image_lib->clear();
+
+                  $config1['image_library'] = 'gd2';
                   $config1['source_image'] = FCPATH.'assets/images/deneme1.jpg';
                   $config1['new_image'] = FCPATH.'photos/big/'.$name;
                   $config1['wm_type'] = 'overlay';
@@ -1158,7 +1141,7 @@ class Hesabim extends CI_Controller{
                     $this->session->set_flashdata('error', $this->image_lib->display_errors('error', 'Watermak işlemi Yapılamadı'));
                   }
 
-                  $this->image_lib->clear();*/
+                  $this->image_lib->clear();
 
                   $config1['image_library'] = 'gd2';
                   $config1['source_image'] = FCPATH.'photos/big/'.$name;

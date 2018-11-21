@@ -450,6 +450,7 @@ $(function() {
           $(".product-item-details").removeClass("col-12").addClass("col-md-4");
           $(".company").removeClass("col-12").addClass("col-md-4");
           $(".company").show();
+          $(".product-item").removeClass("minheight280");
 
       }
       if($(this).hasClass("grid")){
@@ -462,6 +463,7 @@ $(function() {
           $(".product-item-details").removeClass("col-md-4").addClass("col-12");
           $(".company").removeClass("col-md-4").addClass("col-12");
           $(".company").hide();
+          $(".product-item").addClass("minheight280");
       }
     });
   }

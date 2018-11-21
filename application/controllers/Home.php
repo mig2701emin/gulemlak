@@ -2,8 +2,7 @@
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
 	class Home extends CI_Controller{
-		private $user;
-		private $magaza;
+
 	  public function __construct()
 	  {
 	    parent::__construct();
@@ -12,27 +11,9 @@
 			$this->load->model('firmalar');
 			$this->load->model('fields');
 			$this->load->model('magazalar');
-			if($this->session->userdata('userData')){
-				$where = array("Id" => $this->session->userdata('userData')["userID"]);
-		    $this->user=$this->members->get($where);
-		    if(magaza_var_mi($this->user->Id)){
-		      $this->magaza=$this->magazalar->getMagaza($this->magazalar->getMagazaId($this->user->Id));
-		    }else {
-		      $this->magaza=null;
-		    }
-			}else {
-				$this->user=null;
-			}
-
 		}
 		public function index()
 		{
-			if ($this->user!=null) {
-				$data["user"]=$this->user;
-			}
-			if ($this->magaza!=null) {
-				$data["magaza"]=$this->magaza;
-			}
 			$data['title']='Emlak Meclisi | Anasayfa';
 			$data['anaKategoriler']=$this->kategoriler->getAnaKategoriler();
 			$data['mainVitrins']=$this->firmalar->getMainVitrins();
@@ -44,9 +25,8 @@
 			$this->load->view('layout/home', $data);
 		}
 
-		public function ilan_goruntule($ilanId1)
+		public function ilan_goruntule($ilanId)
 		{
-			$ilanId=decode($ilanId1);
 			$ilan_kontrol=$this->firmalar->ilan_kontrol($ilanId);
 			if (!$ilan_kontrol) {
 				$this->session->set_flashdata('error', 'İlan Geçersiz veya Süresi Dolmuş.');
@@ -56,11 +36,6 @@
 			$edit = array("toplam_ziyaretci" => $ilan->toplam_ziyaretci+1);
 			$this->firmalar->update($ilanId,$edit);
 			$data["ilan"]=$ilan;
-			$data["ilansahibi"]=$this->db->where("Id",$ilan->uyeId)->get("uyeler")->row();
-			$ilanmagaza=$this->db->query("select * from magazalar where Id=(select magazaId from magaza_kullanicilari where uyeId=".$ilan->uyeId.")");
-			if ($ilanmagaza->num_rows()>0) {
-				$data["ilanmagaza"]=$ilanmagaza->row();
-			}
 			$show_fields="";
 			$show_additional_fields="";
 			//$fieldCallType="";
@@ -160,13 +135,15 @@
 			$resimler=$this->db->where("ilanId",$ilanId)->get("pictures")->result();
 			$data["resimler"]=$resimler;
 			$where = array('Id' => $ilan->uyeId);
-			if ($this->user!=null) {
-				$data["user"]=$this->user;
+			$user=$this->members->get($where);
+			$data["user"]=$user;
+			$magaza_var_mi=magaza_var_mi($user->Id);
+			$data["magaza_var_mi"]=$magaza_var_mi;
+			if ($magaza_var_mi) {
+				$magazaId=$this->magazalar->getMagazaId($user->Id);
+				$data["magaza"]=$this->magazalar->getMagaza($magazaId);
 			}
-			if ($this->magaza!=null) {
-				$data["magaza"]=$this->magaza;
-				$data["magaza_var_mi"]=true;
-			}
+
 	    $title=mb_convert_case(mb_strtolower($ilan->firma_adi), MB_CASE_TITLE, "UTF-8")." | Ticaret Meclisi";
 
 			$data["title"]=$title;
@@ -249,7 +226,6 @@
 			$data["kategori"]=$kategori;
 			$data["altKategoriler"]=$altKategoriler;
 			$data['anaKategoriler']=$this->kategoriler->getAnaKategoriler();
-			$data["user"]=$this->user;
 			$this->load->view("magaza",$data);
 		}
 
@@ -280,7 +256,6 @@
 					$$yeni="";
 				}
 			}
-			$data["linkkategori"]=$urlstring;
 			$urlstring.="/".$kat;
 			$sql="select * from fields where ((kategori='".$field_kategori."' and kategori2='0')";
 			if ($field_kategori2!="") {
@@ -550,4 +525,11 @@
 			$data["links"] = $this->pagination->create_links();
 			$this->load->view("ara",$data);
 		}
+
+
+
+
+
+
+
 }

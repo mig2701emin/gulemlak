@@ -2119,8 +2119,8 @@ h2.main_title, .sidebar-title h3 {
 }
 
 .product-listing.grid-type .item-width {
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 .detail-inner-left, .product-listing.grid-type .detail-inner-left {
@@ -2144,6 +2144,7 @@ h2.main_title, .sidebar-title h3 {
 	left: auto;
 	bottom: 0;
 	margin-top: 10px;
+	display: none;
 }
 
 .detail-inner-left ul li a, .detail-inner-left ul li button,

@@ -61,16 +61,8 @@ class Resim extends CI_Controller{
 			$this->load->library('upload', $config);
 
 			if ($this->upload->do_upload("file")){
-        $src_image=$this->upload->upload_path.$this->upload->file_name;
-        $dst_image=$this->upload->upload_path.$this->upload->file_name;
-        $type=$this->upload->upload_path.$this->upload->file_type;
-        $width=890;
-        $height=550;
-        create_image($src_image, $dst_image,$type,$width,$height);
-
-
         $this->load->library('image_lib');
-        /*$config1['image_library'] = 'gd2';
+        $config1['image_library'] = 'gd2';
         $config1['source_image'] = 'assets/images/deneme1.png';
         $config1['new_image'] = $this->upload->upload_path.$this->upload->file_name;
         $config1['wm_type'] = 'overlay';
@@ -78,11 +70,14 @@ class Resim extends CI_Controller{
         $config1['wm_opacity'] = '100';
         $config1['wm_vrt_alignment'] = 'middle';
         $config1['wm_hor_alignment'] = 'center';
+
+
         $this->image_lib->initialize($config1);
         if (!$this->image_lib->watermark()) {
           $this->session->set_flashdata('error', $this->image_lib->display_errors('error', 'Watermak işlemi Yapılamadı'));
         }
-        $this->image_lib->clear();*/
+
+        $this->image_lib->clear();
 
         $config2['image_library'] = 'gd2';
         $config2['source_image'] = $this->upload->upload_path.$this->upload->file_name;

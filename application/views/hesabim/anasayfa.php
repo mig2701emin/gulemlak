@@ -125,14 +125,14 @@
             <div class="col-12">
               <div class="row border border-dark mt-3">
                 <div class="col-12 color_bg3 text-light">
-                  <a class="btn btn-block text-light"  href="<?php echo base_url();?><?php echo $ilan->seo_url;?>/<?php echo encode($ilan->Id);?>">
+                  <a class="btn btn-block text-light"  href="<?php echo base_url();?>ilan/<?php echo $ilan->seo_url;?>-<?php echo $ilan->Id;?>">
                     <?php echo $ilan->firma_adi;?>
                   </a>
                 </div>
                 <div class="col-lg-3 col-md-5 col-sm-12 col-12">
                   <div class="row">
                     <div class="col-lg-8 col-md-10 col-sm-10 col-12">
-                      <a href="<?php echo base_url(); ?><?php echo $ilan->seo_url;?>/<?php echo encode($ilan->Id);?>">
+                      <a href="<?php echo base_url(); ?>ilan/<?php echo $ilan->seo_url;?>-<?php echo $ilan->Id;?>">
                         <img src="<?php if(ilk_resim($ilan->Id)!='' and file_exists('photos/thumbnail/'.ilk_resim($ilan->Id))){echo base_url().'photos/thumbnail/'.ilk_resim($ilan->Id);
                         }else{echo base_url();?>assets/images/yok_thumbnail.png<?php } ?>" border="0" alt="<?php echo $ilan->firma_adi;?>" title="<?php echo $ilan->firma_adi;?>" style="width:100%;height:auto">
                       </a>

@@ -77,7 +77,7 @@ class Ilanlar extends CI_Controller{
         $$yeni="";
       }
     }
-    $data["linkkategori"]=$urlstring;
+    //$urlstring.="/".$kat;
     if ($key7!='') {
       $urlstring.="/".$val5."/".$val6."/".$val7;
     }else {
@@ -136,22 +136,22 @@ class Ilanlar extends CI_Controller{
         if(!empty($sehir) and is_numeric($sehir)){
           $add_query_to_sql.=" and firmalar.il='".$sehir."'";
           $data["sehir"]=$sehir;
-          $data["ilceler"]=$this->db->where("il_id",$sehir)->order_by("seo_ilce","ASC")->get("tbl_ilce")->result();
+          $data["ilceler"]=$this->db->where("il_id",$sehir)->get("tbl_ilce")->result();
         }else {
           $add_query_to_sql.=" and firmalar.il='".$konum['il']."'";
           $data["sehir"]=$konum["il"];
-          $data["ilceler"]=$this->db->where("il_id",$konum["il"])->order_by("seo_ilce","ASC")->get("tbl_ilce")->result();
+          $data["ilceler"]=$this->db->where("il_id",$konum["il"])->get("tbl_ilce")->result();
         }
 
         $ilce=$this->security->xss_clean($this->input->post("ilce"));
         if(!empty($ilce) and is_numeric($ilce)){
           $add_query_to_sql.=" and firmalar.ilce='".$ilce."'";
           $data["ilce"]=$ilce;
-          $data["mahalleler"]=$this->db->where("ilce_id",$ilce)->order_by("seo_mahalle","ASC")->get("tbl_mahalle")->result();
+          $data["mahalleler"]=$this->db->where("ilce_id",$ilce)->get("tbl_mahalle")->result();
         }else {
           $add_query_to_sql.=" and firmalar.ilce='".$konum['ilce']."'";
           $data["ilce"]=$konum["ilce"];
-          $data["mahalleler"]=$this->db->where("ilce_id",$konum["ilce"])->order_by("seo_mahalle","ASC")->get("tbl_mahalle")->result();
+          $data["mahalleler"]=$this->db->where("ilce_id",$konum["ilce"])->get("tbl_mahalle")->result();
         }
         $mahalle=$this->security->xss_clean($this->input->post("mahalle"));
         if(!empty($mahalle) and is_numeric($mahalle)){
@@ -261,10 +261,10 @@ class Ilanlar extends CI_Controller{
       }else {
           $add_query_to_sql.=" and firmalar.il='".$konum['il']."'";
           $data["sehir"]=$konum["il"];
-          $data["ilceler"]=$this->db->where("il_id",$konum["il"])->order_by("seo_ilce","ASC")->get("tbl_ilce")->result();
+          $data["ilceler"]=$this->db->where("il_id",$konum["il"])->get("tbl_ilce")->result();
           $add_query_to_sql.=" and firmalar.ilce='".$konum['ilce']."'";
           $data["ilce"]=$konum["ilce"];
-          $data["mahalleler"]=$this->db->where("ilce_id",$konum["ilce"])->order_by("seo_mahalle","ASC")->get("tbl_mahalle")->result();
+          $data["mahalleler"]=$this->db->where("ilce_id",$konum["ilce"])->get("tbl_mahalle")->result();
           $add_query_to_sql.=" and firmalar.mahalle='".$konum['mahalle']."'";
           $data["mahalle"]=$konum["mahalle"];
 
