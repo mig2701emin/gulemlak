@@ -331,7 +331,7 @@
 
                                 </li>
                                 <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel" m-menu-submenu-toggle="click" aria-haspopup="true">
-                                  <a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link">
+                                  <a href="javascript:;" class="m-menu__link m-menu__toggle" title="İlan Yönetimi">
                                         <span class="m-menu__item-here"></span>
                                         <span class="m-menu__link-text">İlanlarım</span>
                                         <i class="m-menu__hor-arrow la la-angle-down"></i>
@@ -383,7 +383,7 @@
                                     </div>
                                 </li>
                                 <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel" m-menu-submenu-toggle="click" aria-haspopup="true">
-                                    <a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link">
+                                    <a href="javascript:;" class="m-menu__link m-menu__toggle" title="Ödeme Takibi">
                                         <span class="m-menu__item-here"></span>
                                         <span class="m-menu__link-text">Ödemeler</span>
                                         <i class="m-menu__hor-arrow la la-angle-down"></i>
@@ -436,7 +436,7 @@
                                     </div>
                                 </li>
                                 <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel" m-menu-submenu-toggle="click" aria-haspopup="true">
-                                    <a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link">
+                                    <a href="javascript:;" class="m-menu__link m-menu__toggle" title="Mağaza Yönetimi">
                                         <span class="m-menu__item-here"></span>
                                         <span class="m-menu__link-text">Mağaza</span>
                                         <i class="m-menu__hor-arrow la la-angle-down"></i>

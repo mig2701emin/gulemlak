@@ -80,7 +80,7 @@
 													</div>
 													<br>
                           <div class="m-widget7__button">
-                              <a class="m-btn m-btn--pill btn btn-danger" href="<?php echo base_url(); ?>ilan/<?php echo $ilan->seo_url; ?>-<?php echo $ilan->Id; ?>" role="button">İlanı incele</a>
+                              <a class="m-btn m-btn--pill btn btn-danger" href="<?php echo base_url(); ?><?php echo $ilan->seo_url; ?>/<?php echo encode($ilan->Id); ?>" role="button">İlanı incele</a>
                           </div>
                           <b>
 														<div class="ad_id_box">
