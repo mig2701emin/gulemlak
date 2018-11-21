@@ -107,7 +107,7 @@ function decode($input){
     return base64_decode(strtr($input, '-_S', '+/='));
 }
 
-function countDB($db,$field,$where){
+function countDB($db,$field,$where=0){
   $ci = & get_instance();
   if($where != 0){
       $ci->db->where($field,$where);
@@ -205,17 +205,10 @@ function seoKategori()
 function konum($seo_il,$seo_ilce,$seo_mahalle)
 {
   $ci=& get_instance();
-  $ci->db->where('seo_il',$seo_il);
-  $il_id=$ci->db->get('tbl_il')->row()->il_id;
-
-  $ci->db->where('seo_ilce',$seo_ilce);
-  $ci->db->where('il_id',$il_id);
-  $ilce_id=$ci->db->get('tbl_ilce')->row()->ilce_id;
-
-  $ci->db->where('seo_mahalle',$seo_mahalle);
-  $ci->db->where('ilce_id',$ilce_id);
-  $mahalle=$ci->db->get('tbl_mahalle');
-  $mahalle_id=$mahalle->row()->mahalle_id;
+  $il_id=$ci->db->where('seo_il',$seo_il)->get('tbl_il')->row()->il_id;
+  $ilce_id=$ci->db->where('seo_ilce',$seo_ilce)->where('il_id',$il_id)->get('tbl_ilce')->row()->ilce_id;
+  $mahalle_id=$ci->db->where('seo_mahalle',$seo_mahalle)->where('ilce_id',$ilce_id)->get('tbl_mahalle')->row()->mahalle_id;
+  //$mahalle_id=$ci->db->query("select * from tbl_mahalle where ilce_id=".$ilce_id." and seo_mahalle=".$seo_mahalle)->row()->mahalle_id;
   return $konum = array('il' =>$il_id ,'ilce' =>$ilce_id ,'mahalle' =>$mahalle_id  );
 }
 
@@ -363,7 +356,7 @@ function ilan_id_al($cls_id=0)
     $cls_id=rand(1000,999999);
   }
   $ci=& get_instance();
-  $sorgula=$ci->db->query("select * from firmalar where Id='".$cls_id."'")->num_rows();
+  $sorgula=$ci->db->query("select * from firmalar where ilanId='".$cls_id."'")->num_rows();
   if($sorgula=='0'){
   return $cls_id;
   }else{
@@ -605,5 +598,52 @@ function resim_sil()
         $i++;
       }
     }
+  }
+}
+function fit_image($src_image, $dst_image)
+{
+  $src_width = imagesx($src_image);
+  $src_height = imagesy($src_image);
+
+  $dst_width = imagesx($dst_image);
+  $dst_height = imagesy($dst_image);
+
+  $new_width = $dst_width;
+  $new_height = round($new_width*($src_height/$src_width));
+  $new_x = 0;
+  $new_y = round(($dst_height-$new_height)/2);
+
+      $next = $new_height > $dst_height;
+  if ($new_height > $dst_height) {
+      $new_height = $dst_height;
+      $new_width = round($new_height*($src_width/$src_height));
+      $new_x = round(($dst_width - $new_width)/2);
+      $new_y = 0;
+  }
+  imagecopyresampled($dst_image, $src_image , $new_x, $new_y, 0, 0, $new_width, $new_height, $src_width, $src_height);
+}
+
+function create_image($src_image, $dst_image,$type,$width,$height)
+{
+  if($type=='image/gif'){
+  $src = imagecreatefromgif($src_image);
+  $fileExtension="gif";
+  }elseif($type=='image/png'){
+  $src = imagecreatefrompng($src_image);
+  $fileExtension="png";
+  }else{
+  $src = imagecreatefromjpeg($src_image);
+  $fileExtension="jpg";
+  }
+  $dst = imagecreatetruecolor($width, $height);
+  imagefill($dst, 0, 0, imagecolorallocate($dst, 255, 255, 255));
+  fit_image($src, $dst);
+  $newname=$dst_image;
+  if($type=='image/gif'){
+  imagegif($dst,$newname);
+  }elseif($type=='image/png'){
+  imagepng($dst,$newname);
+  }else{
+  imagejpeg($dst,$newname);
   }
 }

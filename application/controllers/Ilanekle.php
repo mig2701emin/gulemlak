@@ -70,7 +70,7 @@ class Ilanekle extends CI_Controller{
         } elseif(isset($kategorys[$i-1])){
           $yeni="field_kategori".$i;
           $$yeni=$kategorys[$i-1]->Id;
-          $seo_url.="-".$kategorys[$i-1]->seo;
+          $seo_url.="/".$kategorys[$i-1]->seo;
         }else {
           $yeni="field_kategori".$i;
           $$yeni="";
@@ -146,11 +146,11 @@ class Ilanekle extends CI_Controller{
             $aciklama      = $this->security->xss_clean($this->input->post('aciklama'));
             $firmalar["aciklama"] = base64_encode($aciklama);
             $firmalar["il"] = $this->security->xss_clean($this->input->post('il'));
-            $seo_url.="-".replace("tbl_il","seo_il","il_id",$firmalar["il"]);
+            $seo_url.="/".replace("tbl_il","seo_il","il_id",$firmalar["il"]);
             $firmalar["ilce"] = $this->security->xss_clean($this->input->post('ilce'));
-            $seo_url.="-".replace("tbl_ilce","seo_ilce","ilce_id",$firmalar["ilce"]);
+            $seo_url.="/".replace("tbl_ilce","seo_ilce","ilce_id",$firmalar["ilce"]);
             $firmalar["mahalle"] = $this->security->xss_clean($this->input->post('mahalle'));
-            $seo_url.="-".replace("tbl_mahalle","seo_mahalle","mahalle_id",$firmalar["mahalle"]);
+            $seo_url.="/".replace("tbl_mahalle","seo_mahalle","mahalle_id",$firmalar["mahalle"]);
             $firmalar["seo_url"]=$seo_url;
             $firmalar["kayit_tarihi"]=date("Y-m-d H:i:s");
             $bitis_suresi  = $this->security->xss_clean($this->input->post('bitis_suresi'));
@@ -295,6 +295,11 @@ class Ilanekle extends CI_Controller{
     }
     $ilan=$this->firmalar->get_ilan($ilanId);
     $data["ilan"]=$ilan;
+    $data["ilansahibi"]=$this->db->where("Id",$ilan->uyeId)->get("uyeler")->row();
+    $ilanmagaza=$this->db->query("select * from magazalar where Id=(select magazaId from magaza_kullanicilari where uyeId=".$ilan->uyeId.")");
+    if ($ilanmagaza->num_rows()>0) {
+      $data["ilanmagaza"]=$ilanmagaza->row();
+    }
     $show_fields="";
     $show_additional_fields="";
     //$fieldCallType="";
@@ -359,16 +364,18 @@ class Ilanekle extends CI_Controller{
         $check_values=get_details($ilanId,$field->seo_name);
         $explode_check=explode("||",$check_values);
         $new_values=explode("||",$field->field_values);
-        $show_additional_fields.='<div class="col-12"><h4 class="mb-3">'.$field->name.'</h4>';
+        $show_additional_fields.='<div class="col-12 col-sm-6 col-md-3"><h4 class="mb-3">'.$field->name.'</h4>';
         if($show_ok[$field->name]!=1){
           $show_additional_fields.='<div class="row">';
         }
         for ($i = 0; $i <= count($new_values)-1; $i++) {
-          $show_additional_fields.='<div class="custom-control custom-checkbox col-6 col-md-3"';
+          //$show_additional_fields.='<div class="custom-control custom-checkbox col-6 col-md-3"';
           if (sorgula2($ilanId,$field->seo_name,$new_values[$i])) {
+            $show_additional_fields.='<div class="col-12 custom-control custom-checkbox"';//yeni ekledim
             $show_additional_fields.=' style="background:url('.base_url().'assets/images/evet.png) no-repeat 0px -2px"';
+            $show_additional_fields.='>&nbsp;'.$new_values[$i].'</div>';//yeni ekledim
           }
-          $show_additional_fields.='>&nbsp;'.$new_values[$i].'</div>';
+          //$show_additional_fields.='>&nbsp;'.$new_values[$i].'</div>';
         }
         if($show_ok[$field->name]!=1){
           $show_additional_fields.='</div><hr class="mt-4"/></div>';
@@ -378,12 +385,12 @@ class Ilanekle extends CI_Controller{
           // preview fields
           $change_value=get_details($ilanId,$field->seo_name);
           $change_value2=get_details($ilanId,$multiple_field_seo_name);
-          $show_fields.='<div class="col-12 mar-bot">'.$field->name.':&nbsp;'.($change_value!=''?$change_value:'Belirtilmemiş').'</div>';
-          $show_fields.='<div class="col-12 mar-bot">'.$field->multiple_field_name.':&nbsp;'.($change_value2!=''?$change_value2:'Belirtilmemiş').'</div>';
+          $show_fields.='<div class="col-12 mar-bot"><div class="row"><div class="col-6 bilgibaslik">'.$field->name.'</div><div class="col-6 bilgiler">'.($change_value!=''?$change_value:'Belirtilmemiş').'</div></div></div>';
+          $show_fields.='<div class="col-12 mar-bot"><div class="row"><div class="col-6 bilgibaslik">'.$field->multiple_field_name.'</div><div class="col-6 bilgiler">'.($change_value2!=''?$change_value2:'Belirtilmemiş').'</div></div></div>';
         }else{
           // preview fields
           $change_value=get_details($ilanId,$field->seo_name);
-          $show_fields.='<div class="col-12 mar-bot">'.$field->name.':&nbsp;'.($change_value!=''?$change_value:'Belirtilmemiş').'</div>';
+          $show_fields.='<div class="col-12 mar-bot"><div class="row"><div class="col-6 bilgibaslik">'.$field->name.'</div><div class="col-6 bilgiler">'.($change_value!=''?$change_value:'Belirtilmemiş').'</div></div></div>';
         }
     }
 
@@ -401,6 +408,9 @@ class Ilanekle extends CI_Controller{
       $magazaId=$this->magazalar->getMagazaId($user->Id);
       $data["magaza"]=$this->magazalar->getMagaza($magazaId);
     }
+    $title=mb_convert_case(mb_strtolower($ilan->firma_adi), MB_CASE_TITLE, "UTF-8")." | Ticaret Meclisi";
+
+    $data["title"]=$title;
     $this->load->view('ilanekle/onizleme',$data);
 
   }

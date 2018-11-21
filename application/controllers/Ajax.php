@@ -54,7 +54,7 @@ class Ajax extends CI_Controller{
       }
 
       //çıktıyı jsona uygun bir yapıda set ediyoruz...
-      $this->output->set_content_type('application/json')->set_output(json_encode($data));
+      $this->output->set_content_type('application/json')->set_output(json_encode($data,JSON_UNESCAPED_UNICODE));
       //echo json_encode($data);
   }
 
@@ -93,7 +93,7 @@ class Ajax extends CI_Controller{
       }
 
       //çıktıyı jsona uygun bir yapıda set ediyoruz...
-      $this->output->set_content_type('application/json')->set_output(json_encode($data));
+      $this->output->set_content_type('application/json')->set_output(json_encode($data,JSON_UNESCAPED_UNICODE));
       //echo json_encode($data);
   }
 
@@ -128,6 +128,8 @@ class Ajax extends CI_Controller{
         $json[]=$altKategoriler;
       }
     }
-      echo json_encode($json);
+      echo json_encode($json,JSON_UNESCAPED_UNICODE);
   }
+
+
 }
