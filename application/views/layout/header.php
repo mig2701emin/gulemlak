@@ -193,33 +193,43 @@
 
                                 <li class="cart-icon">
                                     <a href="#">
-                                        <span class="cart-icon-main"><i class="fa fa-heart"></i><small class="cart-notification"><?php if(countDB("favoriler","uyeId",$user->Id)>0){echo countDB("favoriler","uyeId",$user->Id);}else{echo "0";} ?></small></span>
+                                        <span class="cart-icon-main"> <i class="fa fa-heart"></i> <small class="cart-notification">2</small> </span>
+                                        <div class="my-cart">My cart<br>$29.98</div>
                                     </a>
-                                    <?php
-                                    $favoriler=$this->db->where("uyeId",$user->Id)->get("favoriler");
-                                    if ($favoriler->num_rows()>0) {?>                                    <div class="cart-dropdown header-link-dropdown">
+                                    <div class="cart-dropdown header-link-dropdown">
                                         <ul class="cart-list link-dropdown-list">
-                                            <?php $ilanlar=$this->db->query("select favoriler.*, firmalar.* FROM favoriler JOIN firmalar WHERE favoriler.ilanId=firmalar.Id AND favoriler.uyeId=".$user->Id)->result(); ?>
-                                            <?php foreach ($ilanlar as $ilan): ?>
-                                              <li>
-                                                  <!-- <a class="close-cart"><i class="fa fa-times-circle"></i></a> -->
-                                                  <div class="media">
-                                                      <a class="pull-left">
-                                                        <img alt="<?php echo $ilan->firma_adi; ?>" src="<?php echo base_url().'photos/thumbnail/'. ilk_resim($ilan->Id) ; ?>">
-                                                      </a>
-                                                      <div class="media-body">
-                                                          <span><a href="<?php echo base_url().$ilan->seo_url.'/'.encode($ilan->Id); ?>"><?php echo $ilan->firma_adi; ?></a></span>
-                                                          <p class="cart-price"><?php echo number_format($ilan->fiyat,0, ',', '.').' '.$ilan->birim; ?></p>
-                                                          <!-- <div class="product-qty">
-                                                              <label>Qty:</label>
-                                                              <div class="custom-qty">
-                                                                  <input type="text" name="qty" maxlength="8" value="1" title="Qty" class="input-text qty">
-                                                              </div>
-                                                          </div> -->
-                                                      </div>
-                                                  </div>
-                                              </li>
-                                            <?php endforeach; ?>
+                                            <li>
+                                                <!-- <a class="close-cart"><i class="fa fa-times-circle"></i></a>
+                                                <div class="media">
+                                                    <a class="pull-left"> <img alt="Ezone" src="<?php //echo base_url(); ?>assets/images/1.jpg"></a>
+                                                    <div class="media-body">
+                                                        <span><a href="#">Kiralık Lüx Daire</a></span>
+                                                        <p class="cart-price">$14.99</p>
+                                                        <div class="product-qty">
+                                                            <label>Qty:</label>
+                                                            <div class="custom-qty">
+                                                                <input type="text" name="qty" maxlength="8" value="1" title="Qty" class="input-text qty">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                            </li>
+                                            <li>
+                                                <!-- <a class="close-cart"><i class="fa fa-times-circle"></i></a>
+                                                <div class="media">
+                                                    <a class="pull-left"> <img alt="Ezone" src="<?php //echo base_url(); ?>assets/images/2.jpg"></a>
+                                                    <div class="media-body">
+                                                        <span><a href="#">Kiralık Lüx Daire</a></span>
+                                                        <p class="cart-price">$1400.99</p>
+                                                        <div class="product-qty">
+                                                            <label>Qty:</label>
+                                                            <div class="custom-qty">
+                                                                <input type="text" name="qty" maxlength="8" value="1" title="Qty" class="input-text qty">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                            </li>
                                         </ul>
                                         <!-- <p class="cart-sub-totle">
                                             <span class="pull-left">Toplam:</span>
@@ -230,7 +240,6 @@
                                             <a href="checkout.html" class="btn-color btn right-side"><i class="fa fa-share"></i>İncele</a>
                                         </div> -->
                                     </div>
-                                  <?php } ?>
                                 </li>
                               <?php else: ?>
                                 <li class="account-icon">

@@ -79,16 +79,13 @@
             <!--iletişim bilgileri --------->
             <h2 class="text-center">İletişim Bilgileri</h2>
             <div class="mb-3">
+              <?php $user=$this->session->userdata("userData");?>
                 <label for="ilanadi">Adı Soyadı</label>
-                <input type="text" class="form-control" name="adsoyad" value="<?php echo $user->ad;?> <?php echo $user->soyad;?>" disabled>
+                <input type="text" class="form-control" name="adsoyad" value="<?php echo $user['ad'];?> <?php echo $user['soyad'];?>" disabled>
             </div>
             <div class="mb-3">
                 <label for="ilanadi">Cep Telefonu</label>
-                <input type="text" class="form-control" name="adsoyad" value="<?php if($user->gsm!=''){echo $user->gsm;}else{echo "Belirtilmemiş";}?>" disabled>
-            </div>
-            <div class="mb-3">
-                <label for="istel">İş Telefonu</label>
-                <input type="text" class="form-control" name="istel" value="<?php if($user->istel!=''){echo $user->istel;}else{echo "Belirtilmemiş";}?>" disabled>
+                <input type="text" class="form-control" name="adsoyad" value="<?php if($user['gsm']!=''){echo $user['gsm'];}else{echo "Belirtilmemiş";}?>" disabled>
             </div>
             <div class="custom-control custom-checkbox mb-3">
               <input type="checkbox"  class="custom-control-input" name="yayinla" id="yayinla" value="1" checked/>
@@ -100,23 +97,6 @@
             <hr class="mb-4"/>
             <h2 class="text-center">İlan Detayları</h2>
 
-            <!--magaza sahipleri başlangıç-->
-            <?php if ($magaza_var_mi): ?>
-              <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox"  class="custom-control-input" name="add_to_store" id="add_to_store" value="1" checked/>
-                <label class="custom-control-label" for="add_to_store">İlanı Mağazaya Ekle</label>
-              </div>
-            <?php endif; ?>
-            <!--magaza sahipleri bitiş-->
-            <div class="custom-control custom-checkbox mb-3">
-              <input type="checkbox"  class="custom-control-input" name="yenilensin" id="yenilensin" value="1"/>
-              <label class="custom-control-label" for="yenilensin">Süre Bitiminde İlan Yenilensin</label>
-            </div>
-            <div class="mb-3">
-              <label for="ilan_notu">Gizli İlan Notu :</label>
-              <input class="form-control" type="text" name="ilan_notu" value="<?php echo set_value('ilan_notu',foreach ($ilan->ilan_notu as $key => $value) {echo $key.' : '.$value.', ';}); ?>"/>
-            </div>
-            <!------------------------------------------------------------------------------>
               <!--başlık --------->
             <div class="mb-3">
                 <label for="ilanadi">İlan Başlığı</label>
@@ -183,6 +163,10 @@
                 </select>
               </div>
 
+              <div class="mb-3">
+                <label for="ilan_notu">İlan Notu :</label>
+                <input class="form-control" type="text" name="ilan_notu" value="<?php foreach ($ilan->ilan_notu as $key => $value) {echo $key.' : '.$value.', ';}  ?>"/>
+              </div>
               <!------------------------------------------------------------------------------>
               <hr class="mb-4"/>
               <?php

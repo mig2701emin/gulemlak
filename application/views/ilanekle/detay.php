@@ -53,16 +53,17 @@
             <!--iletişim bilgileri --------->
             <h2 class="text-center">İletişim Bilgileri</h2>
             <div class="mb-3">
+              <?php $user=$this->session->userdata("userData");?>
                 <label for="ilanadi">Adı Soyadı</label>
-                <input type="text" class="form-control" name="adsoyad" value="<?php echo $user->ad;?> <?php echo $user->soyad;?>" disabled>
+                <input type="text" class="form-control" name="adsoyad" value="<?php echo $user['ad'];?> <?php echo $user['soyad'];?>" disabled>
             </div>
             <div class="mb-3">
                 <label for="gsm">Cep Telefonu</label>
-                <input type="text" class="form-control" name="gsm" value="<?php if($user->gsm!=''){echo $user->gsm;}else{echo "Belirtilmemiş";}?>" disabled>
+                <input type="text" class="form-control" name="gsm" value="<?php if($user['gsm']!=''){echo $user['gsm'];}else{echo "Belirtilmemiş";}?>" disabled>
             </div>
             <div class="mb-3">
                 <label for="istel">İş Telefonu</label>
-                <input type="text" class="form-control" name="istel" value="<?php if($user->istel!=''){echo $user->istel;}else{echo "Belirtilmemiş";}?>" disabled>
+                <input type="text" class="form-control" name="istel" value="<?php if($user['istel']!=''){echo $user['istel'];}else{echo "Belirtilmemiş";}?>" disabled>
             </div>
             <div class="custom-control custom-checkbox mb-3">
               <input type="checkbox"  class="custom-control-input" name="yayinla" id="yayinla" value="1" checked/>
@@ -84,7 +85,7 @@
             <?php endif; ?>
             <!--magaza sahipleri bitiş-->
             <div class="custom-control custom-checkbox mb-3">
-              <input type="checkbox"  class="custom-control-input" name="yenilensin" id="yenilensin" value="1"/>
+              <input type="checkbox"  class="custom-control-input" name="yenilensin" id="yenilensin" value="1" checked/>
               <label class="custom-control-label" for="yenilensin">Süre Bitiminde İlan Yenilensin</label>
             </div>
             <div class="mb-3">
@@ -334,14 +335,14 @@
                       </select>
                   </div>
                   <hr class="mb-4"/>
-                  <!-- <div style="float:left;width:25%">
+                  <div style="float:left;width:25%">
                     <input type="checkbox" name="use_map" id="use_map_option" value="1"/>
                     <label for="use_map_option">Harita Özelliğini Kullanmak İstiyorum.</label>
                   </div>
-                  <div style="clear:both"></div> -->
+                  <div style="clear:both"></div>
                 </div>
-                <!-- <div id="use_map_overlay">Harita Özelliğini Kullanmak İçin Tıklayınız</div> -->
-                <div class="col-12" id="gmap" style="height:575px"></div>
+                <div id="use_map_overlay">Harita Özelliğini Kullanmak İçin Tıklayınız</div>
+                <div id="gmap" style="height:575px"></div>
               </div>
               <hr class="mb-4"/>
               <div class="custom-control custom-checkbox">
