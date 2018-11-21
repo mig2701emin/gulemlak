@@ -235,7 +235,7 @@
                               <?php else: ?>
                                 <li class="account-icon">
                                     <a href="#">
-                                        <span class="color_bg3" style="width:150px;"><i class="fa fa-user"></i> Giriş</span>
+                                        <span class="color_bg3"><i class="fa fa-user"></i> Giriş</span>
                                     </a>
                                     <div class="header-link-dropdown account-link-dropdown" style="width:170px;">
                                         <ul class="link-dropdown-list">

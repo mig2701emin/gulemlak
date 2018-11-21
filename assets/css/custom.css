@@ -986,9 +986,9 @@ header#header {
 }
 
 .header-right-link > ul > li > a span {
-	background: #855858;
+
 	height: 35px;
-	width: 35px;
+	width: 150px;
     color: #ffffff;
     font-size: 18px;
     line-height: 35px;
@@ -1003,6 +1003,7 @@ header#header {
     -moz-border-radius : 3px;
     -webkit-border-radius : 3px;
     -o-border-radius : 3px;
+	overflow: hidden;
 }
 
 .header-right-link ul li.cart-icon > a span small.cart-notification {
@@ -5503,7 +5504,7 @@ label {
 // FOOTER  //----------------------------
 _______________________________________________________*/
 .footer {
-	background: #fafafa;
+	background-image: linear-gradient(150deg, #000474 0%, #19a0ff 100%);
 }
 
 .footer a:hover {
