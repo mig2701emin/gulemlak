@@ -5,7 +5,7 @@
     $ilanlar=$this->db->query("select Id,ilanId, seo_url from firmalar where onay=1")->result();
     foreach ($ilanlar as $ilan) {?>
       <url>
-          <loc><?php echo base_url(); ?><?php echo $ilan->seo_url; ?>-<?php echo $ilan->Id; ?></loc>
+          <loc><?php echo base_url(); ?><?php echo $ilan->seo_url; ?>/<?php echo encode($ilan->Id); ?></loc>
       </url>
     <?php }
   ?>
