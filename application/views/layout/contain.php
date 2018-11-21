@@ -169,13 +169,17 @@
                     <div class="inner-listing">
                         <div class="row">
 
-                          <?php foreach ($mainVitrins as $item){ ?>
 
-                            <div  class="products col-md-3  item-width mb-30">
-                                <div class="row product-item">
 
-                                    <div class=" product-image col-12" style="min-height:130px; ">
-                                        <div style="    position: absolute;
+
+
+                            <?php foreach ($mainVitrins as $item){ ?>
+
+                                <div  class="products col-6 col-md-3  item-width mb-20" >
+                                    <div class="row product-item minheight280" style="border-radius: 20px;border: #ebebeb 1px solid;margin-right: -13px;margin-left: -13px;padding-bottom: 5px;">
+
+                                        <div class=" product-image col-12" style="padding-left:3px;padding-right:3px;padding-top: 2px;  ">
+                                            <div style="    position: absolute;
     right: 10px;
     bottom: 5px;
     background-color: #f4b035;
@@ -185,117 +189,133 @@
     opacity: 1;
     font-size: 11px;
     min-height: 25px;  ">
-                                            <i class="fas fa-caret-right"></i><?php if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}?>
-
-                                        </div>
-                                        <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>">
-
-                                            <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
-                                        </a>
-                                        <div class="product-detail-inner">
-                                            <div class="detail-inner-left align-center">
-                                                <ul>
-                                                    <li class="pro-cart-icon">
-                                                        <form>
-                                                            <button title="Add to Cart"><i class="fa fa-heart" style="color:red"></i></button>
-                                                        </form>
-                                                    </li>
-
-                                                    <li class="pro-quick-view-icon"><a class="popup-with-product" href="#product_popup" title="quick-view"><i class="fa fa-eye" style="color:red"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-item-details col-12 ">
-
-                                        <div class="product-item-name">
-
-
-
-                                            <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>"><?php echo $item->firma_adi; ?></a>
-
-                                        </div>
-                                        <div class="row">
-                                          <div class="col-12 align-right">
-                                            <div class="price-box">
-                                              <span class="price color_text4 " style="font-family:Montserrat;font-size: 15px;"><?php echo number_format($item->fiyat,0, ',', '.').' '.$item->birim; ?></span>
-                                            </div>
-                                          </div>
-
-                                          <div class="col-12" style="min-height:30px;margin-bottom:4px;margin-top: 4px; ">
-
-                                              <div class="row">
-                                                  <div class="col-1" style="color:#ff0052"></div>
-                                                  <div class="col-10">
-
-                                                      <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>">
-                                                          <?php if ($item->kategori2) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
-                                                          <?php if ($item->kategori3) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
-                                                          <?php if ($item->kategori4) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}?>
-                                                      </a>
-                                                      </div>
-                                              </div>
-
-
-                                          </div>
-
-
-                                        <div class="location col-12">
-                                            <div class="row">
-                                                <div class="col-1" style="font-size:15px "><i class="fas fa-map-marker-alt"></i></div>
-                                                <div class="col-10">
-                                                    <?php if ($item->il) {echo replace('tbl_il', 'il_ad','il_id', $item->il);}?>
-                                                    <?php if ($item->ilce) {echo ' / '.replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce);}?>
-                                                    <br> <?php if ($item->mahalle) {echo replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle);}?>
-                                                </div>
-                                            </div>
+                                                <i class="fas fa-caret-right"></i><?php if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}?>
 
                                             </div>
 
 
-                                            <div class="col-8">
-<div class="row mt-2">
-    <div class="col-2" style="color: #ff0052"> <i class="fas fa-box"></i></div>
-    <div class="col-9"> <span style="line-height: 14px;font-size: 14px;display: inline-block;font-weight: 700;color: gray;"> Gül Emlak Gayrimenkul</span></div>
-</div>
+                                            <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>">
 
-                                            </div>
-                                        <div class="col-4">
-                                            <a>
-                                                <img src="/assets/images/kisi.jpg" alt="..." class="rounded-circle" width="50"  height="50" style="border:red 3px solid; opacity: 0.8">
+                                                <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  style="border-radius:20px;max-height: 150px "  alt="<?php echo $item->firma_adi; ?>">
                                             </a>
 
-                                        </div>
 
-                                        </div>
-                                        <div class="product-detail-inner">
-                                            <div class="detail-inner-left">
-                                                <ul>
-                                                    <li class="pro-cart-icon">
-                                                        <form>
-                                                            <button title="Add to Cart"><i class="fa fa-heart" style="color:red"></i></button>
-                                                        </form>
-                                                    </li>
-                                                     <li class="pro-quick-view-icon"><a title="quick-view" href="#product_popup" class="popup-with-product"><i class="fa fa-eye" style="color:purple"></i></a></li>
-                                                </ul>
+
+                                            <div class="product-detail-inner">
+                                                <div class="detail-inner-left align-center">
+                                                    <ul>
+                                                        <li class="pro-cart-icon">
+                                                            <form>
+                                                                <button title="Add to Cart"><i class="fa fa-heart" style="color:red"></i></button>
+                                                            </form>
+                                                        </li>
+
+                                                        <li class="pro-quick-view-icon"><a class="popup-with-product" href="#product_popup" title="quick-view"><i class="fa fa-eye" style="color:red"></i></a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="company collapse  col-12">
-                                        <div class="card card-body">
-                                            <div>Emlakçı Melahat</div>
-                                            <!--                                                <div>İletişim Bilgileri:0532 321 21 21<br>Adres: Şahinbey Gaziantep</div>-->
-                                            <a><i class="fab fa-whatsapp"></i> Whatsup</a>
-                                            <a><i class="fas fa-phone"></i> Ara</a>
+                                        <div class="product-item-details col-12 ">
 
-                                            <a><i class="fab fa-facebook-messenger"></i>Facebook Messagenger</a>
+                                            <div class="product-item-name">
+
+
+
+                                                <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>"><?php echo $item->firma_adi; ?></a>
+
+
+
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 align-right">
+                                                    <div class="price-box">
+                                                        <span class="price color_text4 " style="font-family:Montserrat;font-size: 15px;"><?php echo number_format($item->fiyat,0, ',', '.').' '.$item->birim; ?></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12" style="min-height:30px;margin-bottom:4px;margin-top: 4px; ">
+
+                                                    <div class="row">
+                                                        <div class="col-1" style="color:#ff0052"></div>
+                                                        <div class="col-10">
+
+                                                            <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                                                <?php if ($item->kategori2) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
+                                                                <?php if ($item->kategori3) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
+                                                                <?php if ($item->kategori4) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}?>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+
+                                                <div class="location col-12">
+                                                    <div class="row">
+                                                        <div class="col-1" style="font-size:15px "></div>
+                                                        <div class="col-10">
+                                                            <?php if ($item->il) {echo replace('tbl_il', 'il_ad','il_id', $item->il);}?>
+                                                            <?php if ($item->ilce) {echo ' / '.replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce);}?>
+                                                            <br> <?php if ($item->mahalle) {echo replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle);}?>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+
+
+                                            </div>
+                                            <div class="product-detail-inner">
+                                                <div class="detail-inner-left">
+                                                    <ul>
+                                                        <li class="pro-cart-icon">
+                                                            <form>
+                                                                <button title="Add to Cart"><i class="fa fa-heart" style="color:red"></i></button>
+                                                            </form>
+                                                        </li>
+                                                        <li class="pro-quick-view-icon"><a title="quick-view" href="#product_popup" class="popup-with-product"><i class="fa fa-eye" style="color:purple"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <div class="company collapse  col-12">
+                                            <div class="card card-body">
+                                                <div>Emlakçı Melahat</div>
+                                                <!--                                                <div>İletişim Bilgileri:0532 321 21 21<br>Adres: Şahinbey Gaziantep</div>-->
+                                                <a><i class="fab fa-whatsapp"></i> Whatsup</a>
+                                                <a><i class="fas fa-phone"></i> Ara</a>
+
+                                                <a><i class="fab fa-facebook-messenger"></i>Facebook Messagenger</a>
+                                            </div>
+                                        </div>
+
+
                                     </div>
-
-
                                 </div>
-                            </div>
-                          <?php } ?>
+                            <?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                         </div>
                     </div>
@@ -328,12 +348,15 @@
                 <div class="product-listing grid-type">
                     <div class="inner-listing">
                         <div class="row">
+
+
+
                             <?php foreach ($emergencyVitrins as $item){ ?>
 
-                                <div  class="products col-md-3  item-width mb-30">
-                                    <div class="row product-item">
+                                <div  class="products col-6 col-md-3  item-width mb-20" >
+                                    <div class="row product-item minheight280" style="border-radius: 20px;border: #ebebeb 1px solid;margin-right: -13px;margin-left: -13px;padding-bottom: 5px;">
 
-                                        <div class=" product-image col-12" style="min-height:130px; ">
+                                        <div class=" product-image col-12" style="padding-left:3px;padding-right:3px;padding-top: 2px;  ">
                                             <div style="    position: absolute;
     right: 10px;
     bottom: 5px;
@@ -347,9 +370,15 @@
                                                 <i class="fas fa-caret-right"></i><?php if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}?>
 
                                             </div>
+
+
                                             <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>">
-                                                <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
+
+                                                <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  style="border-radius:20px;max-height: 150px "  alt="<?php echo $item->firma_adi; ?>">
                                             </a>
+
+
+
                                             <div class="product-detail-inner">
                                                 <div class="detail-inner-left align-center">
                                                     <ul>
@@ -363,14 +392,18 @@
                                                     </ul>
                                                 </div>
                                             </div>
-
                                         </div>
                                         <div class="product-item-details col-12 ">
 
                                             <div class="product-item-name">
 
 
+
                                                 <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>"><?php echo $item->firma_adi; ?></a>
+
+
+
+
                                             </div>
                                             <div class="row">
                                                 <div class="col-12 align-right">
@@ -381,10 +414,10 @@
                                                 <div class="col-12" style="min-height:30px;margin-bottom:4px;margin-top: 4px; ">
 
                                                     <div class="row">
-                                                        <div class="col-1" style="color:#ff0052"><i class="fas fa-caret-right"></i></div>
+                                                        <div class="col-1" style="color:#ff0052"></div>
                                                         <div class="col-10">
 
-                                                            <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>">
+                                                            <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
                                                                 <?php if ($item->kategori2) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
                                                                 <?php if ($item->kategori3) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
                                                                 <?php if ($item->kategori4) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}?>
@@ -398,7 +431,7 @@
 
                                                 <div class="location col-12">
                                                     <div class="row">
-                                                        <div class="col-1" style="font-size:15px "><i class="fas fa-map-marker-alt"></i></div>
+                                                        <div class="col-1" style="font-size:15px "></div>
                                                         <div class="col-10">
                                                             <?php if ($item->il) {echo replace('tbl_il', 'il_ad','il_id', $item->il);}?>
                                                             <?php if ($item->ilce) {echo ' / '.replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce);}?>
@@ -409,19 +442,7 @@
                                                 </div>
 
 
-                                                <div class="col-8">
-                                                    <div class="row mt-2">
-                                                        <div class="col-2" style="color: #ff0052"> <i class="fas fa-box"></i></div>
-                                                        <div class="col-9"> <span style="line-height: 14px;font-size: 14px;display: inline-block;font-weight: 700;color: gray;"> Gül Emlak Gayrimenkul</span></div>
-                                                    </div>
 
-                                                </div>
-                                                <div class="col-4">
-                                                    <a>
-                                                        <img src="/assets/images/kisi.jpg" alt="..." class="rounded-circle" width="50"  height="50" style="border:red 3px solid; opacity: 0.8">
-                                                    </a>
-
-                                                </div>
 
                                             </div>
                                             <div class="product-detail-inner">
@@ -452,9 +473,6 @@
                                     </div>
                                 </div>
                             <?php } ?>
-
-
-
 
 
 
@@ -486,12 +504,13 @@
                 <div class="product-listing grid-type">
                     <div class="inner-listing">
                         <div class="row">
+
                             <?php foreach ($sonEklenenler as $item){ ?>
 
-                                <div  class="products col-md-3  item-width mb-30">
-                                    <div class="row product-item">
+                                <div  class="products col-6 col-md-3  item-width mb-20" >
+                                    <div class="row product-item minheight280" style="border-radius: 20px;border: #ebebeb 1px solid;margin-right: -13px;margin-left: -13px;padding-bottom: 5px;">
 
-                                        <div class=" product-image col-12" style="min-height:130px; ">
+                                        <div class=" product-image col-12" style="padding-left:3px;padding-right:3px;padding-top: 2px;  ">
                                             <div style="    position: absolute;
     right: 10px;
     bottom: 5px;
@@ -505,9 +524,15 @@
                                                 <i class="fas fa-caret-right"></i><?php if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}?>
 
                                             </div>
+
+
                                             <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>">
-                                                <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
+
+                                                <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  style="border-radius:20px;max-height: 150px "  alt="<?php echo $item->firma_adi; ?>">
                                             </a>
+
+
+
                                             <div class="product-detail-inner">
                                                 <div class="detail-inner-left align-center">
                                                     <ul>
@@ -527,7 +552,12 @@
                                             <div class="product-item-name">
 
 
+
                                                 <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>"><?php echo $item->firma_adi; ?></a>
+
+
+
+
                                             </div>
                                             <div class="row">
                                                 <div class="col-12 align-right">
@@ -538,10 +568,10 @@
                                                 <div class="col-12" style="min-height:30px;margin-bottom:4px;margin-top: 4px; ">
 
                                                     <div class="row">
-                                                        <div class="col-1" style="color:#ff0052"><i class="fas fa-caret-right"></i></div>
+                                                        <div class="col-1" style="color:#ff0052"></div>
                                                         <div class="col-10">
 
-                                                            <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>">
+                                                            <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
                                                                 <?php if ($item->kategori2) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
                                                                 <?php if ($item->kategori3) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
                                                                 <?php if ($item->kategori4) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}?>
@@ -555,7 +585,7 @@
 
                                                 <div class="location col-12">
                                                     <div class="row">
-                                                        <div class="col-1" style="font-size:15px "><i class="fas fa-map-marker-alt"></i></div>
+                                                        <div class="col-1" style="font-size:15px "></div>
                                                         <div class="col-10">
                                                             <?php if ($item->il) {echo replace('tbl_il', 'il_ad','il_id', $item->il);}?>
                                                             <?php if ($item->ilce) {echo ' / '.replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce);}?>
@@ -566,19 +596,6 @@
                                                 </div>
 
 
-                                                <div class="col-8">
-                                                    <div class="row mt-2">
-                                                        <div class="col-2" style="color: #ff0052"> <i class="fas fa-box"></i></div>
-                                                        <div class="col-9"> <span style="line-height: 14px;font-size: 14px;display: inline-block;font-weight: 700;color: gray;"> Gül Emlak Gayrimenkul</span></div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-4">
-                                                    <a>
-                                                        <img src="/assets/images/kisi.jpg" alt="..." class="rounded-circle" width="50"  height="50" style="border:red 3px solid; opacity: 0.8">
-                                                    </a>
-
-                                                </div>
 
 
                                             </div>
@@ -610,7 +627,6 @@
                                     </div>
                                 </div>
                             <?php } ?>
-
 
 
 
