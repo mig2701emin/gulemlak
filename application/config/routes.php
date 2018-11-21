@@ -15,8 +15,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:num)"]="home/kategori/$3";
         $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:any)"]="home/kategori/$4";
         $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:any)/(:num)"]="home/kategori/$4";
-        $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:any)/(:any)"]="home/kategori/$5";
-        $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:any)/(:any)/(:num)"]="home/kategori/$5";
       }
       $magazalar=$db->get('magazalar')->result();
       foreach ($magazalar as $magaza) {
