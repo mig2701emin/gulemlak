@@ -242,7 +242,7 @@
                   </div>
                   <div class=" col-12 searchSeperator"></div>
                   <div class="col-12">
-                    <form name="AdvancedSearchForm" id="AdvancedSearchForm" action="" method="post" >
+                    <form name="AdvancedSearchForm" id="AdvancedSearchForm" action="" method="get" >
                       <div class="row">
                         <div class="col-12 mt-2">
                           <label for="exampleFormControlSelect1">Fiyat</label>
@@ -404,7 +404,7 @@
                       <div class="col-12">
                         <button type="submit" class="btn color_bg3 text-light" style="width: 100%">Ara</button>
                       </div>
-                    </form>
+                    <!-- </form> -->
                   </div>
                 </div>
               <!-- Kategori Liste bitiş ........................................................-->
@@ -415,6 +415,24 @@
       </div>
     </div>
     <div class="col-md-9">
+      <div class="row">
+        <!-- <form id="sort" class="" action="" method="get"> -->
+        <select name="order_type" onchange="order_by()" style="width:200px;font-size:9pt;">
+            <option value="descdate"<?php if($order_type=='descdate'){?> selected<?php }?>>Tarihe Göre (Yeniden Eskiye)</option>
+            <option value="ascdate"<?php if($order_type=='ascdate'){?> selected<?php }?>>Tarihe Göre (Eskiden Yeniye)</option>
+            <option value="ascprice"<?php if($order_type=='ascprice'){?> selected<?php }?>>Fiyata Göre (Artan)</option>
+            <option value="descprice"<?php if($order_type=='descprice'){?> selected<?php }?>>Fiyata Göre (Azalan)</option>
+            <option value="city"<?php if($order_type=='city'){?> selected<?php }?>>İle Göre</option>
+        </select>
+        <select name="limit" onchange="order_by();" style="width:50px;font-size:9pt;margin-left:5px;">
+          <option value="10"<?php if($limit=='10'){?> selected<?php }?>>10</option>
+          <option value="20"<?php if($limit=='20'){?> selected<?php }?>>20</option>
+          <option value="30"<?php if($limit=='30'){?> selected<?php }?>>30</option>
+          <option value="40"<?php if($limit=='40'){?> selected<?php }?>>40</option>
+          <option value="50"<?php if($limit=='50'){?> selected<?php }?>>50</option>
+        </select>
+      </form>
+      </div>
       <?php
       $list_field_title = array();
       $list_field_value = array();
@@ -490,6 +508,7 @@
 </div>
   <?php $this->load->view('layout/footer');?>
 </div>
+<?php $this->load->view('layout/scripts');?>
     <script>
       function mesaj_gonder (uyeid,ilanid){alert('Mesaj gönderebilmek için giriş yapmalısınız.');}
       function favori (){alert('İlanı favorilerinize eklemeniz için üye girişi yapmanız gerekmektedir.');}
@@ -497,7 +516,7 @@
     </script>
     <script type="text/javascript">
     function order_by() {
-      $("#sort").submit();
+      $("#AdvancedSearchForm").submit();
     }
     </script>
     <script type="text/javascript">
@@ -580,6 +599,5 @@
       }
     }
     </script>
-  <?php $this->load->view('layout/scripts');?>
 </body>
 </html>

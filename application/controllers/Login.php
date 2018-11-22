@@ -213,7 +213,7 @@ class Login extends CI_Controller{
 
   }
 
-  private function valid_password($password = '')
+  public function valid_password($password = '')
 		  {
 
 		    $password = trim($password);
