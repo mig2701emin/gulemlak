@@ -76,6 +76,7 @@ class Ilanekle extends CI_Controller{
           $$yeni="";
         }
       }
+      $seo_url.="/".$kategori;
       $sql="select * from fields where ((kategori='".$field_kategori."' and kategori2='0')";
       if ($field_kategori2!="") {
         $sql.=" or (kategori2='".$field_kategori2."' and kategori3='0')";

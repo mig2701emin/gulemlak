@@ -40,7 +40,7 @@
                                       <div class="row">
                                         <div class="col-12">
                                           <span>
-                                              <a  href="<?php echo base_url($anaKategori->seo.'/'.$firstSub->seo.'/'.encode($firstSub->Id)); ?>"><?php echo $firstSub->kategori_adi.' '; ?>(<?php echo countDB('firmalar','kategori2',$firstSub->Id); ?>)</a>
+                                              <a  href="<?php echo base_url($anaKategori->seo.'/'.$firstSub->seo.'/'.$firstSub->Id); ?>"><?php echo $firstSub->kategori_adi.' '; ?>(<?php echo countDB('firmalar','kategori2',$firstSub->Id); ?>)</a>
                                           </span>
                                         </div>
 
@@ -57,7 +57,7 @@
                                       <div class="row">
                                         <div class="col-10">
                                           <span>
-                                              <a href="<?php echo base_url($anaKategori->seo.'/'.$firstSub->seo.'/'.encode($firstSub->Id)); ?>"><?php echo $firstSub->kategori_adi.' '; ?></a>
+                                              <a href="<?php echo base_url($anaKategori->seo.'/'.$firstSub->seo.'/'.$firstSub->Id); ?>"><?php echo $firstSub->kategori_adi.' '; ?></a>
                                           </span>
                                         </div>
                                         <div class="col-2" style="padding:3px">

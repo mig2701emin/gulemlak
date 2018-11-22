@@ -264,7 +264,7 @@ class Hesabim extends CI_Controller{
         $$yeni="";
       }
     }
-
+    $seo_url.="/".$kategori;
     $sql="select * from fields where ((kategori='".$field_kategori."' and kategori2='0') ";
     if ($field_kategori2!="" || $field_kategori2!=0) {
       $sql.="or (kategori2='".$field_kategori2."' and kategori3='0') ";
@@ -277,15 +277,6 @@ class Hesabim extends CI_Controller{
     }
     if ($field_kategori5!="" || $field_kategori5!=0) {
       $sql.="or (kategori5='".$field_kategori5."' and kategori6='0') ";
-    }
-    if ($field_kategori6!="" || $field_kategori6!=0) {
-      $sql.="or (kategori6='".$field_kategori6."' and kategori7='0') ";
-    }
-    if ($field_kategori7!="" || $field_kategori7!=0) {
-      $sql.="or (kategori7='".$field_kategori7."' and kategori8='0') ";
-    }
-    if ($field_kategori8!="" || $field_kategori8!=0) {
-      $sql.="or (kategori8='".$field_kategori8."') ";
     }
     $sql.=") order by siralama";
     $fields=$this->fields->getfields($sql);
@@ -1064,6 +1055,16 @@ class Hesabim extends CI_Controller{
             if ($firmalar["kategori5"]!=0) {
               $seo_url.="/".replace("kategoriler","seo","Id",$firmalar["kategori5"]);
             }
+            if ($firmalar["kategori5"]!=0) {
+              $seo_url.="/".$firmalar["kategori5"];
+            }elseif ($firmalar["kategori4"]!=0) {
+              $seo_url.="/".$firmalar["kategori4"];
+            }elseif ($firmalar["kategori3"]!=0) {
+              $seo_url.="/".$firmalar["kategori3"];
+            }elseif ($firmalar["kategori2"]!=0) {
+              $seo_url.="/".$firmalar["kategori2"];
+            }
+
             $seo_url.="/".replace("tbl_il","seo_il","il_id",$firmalar["il"]);
             $seo_url.="/".replace("tbl_ilce","seo_ilce","ilce_id",$firmalar["ilce"]);
             $seo_url.="/".replace("tbl_mahalle","seo_mahalle","mahalle_id",$firmalar["mahalle"]);

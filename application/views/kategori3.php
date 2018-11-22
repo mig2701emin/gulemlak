@@ -209,7 +209,7 @@
                         Konum
                       </div>
                       <div class="col-12 mt-2">
-                        <select name="sehir" id="sehir" onchange="filtre_il(this.options[selectedIndex].value);">
+                        <select name="sehir" id="sehir" onchange="ilcegetir(this.options[selectedIndex].value);">
                           <option value="0">Seçiniz</option>
                           <?php
                           foreach($iller as $bolge){
@@ -219,7 +219,7 @@
                         </select>
                       </div>
                       <div class="col-12 mt-2">
-                        <select name="ilce" id="ilce" onchange="filtre_ilce(this.options[selectedIndex].value);">
+                        <select name="ilce" id="ilce" onchange="mahallegetir(this.options[selectedIndex].value);">
                             <option value="0">Seçiniz</option>
                             <?php if (isset($ilceler)): ?>
                               <?php foreach ($ilceler as $item): ?>
@@ -229,7 +229,7 @@
                         </select>
                       </div>
                       <div class="col-12 mt-2">
-                        <select name="mahalle" id="mahalle" onchange="filtre_mah(this.options[selectedIndex].value);">
+                        <select name="mahalle" id="mahalle" onchange="yenisayfa(this.options[selectedIndex].value);">
                             <option value="0">Seçiniz</option>
                             <?php if (isset($mahalleler)): ?>
                               <?php foreach ($mahalleler as $item): ?>
@@ -483,12 +483,11 @@
         $i++;
       }
       ?>
-      <?php $this->load->view('layout/listelink');?>
       <p class="pagination"><?php echo $links; ?></p>
     </div>
   </div>
 </div>
-  <?php $this->load->view('layout/footer');?>
+  <?php $this->load->view('layout/footer2');?>
 </div>
     <script>
       function mesaj_gonder (uyeid,ilanid){alert('Mesaj gönderebilmek için giriş yapmalısınız.');}
@@ -496,6 +495,55 @@
       function favorisil (){alert('İlanı favorilerden silebilmek için üye girişi yapmanız gerekmektedir.');}
     </script>
     <script type="text/javascript">
+    function ilcegetir(parametre) {
+      if (parametre > 0){
+        var il_id = parametre;
+        //ajax işlemi post ile yapılıyor
+        $.post('<?php echo base_url(); ?>ajax/get_ilceler', {il_id : il_id}, function(result){
+          //gelen cevapta hata yoksa listeleme yapılıyor..
+          if ( result && result.status != 'error' )
+          {
+            var ilceler = result.data;
+            var select = '<option value="0">Seçiniz</option>';
+            for( var i = 0; i < ilceler.length; i++)
+            {
+              select += '<option value="'+ ilceler[i].ilce_id +'">'+ ilceler[i].ilce_ad +'</option>';
+            }
+            select += '</select>';
+            $('#ilce').empty().html(select);
+          }
+          else
+          {
+            alert('Hata : ' + result.message );
+          }
+        });
+      }
+    }
+    function mahallegetir(parametre) {
+      if (parametre>0){
+        var ilce_id = parametre;
+        //ajax işlemi post ile yapılıyor
+      $.post('<?php echo base_url(); ?>ajax/get_mahalleler', {ilce_id : ilce_id}, function(result){
+          //gelen cevapta hata yoksa listeleme yapılıyor..
+          if ( result && result.status != 'error' )
+          {
+            var mahalleler = result.data;
+            var select = '<option value="0">Seçiniz</option>';
+            for( var i = 0; i < mahalleler.length; i++)
+            {
+              select += '<option value="'+ mahalleler[i].mahalle_id +'">'+ mahalleler[i].mahalle_ad +'</option>';
+            }
+            select += '</select>';
+
+            $('#mahalle').empty().html(select);
+          }
+          else
+          {
+            alert('Hata : ' + result.message );
+          }
+        });
+      }
+    }
     function order_by() {
       $("#sort").submit();
     }
@@ -522,38 +570,7 @@
       seo_kelime=seo_kelime.toLowerCase();
       return seo_kelime;
     }
-    function filtre_il(parametre) {
-
-      if (parametre > 0) {
-        var iller = document.getElementById("sehir");
-        var il_ad = iller.options[iller.selectedIndex].text;
-        var seo_il = "/" + seokelime(il_ad);
-        window.location.assign('<?php echo base_url().$linkkategori; ?>' + seo_il);
-      }else if (parametre == 0) {
-        window.location.assign('<?php echo base_url().$linkkategori; ?>');
-      }
-    }
-    function filtre_ilce(parametre) {
-
-      if (parametre > 0) {
-        var iller = document.getElementById("sehir");
-        var il_ad = iller.options[iller.selectedIndex].text;
-        var seo_il = "/" + seokelime(il_ad);
-        //alert(seo_il);
-        var ilceler = document.getElementById("ilce");
-        var ilce_ad = ilceler.options[ilceler.selectedIndex].text;
-        var seo_ilce = "/" + seokelime(ilce_ad);
-        window.location.assign('<?php echo base_url().$linkkategori; ?>' + seo_il + seo_ilce);
-      }else if (parametre == 0) {
-        var iller = document.getElementById("sehir");
-        if (iller.options[iller.selectedIndex].value > 0) {
-          var il_ad = iller.options[iller.selectedIndex].text;
-          var seo_il = "/" + seokelime(il_ad);
-          window.location.assign('<?php echo base_url().$linkkategori; ?>' + seo_il);
-        }
-      }
-    }
-    function filtre_mah(parametre) {
+    function yenisayfa(parametre) {
 
       if (parametre > 0) {
         var iller = document.getElementById("sehir");

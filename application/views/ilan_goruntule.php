@@ -449,9 +449,11 @@ font-weight: bold;
 							</div>
 						</div>
 					</div>
-					<div class="row pt-3 mb-3">
-						<div class="col-12" id="gmap" style="width:100%;height:400px;"></div>
-					</div>
+					<?php if ($ilan->map): ?>
+						<div class="row pt-3 mb-3">
+							<div class="col-12" id="gmap" style="width:100%;height:400px;"></div>
+						</div>
+					<?php endif; ?>
 				</div>
                     <div class="col-lg-3 col-md-12">
                         <div class="row pl-3 pr-3">
