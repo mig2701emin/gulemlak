@@ -383,7 +383,8 @@ class Hesabim extends CI_Controller{
         $firmalar["onay"]=$onay_durum;
         $firmalar["yayinla"]=$this->security->xss_clean($this->input->post('yayinla'));
         $firmalar["yenilensin"]=$this->security->xss_clean($this->input->post('yenilensin'));
-        $firmalar["fiyat"] = $this->security->xss_clean($this->input->post('fiyat1'));
+        $fiyat=$this->security->xss_clean($this->input->post('fiyat1'));
+        $firmalar["fiyat"] =  str_replace(".","",$fiyat);
         $firmalar["fiyat2"] = $this->security->xss_clean($this->input->post('fiyat2'));
         $firmalar["birim"] = $this->security->xss_clean($this->input->post('birim'));
         $firmalar["kucuk_fotograf"] = $kucuk_fotograf;
@@ -1069,7 +1070,8 @@ class Hesabim extends CI_Controller{
             $seo_url.="/".replace("tbl_ilce","seo_ilce","ilce_id",$firmalar["ilce"]);
             $seo_url.="/".replace("tbl_mahalle","seo_mahalle","mahalle_id",$firmalar["mahalle"]);
             $firmalar["seo_url"]=$seo_url;
-            $firmalar["fiyat"] = $this->security->xss_clean($this->input->post('fiyat1'));
+            $fiyat=$this->security->xss_clean($this->input->post('fiyat1'));
+            $firmalar["fiyat"] =  str_replace(".","",$fiyat);
             $firmalar["fiyat2"] = $this->security->xss_clean($this->input->post('fiyat2'));
             $firmalar["birim"] = $this->security->xss_clean($this->input->post('birim'));
             $firmalar["kucuk_fotograf"] = $kucuk_fotograf;

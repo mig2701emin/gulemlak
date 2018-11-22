@@ -147,7 +147,7 @@
             <div class="row mb-3">
                 <div class="col-md-8" style="float: left">
                   <label for="fiyat1">Fiyat</label>
-                  <input type="number" class="form-control" name="fiyat1" placeholder="" value="<?php echo $ilan->fiyat;?>" required>
+                  <input type="text" class="form-control" size="8" name="fiyat1" placeholder="" value="<?php echo $ilan->fiyat;?>" required>
                 </div>
                 <div class="col-md-1" style="float: left">
                   <label for="fiyat2">Kuruş</label>
@@ -462,6 +462,13 @@
 function map_location(){
    <?php if($ilan->map!=''){?>codeAddress("<?php echo replace('tbl_mahalle','mahalle_ad','mahalle_id',$ilan->mahalle).' '.replace('tbl_ilce','ilce_ad','ilce_id',$ilan->ilce).' '.replace('tbl_il','il_ad','il_id',$ilan->il);?> Türkiye");<?php }?>
  };
+ $(document).ready(function() {
+ 	$("input[name='fiyat1']").autoNumeric('init',{vMax:'99999999',aPad:false,aSep: '.',aDec:','});
+ 	$("input[name='m2']").autoNumeric('init',{vMax:'999999',aPad:false,aSep: '.',aDec:','});
+ 	$("input[name='ada']").autoNumeric('init',{vMax:'99999',aPad:false,aSep: '',aDec:','});
+ 	$("input[name='parsel']").autoNumeric('init',{vMax:'99999',aPad:false,aSep: '',aDec:','});
+ });
+ </script>
 
 </body>
 </html>

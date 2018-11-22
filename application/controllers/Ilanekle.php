@@ -218,7 +218,8 @@ class Ilanekle extends CI_Controller{
             $firmalar["kategori6"] = ($field_kategori6!="") ? $field_kategori6 : 0 ;
             $firmalar["kategori7"] = ($field_kategori7!="") ? $field_kategori7 : 0 ;
             $firmalar["kategori8"] = ($field_kategori8!="") ? $field_kategori8 : 0 ;
-            $firmalar["fiyat"] = $this->security->xss_clean($this->input->post('fiyat1'));
+            $fiyat=$this->security->xss_clean($this->input->post('fiyat1'));
+            $firmalar["fiyat"] =  str_replace(".","",$fiyat);
             $firmalar["fiyat2"] = $this->security->xss_clean($this->input->post('fiyat2'));
             $firmalar["birim"] = $this->security->xss_clean($this->input->post('birim'));
             $firmalar["kucuk_fotograf"] = $kucuk_fotograf;

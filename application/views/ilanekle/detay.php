@@ -124,7 +124,7 @@
             <div class="row mb-3">
                 <div class="col-md-8" style="float: left">
                   <label for="fiyat1">Fiyat</label>
-                  <input type="text" class="form-control fiyat" name="fiyat1" id="fiyat1" placeholder="" value="<?php echo set_value('fiyat1'); ?>">
+                  <input type="text" class="form-control fiyat" size="8" name="fiyat1" id="fiyat1" placeholder="" value="<?php echo set_value('fiyat1'); ?>">
                 </div>
                 <div class="col-md-1" style="float: left">
                   <label for="fiyat2">Kuruş</label>
@@ -437,44 +437,12 @@
   function adresgetir() {
     codeAddress($("#mahalle option:selected").html()+" "+$("#ilce option:selected").html()+" "+$("#il option:selected").html()+" Türkiye");
   }
-  function addCommas(nStr){
-
-   nStr += '';
-   var x1 = nStr.replace('.','')
-   // var x = nStr.split('.');
-   // var x1 = x[0];
-   if (x1.length>9) {
-     var rgx = /(\d+)(\d{3})(\d{3})(\d{3})/;
-     while (rgx.test(x1)) {
-      x1 = x1.replace(rgx, '$1' + '.' + '$2' + '.' + '$3' + '.' + '$4');
-     }
-   } else if (x1.length>6) {
-     var rgx = /(\d+)(\d{3})(\d{3})/;
-     while (rgx.test(x1)) {
-      x1 = x1.replace(rgx, '$1' + '.' + '$2' + '.' + '$3');
-     }
-   }else {
-     var rgx = /(\d+)(\d{3})/;
-     while (rgx.test(x1)) {
-      x1 = x1.replace(rgx, '$1' + '.' + '$2');
-     }
-   }
-
-   //return x1 + x2;
-   return x1;
-  }
 $(document).ready(function() {
-  $(".fiyat").keyup(function() {
-
-     var newValue =  addCommas(this.value);
-     // alert(newValue);
-     console.log(newValue);
-     document.querySelector('.fiyat').value = newValue;
-  });
+	$("input[name='fiyat1']").autoNumeric('init',{vMax:'99999999',aPad:false,aSep: '.',aDec:','});
+	$("input[name='m2']").autoNumeric('init',{vMax:'999999',aPad:false,aSep: '.',aDec:','});
+	$("input[name='ada']").autoNumeric('init',{vMax:'99999',aPad:false,aSep: '',aDec:','});
+	$("input[name='parsel']").autoNumeric('init',{vMax:'99999',aPad:false,aSep: '',aDec:','});
 });
-
-
-
   </script>
 </body>
 </html>
