@@ -72,7 +72,7 @@
 			<a class="btn btn-info btn-block" href="<?php echo base_url('doping/magazaodeme/'.$magazaId."/".$doping); ?>">Ödeme Yap</a>
 		</div>
 		<!-- FOOTER START -->
-		<?php $this->load->view('layout/footer');?>
+		<?php $this->load->view('layout/footeruserpanel');?>
 		<!-- FOOTER END -->
 	</div>
 <?php $this->load->view('layout/scripts');?>

@@ -23,7 +23,7 @@
       <button class="btn btn-success" type="submit" name="submit">İlanı Ekle</button>
     </form>
   </div>
-    <?php $this->load->view('layout/footer');?>
+    <?php $this->load->view('layout/footeruserpanel');?>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="<?php echo base_url('assets/');?>js/script.js"></script>

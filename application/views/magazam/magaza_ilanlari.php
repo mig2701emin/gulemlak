@@ -207,7 +207,7 @@
       </div>
   </div>
 
-  <?php $this->load->view('layout/footer');?>
+  <?php $this->load->view('layout/footeruserpanel');?>
 </div>
 <div id="ilan-sil" title="İlan Silme Onayı" style="display:none">
   <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>İlanı Silmek İstediğinizden Emin Misiniz?</p>

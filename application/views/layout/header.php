@@ -90,7 +90,7 @@
                 <div class="row position-r">
                     <div class="col-xl-2 col-lg-3 bottom-part col-lgmd-20per position-initial">
                         <div class="sidebar-menu-dropdown home">
-                            <a href="<?php echo base_url('ilanekle'); ?>" class="btn-sidebar-menu-dropdown " style="background-color:green;"><i class="fa fa-plus"></i>Ücretsiz İlan Ver</a>
+                            <a href="<?php echo base_url('ilanekle'); ?>" class="btn-sidebar-menu-dropdown " style="background-color:#310080;"><i class="fa fa-plus"></i>Ücretsiz İlan Ver</a>
                             <!-- <div id="cat" class="cat-dropdown">
                                 <div class="sidebar-contant">
                                     <div id="menu" class="navbar-collapse collapse">

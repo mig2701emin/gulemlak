@@ -172,7 +172,7 @@
           </div>
         </div>
 			</div>
-    <?php $this->load->view('layout/footer');?>
+    <?php $this->load->view('layout/footeruserpanel');?>
 <style>
   .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
        background-color: #007bff;
