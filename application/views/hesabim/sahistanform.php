@@ -379,7 +379,7 @@
             </form>
           </div>
         </div>
-  <?php $this->load->view('layout/footer');?>
+  <?php $this->load->view('layout/footeruserpanel');?>
     </div>
 
   <script src="<?php echo base_url('assets/dropzone/min/dropzone.min.js'); ?>"></script>

@@ -140,7 +140,7 @@
 			</div>
 		</div>
 		<!-- FOOTER START -->
-		<?php $this->load->view('layout/footer');?>
+		<?php $this->load->view('layout/footeruserpanel');?>
 		<!-- FOOTER END -->
 	</div>
 <?php $this->load->view('layout/scripts');?>
