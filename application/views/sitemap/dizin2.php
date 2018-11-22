@@ -7,7 +7,7 @@
       <loc><?php echo base_url();?>sitemap2.xml</loc>
    </sitemap>
    <?php
-   // $anaKategoriler=$this->db->query("select Id, kategori_adi, seo from kategoriler where ust_kategori=0");
+   //$anaKategoriler=$this->db->query("select Id, kategori_adi, seo from kategoriler where ust_kategori=0");
    // foreach ($anaKategoriler->result() as $anaKategori) {
    $anaKategori=$this->db->query("select Id, kategori_adi, seo from kategoriler where Id=45")->row();
    ?>
@@ -19,6 +19,12 @@
        <sitemap>
          <loc><?php echo base_url(); ?><?php echo $anaKategori->seo; ?>/<?php echo $anaKategori->Id; ?>/<?php echo $il->seo_il; ?>/sitemap.xml</loc>
        </sitemap>
+       <?php $ilceler=$this->db->where("il_id",$il->il_id)->get("tbl_ilce")->result(); ?>
+       <?php foreach ($ilceler as $ilce): ?>
+         <sitemap>
+           <loc><?php echo base_url(); ?><?php echo $anaKategori->seo; ?>/<?php echo $anaKategori->Id; ?>/<?php echo $il->seo_il; ?>/<?php echo $ilce->seo_ilce; ?>/sitemap.xml</loc>
+         </sitemap>
+       <?php endforeach; ?>
      <?php endforeach; ?>
      <?php
      $firstSubs=$this->db->query("select Id, kategori_adi, seo from kategoriler where ust_kategori=".$anaKategori->Id);
@@ -30,6 +36,12 @@
          <sitemap>
            <loc><?php echo base_url(); ?><?php echo $anaKategori->seo; ?>/<?php echo $firstSub->seo; ?>/<?php echo $firstSub->Id; ?>/<?php echo $il->seo_il; ?>/sitemap.xml</loc>
          </sitemap>
+         <?php $ilceler=$this->db->where("il_id",$il->il_id)->get("tbl_ilce")->result(); ?>
+         <?php foreach ($ilceler as $ilce): ?>
+           <sitemap>
+             <loc><?php echo base_url(); ?><?php echo $anaKategori->seo; ?>/<?php echo $firstSub->seo; ?>/<?php echo $firstSub->Id; ?>/<?php echo $il->seo_il; ?>/<?php echo $ilce->seo_ilce; ?>/sitemap.xml</loc>
+           </sitemap>
+         <?php endforeach; ?>
        <?php endforeach; ?>
        <?php
        $secondSubs=$this->db->query("select Id, kategori_adi, seo from kategoriler where ust_kategori=".$firstSub->Id);
@@ -41,6 +53,12 @@
            <sitemap>
              <loc><?php echo base_url(); ?><?php echo $anaKategori->seo; ?>/<?php echo $firstSub->seo; ?>/<?php echo $secondSub->seo; ?>/<?php echo $secondSub->Id; ?>/<?php echo $il->seo_il; ?>/sitemap.xml</loc>
            </sitemap>
+           <?php $ilceler=$this->db->where("il_id",$il->il_id)->get("tbl_ilce")->result(); ?>
+           <?php foreach ($ilceler as $ilce): ?>
+             <sitemap>
+               <loc><?php echo base_url(); ?><?php echo $anaKategori->seo; ?>/<?php echo $firstSub->seo; ?>/<?php echo $secondSub->seo; ?>/<?php echo $secondSub->Id; ?>/<?php echo $il->seo_il; ?>/<?php echo $ilce->seo_ilce; ?>/sitemap.xml</loc>
+             </sitemap>
+           <?php endforeach; ?>
          <?php endforeach; ?>
          <?php
          $thirdSubs=$this->db->query("select Id, kategori_adi, seo from kategoriler where ust_kategori=".$secondSub->Id);
@@ -53,6 +71,12 @@
                <sitemap>
                  <loc><?php echo base_url(); ?><?php echo $anaKategori->seo; ?>/<?php echo $firstSub->seo; ?>/<?php echo $secondSub->seo; ?>/<?php echo $thirdSub->seo; ?>/<?php echo $thirdSub->Id; ?>/<?php echo $il->seo_il; ?>/sitemap.xml</loc>
                </sitemap>
+               <?php $ilceler=$this->db->where("il_id",$il->il_id)->get("tbl_ilce")->result(); ?>
+               <?php foreach ($ilceler as $ilce): ?>
+                 <sitemap>
+                   <loc><?php echo base_url(); ?><?php echo $anaKategori->seo; ?>/<?php echo $firstSub->seo; ?>/<?php echo $secondSub->seo; ?>/<?php echo $thirdSub->seo; ?>/<?php echo $thirdSub->Id; ?>/<?php echo $il->seo_il; ?>/<?php echo $ilce->seo_ilce; ?>/sitemap.xml</loc>
+                 </sitemap>
+               <?php endforeach; ?>
              <?php endforeach; ?>
              <?php
              $fourSubs=$this->db->query("select Id, kategori_adi, seo from kategoriler where ust_kategori=".$thirdSub->Id);
@@ -65,6 +89,12 @@
                    <sitemap>
                      <loc><?php echo base_url(); ?><?php echo $anaKategori->seo; ?>/<?php echo $firstSub->seo; ?>/<?php echo $secondSub->seo; ?>/<?php echo $thirdSub->seo; ?>/<?php echo $fourSub->seo; ?>/<?php echo $fourSub->Id; ?>/<?php echo $il->seo_il; ?>/sitemap.xml</loc>
                    </sitemap>
+                   <?php $ilceler=$this->db->where("il_id",$il->il_id)->get("tbl_ilce")->result(); ?>
+                   <?php foreach ($ilceler as $ilce): ?>
+                     <sitemap>
+                       <loc><?php echo base_url(); ?><?php echo $anaKategori->seo; ?>/<?php echo $firstSub->seo; ?>/<?php echo $secondSub->seo; ?>/<?php echo $thirdSub->seo; ?>/<?php echo $fourSub->seo; ?>/<?php echo $fourSub->Id; ?>/<?php echo $il->seo_il; ?>/<?php echo $ilce->seo_ilce; ?>/sitemap.xml</loc>
+                     </sitemap>
+                   <?php endforeach; ?>
                  <?php endforeach; ?>
                <?php
                }
@@ -73,6 +103,6 @@
          }
        }
      }
-   // }
+   //}
    ?>
 </sitemapindex>

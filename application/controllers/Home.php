@@ -45,13 +45,13 @@
 		}
 		public function sitemap($kategori=0,$seo_il="",$seo_ilce="")
 		{
-			if($kat==0){
+			if($kategori==0){
 				header("Content-Type: text/xml;charset=iso-8859-1");
 		    $this->load->view('sitemap/dizin');
-			}elseif ($kat=="kategori") {
+			}elseif ($kategori=="kategori") {
 				header("Content-Type: text/xml;charset=iso-8859-1");
 		    $this->load->view('sitemap/kategori');
-			}elseif ($kat=="ilan") {
+			}elseif ($kategori=="ilan") {
 				header("Content-Type: text/xml;charset=iso-8859-1");
 		    $this->load->view('sitemap/ilan');
 			}else {
@@ -70,7 +70,7 @@
 					}
 				}
 				header("Content-Type: text/xml;charset=iso-8859-1");
-		    $this->load->view('sitemap/konum'.$data);
+		    $this->load->view('sitemap/konum',$data);
 			}
 		}
 
