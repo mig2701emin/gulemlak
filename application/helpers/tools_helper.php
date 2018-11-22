@@ -215,7 +215,7 @@ function konum($seo_il,$seo_ilce,$seo_mahalle)
 function post_captcha($user_response) {
     $fields_string = '';
     $fields = array(
-        'secret' => '6LdibXAUAAAAAAZer9hgSt1cMLDLRCeTC96doGk_',
+        'secret' => '6LcLF3sUAAAAAH2QOsTKFEYdOxkW_uIxpFt8kMkT',
         'response' => $user_response
     );
     foreach($fields as $key=>$value)

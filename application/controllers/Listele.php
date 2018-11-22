@@ -2,12 +2,27 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Listele extends CI_Controller{
-
+  private $user;
+  private $magaza;
   public function __construct()
   {
     parent::__construct();
-    $this->load->model("fields");
-    $this->load->model("kategoriler");
+    $this->load->model('members');
+    $this->load->model('kategoriler');
+    $this->load->model('firmalar');
+    $this->load->model('fields');
+    $this->load->model('magazalar');
+    if($this->session->userdata('userData')){
+      $where = array("Id" => $this->session->userdata('userData')["userID"]);
+      $this->user=$this->members->get($where);
+      if(magaza_var_mi($this->user->Id)){
+        $this->magaza=$this->magazalar->getMagaza($this->magazalar->getMagazaId($this->user->Id));
+      }else {
+        $this->magaza=null;
+      }
+    }else {
+      $this->user=null;
+    }
   }
 
   function index()
@@ -16,6 +31,12 @@ class Listele extends CI_Controller{
   }
   public function get($kategori,$seo_il="",$seo_ilce="",$seo_mahalle="")
   {
+    if ($this->user!=null) {
+      $data["user"]=$this->user;
+    }
+    if ($this->magaza!=null) {
+      $data["magaza"]=$this->magaza;
+    }
     $this->load->library("pagination");
     $ek="";
     $order="";

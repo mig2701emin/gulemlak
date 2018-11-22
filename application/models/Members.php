@@ -20,7 +20,7 @@ class Members extends CI_Model{
       }
 	}
 
-  public function add($oauth_provider,$name,$surname,$email,$password,$activation_code,$ip){
+  public function add($oauth_provider,$name,$surname,$email,$password,$ip){
 			$string  = array(
         'oauth_provider'  =>$oauth_provider,
 				'ad'				      => $name,
@@ -29,7 +29,6 @@ class Members extends CI_Model{
 				'parola'			    => md5($password),
         'onay'            =>'1',
 				'kayit_tarihi'    => date('Y-m-d H:i:s'),
-        'activation_code' =>$activation_code,
         'ip'              => $ip
 			);
 

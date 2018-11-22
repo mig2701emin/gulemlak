@@ -128,7 +128,7 @@ class Login extends CI_Controller{
             if ($res['success']) {
               $mailControl = $this->members->email($email);
               if($mailControl == false){
-                $insert = $this->members->add($oauth_provider,$name,$surname,$email,$password,$activation_code,$ip);
+                $insert = $this->members->add($oauth_provider,$name,$surname,$email,$password,$ip);
                 if($insert){
 
     ///////////////////////////////////////////////////////////////////
