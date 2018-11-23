@@ -14,7 +14,8 @@
 
     .pagination a, .pagination strong{
 
-      padding: 5px;
+      text-align: center;
+        min-width: 25px;
       border: 1px solid #ccc;
       margin-left: 5px;
       text-decoration: none;
@@ -23,7 +24,7 @@
     }
     .pagination strong{
       background-color: #35a5f2;
-
+color:white;
     }
   </style>
   <script>
@@ -36,6 +37,7 @@
       $("#xdiv"+a).html('<a class="submenu_text" href="javascript:show(\''+a+'\');">Tümünü Göster</a>');
     }
   </script>
+
 </head>
 <body>
   <div class="se-pre-con"></div>
@@ -46,7 +48,7 @@
       <div class="row mt-60 mb-60" >
         <div class="col-md-3">
           <div class="sidebar-block">
-            <div class="sidebar-box listing-box mb-40">
+            <div class="sidebar-box listing-box mb-40" style="font-size: 14px">
               <span class="opener plus"></span>
               <div class="sidebar-title">
                 <h3><span>Arama Fİltresİ</span></h3>
