@@ -4,7 +4,7 @@
 <div class="footer">
 
      <div class="container">
-         <figure  style=" left: 0;right: 0;bottom: 50px;display:block;position: absolute ;   margin-bottom: 0;    margin: 0 0 1rem;">
+         <figure  style=" left: 0;right: 0;bottom:50px;display:block;position: absolute ;   margin-bottom: 0;    margin: 0 0 1rem;">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" viewBox="0 0 1920 347.1" style="margin-bottom: -9px; enable-background:new 0 0 1920 347.1;" xml:space="preserve" class="injected-svg js-svg-injector" data-parent="#SVGheroBgElements">
 <style type="text/css">
     .wave-4-bottom-0{fill:#FFFFFF;}
@@ -93,7 +93,7 @@
                 <div class="row mtb-30">
                     <div class="col-xl-4">
                         <div class="footer_social center-md">
-                            <ul class="social-icon">
+                            <ul class="social-icon" >
                                 <li><div class="title">Bizi Takip Edin:</div></li>
                                 <li><a title="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a title="Twitter" class="twitter"><i class="fab fa-twitter"></i></a></li>
@@ -104,9 +104,7 @@
                         </div>
                     </div>
                     <div class="col-xl-4">
-                        <div class="align-center">
-                            <div class="copy-right">© 2018 <a href="#" style="color: #007bff">Ticaret Meclisi</a> Tüm Hakları Saklıdır  </div>
-                        </div>
+
                     </div>
                     <div class="col-xl-4 ">
                         <div class="payment">
@@ -140,6 +138,10 @@
                         </ul>
                     </div>
                 </div>
+                <div class="col-12">
+                <div class="align-center">
+                    <div class="copy-right"><a href="#" style="color: #007bff;font-size: 12px;">© 2018  Ticaret Meclisi Tüm Hakları Saklıdır </a>  </div>
+                </div></div>
             </div>
         </div>
     </div>

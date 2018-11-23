@@ -157,7 +157,7 @@
       }
       </script>
     </div>
-    <?php $this->load->view('layout/footeruserpanel');?>
+    <?php $this->load->view('layout/footer');?>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="<?php echo base_url('assets/');?>js/script.js"></script>
