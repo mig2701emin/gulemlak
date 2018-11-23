@@ -42,7 +42,7 @@
               <div class="col-lg-9 col-md-8 col-12">
                 <div class="row">
                   <div class="col-md-4 col-sm-6 col-5 pt-3 pb-3">
-                    <input class="p-3" type="radio" name="store_type" value="1/12" onclick="button_open(1);" checked/>
+                    <input class="p-3" type="radio" name="store_type" value="1/12" onclick="button_open(1);">
                     12 Ay
                   </div>
                   <div class="col-md-4 col-sm-6 col-7 pt-3 pb-3">
@@ -58,7 +58,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-4 col-sm-6 col-5">
-                    <input class="p-3" type="radio" name="store_type" value="1/6" onclick="button_open(1);"/>
+                    <input class="p-3" type="radio" name="store_type" value="1/6" onclick="button_open(1);">
                     6 Ay
                   </div>
                   <div class="col-md-4 col-sm-6 col-7">
@@ -68,7 +68,7 @@
                     <?php }?>
                   </div>
                   <div class="col-md-4 col-sm-12 col-12">
-                    <button class="btn btn-success btn-sm" type="submit" name="devam" id="devam1">Devam</button>
+                    <button class="btn btn-success btn-sm" type="submit" name="devam" id="devam1" style="display:none;">Devam</button>
                   </div>
                 </div>
               </div>
@@ -105,7 +105,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-4 col-sm-6 col-5">
-                    <input class="p-3" type="radio" name="store_type" value="2/6" onclick="button_open(2);">
+                    <input class="p-3" type="radio" name="store_type" value="2/6" onclick="button_open(2);" checked>
                     6 Ay
                   </div>
                   <div class="col-md-4 col-sm-6 col-7">
@@ -117,7 +117,7 @@
                     <?php }?>
                   </div>
                   <div class="col-md-4 col-sm-12 col-12">
-                    <button class="btn btn-success btn-sm" type="submit" name="devam" id="devam2" style="display:none;">Devam</button>
+                    <button class="btn btn-success btn-sm" type="submit" name="devam" id="devam2">Devam</button>
                   </div>
                 </div>
               </div>

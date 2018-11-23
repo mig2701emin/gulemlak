@@ -67,17 +67,19 @@ class Magazaac extends CI_Controller{
     $this->load->view("magazaac/settype",$data);
     if (isset($_POST) && !empty($_POST)) {
       $store_type=$this->security->xss_clean($this->input->post("store_type"));
-      redirect(base_url("magazaac/detay/".encode($paket)."/".encode($store_type)));
+      redirect(base_url("magazaac/detay/".encode($paket)."/".$store_type));
     }
 
   }
-  public function detay($paket,$store_type1)
+  public function detay($paket,$store_type1,$store_type2)
   {
+    $store_type = array($store_type1,$store_type2);
     $a=$this->db->get("ayarlar")->row();
     $paket=decode($paket);
-    $store_type2=decode($store_type1);
-    $store_type=explode("/",$store_type2);
-
+    // $store_type2=decode($store_type1);
+    // $store_type=explode("/",$store_type2);
+    // print_r($store_type);
+    // die();
     if($paket=="hepsi"){
     	$super_12=$a->hepsibir_super_12;
     	$super_6=$a->hepsibir_super_6;
