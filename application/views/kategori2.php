@@ -37,7 +37,7 @@
     }
   </script>
 </head>
-<body class="color_bg1">
+<body>
   <div class="se-pre-con"></div>
   <div class="main">
     <!-- HEADER START -->
@@ -414,7 +414,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-9">
+        <div class="col-md-9">
       <div class="row">
         <!-- <form id="sort" class="" action="" method="get"> -->
         <select name="order_type" onchange="order_by()" style="width:200px;font-size:9pt;">
@@ -458,7 +458,7 @@
         $ilan_no=$a->Id;
         $mahalle=$this->db->query("select * from tbl_mahalle where mahalle_id='".$a->mahalle."'")->row();
         ?>
-        <div class="row mt-1 border-bottom<?php if($i%2==0){ ?> color_bg-1<?php }else{ ?> color_bg-2<?php } ?>" onclick="window.location='<?php echo base_url();?><?php echo $seolink2;?>/<?php echo encode($ilan_no);?>';">
+        <div class="row   p-1 mt-1 border-bottom<?php if($i%2==0){ ?> white-bg<?php }else{ ?> light-gray-bg<?php } ?>" onclick="window.location='<?php echo base_url();?><?php echo $seolink2;?>/<?php echo encode($ilan_no);?>';">
           <div class="col-md-3">
             <?php if($a->kucuk_fotograf==1 and ilk_resim($a->Id)!='' and file_exists('photos/thumbnail/'.ilk_resim($a->Id))){?>
               <img src = "<?php echo base_url();?>photos/thumbnail/<?php echo ilk_resim($a->Id);?>" height = "110" width="178" border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
@@ -467,33 +467,34 @@
             <?php }?>
           </div>
           <div class="col-md-6">
-            <div class="row">
+            <div class="row mt-2">
               <div class="col-12"></div>
-              <a href="javascript:void(0);"><?php echo $firma_adi;?></a>
+              <a href="javascript:void(0);" style="font-weight: bold"><?php echo $firma_adi;?></a>
               <br/>
-              <div class="col-6" style="font-size: 12px;">
-                İlan Tarihi:<?php yeni_tarih2($a->kayit_tarihi);?>
-              </div>
-              <div class="col-6 color_text4">
+
+              <div class="col-12 color_text4 mt-2">
                 <b><?php echo number_format($a->fiyat,0, ',', '.').' '.$a->birim; ?></b>
               </div>
             </div>
-            <div class="row">
+            <div class="row mt-2">
               <?php
               $t=0;
               foreach ($list_field_value as $list_field_val) {
-                echo '<div class="col-md-4">'. $list_field_title[$t].':'.get_ad_cat_show_detail($list_field_val,$ilan_no).'</div>';
+                echo '<div class="col-md-4" style="font-size: 12px;">'. $list_field_title[$t].':'.get_ad_cat_show_detail($list_field_val,$ilan_no).'</div>';
                 $t++;
               }
               ?>
             </div>
           </div>
           <div class="col-md-3 ">
-            <div class="col-12 font-weight-bold " style="font-size:12px;font-family: "Raleway", sans-serif">
+            <div class="col-12 font-weight-bold  mt-4" style="font-size:12px;font-family: "Raleway", sans-serif">
               <i class="fas fa-map-marker-alt"></i>
               <?php if ($il) { echo $il->il_ad;}?>
               <br/>
               <?php if($mahalle){echo $mahalle->mahalle_ad;}?>
+            </div>
+            <div class="col-12 mt-2" style="font-size: 11px;">
+                İlan Tarihi:<?php yeni_tarih2($a->kayit_tarihi);?>
             </div>
           </div>
         </div>
