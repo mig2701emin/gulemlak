@@ -1272,7 +1272,7 @@ header#header {
 
 }
 .category-dropdown2 {
-    background: #eb0000;
+    background: #2c9bf4;
     /*border: 1px solid #e1e1e1;*/
     position: absolute;
     left:0;
@@ -4364,6 +4364,7 @@ ul li.service-box:last-child {
 	-webkit-border-radius: 0px;
 	-o-border-radius: 0px;
 	height: 40px;
+	font-size: 14px;
 }
 .form-control:focus {
 	-webkit-box-shadow: none;
