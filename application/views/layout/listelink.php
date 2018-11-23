@@ -117,9 +117,9 @@
       }
       $metin.=$kategori->Id;
       $metin.='/';
-      $metin.=$il->seo_il;
+      $metin.=$item->seo_il;
       $metin.='" rel="';
-      $metin.=mb_convert_case(mb_strtolower($item->ilce_ad), MB_CASE_TITLE, 'UTF-8');
+      $metin.=mb_convert_case(mb_strtolower($item->il_ad), MB_CASE_TITLE, 'UTF-8');
       $metin.=', ';
       if (count($kategorys) > 3) {
         $metin.=$kategorys[2]->kategori_adi.', '.$kategorys[3]->kategori_adi;
@@ -131,7 +131,7 @@
         $metin.='Satılık Kiralık '.$kategorys[0]->kategori_adi;
       }
       $metin.=', ticaretmeclisi" style="font-size:1px;">';
-      $metin.=mb_convert_case(mb_strtolower($item->ilce_ad), MB_CASE_TITLE, 'UTF-8');
+      $metin.=mb_convert_case(mb_strtolower($item->il_ad), MB_CASE_TITLE, 'UTF-8');
       $metin.='</a>';
       echo $metin;
     }
