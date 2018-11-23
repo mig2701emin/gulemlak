@@ -116,7 +116,7 @@
 	  position: relative;
 	  width: 100%;
 	  float: left;
-	  margin: 20px 20px;
+	  margin: 10px 10px;
 	}
 
 	.cont_breadcrumbs_1 > ul > li {
@@ -144,7 +144,7 @@
 	}
 	.cont_breadcrumbs_1 > ul > li:last-child {
 	  /* background-color: #78909C; */
-	  background-color: #855858;
+	  background-color: #2a62bc;
 	  transform: skew(0deg);
 		margin-left: -5px;
 
@@ -162,8 +162,8 @@ font-weight: bold;
     display: inline-block;
     min-width: 10px;
     padding: 6px 7px;
-    font-size: 11px;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 600;
     line-height: 1;
     color: #000;
     text-align: left;
@@ -174,13 +174,14 @@ font-weight: bold;
     border-radius: 10px;
     margin-top: 2px;
     float: left !important;
+    font-family: 'Open Sans';
 }
 .bilgiler {
     display: inline-block;
     min-width: 10px;
     padding: 6px 7px;
-    font-size: 11px;
-    font-weight: 700;
+    font-size: 13px;
+
     line-height: 1;
     color: #000;
     text-align: left;
@@ -191,6 +192,7 @@ font-weight: bold;
     border-radius: 10px;
     margin-top: 2px;
     float: left !important;
+    font-family: 'Open Sans';
 }
 .linkler {
     /* display: inline-block; */
@@ -224,7 +226,7 @@ font-weight: bold;
                         <div class="main">
                             <?php $this->load->view('layout/header');?>
                             <!-- HEADER END -->
-                            <div class="container">
+                            <div class="container  mb-30">
                                 <div class="row p-1">
                                     <div class="col-12">
                                         <div class="row">
@@ -279,16 +281,18 @@ font-weight: bold;
                 <div class="row pt-1 pb-1 pl-1">
                     <div class="col-lg-9 col-md-12">
 						<div class="row">
-						<div class="col-12 col-sm-12 col-md-7 col-lg-7">
+						<div class="col-12 col-sm-12 col-md-8 col-lg-8">
 							<div class="row text-center">
 								<div class="col-12">
-									<div class="row color_bg2 resimbuton pt-3">
-										<div class="col-12 rounded color_text5" style="height:32px;">
+									<div class="row  resimbuton pt-3">
+										<div class="col-12 text-white" style="height:32px;background-color: #0040a5">
 											<b><a id="bigImage">BÜYÜK RESİM</a></b>
-										</div>
+                                            <div class="float-right pt-2" style="font-size: 12px;">İlan No:   <?php echo $ilan->ilanId; ?></div>
+                                        </div>
 
 									</div>
 								</div>
+
 								<div class="col-12" style="min-height:90px;display: table; width:100%;">
 									<div class="" style="display: table-cell;vertical-align: middle;">
 										<h3 class="text-uppercase"><?php echo $ilan->firma_adi; ?></h3>
@@ -365,8 +369,10 @@ font-weight: bold;
 
 							</div>
 						</div>
-						<div id="genelBilgi" class="col-12 col-sm-12 col-md-5 col-lg-5 bg-light">
+						<div id="genelBilgi" class="col-12 col-sm-12 col-md-4 col-lg-4 bg-light">
 							<div class="row pt-3">
+
+
 								<div class="col-12">
 									<!-- AddToAny BEGIN -->
 									<div class="a2a_kit a2a_kit_size_32 a2a_default_style text-center">
@@ -383,8 +389,8 @@ font-weight: bold;
 									<script async src="https://static.addtoany.com/menu/page.js"></script>
 									<!-- AddToAny END -->
 								</div>
-								<div class="col-12" style="min-height:90px">
-									<div class="row mar-bot p-3">
+								<div class="col-12" style="min-height:50px">
+									<div class="row  p-1">
 										<div class="col-5 text-center">
 											Favori
 											<p class="text-center"><span class="badge badge-pill color_bg3 text-light"><?php echo $this->db->query("select * from favoriler where ilanId='".$ilan->Id."'")->num_rows(); ?></span></p>
@@ -395,22 +401,13 @@ font-weight: bold;
 										</div>
 									</div>
 								</div>
-								<div class="col-12 mar-bot">
-									<div class="row">
-										<div class="col-6 bilgibaslik">
-											İlan No
-										</div>
-										<div class="col-6 bilgiler">
-											<?php echo $ilan->ilanId; ?>
-										</div>
-									</div>
-								</div>
-								<div class="col-12 mar-bot">
-									<div class="row">
-										<div class="col-6 bilgibaslik">
+
+								<div class="col-12">
+									<div class="row pt-2" style="min-height:35px; ">
+										<div class="col-6" style="font-weight:600;background-color:#007bff;color:white;border-right: white 1px solid">
 											Fiyat
 										</div>
-										<div class="col-6 bilgiler text-light color_bg3">
+										<div class="col-6" style="font-weight: 600 ;background-color:#007bff;color:white">
 											<?php echo number_format($ilan->fiyat,0, ',', '.');?> <?php echo $ilan->birim;?>
 										</div>
 									</div>
@@ -431,7 +428,7 @@ font-weight: bold;
 							</div>
 						</div>
 					</div>
-					<div class="row pt-3 pb-3">
+					<div class="row pt-3 pb-3 ">
 						<div class="col-12 color_bg1">
 							<div class="row">
 								<div class="col-12 text-center color_bgz">
