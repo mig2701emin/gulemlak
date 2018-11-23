@@ -321,13 +321,7 @@
                       </select>
                   </div>
                   <hr class="mb-4"/>
-                  <div style="float:left;width:25%">
-                    <input type="checkbox" name="use_map" id="use_map_option" value="1"<?php if($ilan->map!=''){?> checked<?php }?>/>
-                    <label for="use_map_option">Harita Özelliğini Kullanmak İstiyorum.</label>
-                  </div>
-                  <div style="clear:both"></div>
                 </div>
-                <div id="use_map_overlay"<?php if($ilan->map!=''){?> style="display:none"<?php }?>><a href="javascript:$('#use_map_option').click();">Harita Özelliğini Kullanmak İçin Tıklayınız</a></div>
                 <div id="gmap" style="height:575px"></div>
               </div>
               <hr class="mb-4"/>
