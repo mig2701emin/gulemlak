@@ -105,6 +105,7 @@ class Hesabim extends CI_Controller{
         $update=$this->members->update($where,$degistir);
         if ($update) {
           $this->session->set_flashdata("success","Bilgileriniz Güncellendi");
+          redirect(base_url("hesabim/bilgilerim"));
         } else {
           $this->session->set_flashdata("error","Bilgileriniz güncellenirken bir hata oluştu. Lütfen tekrar deneyiniz.");
         }

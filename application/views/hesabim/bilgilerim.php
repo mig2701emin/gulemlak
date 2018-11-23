@@ -69,7 +69,7 @@
             <label for="istel">İş Telefonu :</label>
             <input class="form-control" type="tel" id="istel" name="istel" placeholder="5xxxxxxxxx" value="<?php echo $user->istel;?>"/>
           </div>
-          <button type="submit" class="btn btn-success btn-block"/>Güncelle</button>
+          <button type="submit" class="btn btn-success btn-block">Güncelle</button>
         </form>
       </div>
     </div>

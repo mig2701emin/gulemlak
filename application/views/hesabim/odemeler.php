@@ -30,6 +30,7 @@
       <?php
       $limit=10;
       $sayfa=0;
+      $ek="";
       $uye=$this->session->userdata('userdata')['userID'];
       if($filter=='tamam'){
       	$ek=" and durum='1'";
