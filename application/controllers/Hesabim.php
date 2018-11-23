@@ -671,57 +671,60 @@ class Hesabim extends CI_Controller{
                     }
                 }
         }
-        $anaKategoriler=$this->db->where("ust_kategori","0")->get("kategoriler")->result();
-        foreach ($anaKategoriler as $anaKategori) {
-          if (seo_link($dizi[0])===$anaKategori->seo) {
-            //echo $anaKategori->Id.'<br/>';
-            $kategori=$anaKategori->Id;
-            $firstSubs=$this->db->where("ust_kategori",$anaKategori->Id)->get("kategoriler")->result();
-            foreach ($firstSubs as $firstSub) {
-              if (seo_link($dizi[1])==$firstSub->seo) {
-                //echo $firstSub->Id.'<br/>';
-                $kategori=$firstSub->Id;
-                $secondSubs=$this->db->where("ust_kategori",$firstSub->Id)->get("kategoriler")->result();
-                foreach ($secondSubs as $secondSub) {
-                  if (seo_link($dizi[2])==$secondSub->seo) {
-                    //echo $secondSub->Id.'<br/>';
-                    $kategori=$secondSub->Id;
-                    $thirdSubs=$this->db->where("ust_kategori",$secondSub->Id)->get("kategoriler")->result();
-                    foreach ($thirdSubs as $thirdSub) {
-                      if (seo_link($dizi[3])==$thirdSub->seo) {
-                        //echo $thirdSub->Id.'<br/>';
-                        $kategori=$thirdSub->Id;
+        if (seo_link($dizi[0])!="anasayfa") {
+          $anaKategoriler=$this->db->where("ust_kategori","0")->get("kategoriler")->result();
+          foreach ($anaKategoriler as $anaKategori) {
+            if (seo_link($dizi[0])===$anaKategori->seo) {
+              //echo $anaKategori->Id.'<br/>';
+              $kategori=$anaKategori->Id;
+              $firstSubs=$this->db->where("ust_kategori",$anaKategori->Id)->get("kategoriler")->result();
+              foreach ($firstSubs as $firstSub) {
+                if (seo_link($dizi[1])==$firstSub->seo) {
+                  //echo $firstSub->Id.'<br/>';
+                  $kategori=$firstSub->Id;
+                  $secondSubs=$this->db->where("ust_kategori",$firstSub->Id)->get("kategoriler")->result();
+                  foreach ($secondSubs as $secondSub) {
+                    if (seo_link($dizi[2])==$secondSub->seo) {
+                      //echo $secondSub->Id.'<br/>';
+                      $kategori=$secondSub->Id;
+                      $thirdSubs=$this->db->where("ust_kategori",$secondSub->Id)->get("kategoriler")->result();
+                      foreach ($thirdSubs as $thirdSub) {
+                        if (seo_link($dizi[3])==$thirdSub->seo) {
+                          //echo $thirdSub->Id.'<br/>';
+                          $kategori=$thirdSub->Id;
+                        }
                       }
                     }
-                  }//elseif (seo_link($dizi[2])=="satilik") {
-                  //   if (seo_link($dizi[3])==$secondSub->seo) {
-                  //     //echo $secondSub->Id.'<br/>';
-                  //     $thirdSubs=$this->db->where("ust_kategori",$secondSub->Id)->get("kategoriler")->result();
-                  //     foreach ($thirdSubs as $thirdSub) {
-                  //       if ($thirdSub->seo=="satilik") {
-                  //         //echo $thirdSub->Id.'<br/>';
-                  //         $kategori=$thirdSub->Id;
-                  //       }
-                  //     }
-                  //   }
-                  // }elseif (seo_link($dizi[2])=="kiralik") {
-                  //   if (seo_link($dizi[3])==$secondSub->seo) {
-                  //     //echo $secondSub->Id.'<br/>';
-                  //     $kategori=$secondSub->Id;
-                  //     $thirdSubs=$this->db->where("ust_kategori",$secondSub->Id)->get("kategoriler")->result();
-                  //     foreach ($thirdSubs as $thirdSub) {
-                  //       if ($thirdSub->seo=="kiralik") {
-                  //         //echo $thirdSub->Id.'<br/>';
-                  //         $kategori=$thirdSub->Id;
-                  //       }
-                  //     }
-                  //   }
-                  // }
+                  }
+                }
+              }
+            }
+          }
+        } else {
+          $anaKategoriler=$this->db->where("ust_kategori","0")->get("kategoriler")->result();
+          foreach ($anaKategoriler as $anaKategori) {
+            if (seo_link($dizi[1])===$anaKategori->seo) {
+              //echo $anaKategori->Id.'<br/>';
+              $kategori=$anaKategori->Id;
+              $firstSubs=$this->db->where("ust_kategori",$anaKategori->Id)->get("kategoriler")->result();
+              foreach ($firstSubs as $firstSub) {
+                if (seo_link($dizi[2])==$firstSub->seo) {
+                  //echo $firstSub->Id.'<br/>';
+                  $kategori=$firstSub->Id;
+                  $secondSubs=$this->db->where("ust_kategori",$firstSub->Id)->get("kategoriler")->result();
+                  foreach ($secondSubs as $secondSub) {
+                    if (seo_link($dizi[3])==$secondSub->seo) {
+                      //echo $secondSub->Id.'<br/>';
+                      $kategori=$secondSub->Id;
+                    }
+                  }
                 }
               }
             }
           }
         }
+
+
         $this->session->set_userdata("kategori",$kategori);
         $kategorinames=getustkategorinames($kategori);
         $data["kategorinames"]=$kategorinames;
