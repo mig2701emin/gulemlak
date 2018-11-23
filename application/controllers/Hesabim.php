@@ -828,12 +828,12 @@ class Hesabim extends CI_Controller{
         echo $label[$i].': '.$value[$i].'<br/>';
 
       }*/
-      $ilan_notu = array();
+      $ilan_notu ="";
       $usernameinfoarea = curl_search('<div class="username-info-area">', '<div class="getUserInfo noBorder">', $content);
       $prettyphonepart = curl_search('<span class="pretty-phone-part">', '</span>', $content);
-      $ilan_notu["İlan Sahibi"]=curl_search('<h5>', '</h5>', $usernameinfoarea[0])[0];
-      $ilan_notu["Telefon"] =$prettyphonepart[0];
-      $ilan_notu[$label[0]] =$value[0];
+      $ilan_notu.=" İlan Sahibi : ".curl_search('<h5>', '</h5>', $usernameinfoarea[0])[0].",";
+      $ilan_notu.=" Telefon : ".$prettyphonepart[0].",";
+      $ilan_notu.=" ".$label[0]." : ".$value[0].",";
       $deger = array();
       $aciklama1= array();
       $mevcut = array();

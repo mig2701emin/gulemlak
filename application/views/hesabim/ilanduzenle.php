@@ -348,7 +348,7 @@
   <script src="<?php echo base_url('assets/dropzone/min/dropzone.min.js'); ?>"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maps.google.com/maps/api/js?key=AIzaSyAgvcI5F7yEbzhTlj3HHwj7vnTZgQIdfqA&sensor=false"></script>
-  <script src="<?php echo base_url('assets/');?>/js/map_edit.php?currentlatlong=<?=base64_encode($ilan->map);?>" defer></script>
+  <script src="<?php echo base_url('assets/');?>/map/map_edit.php?currentlatlong=<?php echo base64_encode($ilan->map);?>" defer></script>
   <script src="<?php echo base_url('assets/');?>js/autoNumeric.js" defer></script>
   <script src="<?php echo base_url('assets/noty/packaged/jquery.noty.packaged.min.js'); ?>"></script>
   <script src="<?php echo base_url('assets/');?>js/script.js"></script>

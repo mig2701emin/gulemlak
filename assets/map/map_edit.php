@@ -47,7 +47,7 @@ geocoder = new google.maps.Geocoder();
     zoom: <?php echo $zoomVal;?>,
 	minZoom:5,
     center: myLatlng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    mapTypeId: google.maps.MapTypeId.HYBRID,
 	streetViewControl: false
   }
 
