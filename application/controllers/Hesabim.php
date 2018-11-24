@@ -78,8 +78,7 @@ class Hesabim extends CI_Controller{
           array('field' => 'soyad',                   'label' => 'Soyad',                 'rules' => 'required'),
           array('field' => 'sehir',                   'label' => 'Şehir',                 'rules' => 'required'),
           array('field' => 'cinsiyet',                'label' => 'Cinsiyet',              'rules' => 'required'),
-          array('field' => 'gsm',                     'label' => 'Cep Telefonu',          'rules' => 'required'),
-          array('field' => 'istel',                   'label' => 'İş Telefonu',           'rules' => 'required')
+          array('field' => 'gsm',                     'label' => 'Cep Telefonu',          'rules' => 'required')
       );
       $this->form_validation->set_rules($formvalid);
       $this->form_validation->set_error_delimiters('<p>', '</p>');
@@ -91,7 +90,17 @@ class Hesabim extends CI_Controller{
         $cinsiyet=$this->security->xss_clean($this->input->post("cinsiyet"));
         $dogum=$this->security->xss_clean($this->input->post("dogum"));
         $gsm=$this->security->xss_clean($this->input->post("gsm"));
+        $gsm=str_replace("(","",$gsm);
+        $gsm=str_replace(")","",$gsm);
+        $gsm=str_replace("-","",$gsm);
+        $gsm=str_replace(" ","",$gsm);
+        // echo $gsm;
+        // die();
         $istel=$this->security->xss_clean($this->input->post("istel"));
+        $istel=str_replace("(","",$istel);
+        $istel=str_replace(")","",$istel);
+        $istel=str_replace("-","",$istel);
+        $istel=str_replace(" ","",$istel);
         $degistir = array(
           "ad" => $ad,
           "soyad" => $soyad,
