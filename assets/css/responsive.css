@@ -121,7 +121,7 @@
 	}
 
 	.mobilemenu-content li a {
-		padding: 34px 16px;
+		padding: 20px 16px;
 	}
 
 	.header-bottom .help-num {
@@ -1775,7 +1775,7 @@ table.compare-info tr td button:first-child {
 }
 
 .header-right-link > ul > li > a {
-	padding: 12px 0 13px;
+	padding: 20px 0 13px;
 }
 
 .header-link-dropdown {

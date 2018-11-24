@@ -11,7 +11,7 @@
                 <div class="col-xl-2 col-lg-3 col-lgmd-20per">
                     <div class="header-middle-left">
                         <div class="navbar-header float-none-sm">
-                            <a class="navbar-brand page-scroll" href="<?php echo base_url(); ?>">
+                            <a class="navbar-brand page-scroll" href="<?php echo base_url(); ?>" style="padding-top: 10px;  padding-bottom:5px;width: 250px;">
                                 <img  alt="www.ticaretmeclisi.com" src="<?php echo base_url('assets/');?>images/logo.png" />
                             </a>
                         </div>
