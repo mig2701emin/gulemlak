@@ -285,9 +285,9 @@ font-weight: bold;
 							<div class="row text-center">
 								<div class="col-12">
 									<div class="row  resimbuton pt-3">
-										<div class="col-12 text-white" style="height:32px;background-color: #0040a5">
-											<b><a id="bigImage">BÜYÜK RESİM</a></b>
-                                            <div class="float-right pt-2" style="font-size: 12px;">İlan No:   <?php echo $ilan->ilanId; ?></div>
+										<div class="col-12 text-white " style="height:30px;background-color: #0040a5">
+											<b><a id="bigImage" style="margin-top: 15px;">BÜYÜK RESİM</a></b>
+                                            <div class="float-right pt-1" style="font-size: 12px;">İlan No:   <?php echo $ilan->ilanId; ?></div>
                                         </div>
 
 									</div>
@@ -375,13 +375,16 @@ font-weight: bold;
 
 								<div class="col-12">
 									<!-- AddToAny BEGIN -->
-									<div class="a2a_kit a2a_kit_size_32 a2a_default_style text-center">
+									<div class="a2a_kit a2a_kit_size_32 a2a_default_style text-center align-center">
+                                        <div style="    width: 200px;
+    height: 32px;
+    float: right;">
 									<a class="a2a_button_facebook"></a>
 									<a class="a2a_button_twitter"></a>
 									<a class="a2a_button_google_plus"></a>
 									<a class="a2a_button_pinterest"></a>
 									<a class="a2a_button_whatsapp"></a>
-									</div>
+                                    </div></div>
 									<script>
 									var a2a_config = a2a_config || {};
 									a2a_config.locale = "tr";
