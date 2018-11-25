@@ -101,7 +101,7 @@
             <h2 class="text-center">İlan Detayları</h2>
 
             <!--magaza sahipleri başlangıç-->
-            <?php if ($magaza_var_mi): ?>
+            <?php if (isset($magaza)): ?>
               <div class="custom-control custom-checkbox mb-3">
                 <input type="checkbox"  class="custom-control-input" name="add_to_store" id="add_to_store" value="1" checked/>
                 <label class="custom-control-label" for="add_to_store">İlanı Mağazaya Ekle</label>
@@ -114,7 +114,7 @@
             </div>
             <div class="mb-3">
               <label for="ilan_notu">Gizli İlan Notu :</label>
-              <input class="form-control" type="text" name="ilan_notu" value="<?php echo set_value('ilan_notu',foreach ($ilan->ilan_notu as $key => $value) {echo $key.' : '.$value.', ';}); ?>"/>
+              <input class="form-control" type="text" name="ilan_notu" value="<?php echo set_value('ilan_notu',$ilan->ilan_notu); ?>"/>
             </div>
             <!------------------------------------------------------------------------------>
               <!--başlık --------->
@@ -195,7 +195,7 @@
                       <label for="<?php echo $field->seo_name; ?>"><?php echo $field->name; ?><?php if($field->required==1){?> <span style="color:#FF0000">*</span><?php }?></label>
                       <input type="text" class="form-control" name="<?php echo $field->seo_name; ?>" <?php if($field->name=='m²'){?> size="6"<?php }?>
                       <?php if($field->name=='ada'){?> size="5"<?php }?><?php if($field->name=='parsel'){?> size="5"<?php }?>
-                      value="<?php if(!empty($deger[$field->name])) {echo set_value($field->seo_name, $deger[$field->seo_name]);} else {echo set_value($field->seo_name);} ; ?>" <?php if($field->required==1){?> required<?php }?>>
+                      value="<?php if(!empty($deger[$field->name])) {echo set_value($field->seo_name, $deger[$field->name]);} else {echo set_value($field->seo_name);} ; ?>" <?php if($field->required==1){?> required<?php }?>>
                   </div>
                   <?php
                 }elseif($field->type=='textarea'){
@@ -358,13 +358,7 @@
                       </select>
                   </div>
                   <hr class="mb-4"/>
-                  <div style="float:left;width:25%">
-                    <input type="checkbox" name="use_map" id="use_map_option" value="1"<?php if($ilan->map!=''){?> checked<?php }?>/>
-                    <label for="use_map_option">Harita Özelliğini Kullanmak İstiyorum.</label>
-                  </div>
-                  <div style="clear:both"></div>
                 </div>
-                <div id="use_map_overlay"<?php if($ilan->map!=''){?> style="display:none"<?php }?>><a href="javascript:$('#use_map_option').click();">Harita Özelliğini Kullanmak İçin Tıklayınız</a></div>
                 <div id="gmap" style="height:575px"></div>
               </div>
               <hr class="mb-4"/>
@@ -385,7 +379,7 @@
   <script src="<?php echo base_url('assets/dropzone/min/dropzone.min.js'); ?>"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maps.google.com/maps/api/js?key=AIzaSyAgvcI5F7yEbzhTlj3HHwj7vnTZgQIdfqA&sensor=false"></script>
-  <script src="<?php echo base_url('assets/');?>/js/map_edit.php?currentlatlong=<?=base64_encode($ilan->map);?>" defer></script>
+  <script src="<?php echo base_url('assets/');?>/map/map_edit.php?currentlatlong=<?php echo base64_encode($ilan->map);?>" defer></script>
   <script src="<?php echo base_url('assets/');?>js/autoNumeric.js" defer></script>
   <script src="<?php echo base_url('assets/noty/packaged/jquery.noty.packaged.min.js'); ?>"></script>
   <script src="<?php echo base_url('assets/');?>js/script.js"></script>

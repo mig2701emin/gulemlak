@@ -205,10 +205,27 @@ function seoKategori()
 function konum($seo_il,$seo_ilce,$seo_mahalle)
 {
   $ci=& get_instance();
-  $il_id=$ci->db->where('seo_il',$seo_il)->get('tbl_il')->row()->il_id;
-  $ilce_id=$ci->db->where('seo_ilce',$seo_ilce)->where('il_id',$il_id)->get('tbl_ilce')->row()->ilce_id;
-  $mahalle_id=$ci->db->where('seo_mahalle',$seo_mahalle)->where('ilce_id',$ilce_id)->get('tbl_mahalle')->row()->mahalle_id;
-  //$mahalle_id=$ci->db->query("select * from tbl_mahalle where ilce_id=".$ilce_id." and seo_mahalle=".$seo_mahalle)->row()->mahalle_id;
+  $il=$ci->db->where('seo_il',$seo_il)->get('tbl_il');
+  if ($il->num_rows() > 0) {
+    $il_id=$il->row()->il_id;
+    $ilce=$ci->db->where('seo_ilce',$seo_ilce)->where('il_id',$il_id)->get('tbl_ilce');
+    if ($ilce->num_rows() > 0) {
+      $ilce_id=$ilce->row()->ilce_id;
+      $mahalle=$ci->db->where('seo_mahalle',$seo_mahalle)->where('ilce_id',$ilce_id)->get('tbl_mahalle');
+      if ($mahalle->num_rows() > 0) {
+        $mahalle_id=$mahalle->row()->mahalle_id;
+      }else {
+        $mahalle_id=0;
+      }
+    }else {
+      $ilce_id=0;
+      $mahalle_id=0;
+    }
+  }else {
+    $il_id=0;
+    $ilce_id=0;
+    $mahalle_id=0;
+  }
   return $konum = array('il' =>$il_id ,'ilce' =>$ilce_id ,'mahalle' =>$mahalle_id  );
 }
 

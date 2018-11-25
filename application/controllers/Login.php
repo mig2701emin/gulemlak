@@ -231,11 +231,11 @@ class Login extends CI_Controller{
 		      $this->form_validation->set_message('valid_password', '<strong>%s</strong> En Az 1 Küçük Harf İçermelidir.');
 		      return FALSE;
 		    }
-		    if (preg_match_all($regex_uppercase, $password) < 1)
-		    {
-		      $this->form_validation->set_message('valid_password', '<strong>%s</strong> En Az 1 Büyük Harf İçermelidir.');
-		      return FALSE;
-		    }
+		    // if (preg_match_all($regex_uppercase, $password) < 1)
+		    // {
+		    //   $this->form_validation->set_message('valid_password', '<strong>%s</strong> En Az 1 Büyük Harf İçermelidir.');
+		    //   return FALSE;
+		    // }
 		    if (preg_match_all($regex_number, $password) < 1)
 		    {
 		      $this->form_validation->set_message('valid_password', '<strong>%s</strong> En Az 1 Rakam İçermelidir.');
@@ -246,7 +246,7 @@ class Login extends CI_Controller{
 		      $this->form_validation->set_message('valid_password', 'The {field} field must have at least one special character.' . ' ' . htmlentities('!@#$%^&*()\-_=+{};:,<.>§~'));
 		      return FALSE;
 		    }*/
-		    if (strlen($password) < 8)
+		    if (strlen($password) < 6)
 		    {
 		      $this->form_validation->set_message('valid_password', '<strong>%s</strong> Minimum 8 Karakter Uzunluğunda Olmalıdır');
 		      return FALSE;

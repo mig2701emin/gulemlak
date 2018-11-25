@@ -22,10 +22,10 @@
       </div>
       <form action="" method="post" enctype="multipart/form-data">
         <h2 class="text-center">Magaza Bilgileri</h2>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
             <label for="username">Mağaza Kullanıcı Adı</label>
             <input type="text" class="form-control" name="username">
-        </div>
+        </div> -->
         <div class="mb-3">
             <label for="magazaadi">Mağaza Adı</label>
             <input type="text" class="form-control" name="magazaadi">
@@ -39,11 +39,11 @@
           <label for="image1">Mağaza Logosu</label>
           <input type="file" class="form-control-file" name="image1" id="image1">
         </div>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
             <label for="unvan">Mağaza Ünvanı</label>
             <input type="text" class="form-control" name="unvan">
-        </div>
-        <div class="mb-3">
+        </div> -->
+        <!-- <div class="mb-3">
           <label for="stil">Mağaza Stili</label>
           <select class="custom-select d-block w-100" name="stil">
               <option value="">Seçiniz</option>
@@ -65,7 +65,7 @@
               <option value="vasita7">Vasıta 7</option>
               <option value="hayvanlar-alemi">Hayvanlar Alemi</option>
           </select>
-        </div>
+        </div> -->
         <button class="btn btn-success" type="submit" name="devam">Devam</button>
       </form>
   </div>

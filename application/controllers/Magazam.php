@@ -44,19 +44,17 @@ class Magazam extends CI_Controller{
     $data["magaza"]=$this->magaza;
 
     if (isset($_POST) && !empty($_POST)) {
-      $username=$this->security->xss_clean($this->input->post("username"));
+      // $username=$this->security->xss_clean($this->input->post("username"));
       $magazaadi=$this->security->xss_clean($this->input->post("magazaadi"));
       $m_aciklama=$this->security->xss_clean($this->input->post("m_aciklama"));
-      $unvan=$this->security->xss_clean($this->input->post("unvan"));
-      $stil=$this->security->xss_clean($this->input->post("stil"));
+      // $unvan=$this->security->xss_clean($this->input->post("unvan"));
+      // $stil=$this->security->xss_clean($this->input->post("stil"));
 
 
       $edit = array(
-        "unvan"       => $unvan,
         "magazaadi"   => $magazaadi,
-        "username"    => $username,
-        "aciklama"    => base64_encode($m_aciklama),
-        "stil"        => $stil
+        "username"    => seo_link($magazaadi),
+        "aciklama"    => base64_encode($m_aciklama)
       );
 
       if ( ! empty($_FILES))

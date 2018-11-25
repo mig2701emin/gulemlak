@@ -44,23 +44,9 @@ $Id=guvenlik($_GET['Id']);
 $loginUser=guvenlik($_GET['loginUser']);
 $redirect=base64_decode($_GET['redirect']);
 if($loginUser=='login'and $admin_kilit==0){
-	$return=$mysqli->query("select * from uyeler WHERE Id=".$Id)->fetch_assoc();
-	if ($return) {
-		$userData['userID'] = $return[Id];
-		$userData['oauth_provider'] = $return[oauth_provider];
-		$userData['ad'] = $return[ad];
-		$userData['soyad'] = $return[soyad];
-		$userData['email'] = $return[email];
-		$userData['picture'] = $return[picture];
-		$userData['gsm'] = $return[gsm];
-		$userData['sehir'] = $return[sehir];
-		//$_SESSION['userData']=$userData;
-		$_SESSION['userData']="deneme";
-		header("location:".$site_adresi."/hesabim/".$redirect);
-	}
-/*$_SESSION['giris'] = 1;
+$_SESSION['giris'] = 1;
 $_SESSION['uye'] = $Id;
-header("location:".$redirect);*/
+header("location:".$redirect);
 }
 $admin_username=$mysqli->query("select username from yoneticiler where Id='".$_SESSION['admin_user']."'")->fetch_assoc();
 ?>

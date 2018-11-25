@@ -1,4 +1,4 @@
-<?php include('header.php'); 
+<?php include('header.php');
 $action=guvenlik($_GET['action']);
 $magazaId=guvenlik($_GET['magazaId']);
 
@@ -49,7 +49,7 @@ $magazaId=guvenlik($_GET['magazaId']);
 			process_mysql(implode("**",$querys),"magaza-yonetimi.html");
 	}
 ?>
-			<div class="row-fluid sortable">		
+			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
 						<h2><i class="icon-user"></i> Mağaza Yönetimi</h2>
@@ -57,7 +57,7 @@ $magazaId=guvenlik($_GET['magazaId']);
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 						</div>
 					</div>
-					
+
 					<div class="box-content">
 						<table class="table table-striped table-bordered bootstrap-datatable datatable dataTable">
 						  <thead>
@@ -68,9 +68,9 @@ $magazaId=guvenlik($_GET['magazaId']);
 								  <th>Mağaza Durumu</th>
 								  <th>İşlemler</th>
 							  </tr>
-						  </thead>   
+						  </thead>
 						  <tbody>
-						  <?php $SQL=$mysqli->query("select * from magazalar");
+						  <?php $SQL=$mysqli->query("select * from magazalar order by Id DESC");
 						  while($magaza=$SQL->fetch_assoc()){
 						  $uye=$mysqli->query("select * from magaza_kullanicilari where magazaId='".$magaza[Id]."' and yetkiler not like '%0%' limit 1")->fetch_assoc();
 						  if($magaza[supermagaza]==1){
@@ -85,7 +85,7 @@ $magazaId=guvenlik($_GET['magazaId']);
 						  }elseif($magaza[onay]==0 && $magaza[suresi_doldu]==0){
 						  $durum="Onay Bekliyor";
 						  }else{
-							  $durum="Süresi Doldu";					 
+							  $durum="Süresi Doldu";
 						  }
 						  ?>
 							<tr class="dataListClass">
@@ -95,47 +95,47 @@ $magazaId=guvenlik($_GET['magazaId']);
 								<td class="center"><?=$durum;?></td>
 								<td class="center">
 									<a class="btn btn-primary" href="http://<?=$magaza[username];?>.<?=$nowww;?>" target="_blank">
-										<i class="icon-zoom-in icon-white"></i>  
-										Görüntüle                                            
+										<i class="icon-zoom-in icon-white"></i>
+										Görüntüle
 									</a>
 									<a class="btn btn-danger" href="?loginUser=login&redirect=<?=base64_encode('../index.php?page=magazam');?>&Id=<?=$uye[uyeId];?>" target="_blank">
-										<i class="icon-edit icon-white"></i>  
-										Düzenle                                            
+										<i class="icon-edit icon-white"></i>
+										Düzenle
 									</a>
 									<a class="btn btn-warning" href="magaza-yonetimi.html?magazaId=<?=$magaza[Id];?>&action=sil" onclick="confirm_delete();">
-										<i class="icon-trash icon-white"></i> 
+										<i class="icon-trash icon-white"></i>
 										Sil
 									</a>
 									<?php if($magaza[onay]==0 && $magaza[suresi_doldu]==0){?>
 									<a class="btn btn-success" href="magaza-yonetimi.html?magazaId=<?=$magaza[Id];?>&action=onayla">
-										<i class="icon-ok icon-white"></i> 
+										<i class="icon-ok icon-white"></i>
 										Onayla
 									</a>
 									<?php }elseif($magaza[onay]==2){?>
 									<a class="btn btn-success" href="magaza-yonetimi.html?magazaId=<?=$magaza[Id];?>&action=aktiflestir">
-										<i class="icon-ok icon-white"></i> 
+										<i class="icon-ok icon-white"></i>
 										Aktifleştir
 									</a>
 									<?php }elseif($magaza[onay]==0 && $magaza[suresi_doldu]==1){?>
 									<a class="btn btn-success" href="magaza-yonetimi.html?magazaId=<?=$magaza[Id];?>&action=sureuzat">
-										<i class="icon-ok icon-white"></i> 
+										<i class="icon-ok icon-white"></i>
 										Süre Uzat
 									</a>
 									<?php }else{?>
 									<a class="btn btn-info" href="magaza-yonetimi.html?magazaId=<?=$magaza[Id];?>&action=pasiflestir">
-										<i class="icon-remove icon-white"></i> 
+										<i class="icon-remove icon-white"></i>
 										Pasifleştir
 									</a>
 									<?php }?>
 									<a class="btn btn-inverse" href="magaza-vitrin.html?magazaId=<?=$magaza[Id];?>">
-										<i class="icon-star icon-white"></i> 
+										<i class="icon-star icon-white"></i>
 										Vitrin
 									</a>
 								</td>
 							</tr>
 							<?php }?>
 						  </tbody>
-					  </table>            
+					  </table>
 					</div>
 				</div>
 			</div>
