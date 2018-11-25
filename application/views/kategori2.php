@@ -461,18 +461,21 @@ color:white;
         $mahalle=$this->db->query("select * from tbl_mahalle where mahalle_id='".$a->mahalle."'")->row();
         ?>
         <div class="row   p-1 mt-1 border-bottom<?php if($i%2==0){ ?> white-bg<?php }else{ ?> light-gray-bg<?php } ?>" onclick="window.location='<?php echo base_url();?><?php echo $seolink2;?>/<?php echo encode($ilan_no);?>';">
-          <div class="col-md-3 align-center">
+          <div class="col-8 col-md-3 align-center">
             <?php if($a->kucuk_fotograf==1 and ilk_resim($a->Id)!='' and file_exists('photos/thumbnail/'.ilk_resim($a->Id))){?>
               <img src = "<?php echo base_url();?>photos/thumbnail/<?php echo ilk_resim($a->Id);?>" height = "110"  border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
             <?php }else{?>
               <img src = "<?php echo base_url();?>assets/images/yok_thumbnail.png" height = "110"  border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
             <?php }?>
           </div>
-          <div class="col-md-6"  >
+            <div class="col-4 yanbaslik">
+                <a href="javascript:void(0);" style="font-weight: bold"><?php echo $firma_adi;?></a>
+            </div>
+          <div class="col-4 col-md-6"  >
             <div class="row mt-3">
-              <div class="col-12"></div>
+              <div class="col-12 anabaslik">
               <a href="javascript:void(0);" style="font-weight: bold"><?php echo $firma_adi;?></a>
-              <br/>
+            </div>
 
               <div class="col-12 color_text4 mt-2"  >
                 <b><?php echo number_format($a->fiyat,0, ',', '.').' '.$a->birim; ?></b>
