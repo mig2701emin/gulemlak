@@ -321,13 +321,7 @@
                       </select>
                   </div>
                   <hr class="mb-4"/>
-                  <div style="float:left;width:25%">
-                    <input type="checkbox" name="use_map" id="use_map_option" value="1"<?php if($ilan->map!=''){?> checked<?php }?>/>
-                    <label for="use_map_option">Harita Özelliğini Kullanmak İstiyorum.</label>
-                  </div>
-                  <div style="clear:both"></div>
                 </div>
-                <div id="use_map_overlay"<?php if($ilan->map!=''){?> style="display:none"<?php }?>><a href="javascript:$('#use_map_option').click();">Harita Özelliğini Kullanmak İçin Tıklayınız</a></div>
                 <div id="gmap" style="height:575px"></div>
               </div>
               <hr class="mb-4"/>
@@ -348,7 +342,7 @@
   <script src="<?php echo base_url('assets/dropzone/min/dropzone.min.js'); ?>"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maps.google.com/maps/api/js?key=AIzaSyAgvcI5F7yEbzhTlj3HHwj7vnTZgQIdfqA&sensor=false"></script>
-  <script src="<?php echo base_url('assets/');?>/js/map_edit.php?currentlatlong=<?=base64_encode($ilan->map);?>" defer></script>
+  <script src="<?php echo base_url('assets/');?>/map/map_edit.php?currentlatlong=<?php echo base64_encode($ilan->map);?>" defer></script>
   <script src="<?php echo base_url('assets/');?>js/autoNumeric.js" defer></script>
   <script src="<?php echo base_url('assets/noty/packaged/jquery.noty.packaged.min.js'); ?>"></script>
   <script src="<?php echo base_url('assets/');?>js/script.js"></script>

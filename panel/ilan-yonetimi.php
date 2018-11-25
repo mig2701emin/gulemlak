@@ -285,11 +285,12 @@ function topluislem(action) {
 									<td class="center"><?=$ilan[bitis_tarihi];?></td>
 									<td class="center"><?=$durum;?></td>
 									<td class="center">
-										<a class="btn btn-primary" href="../ilan/<?=$ilan[seo_url];?>-<?=$ilan[Id];?>" target="_blank">
+										<a class="btn btn-primary" href="../<?=$ilan[seo_url];?>/<?=strtr(base64_encode($ilan[Id]), '+/=', '-_S');?>" target="_blank">
 											<i class="icon-zoom-in icon-white"></i>
 											Görüntüle
 										</a>
-										<a class="btn btn-danger" href="ilan-yonetimi.html?loginUser=login&redirect=<?=base64_encode('../'.$ilan[Id].'-duzenle.html');?>&Id=<?=$ilan[uyeId];?>">
+										<!-- <a class="btn btn-danger" href="ilan-yonetimi.html?loginUser=login&redirect=<?//=base64_encode('../'.$ilan[Id].'-duzenle.html');?>&Id=<?//=$ilan[uyeId];?>"> -->
+										<a class="btn btn-danger" href="ilan-yonetimi.html?loginUser=login&redirect=<?=base64_encode('../yonetim/ilanduzenle/'.$ilan[Id].'/'.$ilan[uyeId]);?>&Id=<?=$ilan[uyeId];?>" target="_blank">
 											<i class="icon-edit icon-white"></i>
 											Düzenle
 										</a>

@@ -67,17 +67,19 @@ class Magazaac extends CI_Controller{
     $this->load->view("magazaac/settype",$data);
     if (isset($_POST) && !empty($_POST)) {
       $store_type=$this->security->xss_clean($this->input->post("store_type"));
-      redirect(base_url("magazaac/detay/".encode($paket)."/".encode($store_type)));
+      redirect(base_url("magazaac/detay/".encode($paket)."/".$store_type));
     }
 
   }
-  public function detay($paket,$store_type)
+  public function detay($paket,$store_type1,$store_type2)
   {
+    $store_type = array($store_type1,$store_type2);
     $a=$this->db->get("ayarlar")->row();
     $paket=decode($paket);
-    $store_type=decode($store_type);
-    $store_type=explode("/",$store_type);
-
+    // $store_type2=decode($store_type1);
+    // $store_type=explode("/",$store_type2);
+    // print_r($store_type);
+    // die();
     if($paket=="hepsi"){
     	$super_12=$a->hepsibir_super_12;
     	$super_6=$a->hepsibir_super_6;
@@ -116,19 +118,17 @@ class Magazaac extends CI_Controller{
   	$magaza_sure=$store_type[1]."m";
 
     if (isset($_POST) && !empty($_POST)) {
-      $username=$this->security->xss_clean($this->input->post("username"));
+      // $username=$this->security->xss_clean($this->input->post("username"));
       $magazaadi=$this->security->xss_clean($this->input->post("magazaadi"));
       $m_aciklama=$this->security->xss_clean($this->input->post("m_aciklama"));
-      $unvan=$this->security->xss_clean($this->input->post("unvan"));
-      $stil=$this->security->xss_clean($this->input->post("stil"));
+      // $unvan=$this->security->xss_clean($this->input->post("unvan"));
+      // $stil=$this->security->xss_clean($this->input->post("stil"));
 
 
       $magazaekle = array(
-        "unvan"       => $unvan,
+        "username"    =>seo_link($magazaadi),
         "magazaadi"   => $magazaadi,
-        "username"    => $username,
         "aciklama"    => base64_encode($m_aciklama),
-        "stil"        => $stil,
         "onay"        => 0,
         "kategoriId"  => $paket,
         "supermagaza" =>$super_mgz

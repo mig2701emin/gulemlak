@@ -20,21 +20,24 @@
           </div>
         </div>
         <form name="form1" id="form1" method="post" class="mega_size_fields">
+          <?php if(validation_errors()){ ?>
+            <div class="alert alert-danger"><?php echo validation_errors(); ?></div>
+          <?php } ?>
           <div class="mb-3">
               <label for="username">Kullanıcı Adı :</label>
               <input type="text" class="form-control" name="username" placeholder="" value="<?php echo $user->username;?>" disabled>
           </div>
           <div class="mb-3">
               <label for="ad">Adınız :</label>
-              <input type="text" class="form-control" name="ad" placeholder="" value="<?php echo $user->ad;?>" required>
+              <input type="text" class="form-control" name="ad" placeholder="" value="<?php echo set_value('ad',$user->ad) ;?>" required>
           </div>
           <div class="mb-3">
               <label for="soyad">Soyadınız :</label>
-              <input type="text" class="form-control" name="soyad" placeholder="" value="<?php echo $user->soyad;?>" required>
+              <input type="text" class="form-control" name="soyad" placeholder="" value="<?php echo set_value('soyad',$user->soyad);?>" required>
           </div>
           <div class="mb-3">
               <label for="email">E-Posta Adresiniz :</label>
-              <input type="text" class="form-control" name="email" placeholder="" value="<?php echo $user->email;?>" disabled>
+              <input type="text" class="form-control" name="email" placeholder="" value="<?php echo set_value('email',$user->email);?>" disabled>
           </div>
           <div class="mb-3">
               <label for="sehir">Şehir :</label>
@@ -59,23 +62,24 @@
 
           <div class="mb-3">
               <label for="dogum">Doğum Tarihi:</label>
-              <input type="date" class="form-control" name="dogum" placeholder="" value="<?php echo $user->dogum;?>">
+              <input type="date" class="form-control" name="dogum" placeholder="" value="<?php echo set_value('dogum',$user->dogum) ;?>">
           </div>
           <div class="mb-3">
-            <label for="gsm">Cep :</label>
-            <input class="form-control" type="tel" id="gsm" name="gsm" placeholder="5xxxxxxxxx" value="<?php echo $user->gsm;?>" required />
+            <label for="gsm">Cep Telefonu :</label>
+            <input class="form-control" type="tel" id="gsm" size="15" name="gsm" pattern="^[\(]\d{3}[\)][\s]\d{3}[\-]\d{2}[\-]\d{2}$" value="<?php echo set_value('gsm',$user->gsm);?>" required />
           </div>
           <div class="mb-3">
             <label for="istel">İş Telefonu :</label>
-            <input class="form-control" type="tel" id="istel" name="istel" placeholder="5xxxxxxxxx" value="<?php echo $user->istel;?>"/>
+            <input class="form-control" type="tel" id="istel" name="istel" pattern="^[\(]\d{3}[\)][\s]\d{3}[\-]\d{2}[\-]\d{2}$" value="<?php echo set_value('istel',$user->istel);?>"/>
           </div>
-          <button type="submit" class="btn btn-success btn-block"/>Güncelle</button>
+          <button type="submit" class="btn btn-success btn-block">Güncelle</button>
         </form>
       </div>
     </div>
     <?php $this->load->view('layout/footeruserpanel');?>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script  src="<?php echo base_url('assets/');?>js/Inputmask-5.x/jquery.inputmask.js "></script>
   <script src="<?php echo base_url('assets/');?>js/script.js"></script>
   <script src="<?php echo base_url('assets/noty/packaged/jquery.noty.packaged.min.js'); ?>"></script>
   <?php if(flashdata()){ ?>
@@ -84,36 +88,25 @@
       </script>
   <?php } ?>
   <script type="text/javascript">
-  function addHyphens(nStr){
-
+  /*function addHyphens(nStr){
    nStr += '';
    var x1 = nStr.replace('-','')
-   // var x = nStr.split('.');
-   // var x1 = x[0];
-
      var rgx = /(\d{3})(\d{3})(\d{4})/;
      while (rgx.test(x1)) {
       x1 = x1.replace(rgx, '$1' + '-' + '$2' + '-' + '$3');
      }
-
-   //return x1 + x2;
    return x1;
-  }
+ }*/
 $(document).ready(function() {
-  $("#gsm").keyup(function() {
-
-     var newValue =  addHyphens(this.value);
-     // alert(newValue);
-     console.log(newValue);
-     document.querySelector('#gsm').value = newValue;
-  });
-  $("#istel").keyup(function() {
+  $("#gsm").inputmask({"mask": "(999) 999-99-99"});
+  $("#istel").inputmask({"mask": "(999) 999-99-99"});
+  /*$("#istel").keyup(function() {
 
      var newValue =  addHyphens(this.value);
      // alert(newValue);
      console.log(newValue);
      document.querySelector('#istel').value = newValue;
-  });
+  });*/
 });
   </script>
 </body>
