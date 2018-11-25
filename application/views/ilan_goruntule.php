@@ -135,7 +135,7 @@
 
 	.cont_breadcrumbs_1 > ul > li  > a {
 	  display: block;
-	  padding: 10px;
+	  padding: 6px;
 	  font-size: 0.8em;
 		 transform: skewX(15deg);
 		 text-decoration:none;
@@ -282,7 +282,7 @@ font-weight: bold;
                     <div class="col-lg-9 col-md-12">
 						<div class="row">
 
-                            <div class="col-12">
+                            <div class="col-12 mb-1 mt-1">
 
                                     <h3  style="    color: #1f1f2f;
     font-size: 17px;
@@ -294,12 +294,12 @@ font-weight: bold;
     font-family: 'Montserrat', sans-serif"><?php echo $ilan->firma_adi; ?></h3>
 
                             </div>
-						<div class="col-12 col-sm-12 col-md-8 col-lg-8">
+						<div class="col-12 col-sm-12 col-md-8 col-lg-8 ">
 							<div class="row text-center">
 								<div class="col-12">
 									<div class="row  resimbuton">
 										<div class="col-12 text-white " style="height:30px;background-color: #0040a5;border-right:white 1px solid;">
-											<b><a id="bigImage" style="margin-top: 15px;">BÜYÜK RESİM</a></b>
+											<b><a id="bigImage" style="margin-top: 15px; font-weight: 600">BÜYÜK RESİM</a></b>
                                             <div class="float-right pt-1" style="font-size: 12px;">İlan No:   <?php echo $ilan->ilanId; ?></div>
                                         </div>
 
@@ -525,20 +525,20 @@ font-weight: bold;
 								<?php
 								if(isset($ilanmagaza)){
 								?>
-								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url().$ilanmagaza->username; ?>">Üyenin Mağazası</a></div>
+								<div class="col-12 pl-0 pr-0 mb-1"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url().$ilanmagaza->username; ?>">Üyenin Mağazası</a></div>
 								<?php }?>
-								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="">Diğer İlanları</a></div>
+								<div class="col-12 pl-0 pr-0 mb-1"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="">Diğer İlanları</a></div>
 								<?php if ($this->session->userdata("userData")["userID"]){ ?>
 									<?php $favsor = $this->db->query("select * from favoriler where ilanId='".$ilan->Id."' and uyeId='".$ilansahibi->Id."'");
 									$favsorgu=$favsor->num_rows();
 									if($favsorgu==0){
 									?>
-									<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" id="favorilink" href="javascript:favori();">Favorilerime Ekle</a></div>
+									<div class="col-12 pl-0 pr-0 mb-1"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" id="favorilink" href="javascript:favori();">Favorilerime Ekle</a></div>
 									<?php }else{?>
-									<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" id="favorilink" href="javascript:favorisil();">Favorilerimden Sil</a></div>
+									<div class="col-12 pl-0 pr-0 mb-1"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" id="favorilink" href="javascript:favorisil();">Favorilerimden Sil</a></div>
 									<?php }?>
-								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="javascript:mesaj_gonder(<?php echo $ilan->uyeId;?>,<?php echo $ilan->Id;?>);">Mesaj Gönder</a></div>
-								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="javascript:sikayet();">Şikayet Et</a></div>
+								<div class="col-12 pl-0 pr-0 mb-1"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="javascript:mesaj_gonder(<?php echo $ilan->uyeId;?>,<?php echo $ilan->Id;?>);">Mesaj Gönder</a></div>
+								<div class="col-12 pl-0 pr-0 mb-1"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="javascript:sikayet();">Şikayet Et</a></div>
 							<?php } ?>
 						<?php }?>
 								<!-- <div class="col-12"><a class="btn btn-sm btn-secondary" href="?yazdir=1">İlanı Yazdır</a></div> -->
