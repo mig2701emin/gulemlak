@@ -11,11 +11,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/style.css">
 
 
-<!--<link rel="shortcut icon" href="<?php /*echo base_url('assets/');*/?>images/ico/favicon.png">
-<link rel="apple-touch-icon" href="<?php /*echo base_url('assets/');*/?>images/ico/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="<?php /*echo base_url('assets/');*/?>images/ico/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="<?php /*echo base_url('assets/');*/?>images/ico/apple-touch-icon-114x114.png">
--->
+
 
 <link rel="apple-touch-icon" sizes="57x57" href="<?php echo base_url('assets/');?>images/ico/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="<?php echo base_url('assets/');?>images/ico/apple-icon-60x60.png">
