@@ -169,7 +169,7 @@
 						//$show_additional_fields.='>&nbsp;'.$new_values[$i].'</div>';
 					}
 					if($show_ok[$field->name]!=1){
-						$show_additional_fields.='</div><hr class="mt-4"/></div>';
+						$show_additional_fields.='</div></div>';
 					}
 					$show_ok[$field->name]="1";
 					}elseif($field->type=='multiple_select'){
