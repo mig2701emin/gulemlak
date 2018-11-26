@@ -468,16 +468,23 @@ color:white;
               <img src = "<?php echo base_url();?>assets/images/yok_thumbnail.png" height = "110"  border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
             <?php }?>
           </div>
-            <div class="col-4 yanbaslik">
-                <a href="javascript:void(0);" style="font-weight: bold"><?php echo $firma_adi;?></a>
+            <div class="col-4 yanbaslik" >
+                <div class="mt-1"><a style="font-size:13px; " href="javascript:void(0);" style="font-weight: bold"><?php echo $firma_adi;?></a>
             </div>
-          <div class="col-4 col-md-6"  >
+                <div class="mt-1" style="color:blue">
+
+                        <b><?php echo number_format($a->fiyat,0, ',', '.').' '.$a->birim; ?></b>
+
+                </div>
+
+            </div>
+          <div class="col-sm-4 col-md-6"  >
             <div class="row mt-3">
               <div class="col-12 anabaslik">
               <a href="javascript:void(0);" style="font-weight: bold"><?php echo $firma_adi;?></a>
             </div>
 
-              <div class="col-12 color_text4 mt-2"  >
+              <div class="col-12 color_text4 mt-2 anabaslik"  >
                 <b><?php echo number_format($a->fiyat,0, ',', '.').' '.$a->birim; ?></b>
               </div>
             </div>
