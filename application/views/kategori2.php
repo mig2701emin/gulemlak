@@ -481,7 +481,7 @@ color:white;
           <div class="col-sm-4 col-md-6"  >
             <div class="row mt-3">
               <div class="col-12 anabaslik">
-              <a href="javascript:void(0);" style="font-weight: bold"><?php echo $firma_adi;?></a>
+              <a href="javascript:void(0);" style="font-weight: bold;font-size: 14px;"><?php echo $firma_adi;?></a>
             </div>
 
               <div class="col-12 color_text4 mt-2 anabaslik"  >
