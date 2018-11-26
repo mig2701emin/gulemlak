@@ -483,7 +483,7 @@ font-weight: bold;
                   <div class="col-lg-12 col-md-6 col-12 ">
                       <div class="row text-center pt-3">
 								<?php if (isset($ilanmagaza)){ ?>
-									<div class="col-12"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url().$ilanmagaza->username; ?>"><h3><?php echo $ilanmagaza->magazaadi; ?></h3></a></div>
+									<div class="col-12"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url().$ilanmagaza->username; ?>"><strong><?php echo $ilanmagaza->magazaadi; ?></strong></a></div>
 									<div class="col-12">
 										<a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url().$ilanmagaza->username; ?>">
 											<img class="img-responsive" style="border-radius:20px;" src="<?php if ($ilanmagaza->logo) {echo base_url('photos/magaza/').$ilanmagaza->logo;} else {echo base_url('assets/images/company/c1.png');}?>" alt="<?php echo $ilanmagaza->magazaadi; ?>">

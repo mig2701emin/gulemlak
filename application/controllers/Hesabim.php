@@ -143,7 +143,7 @@ class Hesabim extends CI_Controller{
         $new_password = $this->security->xss_clean($this->input->post('new_password'));
         $password=md5($new_password);
 
-        $update = $this->members->editpass($password,$user->Id);
+        $update = $this->members->editpass($password,$this->user->Id);
         if($update){
           $this->session->set_flashdata('success', 'Parolanız Başarıyla Güncellendi.');
           redirect(base_url().'hesabim/anasayfa');
@@ -1234,4 +1234,49 @@ class Hesabim extends CI_Controller{
     $data["ilan"]=$this->db->where("Id",$ilanId)->get("firmalar")->row();
     $this->load->view("resim/duzenle",$data);
   }
+  public function valid_password($password = '')
+      {
+
+        $password = trim($password);
+        $regex_lowercase = '/[a-z]/';
+        $regex_uppercase = '/[A-Z]/';
+        $regex_number = '/[0-9]/';
+        $regex_special = '/[!@#$%^&*()\-_=+{};:,<.>§~]/';
+        if (empty($password))
+        {
+          $this->form_validation->set_message('valid_password', '<strong>%s</strong> Gerekli Bir Alandır.');
+          return FALSE;
+        }
+        // if (preg_match_all($regex_lowercase, $password) < 1)
+        // {
+        //   $this->form_validation->set_message('valid_password', '<strong>%s</strong> En Az 1 Küçük Harf İçermelidir.');
+        //   return FALSE;
+        // }
+        // if (preg_match_all($regex_uppercase, $password) < 1)
+        // {
+        //   $this->form_validation->set_message('valid_password', '<strong>%s</strong> En Az 1 Büyük Harf İçermelidir.');
+        //   return FALSE;
+        // }
+        // if (preg_match_all($regex_number, $password) < 1)
+        // {
+        //   $this->form_validation->set_message('valid_password', '<strong>%s</strong> En Az 1 Rakam İçermelidir.');
+        //   return FALSE;
+        // }
+        /*if (preg_match_all($regex_special, $password) < 1)
+        {
+          $this->form_validation->set_message('valid_password', 'The {field} field must have at least one special character.' . ' ' . htmlentities('!@#$%^&*()\-_=+{};:,<.>§~'));
+          return FALSE;
+        }*/
+        if (strlen($password) < 4)
+        {
+          $this->form_validation->set_message('valid_password', '<strong>%s</strong> Minimum 4 Karakter Uzunluğunda Olmalıdır');
+          return FALSE;
+        }
+        if (strlen($password) > 10)
+        {
+          $this->form_validation->set_message('valid_password', '<strong>%s</strong> 10 Karakterden Uzun Olmamalıdır');
+          return FALSE;
+        }
+        return TRUE;
+      }
 }
