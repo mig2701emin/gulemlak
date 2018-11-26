@@ -10,7 +10,7 @@
   <title><?php echo $magaza->magazaadi; ?> | Ticaret Meclisi</title>
   <!-- SEO Meta
   ================================================== -->
-  <?php $this->load->view('layout/metas');?>
+
   <meta name="description" content="TicaretMeclisi, <?php echo $magaza->magazaadi; ?>, <?php echo base64_decode($magaza->aciklama); ?>">
   <!-- CSS
   ================================================== -->
@@ -33,7 +33,7 @@
   </style>
 
 </head>
-<body class="color_bg1">
+<body >
     <div class="se-pre-con"></div>
     <div class="main">
       <!-- HEADER START -->
@@ -63,13 +63,13 @@
                  <!-- slider-->
                   <div class="col-lg-12">
                       <div class="row">
-                          <div class="col-sm-8">
+                          <div class="col-12">
                               <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                   <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <img class="d-block w-100" src="<?php echo base_url('assets/');?>images/magaza_fon.jpg" alt="First slide" style="height:300px;" />
                                         <div class="carousel-caption d-md-block">
-                                            <h2><?php echo $magaza->magazaadi; ?></h2>
+                                            <h2 style="color"><?php echo $magaza->magazaadi; ?></h2>
                                             <p><?php echo base64_decode($magaza->aciklama); ?></p>
                                         </div>
                                     </div>
@@ -133,12 +133,12 @@
                           <div class="inner-listing">
                               <div class="row">
 
-                                <?php foreach ($ilanlar as $item){ ?>
+                              <!--  <?php /*foreach ($ilanlar as $item){ */?>
                                   <div class="col-md-4 col-6 item-width mb-30">
                                       <div class="product-item">
                                           <div class="product-image">
-                                              <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>">
-                                                  <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  alt="<?php echo $item->firma_adi; ?>">
+                                              <a href="<?php /*echo base_url($item->seo_url).'/'.encode($item->Id); */?>">
+                                                  <img src="<?php /*echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');*/?>"  alt="<?php /*echo $item->firma_adi; */?>">
                                               </a>
                                               <div class="product-detail-inner">
                                                   <div class="detail-inner-left align-center">
@@ -157,19 +157,19 @@
                                           </div>
                                           <div class="product-item-details">
                                               <div class="product-item-name">
-                                                  <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>"><?php echo $item->firma_adi; ?></a>
+                                                  <a href="<?php /*echo base_url($item->seo_url).'/'.encode($item->Id); */?>"><?php /*echo $item->firma_adi; */?></a>
                                               </div>
                                               <div class="row">
                                                   <div class="col">
                                                       <a href="product-page.html">
-                                                        <?php if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}?>
-                                                        <?php if ($item->kategori2) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
-                                                        <?php if ($item->kategori3) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
-                                                        <?php if ($item->kategori4) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}?>
+                                                        <?php /*if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}*/?>
+                                                        <?php /*if ($item->kategori2) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}*/?>
+                                                        <?php /*if ($item->kategori3) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}*/?>
+                                                        <?php /*if ($item->kategori4) {echo ' > '.replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}*/?>
                                                       </a>
                                                   </div>
                                                   <div class="col"><div class="price-box">
-                                                  <span class="price color_text4"><?php echo number_format($item->fiyat,0, ',', '.').' '.$item->birim; ?></span></div>
+                                                  <span class="price color_text4"><?php /*echo number_format($item->fiyat,0, ',', '.').' '.$item->birim; */?></span></div>
                                                   </div>
                                               </div>
 
@@ -180,9 +180,9 @@
                                                   <div class="rating-result" title="53%"> <span style="width:53%"></span> </div>
                                               </div>
                                               <div class="location">
-                                                <?php if ($item->il) {echo replace('tbl_il', 'il_ad','il_id', $item->il);}?>
-                                                <?php if ($item->ilce) {echo ' > '.replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce);}?>
-                                                <?php if ($item->mahalle) {echo ' > '.replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle);}?>
+                                                <?php /*if ($item->il) {echo replace('tbl_il', 'il_ad','il_id', $item->il);}*/?>
+                                                <?php /*if ($item->ilce) {echo ' > '.replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce);}*/?>
+                                                <?php /*if ($item->mahalle) {echo ' > '.replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle);}*/?>
                                               </div>
                                               <div class="product-detail-inner">
                                                   <div class="detail-inner-left">
@@ -201,7 +201,133 @@
                                           </div>
                                       </div>
                                   </div>
-                                <?php } ?>
+                                --><?php /*} */?>
+
+                                  <?php foreach ($ilanlar  as $item){ ?>
+
+                                      <div  class="products col-6 col-md-3  item-width mb-20" >
+                                          <div class="row product-item minheight280" style="border-radius: 20px;border: #ebebeb 1px solid;margin-right: -13px;margin-left: -13px;padding-bottom: 5px;">
+
+                                              <div class=" product-image col-12" style="padding-left:3px;padding-right:3px;padding-top: 2px;  ">
+                                                  <div style="    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    background-color: #f4b035;
+    padding: 4px;
+    color: white;
+    z-index: 90;
+    opacity: 1;
+    font-size: 11px;
+    min-height: 25px;  ">
+                                                      <i class="fas fa-caret-right"></i><?php if ($item->kategoriId) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategoriId);}?>
+
+                                                  </div>
+
+
+                                                  <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>">
+
+                                                      <img src="<?php echo fileControl('photos/crop',ilk_resim($item->Id),'yok.png');?>"  style="border-radius:20px;max-height: 150px "  alt="<?php echo $item->firma_adi; ?>">
+                                                  </a>
+
+
+
+                                                  <div class="product-detail-inner">
+                                                      <div class="detail-inner-left align-center">
+                                                          <ul>
+                                                              <li class="pro-cart-icon">
+                                                                  <form>
+                                                                      <button title="Add to Cart"><i class="fa fa-heart" style="color:red"></i></button>
+                                                                  </form>
+                                                              </li>
+
+                                                              <li class="pro-quick-view-icon"><a class="popup-with-product" href="#product_popup" title="quick-view"><i class="fa fa-eye" style="color:red"></i></a></li>
+                                                          </ul>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="product-item-details col-12 ">
+
+                                                  <div class="product-item-name">
+
+
+
+                                                      <a href="<?php echo base_url($item->seo_url).'/'.encode($item->Id); ?>"><?php echo $item->firma_adi; ?></a>
+
+
+
+
+                                                  </div>
+                                                  <div class="row">
+                                                      <div class="col-12 align-right">
+                                                          <div class="price-box">
+                                                              <span class="price color_text4 " style="font-family:Montserrat;font-size: 15px;"><?php echo number_format($item->fiyat,0, ',', '.').' '.$item->birim; ?></span>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-12" style="min-height:30px;margin-bottom:4px;margin-top: 4px; ">
+
+                                                          <div class="row">
+                                                              <div class="col-1" style="color:#ff0052"></div>
+                                                              <div class="col-10">
+
+                                                                  <a style="font-size:13px" href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                                                      <?php if ($item->kategori2) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
+                                                                      <?php if ($item->kategori3) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
+                                                                      <?php if ($item->kategori4) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}?>
+                                                                  </a>
+                                                              </div>
+                                                          </div>
+
+
+                                                      </div>
+
+
+                                                      <div class="location col-12">
+                                                          <div class="row">
+                                                              <div class="col-1" style="font-size:15px "></div>
+                                                              <div class="col-10">
+                                                                  <?php if ($item->il) {echo replace('tbl_il', 'il_ad','il_id', $item->il);}?>
+                                                                  <?php if ($item->ilce) {echo ' / '.replace('tbl_ilce', 'ilce_ad','ilce_id', $item->ilce);}?>
+                                                                  <br> <?php if ($item->mahalle) {echo replace('tbl_mahalle', 'mahalle_ad','mahalle_id', $item->mahalle);}?>
+                                                              </div>
+                                                          </div>
+
+                                                      </div>
+
+
+
+
+                                                  </div>
+                                                  <div class="product-detail-inner">
+                                                      <div class="detail-inner-left">
+                                                          <ul>
+                                                              <li class="pro-cart-icon">
+                                                                  <form>
+                                                                      <button title="Add to Cart"><i class="fa fa-heart" style="color:red"></i></button>
+                                                                  </form>
+                                                              </li>
+                                                              <li class="pro-quick-view-icon"><a title="quick-view" href="#product_popup" class="popup-with-product"><i class="fa fa-eye" style="color:purple"></i></a></li>
+                                                          </ul>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="company collapse  col-12">
+                                                  <div class="card card-body">
+                                                      <div>Emlakçı Melahat</div>
+                                                      <!--                                                <div>İletişim Bilgileri:0532 321 21 21<br>Adres: Şahinbey Gaziantep</div>-->
+                                                      <a><i class="fab fa-whatsapp"></i> Whatsup</a>
+                                                      <a><i class="fas fa-phone"></i> Ara</a>
+
+                                                      <a><i class="fab fa-facebook-messenger"></i>Facebook Messagenger</a>
+                                                  </div>
+                                              </div>
+
+
+                                          </div>
+                                      </div>
+                                  <?php } ?>
+
+
+
                                 <p class="pagination"><?php echo $links; ?></p>
                               </div>
                           </div>
