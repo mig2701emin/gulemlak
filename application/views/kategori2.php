@@ -469,7 +469,7 @@ color:white;
             <?php }?>
           </div>
             <div class="col-4 yanbaslik" >
-                <div class="mt-1"><a style="font-size:13px; " href="javascript:void(0);" style="font-weight: bold"><?php echo $firma_adi;?></a>
+                <div class="mt-1"><a style="font-size:12px; " href="javascript:void(0);" style="font-weight: bold"><?php echo $firma_adi;?></a>
             </div>
                 <div class="mt-1" style="color:blue">
 
