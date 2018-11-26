@@ -312,12 +312,9 @@
                                               </div>
                                               <div class="company collapse  col-12">
                                                   <div class="card card-body">
-                                                      <div>Emlakçı Melahat</div>
-                                                      <!--                                                <div>İletişim Bilgileri:0532 321 21 21<br>Adres: Şahinbey Gaziantep</div>-->
-                                                      <a><i class="fab fa-whatsapp"></i> Whatsup</a>
-                                                      <a><i class="fas fa-phone"></i> Ara</a>
-
-                                                      <a><i class="fab fa-facebook-messenger"></i>Facebook Messagenger</a>
+                                                      <div><?php echo $magaza->magazaadi; ?></div>
+                                                      <a href="mailto:<?php echo replace('uyeler','email','Id',replace('magaza_kullanicilari','uyeId','magazaId',$magaza->Id)); ?>"><i class="fa fa-envelope"></i>E-Posta Gönder</a>
+                                                      <a href="tel:+90<?php echo replace('uyeler','gsm','Id',replace('magaza_kullanicilari','uyeId','magazaId',$magaza->Id)); ?>"><i class="fas fa-phone"></i>Ara</a>
                                                   </div>
                                               </div>
 

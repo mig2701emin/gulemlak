@@ -282,12 +282,12 @@
                                         </div>
                                         <div class="company collapse  col-12">
                                             <div class="card card-body">
-                                                <div>Emlakçı Melahat</div>
-                                                <!--                                                <div>İletişim Bilgileri:0532 321 21 21<br>Adres: Şahinbey Gaziantep</div>-->
-                                                <a><i class="fab fa-whatsapp"></i> Whatsup</a>
-                                                <a><i class="fas fa-phone"></i> Ara</a>
-
-                                                <a><i class="fab fa-facebook-messenger"></i>Facebook Messagenger</a>
+                                                <div><?php if(magaza_var_mi($item->uyeId)){ echo replace("magazalar","magazaadi","Id",replace("magaza_kullanicilari","magazaId","uyeId",$item->uyeId));}else{echo (replace("uyeler","ad","Id",$item->uyeId)." ".replace("uyeler","soyad","Id",$item->uyeId));} ?></div>
+                                                <a href="mailto:<?php echo replace('uyeler','email','Id',$item->uyeId); ?>"><i class="fa fa-envelope"></i>E-Posta Gönder</a>
+                                                <a href="tel:+90<?php echo replace('uyeler','gsm','Id',$item->uyeId); ?>"><i class="fas fa-phone"></i>Ara</a>
+                                                <?php if (magaza_var_mi($item->uyeId)): ?>
+                                                  <a href="<?php echo base_url().replace("magazalar","username","Id",replace("magaza_kullanicilari","magazaId","uyeId",$item->uyeId)); ?>"><i class="fa fa-search"></i>Üyenin Mağazası</a>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
 
@@ -446,12 +446,12 @@
                                         </div>
                                         <div class="company collapse  col-12">
                                             <div class="card card-body">
-                                                <div>Emlakçı Melahat</div>
-                                                <!--                                                <div>İletişim Bilgileri:0532 321 21 21<br>Adres: Şahinbey Gaziantep</div>-->
-                                                <a><i class="fab fa-whatsapp"></i> Whatsup</a>
-                                                <a><i class="fas fa-phone"></i> Ara</a>
-
-                                                <a><i class="fab fa-facebook-messenger"></i>Facebook Messagenger</a>
+                                                <div><?php if(magaza_var_mi($item->uyeId)){ echo replace("magazalar","magazaadi","Id",replace("magaza_kullanicilari","magazaId","uyeId",$item->uyeId));}else{echo (replace("uyeler","ad","Id",$item->uyeId)." ".replace("uyeler","soyad","Id",$item->uyeId));} ?></div>
+                                                <a href="mailto:<?php echo replace('uyeler','email','Id',$item->uyeId); ?>"><i class="fa fa-envelope"></i>E-Posta Gönder</a>
+                                                <a href="tel:+90<?php echo replace('uyeler','gsm','Id',$item->uyeId); ?>"><i class="fas fa-phone"></i>Ara</a>
+                                                <?php if (magaza_var_mi($item->uyeId)): ?>
+                                                  <a href="<?php echo base_url().replace("magazalar","username","Id",replace("magaza_kullanicilari","magazaId","uyeId",$item->uyeId)); ?>"><i class="fa fa-search"></i>Üyenin Mağazası</a>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
 
@@ -600,12 +600,12 @@
                                         </div>
                                         <div class="company collapse  col-12">
                                             <div class="card card-body">
-                                                <div>Emlakçı Melahat</div>
-                                                <!--                                                <div>İletişim Bilgileri:0532 321 21 21<br>Adres: Şahinbey Gaziantep</div>-->
-                                                <a><i class="fab fa-whatsapp"></i> Whatsup</a>
-                                                <a><i class="fas fa-phone"></i> Ara</a>
-
-                                                <a><i class="fab fa-facebook-messenger"></i>Facebook Messagenger</a>
+                                                <div><?php if(magaza_var_mi($item->uyeId)){ echo replace("magazalar","magazaadi","Id",replace("magaza_kullanicilari","magazaId","uyeId",$item->uyeId));}else{echo (replace("uyeler","ad","Id",$item->uyeId)." ".replace("uyeler","soyad","Id",$item->uyeId));} ?></div>
+                                                <a href="mailto:<?php echo replace('uyeler','email','Id',$item->uyeId); ?>"><i class="fa fa-envelope"></i>E-Posta Gönder</a>
+                                                <a href="tel:+90<?php echo replace('uyeler','gsm','Id',$item->uyeId); ?>"><i class="fas fa-phone"></i>Ara</a>
+                                                <?php if (magaza_var_mi($item->uyeId)): ?>
+                                                  <a href="<?php echo base_url().replace("magazalar","username","Id",replace("magaza_kullanicilari","magazaId","uyeId",$item->uyeId)); ?>"><i class="fa fa-search"></i>Üyenin Mağazası</a>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
 
