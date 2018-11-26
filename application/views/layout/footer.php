@@ -28,15 +28,20 @@
                             <ul class="footer-block-contant address-footer">
                                 <li class="item">
                                     <i class="fa fa-map-marker"> </i>
-                                    <p>TİCARETMECLİSİ.COM <br /> Şirinevler Mahallesi, 69019. Sk. No:2, 27300 Şehitkamil/Gaziantep.</p>
+                                    <?php $ayarlar=$this->db->get("ayarlar")->row();?>
+                                    <p>TİCARETMECLİSİ.COM <br /> <?php echo $ayarlar->adres; ?></p>
                                 </li>
                                 <li class="item">
                                     <i class="fa fa-envelope"> </i>
-                                    <p> <a href="#">destek@ticaretmeclisi.com</a> </p>
+                                    <p> <a href="#"><?php echo $ayarlar->sitemail; ?></a> </p>
                                 </li>
                                 <li class="item">
                                     <i class="fa fa-phone"> </i>
-                                    <p>(+90) 0546 218 12 54</p>
+                                    <p><?php echo $ayarlar->mobil; ?></p>
+                                </li>
+                                <li class="item">
+                                    <i class="fa fa-phone"> </i>
+                                    <p><?php echo $ayarlar->telefon; ?></p>
                                 </li>
                             </ul>
                         </div>
