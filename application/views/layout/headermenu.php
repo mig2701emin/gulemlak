@@ -10,8 +10,8 @@
                 <div class="col-xl-2 col-lg-3 col-lgmd-20per">
                     <div class="header-middle-left">
                         <div class="navbar-header float-none-sm">
-                            <a class="navbar-brand page-scroll" href="<?php echo base_url(); ?>">
-                                <img  alt="" src="<?php echo base_url('assets/');?>images/logo.png" />
+                            <a class="navbar-brand page-scroll" href="<?php echo base_url(); ?>" style="padding-top: 10px;  padding-bottom:5px;width: 250px;">
+                                <img  alt="www.ticaretmeclisi.com" src="<?php echo base_url('assets/');?>images/logo.png" />
                             </a>
                         </div>
                     </div>
@@ -31,23 +31,8 @@
                                         </li>
                                         <li class="level dropdown ">
                                             <span class="opener plus"></span>
-                                            <a href="#"><span>Kurumsal</span></a>
-                                            <!--<div class="megamenu mobile-sub-menu">
-                                                <div class="megamenu-inner-top">
-                                                    <ul class="sub-menu-level1">
-                                                        <li class="level2">
-                                                            <ul class="sub-menu-level2 ">
-                                                                <li class="level3"><a href="shop.html"><span>■</span>Shop</a></li>
-                                                                <li class="level3"><a href="shop_2.html"><span>■</span>Shop 2</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>-->
+                                            <a href="/Kurumsal"><span>Kurumsal</span></a>
                                         </li>
-
-
-
                                         <li class="level dropdown ">
                                             <span class="opener plus"></span>
                                             <a href="#" class="page-scroll"><span>Mağaza</span></a>
@@ -56,12 +41,12 @@
                                                     <ul class="sub-menu-level1">
                                                         <li class="level2">
                                                             <ul class="sub-menu-level2 " style="width:250px;">
-                                                                <li class="level3"><a href="#"><span>■</span>Mağaza Açmak İstiyorum</a></li>
-                                                                <li class="level3"><a href="#"><span>■</span>Mağaza Paketleri</a></li>
-                                                                <li class="level3"><a href="#"><span>■</span>Mağaza Türleri</a></li>
-                                                                <li class="level3"><a href="#"><span>■</span>Mağaza Fiyatları</a></li>
-                                                                <li class="level3"><a href="#"><span>■</span>Nasıl Çalışır</a></li>
-                                                                <li class="level3"><a href="#"><span>■</span>Sık Sorulan Sorular</a></li>
+                                                                <li class="level3"><a href="/Kurumsal/Destek"><span>■</span>Mağaza Açmak İstiyorum</a></li>
+                                                                <li class="level3"><a href="/Kurumsal/Destek#section_2"><span>■</span>Mağaza Paketleri</a></li>
+                                                                <li class="level3"><a href="/Kurumsal/Destek#section_3"><span>■</span>Mağaza Türleri</a></li>
+                                                                <li class="level3"><a href="/Kurumsal/Destek"><span>■</span>Mağaza Fiyatları</a></li>
+                                                                <li class="level3"><a href="/Kurumsal/Destek"><span>■</span>Nasıl Çalışır</a></li>
+                                                                <li class="level3"><a href="/Kurumsal/Destek"><span>■</span>Sık Sorulan Sorular</a></li>
 
                                                             </ul>
                                                         </li>
@@ -71,39 +56,24 @@
                                         </li>
                                         <li class="level dropdown ">
                                             <span class="opener plus"></span>
-                                            <a href="#"><span>Destek</span></a>
-                                            <!--<div class="megamenu mobile-sub-menu">
-                                                <div class="megamenu-inner-top">
-                                                    <ul class="sub-menu-level1">
-                                                        <li class="level2">
-                                                            <ul class="sub-menu-level2 ">
-                                                                <li class="level3"><a href="blog.html"><span>■</span>Blog</a></li>
-                                                                <li class="level3"><a href="blog_2.html"><span>■</span>Blog 2</a></li>
-                                                                <li class="level3"><a href="single-blog.html"><span>■</span>Single Blog</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>-->
+                                            <a href="blog.html"><span>Destek</span></a>
                                         </li>
                                         <li>
-                                            <a href="#"><span>İletİşİm</span></a>
+                                            <a href="Home/giris"><span>İletİşİm</span></a>
                                         </li>
-                                        <?php if($this->session->userdata('userData')){ ?>
-                                          <li>
-                                            <a  href="<?php echo base_url('cikis'); ?>" class="btn btn-danger" style="border: none" ><i class="fa fa-user"></i> ÇIKIŞ YAP</a>
-                                          </li>
-                                          <li>
-                                            <a  href="<?php echo base_url('hesabim/anasayfa'); ?>" class="btn btn-danger" style="border: none" ><i class="fa fa-user"></i> HESABIM</a>
-                                          </li>
-                                        <?php }else{ ?>
-                                          <li>
-                                            <a  href="<?php echo base_url('uyegiris'); ?>" class="btn btn-danger" style="border: none"><i class="fa fa-user"></i> GİRİŞ YAP</a>
-                                          </li>
-                                          <li>
-                                            <a href="<?php echo base_url('uyeol'); ?>" class="btn btn-danger" style="border: none"><i class="fa fa-user-plus"></i> ÜYE OL</a>
-                                          </li>
-                                        <?php } ?>
+
+                                        <li class="level dropdown ">
+                                            <!-- <a href="<?php //echo base_url('ilanekle'); ?>" ><span class="btn_ilanver"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ücretsiz İlan Ver</span></a> -->
+
+                                            <!-- <?php //if($this->session->userdata('userData')){ ?>
+                                              <a  href="<?php //echo base_url('cikis'); ?>" class="btn btn-danger" style="border: none" ><i class="fa fa-user"></i>ÇIKIŞ YAP</a>
+                                              <a  href="<?php //echo base_url(); ?>" class="btn btn-danger" style="border: none" ><i class="fa fa-user"></i><?php //echo $this->session->userdata['userData']['ad']; ?></a>
+                                            <?php //}else{ ?>
+                                              <a  href="<?php //echo base_url('uyegiris'); ?>" class="btn btn-danger" style="border: none"><i class="fa fa-user"></i>GİRİŞ YAP</a>
+                                              <a href="<?php //echo base_url('uyeol'); ?>" class="btn btn-danger" style="border: none"><i class="fa fa-user-plus"></i>ÜYE OL</a>
+                                            <?php //} ?> -->
+
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

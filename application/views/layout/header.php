@@ -32,7 +32,7 @@
                                         </li>
                                         <li class="level dropdown ">
                                             <span class="opener plus"></span>
-                                            <a href="#"><span>Kurumsal</span></a>
+                                            <a href="/Kurumsal"><span>Kurumsal</span></a>
                                         </li>
                                         <li class="level dropdown ">
                                             <span class="opener plus"></span>
@@ -42,12 +42,12 @@
                                                     <ul class="sub-menu-level1">
                                                         <li class="level2">
                                                             <ul class="sub-menu-level2 " style="width:250px;">
-                                                                <li class="level3"><a href="account.html"><span>■</span>Mağaza Açmak İstiyorum</a></li>
-                                                                <li class="level3"><a href="checkout.html"><span>■</span>Mağaza Paketleri</a></li>
-                                                                <li class="level3"><a href="compare.html"><span>■</span>Mağaza Türleri</a></li>
-                                                                <li class="level3"><a href="wishlist.html"><span>■</span>Mağaza Fiyatları</a></li>
-                                                                <li class="level3"><a href="404.html"><span>■</span>Nasıl Çalışır</a></li>
-                                                                <li class="level3"><a href="faq.html"><span>■</span>Sık Sorulan Sorular</a></li>
+                                                                <li class="level3"><a href="/Kurumsal/Destek"><span>■</span>Mağaza Açmak İstiyorum</a></li>
+                                                                <li class="level3"><a href="/Kurumsal/Destek"><span>■</span>Mağaza Paketleri</a></li>
+                                                                <li class="level3"><a href="/Kurumsal/Destek"><span>■</span>Mağaza Türleri</a></li>
+                                                                <li class="level3"><a href="/Kurumsal/Destek"><span>■</span>Mağaza Fiyatları</a></li>
+                                                                <li class="level3"><a href="/Kurumsal/Destek"><span>■</span>Nasıl Çalışır</a></li>
+                                                                <li class="level3"><a href="/Kurumsal/Destek"><span>■</span>Sık Sorulan Sorular</a></li>
 
                                                             </ul>
                                                         </li>
