@@ -2610,9 +2610,11 @@ ul.social-icon li i.fa {
  @media (max-width: 419px) {
 	 .anabaslik{
 		 display:none;
+
 	 }
 	 .yanbaslik{
 		 display:block;
+
 	 }
 #newslater-popup .newsletter-inner {
     padding: 50px 0;

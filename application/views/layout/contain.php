@@ -40,7 +40,7 @@
                                       <div class="row">
                                         <div class="col-12">
                                           <span>
-                                              <a  href="<?php echo base_url($anaKategori->seo.'/'.$firstSub->seo.'/'.$firstSub->Id); ?>"><?php echo $firstSub->kategori_adi.' '; ?>(<?php echo countDB('firmalar','kategori2',$firstSub->Id); ?>)</a>
+                                              <a style="font-size: 14px;"  href="<?php echo base_url($anaKategori->seo.'/'.$firstSub->seo.'/'.$firstSub->Id); ?>"><?php echo $firstSub->kategori_adi.' '; ?>(<?php echo countDB('firmalar','kategori2',$firstSub->Id); ?>)</a>
                                           </span>
                                         </div>
 
@@ -239,7 +239,7 @@
                                                         <div class="col-1" style="color:#ff0052"></div>
                                                         <div class="col-10">
 
-                                                            <a href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
+                                                            <a style="font-size:13px" href="<?php echo base_url('ilan/'.$item->seo_url).'-'.$item->Id; ?>">
                                                                 <?php if ($item->kategori2) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori2);}?>
                                                                 <?php if ($item->kategori3) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori3);}?>
                                                                 <?php if ($item->kategori4) {echo replace('kategoriler', 'kategori_adi','Id', $item->kategori4);}?>
