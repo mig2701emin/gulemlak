@@ -21,4 +21,10 @@ class Kurumsal extends CI_Controller{
         $this->load->view('layout/destek', $data);
     }
 
+    function  iletisim(){
+
+        $data['title']='Emlak Meclisi | Anasayfa';
+        $this->load->view('layout/iletisim', $data);
+    }
+
 }

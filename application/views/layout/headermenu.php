@@ -59,7 +59,7 @@
                                             <a href="blog.html"><span>Destek</span></a>
                                         </li>
                                         <li>
-                                            <a href="Home/giris"><span>İletİşİm</span></a>
+                                            <a href="/Kurumsal/iletisim"><span>İletİşİm</span></a>
                                         </li>
 
                                         <li class="level dropdown ">
