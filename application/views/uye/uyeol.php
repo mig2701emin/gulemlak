@@ -17,12 +17,12 @@
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/custom/uyeol.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/style.css" />
-
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
 
 
     <script src='https://www.google.com/recaptcha/api.js?hl=tr'></script>
 </head>
-<body class="color_bg1">
+<body>
 
 <div class="se-pre-con"></div>
 <div class="main">
@@ -37,7 +37,11 @@
                     <div class="menu"><a href="#">Destek</a></div>
                     <div class="menu"><a href="<?php echo base_url(); ?>">Anasayfa</a></div>
                 </div><div class="col-md-8 py-5 border">
-                    <h4 class="pb-4">Hemen Kayıt Ol</h4>
+                    <h4 class="pb-4" style="    color: #1f1f2f;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;">Hemen Kayıt Ol</h4>
                     <?php if(validation_errors()){ ?>
                         <div class="alert alert-danger"><?php echo validation_errors(); ?></div>
                     <?php } ?>
@@ -76,7 +80,7 @@
                                             <!-- Default unchecked -->
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" name="white" id="defaultUnchecked">
-                                                <label class="custom-control-label" for="defaultUnchecked">Sözleşme Okudum ve kabul ediyorum</label>
+                                                <label class="custom-control-label" for="defaultUnchecked" style="font-size: 14px;">Sözleşme Okudum ve kabul ediyorum</label>
 
                                             </div>
                                         </div>
@@ -105,7 +109,7 @@
 
                     <div class="giris col-12">Eğer kayıtlı kullanıcı iseniz   <a href="<?php echo base_url(); ?>uyegiris">Giriş Yap</a></div>
                 </div>
-                <div class="col-md-4 py-5 text-white text-left" style=" background-image: linear-gradient(150deg, #eef2f2 0%, #3a5757 100%); background-repeat: repeat-x;" >
+                <div class="col-md-4 py-5 text-white text-left" style="  background-image: linear-gradient(150deg, #000474 0%, #19a0ff 100%); background-repeat: repeat-x;" >
 
                     <div class="card-body" >
 
@@ -176,7 +180,7 @@
             </div>
             <div class="modal-footer">
 
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Sözleşmeyi okudum</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" >Sözleşmeyi okudum</button>
             </div>
         </div>
     </div>

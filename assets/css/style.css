@@ -24,8 +24,9 @@
   border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 .btn-facebook {
+
   color: #ffffff;
-  background-color: #586f85;
+  background-color: #2d4373;
   border-color: rgba(0, 0, 0, 0.2);
 }
 .btn-facebook:focus,
@@ -35,8 +36,8 @@
   border-color: rgba(0, 0, 0, 0.2);
 }
 .btn-facebook:hover {
-  color: #ffffff;
-  background-color: #2d4373;
+  color: #2d4373;
+  background-color:#ffffff ;
   border-color: rgba(0, 0, 0, 0.2);
 }
 .btn-facebook:active,
@@ -53,7 +54,7 @@
 }
 .btn-google {
   color: #ffffff;
-  background-color: #58856f;
+  background-color: #c23321;
   border-color: rgba(0, 0, 0, 0.2);
 }
 .btn-google:focus,
@@ -63,8 +64,8 @@
   border-color: rgba(0, 0, 0, 0.2);
 }
 .btn-google:hover {
-  color: #ffffff;
-  background-color: #c23321;
+  color:  #c23321;
+  background-color:#ffffff ;
   border-color: rgba(0, 0, 0, 0.2);
 }
 .btn-google:active,
