@@ -21,17 +21,17 @@
 
 
 </head>
-<body>
+<body style=" background-image: linear-gradient(150deg, #000474 0%, #19a0ff 100%);">
 
 <div class="main">
 
     <section class="testimonial py-5" id="testimonial">
-        <div class="container">
-            <div class="row color_bg1">
-                <div class="col-md-12 color_bgx">
-                    <div class="menu"><a href="#">iletişim</a></div>
-                    <div class="menu"><a href="#">Destek</a></div>
-                    <div class="menu"><a href="<?php echo base_url(); ?>">Anasayfa</a></div>
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="menu"><a href="#"   style="color:lightgoldenrodyellow">iletişim</a></div>
+                    <div class="menu"><a href="#"  style="color:lightgoldenrodyellow">Destek</a></div>
+                    <div class="menu"><a href="<?php echo base_url(); ?>" style="color:lightgoldenrodyellow">Anasayfa</a></div>
                 </div>
                 <?php
 
@@ -47,7 +47,7 @@
 
                 ?>
                 <div class="col-md-6 py-5 border">
-                    <h4 class="pb-4">Üye Giriş</h4>
+                    <h4 class="pb-4 text-white">Üye Giriş</h4>
                     <form method="post">
                         <div class="form-row">
                             <div class="form-group col-md-12">
@@ -64,7 +64,7 @@
                                         <!-- Default unchecked -->
                                         <div class="custom-control custom-checkbox">
                                             <input name="remember_me" type="checkbox" class="custom-control-input" id="defaultUnchecked" <?php echo (isset($member)) ? "checked" : ""; ?>>
-                                            <label class="custom-control-label" for="defaultUnchecked">Beni Hatırla</label>
+                                            <label class="custom-control-label text-white" for="defaultUnchecked">Beni Hatırla</label>
 
                                         </div>
                                     </div>
@@ -74,28 +74,28 @@
                         </div>
 
                         <div class="form-row">
-                            <button type="submit" class="btn color_bg3 text-light" style="width:100%; ">Üye Girişi</button>
+                            <button type="submit" class="btn color_bg3 text-white" style="width:100%; ">Üye Girişi</button>
                         </div>
                     </form>
                     <div class="giris col-12">
 
-                        <a href="" target="_blank" class="btn btn-bg-turquoise btn-sm pull-right" onclick="alert('Şifre Yenile İşlemleri İçin Lütfen Site Yönetimini Arayınız.\n Cep: 0542 218 12 54')">
+                        <a href="" target="_blank" class="btn btn-bg-turquoise btn-sm pull-right"  style="color:lightgoldenrodyellow" onclick="alert('Şifre Yenile İşlemleri İçin Lütfen Site Yönetimini Arayınız.\n Cep: 0542 218 12 54')">
                             Şifremi Unuttum?
                         </a>
                     </div>
                     <br>
                     <div class="social-auth-links text-center">
 
-                        <a href="<?php echo $authURL; ?>" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Facebook ile devam et</a>
-                        <a href="<?php echo $loginURL; ?>" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i>Google+ ile devam et</a>
+                        <a href="<?php echo $authURL; ?>" class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i> Facebook ile devam et</a>
+                        <a href="<?php echo $loginURL; ?>" class="btn btn-block btn-social btn-google" ><i class="fa fa-google-plus"></i>Google+ ile devam et</a>
                     </div>
                 </div>
                 <div class="col-md-6 py-5 text-left" style=" ;" >
 
                     <div class="card-body" >
 
-                        <h2 class="py-3">Ticaret Meclisi</h2>
-                        <p>
+                        <h2 class="py-3 text-white">Ticaret Meclisi</h2>
+                        <p class="text-white">
                             <strong>Ticaretmeclisi.com</strong>'a ilan ver web dünyasında farklı ol.  Ayrıcalıklı dünyaya hoşgeldiniz.
 
                         </p>
@@ -103,9 +103,9 @@
                     </div>
                     <hr style="border-color: white">
                     <br>
-                    <div class="uyeol">
+                    <div class="uyeol text-white">
                         Platforma üye değilseniz tıklayınız<br>
-                        <a href="<?php echo base_url('uyeol'); ?>">Hızlı Üye Ol</a>
+                        <a  style="color:white" href="<?php echo base_url('uyeol'); ?>">Hızlı Üye Ol</a>
 
 
                     </div>
@@ -120,7 +120,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Şifremi Unuttum?</h4>
+                <h4 class="modal-title text-light">Şifremi Unuttum?</h4>
             </div>
 
             <div class="modal-body">
