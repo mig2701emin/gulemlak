@@ -36,7 +36,7 @@ class Hesabim extends CI_Controller{
       $data["toplam_kayit"]=$this->db->where($where)->get("firmalar")->num_rows();
     }elseif ($filter == "bekleyen") {
       //$where = array("uyeId" => $this->user->Id,"onay"=>"0");
-      $where ="uyeId=".$this->user->Id." AND onay='0'";
+      $where ="uyeId=".$this->user->Id." AND onay='0' AND suresi_doldu='0'";
       $filter2="Onay Bekleyen";
       $urlstring="hesabim/anasayfa/bekleyen";
       $uri_segment=4;
@@ -54,7 +54,7 @@ class Hesabim extends CI_Controller{
       $data["toplam_kayit"]=$this->db->where($where)->get("firmalar")->num_rows();
     }elseif ($filter == "suresibiten") {
       //$where = array("uyeId" => $this->user->Id,"onay"=>"0");
-      $where ="uyeId=".$this->user->Id." AND suresi_doldu='1'";
+      $where ="uyeId=".$this->user->Id." AND onay='0' AND suresi_doldu='1'";
       $filter2="Süresi Biten";
       $urlstring="hesabim/anasayfa/suresibiten";
       $uri_segment=4;
