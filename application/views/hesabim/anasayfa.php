@@ -190,24 +190,13 @@
         								<div class="cont_breadcrumbs">
         									<div class="cont_breadcrumbs_1">
         										<ul>
-                            <li><a href="#"><?php echo $kat1->kategori_adi;?></a></li>
-                            <?php if($ilan->kategori2!=0){?>
-                            <li><a href="#"><?php echo $kat2->kategori_adi;?></a></li>
-                             <?php } ?>
-                             <?php if($ilan->kategori3!=0){?>
+                            <li><a href="#"><?php echo replace("tbl_mahalle","mahalle_ad","mahalle_id",$ilan->mahalle);?></a></li>
+                            <?php if($ilan->kategori4!=0){?>
                             <li><a href="#"><?php echo $kat3->kategori_adi;?></a></li>
-                             <?php }?>
-                             <?php if($ilan->kategori4!=0){?>
                             <li><a href="#"><?php echo $kat4->kategori_adi;?></a></li>
-                             <?php }?>
-                             <?php if($ilan->kategori5!=0){?>
-                            <li><a href="#"><?php echo $kat5->kategori_adi;?></a></li>
-                             <?php }?>
-                             <?php if($ilan->kategori6!=0){?>
-                            <li><a href="#"><?php echo $kat6->kategori_adi;?></a></li>
-                             <?php }?>
-                             <?php if($ilan->kategori7!=0){?>
-                            <li><a href="#"><?php echo $kat7->kategori_adi;?>
+                            <?php }else{?>
+                            <li><a href="#"><?php echo $kat3->kategori_adi;?></a></li>
+                            <li><a href="#"><?php echo $kat2->kategori_adi;?></a></li>
                              <?php }?>
                            </ul>
                          </div>

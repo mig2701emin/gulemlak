@@ -84,10 +84,10 @@ process_mysql("update uyeler set onay='0' where Id='".$Id."'","uye-yonetimi.html
 										<i class="icon-lock icon-white"></i>
 										Giriş Yap
 									</a>
-									<a class="btn btn-danger" href="../uye/<?=$uye[username];?>-<?=$uye[Id];?>">
+									<!-- <a class="btn btn-danger" href="../uye/<?=$uye[username];?>-<?=$uye[Id];?>">
 										<i class="icon-zoom-in icon-white"></i>
 										Görüntüle
-									</a>
+									</a> -->
 									<a class="btn btn-success" href="<?=$site_adresi;?>/yonetim/uyeduzenle/<?=base64_encode($uye[Id]);?>" target="_blank">
 										<i class="icon-edit icon-white"></i>
 										Düzenle
