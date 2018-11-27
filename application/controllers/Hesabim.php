@@ -34,11 +34,29 @@ class Hesabim extends CI_Controller{
       $page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
       $query=$this->db->where($where)->order_by("kayit_tarihi","DESC")->limit($config["per_page"],$page)->get("firmalar");
       $data["toplam_kayit"]=$this->db->where($where)->get("firmalar")->num_rows();
-    }elseif ($filter == "pasif") {
+    }elseif ($filter == "bekleyen") {
       //$where = array("uyeId" => $this->user->Id,"onay"=>"0");
-      $where ="uyeId=".$this->user->Id." AND (onay='0' OR onay='2')";
-      $filter2="Pasif";
-      $urlstring="hesabim/anasayfa/pasif";
+      $where ="uyeId=".$this->user->Id." AND onay='0'";
+      $filter2="Onay Bekleyen";
+      $urlstring="hesabim/anasayfa/bekleyen";
+      $uri_segment=4;
+      $page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
+      $query=$this->db->where($where)->order_by("kayit_tarihi","DESC")->limit($config["per_page"],$page)->get("firmalar");
+      $data["toplam_kayit"]=$this->db->where($where)->get("firmalar")->num_rows();
+    }elseif ($filter == "durdurulan") {
+      //$where = array("uyeId" => $this->user->Id,"onay"=>"0");
+      $where ="uyeId=".$this->user->Id." AND onay='2'";
+      $filter2="Durdurulan";
+      $urlstring="hesabim/anasayfa/durdurulan";
+      $uri_segment=4;
+      $page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
+      $query=$this->db->where($where)->order_by("kayit_tarihi","DESC")->limit($config["per_page"],$page)->get("firmalar");
+      $data["toplam_kayit"]=$this->db->where($where)->get("firmalar")->num_rows();
+    }elseif ($filter == "suresibiten") {
+      //$where = array("uyeId" => $this->user->Id,"onay"=>"0");
+      $where ="uyeId=".$this->user->Id." AND suresi_doldu='1'";
+      $filter2="Süresi Biten";
+      $urlstring="hesabim/anasayfa/suresibiten";
       $uri_segment=4;
       $page = ($this->uri->segment($uri_segment)) ? $this->uri->segment($uri_segment) : 0;
       $query=$this->db->where($where)->order_by("kayit_tarihi","DESC")->limit($config["per_page"],$page)->get("firmalar");
