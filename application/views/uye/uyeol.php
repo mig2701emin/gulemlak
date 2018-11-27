@@ -17,7 +17,7 @@
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/custom/uyeol.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/style.css" />
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
 
 
     <script src='https://www.google.com/recaptcha/api.js?hl=tr'></script>
@@ -37,7 +37,11 @@
                     <div class="menu"><a href="#">Destek</a></div>
                     <div class="menu"><a href="<?php echo base_url(); ?>">Anasayfa</a></div>
                 </div><div class="col-md-8 py-5 border">
-                    <h4 class="pb-4 font-weight-bold">Hemen Kayıt Ol</h4>
+                    <h4 class="pb-4" style="    color: #1f1f2f;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;">Hemen Kayıt Ol</h4>
                     <?php if(validation_errors()){ ?>
                         <div class="alert alert-danger"><?php echo validation_errors(); ?></div>
                     <?php } ?>
