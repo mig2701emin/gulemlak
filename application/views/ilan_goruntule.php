@@ -296,19 +296,11 @@ font-weight: bold;
                             </div>
 						<div class="col-12 col-sm-12 col-md-8 col-lg-8 ">
 							<div class="row text-center">
-								<div class="col-12">
-									<div class="row  resimbuton">
-										<div class="col-12 text-white " style="height:30px;background-color: #0040a5;border-right:white 1px solid;">
-											<b><a id="bigImage" style="margin-top: 15px; font-weight: 600">BÜYÜK RESİM</a></b>
-                                            <div class="float-right pt-1" style="font-size: 12px;">İlan No:   <?php echo $ilan->ilanId; ?></div>
-                                        </div>
-
-									</div>
-								</div>
 
 
 
-								<div id="demo" class="carousel slide col-12" data-ride="carousel">
+
+								<div id="demo" class="carousel slide col-12" data-ride="carousel" style="    padding-left: 0px;padding-right: 0px;">
 									<!-- The slideshow -->
 									<div class="carousel-inner">
 										<?php if (count($resimler) > 0): ?>
@@ -327,14 +319,27 @@ font-weight: bold;
 											</div>
 										<?php endif; ?>
 									</div>
+                                    <div class="col-12" style="position:absolute;top: 0px;">
+
+                                            <div class="col-12 text-white " style="border-right:white 2px solid;">
+
+                                                <div class="float-right p-1" style="font-size: 12px;height:30px;background-color: #0040a5;">İlan No:   <?php echo $ilan->ilanId; ?></div>
+                                            </div>
+
+
+                                    </div>
+                                    <div class="col-12" style="position:absolute;bottom: 0px; left: 0; background-color:#e12222; width:170px;opacity: 0.7;z-index: 9999">
+                                        <b><a id="bigImage" style="font-weight: 600;font-size: 12px;color: white"><i class="fas fa-search-plus"></i> BÜYÜK RESİM</a></b>
+                                    </div>
 									<!-- Left and right controls -->
-									<a class="carousel-control-prev" href="#demo" data-slide="prev">
+									<a class="carousel-control-prev" href="#demo" data-slide="prev" style="left:15px;">
 										<span class="carousel-control-prev-icon"></span>
 									</a>
-									<a class="carousel-control-next" href="#demo" data-slide="next">
+									<a class="carousel-control-next" href="#demo" data-slide="next" style="right:15px;">
 										<span class="carousel-control-next-icon"></span>
 									</a>
 								</div>
+
 								<div id="corusel" class="col-12">
 									<div class="row">
 										<?php if (count($resimler) > 0): ?>
