@@ -28,7 +28,7 @@
 
       <!-- Bread Crumb END -->
       <!-- CONTAIN START -->
-      <?php $this->load->view('layout/contain');?>
+<!--     <?php //$this->load->view('layout/contain');?> -->
       <!-- CONTAINER END -->
       <!-- News Letter Start -->
 
