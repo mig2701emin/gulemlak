@@ -1792,7 +1792,9 @@ table.compare-info tr td button:first-child {
 /* Header */
 
 .navbar-brand > img {
-    height: 40px;
+    /*height: 40px;*/
+	width:67%;
+	height:67%;
     /* width: 35%; */
 }
 

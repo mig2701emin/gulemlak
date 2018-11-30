@@ -21,8 +21,8 @@
                     <div class="m-stack__item m-brand">
                         <div class="m-stack m-stack--ver m-stack--general m-stack--inline">
                             <div class="m-stack__item m-stack__item--middle m-brand__logo">
-                                <a href="<?php echo base_url(); ?>" class="m-brand__logo-wrapper">
-                                    <img alt="" src="<?php echo base_url(); ?>assets/images/logo.png" />
+                                <a  href="<?php echo base_url(); ?>" class="m-brand__logo-wrapper" >
+                                    <img alt="" src="<?php echo base_url(); ?>assets/images/logo.png"  style="width: 252px;height: 40px;" />
                                 </a>
                             </div>
                             <div class="m-stack__item m-stack__item--middle m-brand__tools">
