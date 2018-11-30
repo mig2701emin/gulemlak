@@ -46,7 +46,7 @@ color:white;
     <?php $this->load->view('layout/header');?>
     <div class="container">
       <div class="row mt-60 mb-60" >
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="sidebar-block">
             <div class="sidebar-box listing-box mb-40" style="font-size: 14px">
               <span class="opener plus"></span>
@@ -381,9 +381,9 @@ color:white;
                             <div class="form-group">
                               <div class="form-check">
                                 <!-- Default unchecked -->
-                                <div class="custom-control custom-checkbox">
+                                <div class="custom-control custom-checkbox" style="padding-left:0px; ">
                                   <input name="remember_me" type="checkbox" class="custom-control-input" id="defaultUnchecked" <?php echo (isset($member)) ? "checked" : ""; ?>>
-                                  <label class="custom-control-label" for="defaultUnchecked">Sadece Haritalı İlanlar</label>
+                                  <label class="custom-control-label" for="defaultUnchecked" style="font-size: 11px;padding-top: 5px;">Sadece Haritalı İlanlar</label>
                                 </div>
                               </div>
                             </div>
@@ -394,9 +394,9 @@ color:white;
                             <div class="form-group">
                               <div class="form-check">
                                 <!-- Default unchecked -->
-                                <div class="custom-control custom-checkbox">
+                                <div class="custom-control custom-checkbox" style="padding-left:0px; ">
                                   <input name="remember_me" type="checkbox" class="custom-control-input" id="OnlyPhoto" <?php echo (isset($member)) ? "checked" : ""; ?>>
-                                  <label class="custom-control-label" for="OnlyPhoto">Sadece Fotoğraflı İlanlar</label>
+                                  <label class="custom-control-label" for="OnlyPhoto" style="font-size: 11px;padding-top:5px">Sadece Fotoğraflı İlanlar</label>
                                 </div>
                               </div>
                             </div>
@@ -416,7 +416,7 @@ color:white;
         </div>
       </div>
     </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
       <div class="row">
         <!-- <form id="sort" class="" action="" method="get"> -->
         <select name="order_type" onchange="order_by()" style="width:200px;font-size:9pt;">
