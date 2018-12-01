@@ -16,7 +16,7 @@
     }
   </style>
 </head>
-<body class="color_bg1">
+<body>
   <div class="se-pre-con"></div>
   <div class="main">
     <?php $this->load->view('layout/newuserheader');?>
@@ -48,12 +48,12 @@
             <!--iletişim bilgileri --------->
             <h2 class="text-center">İletişim Bilgileri</h2>
             <div class="mb-3">
-                <label for="ilanadi">Adı Soyadı</label>
+                <label for="adsoyad">Adı Soyadı</label>
                 <input type="text" class="form-control" name="adsoyad" value="<?php echo $user->ad;?> <?php echo $user->soyad;?>" disabled>
             </div>
             <div class="mb-3">
-                <label for="ilanadi">Cep Telefonu</label>
-                <input type="text" class="form-control" name="adsoyad" value="<?php if($user->gsm!=''){echo $user->gsm;}else{echo "Belirtilmemiş";}?>" disabled>
+                <label for="gsm">Cep Telefonu</label>
+                <input type="text" class="form-control" name="gsm" value="<?php if($user->gsm!=''){echo $user->gsm;}else{echo "Belirtilmemiş";}?>" disabled>
             </div>
             <div class="mb-3">
                 <label for="istel">İş Telefonu</label>
@@ -343,6 +343,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maps.google.com/maps/api/js?key=AIzaSyAgvcI5F7yEbzhTlj3HHwj7vnTZgQIdfqA&sensor=false"></script>
   <script src="<?php echo base_url('assets/');?>/map/map_edit.php?currentlatlong=<?php echo base64_encode($ilan->map);?>" defer></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/');?>js/validation/jquery.validate.js" defer></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/');?>js/validation/messages_tr.js" defer></script>
   <script src="<?php echo base_url('assets/');?>js/autoNumeric.js" defer></script>
   <script src="<?php echo base_url('assets/noty/packaged/jquery.noty.packaged.min.js'); ?>"></script>
   <script src="<?php echo base_url('assets/');?>js/script.js"></script>
@@ -419,6 +421,52 @@
 function map_location(){
    <?php if($ilan->map!=''){?>codeAddress("<?php echo replace('tbl_mahalle','mahalle_ad','mahalle_id',$ilan->mahalle).' '.replace('tbl_ilce','ilce_ad','ilce_id',$ilan->ilce).' '.replace('tbl_il','il_ad','il_id',$ilan->il);?> Türkiye");<?php }?>
  };
+ $(document).ready(function(){
+ $("#ilan_form").validate({
+ ignore: 'input:hidden:not(input:hidden.required)',
+   rules:{
+     'ilanadi': {
+       required:true,
+       minlength:5,
+       maxlength:75
+     },
+     'aciklama': {
+       required: true
+     },
+     'il': {
+       required: true
+     },
+     'ilce': {
+       required: true
+     },
+     'mahalle': {
+       required: true
+     },
+     'fiyat1': {
+       required: true,
+       maxlength: 10
+     },
+     'fiyat2': {
+       required: true,
+       minlength: 2,
+       maxlength: 2
+     },
+     'birim': {
+       required: true
+     },
+     'bitis_suresi': {
+       required: true
+     },
+     'ad_rules': {
+       required: true
+     }
+   },
+   groups:{
+     fiyat: "fiyat1 fiyat2 birim",
+     bolge: "il ilce mahalle"
+   }
+ });
+});
  $(document).ready(function() {
  	$("input[name='fiyat1']").autoNumeric('init',{vMax:'99999999',aPad:false,aSep: '.',aDec:','});
  	$("input[name='m2']").autoNumeric('init',{vMax:'999999',aPad:false,aSep: '.',aDec:','});

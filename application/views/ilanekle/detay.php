@@ -53,7 +53,7 @@
             <!--iletişim bilgileri --------->
             <h2 class="text-center">İletişim Bilgileri</h2>
             <div class="mb-3">
-                <label for="ilanadi">Adı Soyadı</label>
+                <label for="adsoyad">Adı Soyadı</label>
                 <input type="text" class="form-control" name="adsoyad" value="<?php echo $user->ad;?> <?php echo $user->soyad;?>" disabled>
             </div>
             <div class="mb-3">
@@ -366,6 +366,8 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://maps.google.com/maps/api/js?key=AIzaSyAgvcI5F7yEbzhTlj3HHwj7vnTZgQIdfqA&sensor=false"></script>
   <script src="<?php echo base_url(); ?>assets/map/add_ad_map.js"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/');?>js/validation/jquery.validate.js" defer></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/');?>js/validation/messages_tr.js" defer></script>
   <script src="<?php echo base_url('assets/');?>js/autoNumeric.js" defer></script>
   <script src="<?php echo base_url('assets/noty/packaged/jquery.noty.packaged.min.js'); ?>"></script>
   <script src="<?php echo base_url('assets/');?>js/script.js"></script>
@@ -437,12 +439,58 @@
   function adresgetir() {
     codeAddress($("#mahalle option:selected").html()+" "+$("#ilce option:selected").html()+" "+$("#il option:selected").html()+" Türkiye");
   }
-$(document).ready(function() {
-	$("input[name='fiyat1']").autoNumeric('init',{vMax:'99999999',aPad:false,aSep: '.',aDec:','});
-	$("input[name='m2']").autoNumeric('init',{vMax:'999999',aPad:false,aSep: '.',aDec:','});
-	$("input[name='ada']").autoNumeric('init',{vMax:'99999',aPad:false,aSep: '',aDec:','});
-	$("input[name='parsel']").autoNumeric('init',{vMax:'99999',aPad:false,aSep: '',aDec:','});
-});
+    $(document).ready(function(){
+  	$("#ilan_form").validate({
+  	ignore: 'input:hidden:not(input:hidden.required)',
+  		rules:{
+  			'ilanadi': {
+  				required:true,
+  				minlength:5,
+  				maxlength:75
+  			},
+  			'aciklama': {
+  				required: true
+  			},
+  			'il': {
+  				required: true
+  			},
+  			'ilce': {
+  				required: true
+  			},
+  			'mahalle': {
+  				required: true
+  			},
+  			'fiyat1': {
+  				required: true,
+  				maxlength: 10
+  			},
+  			'fiyat2': {
+  				required: true,
+  				minlength: 2,
+  				maxlength: 2
+  			},
+  			'birim': {
+  				required: true
+  			},
+  			'bitis_suresi': {
+  				required: true
+  			},
+  			'ad_rules': {
+  				required: true
+  			}
+  		},
+  		groups:{
+  			fiyat: "fiyat1 fiyat2 birim",
+  			bolge: "il ilce mahalle"
+  		}
+  	});
+  });
+  $(document).ready(function() {
+  	$("input[name='fiyat1']").autoNumeric('init',{vMax:'99999999',aPad:false,aSep: '.',aDec:','});
+  	$("input[name='m2']").autoNumeric('init',{vMax:'999999',aPad:false,aSep: '.',aDec:','});
+  	$("input[name='ada']").autoNumeric('init',{vMax:'99999',aPad:false,aSep: '',aDec:','});
+  	$("input[name='parsel']").autoNumeric('init',{vMax:'99999',aPad:false,aSep: '',aDec:','});
+  });
   </script>
 </body>
 </html>
