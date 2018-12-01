@@ -226,34 +226,34 @@ class Login extends CI_Controller{
 		      $this->form_validation->set_message('valid_password', '<strong>%s</strong> Gerekli Bir Alandır.');
 		      return FALSE;
 		    }
-		    if (preg_match_all($regex_lowercase, $password) < 1)
-		    {
-		      $this->form_validation->set_message('valid_password', '<strong>%s</strong> En Az 1 Küçük Harf İçermelidir.');
-		      return FALSE;
-		    }
+		    // if (preg_match_all($regex_lowercase, $password) < 1)
+		    // {
+		    //   $this->form_validation->set_message('valid_password', '<strong>%s</strong> En Az 1 Küçük Harf İçermelidir.');
+		    //   return FALSE;
+		    // }
 		    // if (preg_match_all($regex_uppercase, $password) < 1)
 		    // {
 		    //   $this->form_validation->set_message('valid_password', '<strong>%s</strong> En Az 1 Büyük Harf İçermelidir.');
 		    //   return FALSE;
 		    // }
-		    if (preg_match_all($regex_number, $password) < 1)
-		    {
-		      $this->form_validation->set_message('valid_password', '<strong>%s</strong> En Az 1 Rakam İçermelidir.');
-		      return FALSE;
-		    }
+		    // if (preg_match_all($regex_number, $password) < 1)
+		    // {
+		    //   $this->form_validation->set_message('valid_password', '<strong>%s</strong> En Az 1 Rakam İçermelidir.');
+		    //   return FALSE;
+		    // }
 		    /*if (preg_match_all($regex_special, $password) < 1)
 		    {
 		      $this->form_validation->set_message('valid_password', 'The {field} field must have at least one special character.' . ' ' . htmlentities('!@#$%^&*()\-_=+{};:,<.>§~'));
 		      return FALSE;
 		    }*/
-		    if (strlen($password) < 6)
+		    if (strlen($password) < 4)
 		    {
-		      $this->form_validation->set_message('valid_password', '<strong>%s</strong> Minimum 8 Karakter Uzunluğunda Olmalıdır');
+		      $this->form_validation->set_message('valid_password', '<strong>%s</strong> Minimum 4 Karakter Uzunluğunda Olmalıdır');
 		      return FALSE;
 		    }
-		    if (strlen($password) > 32)
+		    if (strlen($password) > 10)
 		    {
-		      $this->form_validation->set_message('valid_password', '<strong>%s</strong> 32 Karakterden Uzun Olmamalıdır');
+		      $this->form_validation->set_message('valid_password', '<strong>%s</strong> 10 Karakterden Uzun Olmamalıdır');
 		      return FALSE;
 		    }
 		    return TRUE;

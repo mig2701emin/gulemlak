@@ -354,18 +354,45 @@
                                                 </a>
                                             </li>
                                             <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
-                                              <a href="<?php echo base_url(); ?>hesabim/anasayfa/pasif" class="m-menu__link ">
+                                              <a href="<?php echo base_url(); ?>hesabim/anasayfa/bekleyen" class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-users"></i>
                                                 <span class="m-menu__link-title">
                                                   <span class="m-menu__link-wrap">
-                                                  <span class="m-menu__link-text">Pasif İlanlarım</span>
+                                                  <span class="m-menu__link-text">Onay Bekleyen İlanlarım</span>
                                                   <span class="m-menu__link-badge">
-                                                    <span class="m-badge m-badge--success"><?php echo $this->db->query("SELECT * FROM firmalar WHERE uyeId='".$user->Id."' AND ( onay='0' OR onay='2' ) ")->num_rows(); ?></span>
+                                                    <span class="m-badge m-badge--success"><?php echo $this->db->query("SELECT * FROM firmalar WHERE uyeId='".$user->Id."' AND onay='0' AND suresi_doldu='0'")->num_rows(); ?></span>
                                                   </span>
                                                 </span>
                                               </span>
                                               </a>
                                             </li>
+                                            <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                              <a href="<?php echo base_url(); ?>hesabim/anasayfa/durdurulan" class="m-menu__link ">
+                                                <i class="m-menu__link-icon flaticon-users"></i>
+                                                <span class="m-menu__link-title">
+                                                  <span class="m-menu__link-wrap">
+                                                  <span class="m-menu__link-text">Durdurulan İlanlarım</span>
+                                                  <span class="m-menu__link-badge">
+                                                    <span class="m-badge m-badge--success"><?php echo $this->db->query("SELECT * FROM firmalar WHERE uyeId='".$user->Id."' AND onay='2'")->num_rows(); ?></span>
+                                                  </span>
+                                                </span>
+                                              </span>
+                                              </a>
+                                            </li>
+                                            <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                              <a href="<?php echo base_url(); ?>hesabim/anasayfa/suresibiten" class="m-menu__link ">
+                                                <i class="m-menu__link-icon flaticon-users"></i>
+                                                <span class="m-menu__link-title">
+                                                  <span class="m-menu__link-wrap">
+                                                  <span class="m-menu__link-text">Süresi Biten İlanlarım</span>
+                                                  <span class="m-menu__link-badge">
+                                                    <span class="m-badge m-badge--success"><?php echo $this->db->query("SELECT * FROM firmalar WHERE uyeId='".$user->Id."' AND onay='0' AND suresi_doldu='1'")->num_rows(); ?></span>
+                                                  </span>
+                                                </span>
+                                              </span>
+                                              </a>
+                                            </li>
+
                                             <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
                                               <a href="<?php echo base_url(); ?>hesabim/anasayfa" class="m-menu__link ">
                                                 <i class="m-menu__link-icon flaticon-users"></i>

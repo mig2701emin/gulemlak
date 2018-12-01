@@ -40,7 +40,7 @@
                             <button type="submit" class="btn btn-success">Gönder</button>
                         </form>
                         <br/>
-                        <p class="text-danger">(<sup> * </sup>) Parola en az bir büyük harf, bir küçük harf ve bir rakam içermelidir ve minimum 8 karekterden meydana gelmelidir.</p>
+                        <p class="text-danger">(<sup> * </sup>) Parola minimum 4 karekterden meydana gelmelidir.</p>
 
                       </div>
                     </div>

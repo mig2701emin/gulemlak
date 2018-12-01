@@ -246,7 +246,7 @@ function topluislem(action) {
 								<form class="" action="" method="post">
 						  <?
 						  if(!empty($ara_Get)){
-						  $ara=" where firma_adi LIKE '%$ara_Get%'";
+						  $ara=" where firma_adi LIKE '%$ara_Get%' or ilanId LIKE '%$ara_Get%'";
 						  }else{
 						  $ara="";
 						  }
