@@ -12,6 +12,10 @@
 	 .yanbaslik{
 		 display:none;
 	 }
+	 .locationdiv{
+
+		 display:block;
+	 }
     .container {
         width: 1740px;
     }
@@ -54,6 +58,10 @@
 	}
 	.yanbaslik{
 		display:none;
+	}
+	.locationdiv{
+
+		display:block;
 	}
     .container {
         width: 1170px;
@@ -315,6 +323,10 @@
 	.yanbaslik{
 		display:none;
 	}
+	.locationdiv{
+
+		 display:block;
+	 }
 .container {
 	max-width: 100%;
 }
@@ -332,6 +344,10 @@
 	 }
 	 .yanbaslik{
 		 display:none;
+	 }
+	 .locationdiv{
+
+		 display:block;
 	 }
 .menu-container {
     margin: 0 auto;
@@ -1685,6 +1701,10 @@ table.compare-info tr td button:first-child {
 	.yanbaslik{
 		display:block;
 	}
+	.locationdiv{
+
+		display:none;
+	}
 .center-xs {
 	text-align: center;
 }
@@ -2067,6 +2087,11 @@ h2.main_title, .sidebar-title h3 {
 	.yanbaslik{
 		display:block;
 	}
+
+	.locationdiv{
+
+		display:none;
+	}
 .header-top {
     font-size: 14px;
     padding: 0 15px 0 0;
@@ -2411,7 +2436,10 @@ h2.main_title, .sidebar-title h3 {
 	 .yanbaslik{
 		 display:block;
 	 }
+	 .locationdiv{
 
+		 display:none;
+	 }
 .header-top {
 	display: none;
 }
@@ -2617,6 +2645,10 @@ ul.social-icon li i.fa {
 	 .yanbaslik{
 		 display:block;
 
+	 }
+	 .locationdiv{
+
+		 display:none;
 	 }
 #newslater-popup .newsletter-inner {
     padding: 50px 0;

@@ -476,7 +476,13 @@ color:white;
                         <b><?php echo number_format($a->fiyat,0, ',', '.').' '.$a->birim; ?></b>
 
                 </div>
+                <div class="mt-1" style="color:blue; font-size: 12px;">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <?php if ($il) { echo $il->il_ad;}?>
+                    <br/>
+                    <?php if($mahalle){echo $mahalle->mahalle_ad;}?>
 
+                </div>
             </div>
           <div class="col-sm-4 col-md-6"  >
             <div class="row mt-3">
@@ -498,10 +504,10 @@ color:white;
               ?>
             </div>
           </div>
-          <div class="col-md-3 " >
+          <div class="locationdiv col-md-3 " >
 
              <div class="row">
-            <div class="col-6 col-md-12 font-weight-bold  mt-3" style="font-size:12px;">
+            <div class="col-6 col-md-12 font-weight-bold  mt-3 " style="font-size:12px;">
               <i class="fas fa-map-marker-alt"></i>
               <?php if ($il) { echo $il->il_ad;}?>
               <br/>

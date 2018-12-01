@@ -328,7 +328,7 @@ font-weight: bold;
 
 
                                     </div>
-                                    <div class="col-12" style="position:absolute;bottom: 0px; left: 0; background-color:#e12222; width:170px;opacity: 0.7;z-index: 9999">
+                                    <div class="col-12" style="position:absolute;bottom: 0px; left: 0; background-color:#e12222; width:170px;opacity: 0.7;z-index:6">
                                         <b><a id="bigImage" style="font-weight: 600;font-size: 12px;color: white"><i class="fas fa-search-plus"></i> BÜYÜK RESİM</a></b>
                                     </div>
 									<!-- Left and right controls -->
@@ -488,7 +488,7 @@ font-weight: bold;
                   <div class="col-lg-12 col-md-6 col-12 ">
                       <div class="row text-center pt-3">
 								<?php if (isset($ilanmagaza)){ ?>
-									<div class="col-12"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url().$ilanmagaza->username; ?>"><h3><?php echo $ilanmagaza->magazaadi; ?></h3></a></div>
+									<div class="col-12"><a class="btn  btn-block ml-0 mr-0 linkler" href="<?php echo base_url().$ilanmagaza->username; ?>"><h3><?php echo $ilanmagaza->magazaadi; ?></h3></a></div>
 									<div class="col-12">
 										<a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url().$ilanmagaza->username; ?>">
 											<img class="img-responsive" style="border-radius:20px;" src="<?php if ($ilanmagaza->logo) {echo base_url('photos/magaza/').$ilanmagaza->logo;} else {echo base_url('assets/images/company/c1.png');}?>" alt="<?php echo $ilanmagaza->magazaadi; ?>">
@@ -503,9 +503,9 @@ font-weight: bold;
 								<?php } ?>
 									<div class="col-12 mar-bot">Üyelik Tarihi:<br/><strong><?php yeni_tarih($ilansahibi->kayit_tarihi); ?></strong></div>
 									<?php if ($ilan->yayinla==1){ ?>
-										<div class="col-12 pl-0 pr-0">Cep Telefonu:<br/><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="tel:<?php echo '+90'.$ilansahibi->gsm; ?>"><strong><?php echo "0 (".substr($ilansahibi->gsm,0,3).") ".substr($ilansahibi->gsm,3,3)." ".substr($ilansahibi->gsm,6,2)." ".substr($ilansahibi->gsm,8,2); ?></strong></a></div>
+										<div class="col-12 pl-0 pr-0 mb-1">Cep Telefonu:<br/><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="tel:<?php echo '+90'.$ilansahibi->gsm; ?>"><strong><?php echo "0 (".substr($ilansahibi->gsm,0,3).") ".substr($ilansahibi->gsm,3,3)." ".substr($ilansahibi->gsm,6,2)." ".substr($ilansahibi->gsm,8,2); ?></strong></a></div>
 										<?php if ($ilansahibi->istel!="" && $ilansahibi->istel!=null): ?>
-											<div class="col-12 pl-0 pr-0">İş Telefonu:<br/><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="tel:<?php echo '+90'.$ilansahibi->istel; ?>"><strong><?php echo "0 (".substr($ilansahibi->istel,0,3).") ".substr($ilansahibi->istel,3,3)." ".substr($ilansahibi->istel,6,2)." ".substr($ilansahibi->istel,8,2); ?></strong></a></div>
+											<div class="col-12 pl-0 pr-0 mb-1">İş Telefonu:<br/><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="tel:<?php echo '+90'.$ilansahibi->istel; ?>"><strong><?php echo "0 (".substr($ilansahibi->istel,0,3).") ".substr($ilansahibi->istel,3,3)." ".substr($ilansahibi->istel,6,2)." ".substr($ilansahibi->istel,8,2); ?></strong></a></div>
 										<?php endif; ?>
 									<?php } ?>
 							</div>
@@ -513,19 +513,19 @@ font-weight: bold;
 						<div class="col-lg-12 col-md-6 col-12">
 							<div class="row text-center">
 								<?php if($this->session->userdata("userData")["userID"] == $ilan->uyeId){?>
-								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/ilanduzenle/<?php echo $ilan->Id; ?>">İlanı Düzenle</a></div>
-								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/samekategoriilan/<?php echo $ilan->Id; ?>">Aynı Kategoride İlan Ver</a></div>
-								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>doping/ilan/<?php echo $ilan->Id; ?>">Doping Yap</a></div>
+								<div class="col-12 pl-0 pr-0 mb-1"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/ilanduzenle/<?php echo $ilan->Id; ?>">İlanı Düzenle</a></div>
+								<div class="col-12 pl-0 pr-0 mb-1"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/samekategoriilan/<?php echo $ilan->Id; ?>">Aynı Kategoride İlan Ver</a></div>
+								<div class="col-12 pl-0 pr-0 mb-1"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>doping/ilan/<?php echo $ilan->Id; ?>">Doping Yap</a></div>
 								<?php if($ilan->onay==1){?>
-								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/ilandurdur/<?php echo $ilan->Id; ?>">Yayından Kaldır</a></div>
+								<div class="col-12 pl-0 pr-0 mb-1"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/ilandurdur/<?php echo $ilan->Id; ?>">Yayından Kaldır</a></div>
 								<?php }else{?>
-								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/ilansil/<?php echo $ilan->Id; ?>" onclick="return window.confirm('İlanı Yayından Kaldırmak İstediğinizden Eminmisiniz?');">Sil</a></div>
+								<div class="col-12 pl-0 pr-0 mb-1 mt-1"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/ilansil/<?php echo $ilan->Id; ?>" onclick="return window.confirm('İlanı Yayından Kaldırmak İstediğinizden Eminmisiniz?');">Sil</a></div>
 								<?php }?>
 								<?php if($ilan->suresi_doldu==1 || $ilan->onay==2){?>
-								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/<?php if($ilan->suresi_doldu==1){?>ilansureuzat/<?php }else{?>ilanaktiflestir/<?php }?><?php echo $ilan->Id;?>">Yayına Al</a></div>
+								<div class="col-12 pl-0 pr-0 mb-1"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/<?php if($ilan->suresi_doldu==1){?>ilansureuzat/<?php }else{?>ilanaktiflestir/<?php }?><?php echo $ilan->Id;?>">Yayına Al</a></div>
 
 								<?php }else{?>
-								<div class="col-12 pl-0 pr-0"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/guncelle/<?php echo $ilan->Id; ?>">Güncelim</a></div>
+								<div class="col-12 pl-0 pr-0 mb-1"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" href="<?php echo base_url(); ?>hesabim/guncelle/<?php echo $ilan->Id; ?>">Güncelim</a></div>
 							<?php }}else{?>
 								<?php
 								if(isset($ilanmagaza)){
@@ -540,7 +540,7 @@ font-weight: bold;
 									$favsorgu=$favsor->num_rows();
 									if($favsorgu==0){
 									?>
-									<div class="col-12 pl-0 pr-0 mb-1"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" id="favorilink" href="javascript:favori();">Favorilerime Ekle</a></div>
+									<div class="col-12 pl-0 pr-0 mb-1 "><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" id="favorilink" href="javascript:favori();">Favorilerime Ekle</a></div>
 									<?php }else{?>
 									<div class="col-12 pl-0 pr-0 mb-1"><a class="btn btn-outline-info btn-block ml-0 mr-0 linkler" id="favorilink" href="javascript:favorisil();">Favorilerimden Sil</a></div>
 									<?php }?>
