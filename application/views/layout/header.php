@@ -11,7 +11,7 @@
                 <div class="col-xl-2 col-lg-3 col-lgmd-20per">
                     <div class="header-middle-left">
                         <div class="navbar-header float-none-sm">
-                            <a class="navbar-brand page-scroll" href="<?php echo base_url(); ?>" style="padding-top: 10px;  padding-bottom:5px;width: 250px;">
+                            <a class="navbar-brand page-scroll" href="<?php echo base_url(); ?>" style="padding-top: 10px;  padding-bottom:5px;width: 280px;">
                                 <img  alt="www.ticaretmeclisi.com" src="<?php echo base_url('assets/');?>images/logo.png" />
                             </a>
                         </div>
@@ -166,12 +166,12 @@
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-3 bottom-part col-lgmd-20per">
-                        <div class="right-side float-left-xs header-right-link">
-                            <ul>
+                        <div class="float-left-xs header-right-link" style="width:160px">
+                            <ul >
                               <?php if ($this->session->userdata('userData')): ?>
-                                <li class="account-icon">
+                                <li class="account-icon" style="padding-right:0px;" >
                                     <a href="#">
-                                        <span><i class="fa fa-user"></i></span>
+                                        <span  style="width:45px; background-color:#2c9bf4"> <i class="fa fa-user"></i></span>
                                     </a>
                                     <div class="header-link-dropdown account-link-dropdown">
                                         <ul class="link-dropdown-list">
@@ -191,9 +191,9 @@
                                     </div>
                                 </li>
 
-                                <li class="cart-icon">
-                                    <a href="#">
-                                        <span class="cart-icon-main"><i class="fa fa-heart"></i><small class="cart-notification"><?php if(countDB("favoriler","uyeId",$user->Id)>0){echo countDB("favoriler","uyeId",$user->Id);}else{echo "0";} ?></small></span>
+                                <li class="cart-icon" >
+                                    <a href="#" >
+                                        <span style="width:45px;  background-color:red" class="cart-icon-main"><i class="fa fa-heart"></i></span>
                                     </a>
                                     <?php
                                     $favoriler=$this->db->where("uyeId",$user->Id)->get("favoriler");

@@ -46,7 +46,7 @@ color:white;
     <?php $this->load->view('layout/header');?>
     <div class="container">
       <div class="row mt-60 mb-60" >
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="sidebar-block">
             <div class="sidebar-box listing-box mb-40" style="font-size: 14px">
               <span class="opener plus"></span>
@@ -381,9 +381,9 @@ color:white;
                             <div class="form-group">
                               <div class="form-check">
                                 <!-- Default unchecked -->
-                                <div class="custom-control custom-checkbox">
+                                <div class="custom-control custom-checkbox" style="padding-left:0px; ">
                                   <input name="remember_me" type="checkbox" class="custom-control-input" id="defaultUnchecked" <?php echo (isset($member)) ? "checked" : ""; ?>>
-                                  <label class="custom-control-label" for="defaultUnchecked">Sadece Haritalı İlanlar</label>
+                                  <label class="custom-control-label" for="defaultUnchecked" style="font-size: 11px;padding-top: 5px;">Sadece Haritalı İlanlar</label>
                                 </div>
                               </div>
                             </div>
@@ -394,9 +394,9 @@ color:white;
                             <div class="form-group">
                               <div class="form-check">
                                 <!-- Default unchecked -->
-                                <div class="custom-control custom-checkbox">
+                                <div class="custom-control custom-checkbox" style="padding-left:0px; ">
                                   <input name="remember_me" type="checkbox" class="custom-control-input" id="OnlyPhoto" <?php echo (isset($member)) ? "checked" : ""; ?>>
-                                  <label class="custom-control-label" for="OnlyPhoto">Sadece Fotoğraflı İlanlar</label>
+                                  <label class="custom-control-label" for="OnlyPhoto" style="font-size: 11px;padding-top:5px">Sadece Fotoğraflı İlanlar</label>
                                 </div>
                               </div>
                             </div>
@@ -416,7 +416,7 @@ color:white;
         </div>
       </div>
     </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
       <div class="row">
         <!-- <form id="sort" class="" action="" method="get"> -->
         <select name="order_type" onchange="order_by()" style="width:200px;font-size:9pt;">
@@ -461,14 +461,14 @@ color:white;
         $mahalle=$this->db->query("select * from tbl_mahalle where mahalle_id='".$a->mahalle."'")->row();
         ?>
         <div class="row   p-1 mt-1 border-bottom<?php if($i%2==0){ ?> white-bg<?php }else{ ?> light-gray-bg<?php } ?>" onclick="window.location='<?php echo base_url();?><?php echo $seolink2;?>/<?php echo encode($ilan_no);?>';">
-          <div class="col-8 col-md-3 align-center">
+          <div class="col-7 col-md-3 align-center" style="padding-left: 0px; padding-right: 0px;">
             <?php if($a->kucuk_fotograf==1 and ilk_resim($a->Id)!='' and file_exists('photos/thumbnail/'.ilk_resim($a->Id))){?>
               <img src = "<?php echo base_url();?>photos/thumbnail/<?php echo ilk_resim($a->Id);?>" height = "110"  border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
             <?php }else{?>
               <img src = "<?php echo base_url();?>assets/images/yok_thumbnail.png" height = "110"  border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
             <?php }?>
           </div>
-            <div class="col-4 yanbaslik" >
+            <div class="col-5 yanbaslik" style="padding-left:0px;padding-right: 0px;" >
                 <div class="mt-1"><a style="font-size:12px; " href="javascript:void(0);" style="font-weight: bold"><?php echo $firma_adi;?></a>
             </div>
                 <div class="mt-1" style="color:blue">

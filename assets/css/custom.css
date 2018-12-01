@@ -919,7 +919,7 @@ header#header {
 	font-size: 18px;
 }
 .header-right-link > ul > li {
-	float: left;
+	float: right;
 	padding: 0 6px;
 	position: relative;
 	overflow: hidden;
