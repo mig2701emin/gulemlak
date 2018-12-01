@@ -23,7 +23,7 @@ var infowindow;
       return this.markers
     };
     google.maps.Map.prototype.clearMarkers = function() {
-      for(var i=0; i<this.markers.length; i++){
+      for(var i=0; i < this.markers.length; i++){
         this.markers[i].setMap(null);
       }
       this.markers = new Array();

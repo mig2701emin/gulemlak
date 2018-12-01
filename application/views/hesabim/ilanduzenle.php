@@ -342,7 +342,7 @@
   <script src="<?php echo base_url('assets/dropzone/min/dropzone.min.js'); ?>"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maps.google.com/maps/api/js?key=AIzaSyAgvcI5F7yEbzhTlj3HHwj7vnTZgQIdfqA&sensor=false"></script>
-  <script src="<?php echo base_url('assets/');?>/map/map_edit.php?currentlatlong=<?php echo base64_encode($ilan->map);?>" defer></script>
+  <script src="<?php echo base_url('assets/');?>map/map_edit.php?currentlatlong=<?php echo base64_encode($ilan->map);?>" defer></script>
   <script type="text/javascript" src="<?php echo base_url('assets/');?>js/validation/jquery.validate.js" defer></script>
   <script type="text/javascript" src="<?php echo base_url('assets/');?>js/validation/messages_tr.js" defer></script>
   <script src="<?php echo base_url('assets/');?>js/autoNumeric.js" defer></script>
@@ -354,7 +354,6 @@
       </script>
   <?php } ?>
   <script type="text/javascript">
-
   function ilcegetir(parametre) {
     map.clearMarkers();
     if (parametre>0){
@@ -473,7 +472,9 @@ function map_location(){
  	$("input[name='ada']").autoNumeric('init',{vMax:'99999',aPad:false,aSep: '',aDec:','});
  	$("input[name='parsel']").autoNumeric('init',{vMax:'99999',aPad:false,aSep: '',aDec:','});
  });
-
+ window.addEventListener("load", function(){
+   codeAddress("<?php echo replace('tbl_mahalle','mahalle_ad','mahalle_id',$ilan->mahalle).' '.replace('tbl_ilce','ilce_ad','ilce_id',$ilan->ilce).' '.replace('tbl_il','il_ad','il_id',$ilan->il);?> Türkiye");
+ });
 </script>
 </body>
 </html>

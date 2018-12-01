@@ -341,9 +341,7 @@ class Hesabim extends CI_Controller{
         $firmalar = array();
         $ilanadi       = $this->security->xss_clean($this->input->post('ilanadi'));
         $firmalar["firma_adi"]=$ilanadi;
-        $use_map       = $this->security->xss_clean($this->input->post('use_map'));
         $map           = $this->security->xss_clean($this->input->post('map_Val'));
-        if($use_map!=1 or $map==''){$map="";}
         $firmalar["map"]=$map;
         $aciklama      = $this->security->xss_clean($this->input->post('aciklama'));
         $firmalar["aciklama"] = base64_encode($aciklama);
@@ -1003,9 +1001,7 @@ class Hesabim extends CI_Controller{
             $firmalar["uyeId"]=$userID;
             $ilanadi       = $this->security->xss_clean($this->input->post('ilanadi'));
             $firmalar["firma_adi"]=$ilanadi;
-            $use_map       = $this->security->xss_clean($this->input->post('use_map'));
             $map           = $this->security->xss_clean($this->input->post('map_Val'));
-            if($use_map!=1 or $map==''){$map="";}
             $firmalar["map"]=$map;
             $aciklama      = $this->security->xss_clean($this->input->post('aciklama'));
             $firmalar["aciklama"] = base64_encode($aciklama);
