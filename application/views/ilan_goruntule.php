@@ -99,8 +99,7 @@
 	}
 
 	.cont_breadcrumbs_1 > ul > li:last-child {
-	  /* background-color: #78909C; */
-		background-color: #855858;
+		background-color: #2a62bc;
 	}
 
 	.cont_breadcrumbs_1 > ul > li:last-child > a {
@@ -143,7 +142,6 @@
 		font-weight: 300;
 	}
 	.cont_breadcrumbs_1 > ul > li:last-child {
-	  /* background-color: #78909C; */
 	  background-color: #2a62bc;
 	  transform: skew(0deg);
 		margin-left: -5px;
@@ -155,9 +153,6 @@
 		 transform: skewX(0deg);
 	}
 }
-/* .bilgibaslik{
-font-weight: bold;
-} */
 .bilgibaslik {
     display: inline-block;
     min-width: 10px;
@@ -169,8 +164,6 @@ font-weight: bold;
     text-align: left;
     white-space: nowrap;
     vertical-align: middle;
-    /* background-color: white; */
-    /* background-color: #F5F5F5; */
     border-radius: 10px;
     margin-top: 2px;
     float: left !important;
@@ -187,28 +180,13 @@ font-weight: bold;
     text-align: left;
     white-space: nowrap;
     vertical-align: middle;
-    /* background-color:#efecd9; */
-    /* background-color: #D7CCC8; */
     border-radius: 10px;
     margin-top: 2px;
     float: left !important;
     font-family: 'Open Sans';
 }
 .linkler {
-    /* display: inline-block; */
-    /* min-width: 10px; */
-    /* padding: 6px 7px; */
     font-size: 0.7em;
-    /* font-weight: 700; */
-    /* line-height: 1; */
-    /* color: white; */
-    /* text-align: left; */
-    /* white-space: nowrap; */
-    /* vertical-align: middle; */
-    /* background-color: #bccece; */
-    /* border-radius: 10px; */
-    /* margin-top: 2px; */
-    /*float: left !important;*/
 }
 
 
@@ -216,57 +194,32 @@ font-weight: bold;
 	</style>
 	<link href="<?php echo base_url('assets'); ?>/light/lightgallery.css" rel="stylesheet">
 </head>
-
-
-
-
-
-                        <body >
-                        <div class="se-pre-con"></div>
-                        <div class="main">
-                            <?php $this->load->view('layout/header');?>
-                            <!-- HEADER END -->
-                            <div class="container  mb-30">
-                                <div class="row p-1">
-                                    <div class="col-12">
-                                        <div class="row">
-
-
+<body >
+<div class="se-pre-con"></div>
+<div class="main">
+    <?php $this->load->view('layout/header');?>
+    <!-- HEADER END -->
+    <div class="container  mb-30">
+        <div class="row p-1">
+            <div class="col-12">
 						<?php if (isset($kategorinames)){ ?>
-							<div class="col-lg-6 col-md-6 col-12">
 								<div class="cont_principal">
 									<div class="cont_breadcrumbs">
 										<div class="cont_breadcrumbs_1">
 											<ul>
 												<?php foreach ($kategorinames as $kategoriadi){ ?>
-												<?php if ($kategoriadi==end($kategorinames)){ ?>
-												<li><a href="#"><strong><?php echo $kategoriadi; ?></strong></a></li>
-												<?php }else{ ?>
 												<li><a href="#"><?php echo $kategoriadi; ?></a></li>
 												<?php } ?>
-												<?php } ?>
+											</ul>
+											<ul>
+												<li><a href="#"><?php echo replace('tbl_il','il_ad','il_id',$ilan->il); ?></a></li>
+												<li><a href="#"><?php echo replace('tbl_ilce','ilce_ad','ilce_id',$ilan->ilce); ?></a></li>
+												<li><a href="#"><?php echo baslik_yap(replace('tbl_mahalle','mahalle_ad','mahalle_id',$ilan->mahalle)); ?></a></li>
 											</ul>
 										</div>
 									</div>
 								</div>
-							</div>
 						<?php } ?>
-						<div class="col-lg-5 col-md-6 col-12">
-							<div class="cont_principal">
-								<div class="cont_breadcrumbs">
-									<div class="cont_breadcrumbs_1">
-										<ul>
-											<li><a href="#"><?php echo replace('tbl_il','il_ad','il_id',$ilan->il); ?></a></li>
-											<li><a href="#"><?php echo replace('tbl_ilce','ilce_ad','ilce_id',$ilan->ilce); ?></a></li>
-											<li><a href="#"><?php echo baslik_yap(replace('tbl_mahalle','mahalle_ad','mahalle_id',$ilan->mahalle)); ?></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-1 hidden-md hidden-sm-down">
-						</div>
-					</div>
 				</div>
 			</div>
 			<?php if ($this->session->userdata("userData")["userID"] == $ilan->uyeId): ?>
