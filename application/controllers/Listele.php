@@ -269,6 +269,8 @@ class Listele extends CI_Controller{
     $sql2.=" LIMIT ".$page.", ".$config['per_page'];
     //$config["page_query_string"] = TRUE;
     $config["reuse_query_string"] = TRUE;
+    $config["first_link"] = "İlk";
+    $config["last_link"] = "Son";
     $this->pagination->initialize($config);
     $data["links"] = $this->pagination->create_links();
     $ilanlar = $this->db->query($sql2)->result();
