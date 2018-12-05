@@ -48,7 +48,6 @@
           dataType: 'html'
         });
 
-        // remove the thumbnail
         var previewElement;
         return (previewElement = file.previewElement) != null ? (previewElement.parentNode.removeChild(file.previewElement)) : (void 0);
       },
@@ -56,7 +55,6 @@
         var me = this;
 
         $.get("<?php echo base_url('account/list_images') ?>", function(data) {
-          // if any files already in server show all here
           if (data.length > 0) {
             $.each(data, function(key, value) {
               var mockFile = value;

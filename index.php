@@ -1,22 +1,6 @@
 <?php
 date_default_timezone_set ('Europe/Istanbul');
 ini_set('error_reporting', E_ALL);
-/***************************************************************/
-// Host address
-/*$host = $_SERVER['HTTP_HOST'];
-
-// Extract eventual subdomain
-$subdomain = substr($host, 0, strrpos(substr($host, 0, strrpos($host, '.')), '.'));
-
-// Define subdomain
-if($subdomain !== 'www' && $subdomain !== '') {
-    define('SUBDOMAIN', $subdomain);
-} else {
-    define('SUBDOMAIN', FALSE);
-}*/
-
-// Rest of index.php
-/************************************************************************/
 /**
  * CodeIgniter
  *

@@ -39,33 +39,6 @@
           <label for="image1">Mağaza Logosu</label>
           <input type="file" class="form-control-file" name="image1" id="image1">
         </div>
-        <!-- <div class="mb-3">
-            <label for="unvan">Mağaza Ünvanı</label>
-            <input type="text" class="form-control" name="unvan">
-        </div> -->
-        <!-- <div class="mb-3">
-          <label for="stil">Mağaza Stili</label>
-          <select class="custom-select d-block w-100" name="stil">
-              <option value="">Seçiniz</option>
-              <option value="cesitli">Çeşitli</option>
-              <option value="cesitli2">Çeşitli 2</option>
-              <option value="cesitli3">Çeşitli 3</option>
-              <option value="emlak">Emlak</option>
-              <option value="emlak2">Emlak 2</option>
-              <option value="emlak3">Emlak 3</option>
-              <option value="emlak4">Emlak 4</option>
-              <option value="emlak5">Emlak 5</option>
-              <option value="emlak6">Emlak 6</option>
-              <option value="vasita">Vasıta</option>
-              <option value="vasita2">Vasıta 2</option>
-              <option value="vasita3">Vasıta 3</option>
-              <option value="vasita4">Vasıta 4</option>
-              <option value="vasita5">Vasıta 5</option>
-              <option value="vasita6">Vasıta 6</option>
-              <option value="vasita7">Vasıta 7</option>
-              <option value="hayvanlar-alemi">Hayvanlar Alemi</option>
-          </select>
-        </div> -->
         <button class="btn btn-success" type="submit" name="devam">Devam</button>
       </form>
   </div>

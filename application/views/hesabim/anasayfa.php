@@ -9,17 +9,14 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>bootstrap-4.1.3/css/bootstrap.min.css" />
   <style type="text/css">
     .pagination a, .pagination strong{
-
       padding: 5px;
       border: 1px solid #ccc;
       margin-left: 5px;
       text-decoration: none;
       box-shadow: 0px 0px 8px rgba(5,5,5,0.3);
-
     }
     .pagination strong{
       background-color: #35a5f2;
-
     }
     .cont_principal {
       margin: 0px auto;
@@ -27,17 +24,9 @@
       padding: 0px;
       list-style: none;
       font-family: 'Open Sans';
-      /*position: absolute;*/
       width: 100%;
       height: 100%;
-      /*background: rgb(212,228,239);
-      background: -moz-linear-gradient(top,  rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-      background: -webkit-linear-gradient(top,  rgba(212,228,239,1) 0%,rgba(134,174,204,1) 100%);
-      background: linear-gradient(to bottom,  rgba(212,228,239,1) 0%,rgba(134,174,204,1) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc',GradientType=0 );*/
-
     }
-
     .cont_breadcrumbs {
       width: 100%;
     }
@@ -45,12 +34,10 @@
       position: relative;
       width: 100%;
       float: left;
-      /*margin: 20px 20px;*/
     }
     .cont_breadcrumbs_1 > ul {
       list-style-type: none;
     }
-
     .cont_breadcrumbs_1 > ul > li {
       position: relative;
       float: left;
@@ -60,11 +47,9 @@
       z-index: 1;
       transition: all 0.5s;
     }
-
     .cont_breadcrumbs_1 > ul > li:hover {
      background-color: #CFD8DC;
     }
-
     .cont_breadcrumbs_1 > ul > li  > a {
       display: block;
       padding: 10px;
@@ -78,14 +63,11 @@
       background-color: #78909C;
       transform: skew(0deg);
       margin-left: -5px;
-
     }
-
     .cont_breadcrumbs_1 > ul > li:last-child > a {
         color: #fff;
        transform: skewX(0deg);
     }
-
 </style>
 </head>
 <body class="color_bg1">

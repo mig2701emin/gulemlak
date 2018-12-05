@@ -88,25 +88,9 @@
       </script>
   <?php } ?>
   <script type="text/javascript">
-  /*function addHyphens(nStr){
-   nStr += '';
-   var x1 = nStr.replace('-','')
-     var rgx = /(\d{3})(\d{3})(\d{4})/;
-     while (rgx.test(x1)) {
-      x1 = x1.replace(rgx, '$1' + '-' + '$2' + '-' + '$3');
-     }
-   return x1;
- }*/
 $(document).ready(function() {
   $("#gsm").inputmask({"mask": "(999) 999-99-99"});
   $("#istel").inputmask({"mask": "(999) 999-99-99"});
-  /*$("#istel").keyup(function() {
-
-     var newValue =  addHyphens(this.value);
-     // alert(newValue);
-     console.log(newValue);
-     document.querySelector('#istel').value = newValue;
-  });*/
 });
   </script>
 </body>

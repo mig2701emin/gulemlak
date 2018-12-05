@@ -32,22 +32,12 @@
           <h3>Tıklayın!</h3> Ya da <br/><strong>Dosyaları Sürükleyip Bırakın!</strong>
         </div> -->
       </div>
-
-
-
         <div class="row" style="margin-top:50px; margin-bottom:50px;  ">
             <div class="col-md-6"></div>
             <div class="col-md-6"   style="float: left">
                 <a  class="btn btn-primary btn-block w-75 "  href="<?php echo base_url('ilanekle/onizleme/'.$ilanId) ?>">Devam Et  <i class="fas fa-caret-right"></i></a>
-
-
         </div>
-
-
         </div>
-
-
-
   </div>
       <?php $this->load->view('layout/footer');?>
   <script src="<?php echo base_url('assets/dropzone/min/dropzone.min.js'); ?>"></script>
@@ -66,19 +56,15 @@
     thumbnailHeight: 110,
     resizeHeight: 550,
     resizeWidth: 890,
-    /*resizeMethod:"crop",*/
     addRemoveLinks: true,
     removedfile: function(file) {
       var name = file.name;
-
       $.ajax({
         type: "post",
         url: "<?php echo base_url('resim/sil/'.$ilanId) ?>",
         data: { file: name },
         dataType: 'html'
       });
-
-      // remove the thumbnail
       var previewElement;
       return (previewElement = file.previewElement) != null ? (previewElement.parentNode.removeChild(file.previewElement)) : (void 0);
     },
@@ -86,7 +72,6 @@
       var me = this;
 
       $.get("<?php echo base_url('resim/getir/'.$ilanId) ?>", function(data) {
-        // if any files already in server show all here
         if (data.length > 0) {
           $.each(data, function(key, value) {
             var mockFile = value;
@@ -96,11 +81,8 @@
           });
         }
       });
-
     },
-
   });
-
   </script>
 </body>
 </html>

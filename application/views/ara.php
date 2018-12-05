@@ -108,9 +108,7 @@
   function ilcegetir(parametre) {
     if (parametre > 0){
       var il_id = parametre;
-      //ajax işlemi post ile yapılıyor
       $.post('<?php echo base_url(); ?>ajax/get_ilceler', {il_id : il_id}, function(result){
-        //gelen cevapta hata yoksa listeleme yapılıyor..
         if ( result && result.status != 'error' )
         {
           var ilceler = result.data;
@@ -133,9 +131,7 @@
   function mahallegetir(parametre) {
     if (parametre>0){
       var ilce_id = parametre;
-      //ajax işlemi post ile yapılıyor
     $.post('<?php echo base_url(); ?>ajax/get_mahalleler', {ilce_id : ilce_id}, function(result){
-        //gelen cevapta hata yoksa listeleme yapılıyor..
         if ( result && result.status != 'error' )
         {
           var mahalleler = result.data;

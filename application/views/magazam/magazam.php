@@ -31,32 +31,6 @@
           <input type="file" class="form-control-file" name="image1" id="image1">
            (Değiştirmek İstemiyorsanız Boş Bırakınız)
         </div>
-        <!-- <div class="mb-3">
-            <label for="unvan">Mağaza Ünvanı</label>
-            <input type="text" class="form-control" name="unvan" value="<?php //echo $magaza->unvan; ?>">
-        </div>
-        <div class="mb-3">
-          <label for="stil">Mağaza Stili</label>
-          <select class="custom-select d-block w-100" name="stil">
-            <option value="cesitli"<?php //if ($magaza->stil == 'cesitli') {echo ' selected';} ?>>Çeşitli</option>
-            <option value="cesitli2"<?php //if ($magaza->stil == 'cesitli2') {echo ' selected';} ?>>Çeşitli 2</option>
-            <option value="cesitli3"<?php //if ($magaza->stil == 'cesitli3') {echo ' selected';} ?>>Çeşitli 3</option>
-            <option value="emlak"<?php //if ($magaza->stil == 'emlak') {echo ' selected';} ?>>Emlak</option>
-            <option value="emlak2"<?php //if ($magaza->stil == 'emlak2') {echo ' selected';} ?>>Emlak 2</option>
-            <option value="emlak3"<?php //if ($magaza->stil == 'emlak3') {echo ' selected';} ?>>Emlak 3</option>
-            <option value="emlak4"<?php //if ($magaza->stil == 'emlak4') {echo ' selected';} ?>>Emlak 4</option>
-            <option value="emlak5"<?php //if ($magaza->stil == 'emlak5') {echo ' selected';} ?>>Emlak 5</option>
-            <option value="emlak6"<?php //if ($magaza->stil == 'emlak6') {echo ' selected';} ?>>Emlak 6</option>
-            <option value="vasita"<?php //if ($magaza->stil == 'vasita') {echo ' selected';} ?>>Vasıta</option>
-            <option value="vasita2"<?php //if ($magaza->stil == 'vasita2') {echo ' selected';} ?>>Vasıta 2</option>
-            <option value="vasita3"<?php //if ($magaza->stil == 'vasita3') {echo ' selected';} ?>>Vasıta 3</option>
-            <option value="vasita4"<?php //if ($magaza->stil == 'vasita4') {echo ' selected';} ?>>Vasıta 4</option>
-            <option value="vasita5"<?php //if ($magaza->stil == 'vasita5') {echo ' selected';} ?>>Vasıta 5</option>
-            <option value="vasita6"<?php //if ($magaza->stil == 'vasita6') {echo ' selected';} ?>>Vasıta 6</option>
-            <option value="vasita7"<?php //if ($magaza->stil == 'vasita7') {echo ' selected';} ?>>Vasıta 7</option>
-            <option value="hayvanlar-alemi"<?php //if ($magaza->stil == 'hayvanlar-alemi') {echo ' selected';} ?>>Hayvanlar Alemi</option>
-          </select>
-        </div> -->
         <button class="btn btn-success" type="submit" name="submit">Mağazayı Güncelle</button>
       </form>
 </div>
