@@ -42,6 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:num)/sitemap\.xml"]="home/sitemap/$4";
         $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:num)/(:num)"]="listele/get/$4";
         $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:num)/(:any)"]="listele/get/$4/$5";
+        $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:any)/(:num)"]="listele/get/$5";
         $route[$anaKategori->seo."/(:any)/(:num)/(:any)/(:any)/(:any)/(:num)"]="listele/get/$2/$3/$4/$5";
         $route[$anaKategori->seo."/(:any)/(:any)/(:num)/(:any)/(:any)/sitemap\.xml"]="home/sitemap/$3/$4/$5";
         $route[$anaKategori->seo."/(:any)/(:any)/(:num)/(:any)/(:any)/(:num)"]="listele/get/$3/$4/$5";
@@ -49,13 +50,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:num)/(:any)/sitemap\.xml"]="home/sitemap/$4/$5";
         $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:num)/(:any)/(:num)"]="listele/get/$4/$5";
         $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:num)/(:any)/(:any)"]="listele/get/$4/$5/$6";
+        $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:any)/(:num)/(:num)"]="listele/get/$5";
+        $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:any)/(:num)/(:any)"]="listele/get/$5/$6";
         $route[$anaKategori->seo."/(:any)/(:any)/(:num)/(:any)/(:any)/(:any)/(:num)"]="listele/get/$3/$4/$5/$6";
         $route[$anaKategori->seo."/(:any)/(:any)/(:num)/(:any)/(:any)/(:any)/(:any)"]="home/ilan_goruntule/$7";
         $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:num)/(:any)/(:any)/sitemap\.xml"]="home/sitemap/$4/$5/$6";
         $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:num)/(:any)/(:any)/(:num)"]="listele/get/$4/$5/$6";
         $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:num)/(:any)/(:any)/(:any)"]="listele/get/$4/$5/$6/$7";
+        $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:any)/(:num)/(:any)/(:num)"]="listele/get/$5/$6";
+        $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:any)/(:num)/(:any)/(:any)"]="listele/get/$5/$6/$7";
         $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:num)/(:any)/(:any)/(:any)/(:num)"]="listele/get/$4/$5/$6/$7";
+        $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:any)/(:num)/(:any)/(:any)/(:any)"]="listele/get/$5/$6/$7/$8";
+        $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:any)/(:num)/(:any)/(:any)/(:any)/(:num)"]="listele/get/$5/$6/$7/$8";
         $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:num)/(:any)/(:any)/(:any)/(:any)"]="home/ilan_goruntule/$8";
+        $route[$anaKategori->seo."/(:any)/(:any)/(:any)/(:any)/(:num)/(:any)/(:any)/(:any)/(:any)"]="home/ilan_goruntule/$9";
       }
       $magazalar=$db->get('magazalar')->result();
       foreach ($magazalar as $magaza) {
