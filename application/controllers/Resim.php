@@ -33,6 +33,7 @@ class Resim extends CI_Controller{
     }
     $this->load->view("resim/ekle",$data);
   }
+  
   public function duzenle($ilanId)
   {
     $data["ilanId"]=$ilanId;
@@ -164,6 +165,7 @@ class Resim extends CI_Controller{
       $this->db->delete('pictures', array('name' => $file,"ilanId" => $ilanId));
 
   }
+
   public function getir($ilanId)
   {
       $files = array();

@@ -22,9 +22,9 @@
         <div class="row d-flex justify-content-center" style="margin-top: 50px;margin-bottom: 50px;">
             <div class="col-sm-12 col-md-2 col"><a class="btn" style="font-weight:bold;">  Kategori</a> <br></div>
             <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;"> İlan Detay </a>	</div>
-            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;color: orangered""><i class="fas fa-caret-right"></i> Fotoğraf </a>	</div>
+            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;color:orangered"><i class="fas fa-caret-right"></i> Fotoğraf </a>	</div>
             <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;" >  Ön İzleme </a>	</div>
-            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;>  Doping Al </a>	</div>
+            <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold;">  Doping Al </a>	</div>
             <div class="col-sm-12 col-md-2"><a class="btn" style="font-weight:bold"> Tebrikler </a>	</div>
         </div>
       <div id="my-dropzone" class="dropzone">
