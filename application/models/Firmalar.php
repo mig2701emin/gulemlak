@@ -12,7 +12,6 @@ class Firmalar extends CI_Model{
   public function getMainVitrins()
   {
     $bugun = date("Y-m-d");
-    $this->db->cache_on();
     $this->db->select('gvitrin.*,firmalar.*');
     $this->db->where('gvitrin.bitis_tarihi >=',$bugun);
     $this->db->where('firmalar.onay','1');
@@ -21,7 +20,6 @@ class Firmalar extends CI_Model{
     $this->db->from('gvitrin');
     $this->db->join('firmalar','firmalar.Id=gvitrin.firmaId');
     $query = $this->db->get()->result();
-    $this->db->cache_off();
     return $query;
 	//$sql = $this->db->query("SELECT gvitrin.*,firmalar.Id,firmalar.firma_adi,firmalar.seo_url,firmalar.resim1 FROM gvitrin join firmalar on gvitrin.firmaId=firmalar.Id WHERE (gvitrin.bitis_tarihi >= $bugun) and firmalar.onay='1' ORDER BY rand() LIMIT 23")->result();
   }
@@ -29,7 +27,6 @@ class Firmalar extends CI_Model{
   public function getEmegencyVitrins()
   {
     $bugun = date("Y-m-d");
-    $this->db->cache_on();
     $this->db->select('acilacilvitrin.*,firmalar.*');
     $this->db->where('acilacilvitrin.bitis_tarihi >=',$bugun);
     $this->db->where('firmalar.onay','1');
@@ -38,28 +35,23 @@ class Firmalar extends CI_Model{
     $this->db->from('acilacilvitrin');
     $this->db->join('firmalar','firmalar.Id=acilacilvitrin.ilanId');
     $query = $this->db->get()->result();
-    $this->db->cache_off();
     return $query;
   }
 
   public function getSonEklenenler()
   {
-    $this->db->cache_on();
     $this->db->select('*');
     $this->db->where('onay','1');
     $this->db->order_by('kayit_tarihi','DESC');
     $this->db->limit(24);
     $this->db->from('firmalar');
     $query = $this->db->get()->result();
-    $this->db->cache_off();
     return $query;
-
   }
 
   public function getMagazaVitrin()
   {
     $bugun = date("Y-m-d");
-    $this->db->cache_on();
     $this->db->select('mvitrin.*,magazalar.*');
     $this->db->where('mvitrin.bitis_tarihi >=',$bugun);
     $this->db->where('magazalar.onay','1');
@@ -68,7 +60,6 @@ class Firmalar extends CI_Model{
     $this->db->from('mvitrin');
     $this->db->join('magazalar','magazalar.Id=mvitrin.magazaId');
     $query = $this->db->get()->result();
-    $this->db->cache_off();
     return $query;
   }
 
@@ -112,10 +103,8 @@ class Firmalar extends CI_Model{
   }
 
   public function iller(){
-    $this->db->cache_on();
     $this->db->order_by("il_ad","ASC");
 		$query = $this->db->get("tbl_il")->result();
-    $this->db->cache_off();
 		return $query;
 	}
   public function ilcelerbyIl($il_id){

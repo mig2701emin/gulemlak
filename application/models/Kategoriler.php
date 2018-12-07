@@ -11,11 +11,9 @@ class Kategoriler extends CI_Model{
 
   public function getAnaKategoriler()
   {
-    $this->db->cache_on();
     $this->db->order_by('siralama asc,kategori_adi asc');
     $this->db->where('ust_kategori', '0');
     $query = $this->db->get('kategoriler')->result();
-    $this->db->cache_off();
 
     return $query;
   }
@@ -31,11 +29,9 @@ class Kategoriler extends CI_Model{
 
   public function getAnaArray()
   {
-    $this->db->cache_on();
     $this->db->order_by('siralama asc,kategori_adi asc');
     $this->db->where('ust_kategori', '0');
     $query = $this->db->get('kategoriler')->result_array();
-    $this->db->cache_off();
     return $query;
   }
 
