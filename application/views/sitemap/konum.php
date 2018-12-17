@@ -64,7 +64,7 @@
         echo $metin;
       }
     }
-  }else {
+  }/*else {
     foreach ($iller as $item) {
       $metin='<loc>';
       $metin.=base_url();
@@ -92,6 +92,6 @@
       $metin.='</loc>';
       echo $metin;
     }
-  }
+  }*/
   ?>
 </urlset>

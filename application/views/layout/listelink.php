@@ -48,7 +48,7 @@
         echo $metin;
       }
 
-    }else {
+    }/*else {
       foreach ($ilceler as $item) {
         $metin='<a href="';
         $metin.=base_url();
@@ -92,8 +92,8 @@
         $metin.='</a>';
         echo $metin;
       }
-    }
-  }else {
+    }*/
+  }/*else {
     foreach ($iller as $item) {
       $metin='<a href="';
       $metin.=base_url();
@@ -135,6 +135,6 @@
       $metin.='</a>';
       echo $metin;
     }
-  }
+  }*/
   ?>
 </div>
