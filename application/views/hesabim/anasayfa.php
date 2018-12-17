@@ -76,7 +76,7 @@
     <?php $this->load->view('layout/newuserheader');?>
     <div class="container">
       <div class="row">
-        <div class="col-12 color_bgx text-center pt-3 pb-3"><h3><strong><?php echo $filter." İlanlarım" ?></strong></h3></div>
+        <div class="col-12 color_bgx text-center pt-3 pb-3"><h3><strong><?php echo $filter2." İlanlarım" ?></strong></h3></div>
         <?php if ($toplam_kayit==0){ ?>
           <div class="col-12 border border-secondary">
             <h5>İlan Bulunamadı.</h5>
@@ -188,7 +188,7 @@
 
                     <div class="col-lg-12 col-md-6 col-sm-12 col-12">
                       <br/>
-                      <select class="col-12 form-control bg-secondary" name="islem" onchange="ilan_islemyap(this.options[selectedIndex].value,<?php echo $ilan->Id;?>,'<?php echo mb_strtolower($filter);?>');">
+                      <select class="col-12 form-control bg-secondary" name="islem" onchange="ilan_islemyap(this.options[selectedIndex].value,<?php echo $ilan->Id;?>,'<?php echo $filter;?>');">
                         <option value="0">Seçiniz</option>
                         <option value="1">İlanı Düzenle</option>
                         <option value="2">Doping Yap</option>

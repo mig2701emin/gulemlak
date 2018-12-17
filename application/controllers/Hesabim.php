@@ -72,8 +72,8 @@ class Hesabim extends CI_Controller{
     }
     $data["ilanlar"]=$query->result();
     $data["user"]=$this->user;
-    $data["filter"]=$filter2;
-
+    $data["filter"]=$filter;
+    $data["filter2"]=$filter2;
     $config["uri_segment"] = $uri_segment;
     $config["base_url"] = base_url($urlstring);
     $config["total_rows"] = $data["toplam_kayit"];
