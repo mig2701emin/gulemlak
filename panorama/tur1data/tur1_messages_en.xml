@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano>
+
+<!-- ************************ -->
+<!--         Messages         -->
+<!-- ************************ -->
+
+  <data name="en_project_title"><![CDATA[Yeni proje]]></data>
+
+
+
+  <data name="en_pano37_title"><![CDATA[koridor1]]></data>
+
+
+  <data name="en_pano36_title"><![CDATA[salon]]></data>
+
+
+  <data name="en_pano38_title"><![CDATA[mutfak]]></data>
+
+
+  <data name="en_pano39_title"><![CDATA[balkon1]]></data>
+
+
+  <data name="en_pano40_title"><![CDATA[koridor2]]></data>
+
+
+  <data name="en_pano41_title"><![CDATA[oda1]]></data>
+
+
+  <data name="en_pano42_title"><![CDATA[oda2]]></data>
+
+
+  <data name="en_pano43_title"><![CDATA[balkon2]]></data>
+
+
+  <data name="en_pano44_title"><![CDATA[oda3]]></data>
+
+
+  <data name="en_pano45_title"><![CDATA[banyo]]></data>
+
+
+
+
+
+
+  <data name="en_controlBar_dockedThumbnailsmoveLeftTip"><![CDATA[Sola hareket et]]></data>
+  <data name="en_controlBar_dockedThumbnailsmoveRightTip"><![CDATA[Sağa hareket et]]></data>
+  <data name="en_controlBar_dockedThumbnailsmoveUpTip"><![CDATA[Yukarı hareket et]]></data>
+  <data name="en_controlBar_dockedThumbnailsmoveDownTip"><![CDATA[Aşağı hareket et]]></data>
+  <data name="en_controlBar_dockedThumbnailsopenFsTip"><![CDATA[Tam ekrana geç]]></data>
+  <data name="en_controlBar_dockedThumbnailscloseFsTip"><![CDATA[Tam ekrandan çık]]></data>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</krpano>
