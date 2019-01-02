@@ -55,6 +55,11 @@
                                                 </div>
                                             </div>
                                         </li>
+                                     <li class="level dropdown ">
+                            <span class="opener plus"></span>
+                                                        <a href="/Kurumsal/SanalTur"><span>Sanal Tur</span></a>
+                                                                                                 </li>
+
                                         <li class="level dropdown ">
                                             <span class="opener plus"></span>
                                             <a href="blog.html"><span>Destek</span></a>
