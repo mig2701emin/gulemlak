@@ -46,8 +46,8 @@ color:white;
     <?php $this->load->view('layout/header');?>
     <div class="container">
       <div class="row mt-60 mb-60" >
-        <div class="col-12">
-          <iframe src="<?php echo base_url('panorama/tur1.html') ?>" width="100%" height="500px"></iframe>
+        <div class="col-12 text-center">
+          <iframe src="<?php echo base_url('panorama/tur2/panorama.html') ?>" width="90%" height="400px"></iframe>
         </div>
         <div class="col-md-2">
           <div class="sidebar-block">

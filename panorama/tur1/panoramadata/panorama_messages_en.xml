@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano>
+
+<!-- ************************ -->
+<!--         Messages         -->
+<!-- ************************ -->
+
+  <data name="en_project_title"><![CDATA[ZNR1]]></data>
+
+
+
+  <data name="en_pano37_title"><![CDATA[KORİDOR 1]]></data>
+  <data name="en_spotpoint58_tooltip"><![CDATA[SALON]]></data>
+  <data name="en_spotpoint59_tooltip"><![CDATA[MUTFAK]]></data>
+  <data name="en_spotpoint60_tooltip"><![CDATA[KORİDOR 2]]></data>
+
+
+  <data name="en_pano36_title"><![CDATA[SALON]]></data>
+  <data name="en_spotpoint56_tooltip"><![CDATA[KORİDOR 1]]></data>
+  <data name="en_spotpoint57_tooltip"><![CDATA[BALKON 1]]></data>
+
+
+  <data name="en_pano38_title"><![CDATA[MUTFAK]]></data>
+  <data name="en_spotpoint61_tooltip"><![CDATA[KORİDOR 1]]></data>
+  <data name="en_spotpoint62_tooltip"><![CDATA[BALKON 1]]></data>
+
+
+  <data name="en_pano39_title"><![CDATA[BALKON 1]]></data>
+  <data name="en_spotpoint63_tooltip"><![CDATA[MUTFAK]]></data>
+  <data name="en_spotpoint64_tooltip"><![CDATA[SALON]]></data>
+
+
+  <data name="en_pano40_title"><![CDATA[KORİDOR 2]]></data>
+  <data name="en_spotpoint65_tooltip"><![CDATA[BANYO]]></data>
+  <data name="en_spotpoint66_tooltip"><![CDATA[ODA 1]]></data>
+  <data name="en_spotpoint67_tooltip"><![CDATA[ODA 2]]></data>
+  <data name="en_spotpoint68_tooltip"><![CDATA[ODA 3]]></data>
+  <data name="en_spotpoint69_tooltip"><![CDATA[KORİDOR 1]]></data>
+
+
+  <data name="en_pano41_title"><![CDATA[ODA 1]]></data>
+  <data name="en_spotpoint70_tooltip"><![CDATA[KORİDOR 2]]></data>
+
+
+  <data name="en_pano42_title"><![CDATA[ODA 2]]></data>
+  <data name="en_spotpoint71_tooltip"><![CDATA[KORİDOR 2]]></data>
+  <data name="en_spotpoint72_tooltip"><![CDATA[BALKON 2]]></data>
+
+
+  <data name="en_pano43_title"><![CDATA[BALKON 2]]></data>
+  <data name="en_spotpoint73_tooltip"><![CDATA[ODA 2]]></data>
+
+
+  <data name="en_pano44_title"><![CDATA[ODA 3]]></data>
+  <data name="en_spotpoint74_tooltip"><![CDATA[KORİDOR 2]]></data>
+
+
+  <data name="en_pano45_title"><![CDATA[BANYO]]></data>
+  <data name="en_spotpoint75_tooltip"><![CDATA[KORİDOR 2]]></data>
+
+
+	<data name="en_spotmap137_tooltip"><![CDATA[]]></data>
+
+
+
+
+
+  <data name="en_project_description"><![CDATA[ZNR SİTESİ]]></data>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</krpano>

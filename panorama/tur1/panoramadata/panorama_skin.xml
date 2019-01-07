@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano version="1.18.3">
+
+    
+  <!-- Spot Style - Default Point Spot Style 1 -->
+  <style name="IconDefaultPointSpotStyle1"
+         url="%FIRSTXML%/spots/hotspot_neutral_user_defaultpoint0.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle1"
+         onout="onoutIconDefaultPointSpotStyle1"
+         />
+  <action name="onhoverIconDefaultPointSpotStyle1">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoutIconDefaultPointSpotStyle1">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+  <!-- unsupported kind of display : PointMap -->
+
+
+<!-- ********* -->
+<!-- Gyroscope -->
+<!-- ********* -->
+<plugin name="gyroscope"
+        url="graphics/gyro.js"
+        keep="true"
+        devices="no-desktop.and.html5"
+
+
+        friction="0.5"
+        onavailable="delayedcall(1, checkGyroAvailability(););"
+        enabled="false"
+        activated="false"
+        />
+
+<events name="gyroscopeEvents" onnewpano="planarGyroscopeTest();" keep="true" />
+
+<action name="planarGyroscopeTest">
+  if(plugin[gyroscope],
+    ifnot (plugin[gyroscope].available === undefined, 
+      if (plugin[gyroscope].available,
+        if(scene[get(xml.scene)].planar,
+          if(plugin[gyroscope].enabled,
+            switch(plugin[gyroscope].enabled);
+            if (plugin[gyroscope].enabled, events.dispatch(ongyroscopeon);, events.dispatch(ongyroscopeoff););
+          );
+        ,
+          if(plugin[gyroscope].activated,
+            ifnot(plugin[gyroscope].enabled,
+              switch(plugin[gyroscope].enabled);
+              if (plugin[gyroscope].enabled, events.dispatch(ongyroscopeon);, events.dispatch(ongyroscopeoff););
+            );
+          );
+        );
+      );
+    );
+  );
+</action>
+
+<action name="changeGyroscopeState">
+  if(plugin[gyroscope],
+    ifnot (plugin[gyroscope].available === undefined,
+      if (plugin[gyroscope].available,
+        if(%1,
+          set(plugin[gyroscope].activated,true);
+        ,
+          set(plugin[gyroscope].activated,false);
+        );
+        if (%1 !=  plugin[gyroscope].enabled,
+          if(plugin[gyroscope].activated,
+            switch(plugin[gyroscope].enabled);
+          ,
+            set(plugin[gyroscope].enabled, false);
+          );
+          if (plugin[gyroscope].enabled, events.dispatch(ongyroscopeon);, events.dispatch(ongyroscopeoff););
+        );
+      );
+    );
+  );
+</action>
+
+<action name="checkGyroAvailability">
+  if(plugin[gyroscope],
+    ifnot (plugin[gyroscope].available === undefined, 
+      if (plugin[gyroscope].available,
+        ifnot(scene[get(xml.scene)].planar,
+          switch(plugin[gyroscope].enabled);
+          set(plugin[gyroscope].activated,true);
+        );
+        set(tour_gyroscopedevices, true);
+        events.dispatch(ongyroscopeavailable);
+      ,
+        set(tour_gyroscopedevices, false);
+      );
+    ,
+      set(tour_gyroscopedevices, false);
+    );
+    if (plugin[gyroscope].enabled, events.dispatch(ongyroscopeon);, events.dispatch(ongyroscopeoff););
+  );
+</action>
+
+  <!-- ************************ -->
+  <!-- Title : current panorama -->
+  <!-- ************************ -->
+
+  <events name="title_currentpanorama_events" 
+    onTourStart="showtitle_currentpanorama();"
+    onnewpano="updatetitle_currentpanorama();" 
+    keep="true" />
+
+  <action name="showtitle_currentpanorama">set(layer[title_currentpanorama].visible, true );</action>
+
+  <action name="updatetitle_currentpanorama">
+    getmessage(layer[title_currentpanorama].html, get(scene[get(xml.scene)].titleid));
+    escape(layer[title_currentpanorama].html);
+  </action>
+  <layer name="title_currentpanorama" keep="true" zorder="1"
+         url="%FIRSTXML%/graphics/textfield.swf"
+         align="bottom" x="0" y="0" width="100%" autoheight="true"
+         background="false" capture="false" handcursor="false" selectable="false" enabled="false"
+         borderwidth="0"
+         alpha="1"
+         visible="false"
+         css="text-align:center;
+              color:#ffffff;
+              font-family:Arial;
+              font-weight:bold;
+              font-size:28px;"/>
+
+  <!-- ************* -->
+  <!-- Panorama Menu -->
+  <!-- ************* -->
+
+<ptplugin name="panoramaMenu" engine="kolorMenu">
+	<settings>
+		<option name="position" value="topleft" type="string" />
+		<option name="orientation" value="horizontal" type="string" />
+		<option name="sub_orientation" value="vertical" type="string" />
+		<option name="margin_x" value="5" type="int" />
+		<option name="margin_y" value="5" type="int" />
+		<option name="background_color" value="b3b3b3" type="string" />
+		<option name="background_alpha" value="1" type="float" />
+		<option name="item_spacer" value="3" type="int" />
+		<option name="border_radius" value="5" type="int" />
+		<option name="full_size" value="false" type="bool" />
+		<option name="use_out_effect" value="true" type="bool" />
+		<option name="item_out_border_radius" value="5" type="int" />
+		<option name="item_hover_border_radius" value="5" type="int" />
+		<option name="item_out_border_width" value="0" type="int" />
+		<option name="item_hover_border_width" value="0" type="int" />
+		<option name="item_out_bg_color" value="b3b3b3" type="string" />
+		<option name="item_out_bg_alpha" value="1" type="float" />
+		<option name="item_out_font_color" value="ffffff" type="string" />
+		<option name="item_out_font_family" value="Arial" type="string" />
+		<option name="item_out_font_size" value="10" type="int" />
+		<option name="item_out_font_weight" value="normal" type="string" />
+		<option name="item_out_font_style" value="normal" type="string" />
+		<option name="item_out_font_decoration" value="normal" type="string" />
+		<option name="use_hover_effect" value="true" type="bool" />
+		<option name="item_hover_bg_color" value="d7d7d7" type="string" />
+		<option name="item_hover_bg_alpha" value="1" type="float" />
+		<option name="item_hover_font_color" value="ffffff" type="string" />
+		<option name="item_hover_font_family" value="Arial" type="string" />
+		<option name="item_hover_font_size" value="10" type="int" />
+		<option name="item_hover_font_weight" value="normal" type="string" />
+		<option name="item_hover_font_style" value="normal" type="string" />
+		<option name="item_hover_font_decoration" value="normal" type="string" />
+		<option name="item_selected_color" value="5b5b5b" type="string" />
+		<option name="item_selected_alpha" value="1" type="string" />
+		<option name="open_callback" value="invokeKrFunction('changeSelectedItem-panoramaMenu');" type="string" />
+		<option name="text_align" value="right" type="string" />
+		<option name="item_thumb_max_width" value="200" type="int" />
+		<option name="item_thumb_max_height" value="100" type="int" />
+		<option name="zorder" value="2" type="int" />
+	</settings>
+	<internaldata>
+				<group name="group_1"
+						titleID="panogroup47_title"
+						thumbnail=""
+						subMenu="false"
+						cssClass="panogroup47"> 
+
+				
+						<item name="group_1_item_1" 
+								titleID="pano37_title" 
+								action="invokeKrFunction('mainloadscene', 'pano37')"
+								thumbnail=""
+								cssClass="pano37">
+						</item>
+				
+				</group>
+				<group name="group_2"
+						titleID="panogroup46_title"
+						thumbnail=""
+						subMenu="false"
+						cssClass="panogroup46"> 
+
+				
+						<item name="group_2_item_1" 
+								titleID="pano36_title" 
+								action="invokeKrFunction('mainloadscene', 'pano36')"
+								thumbnail=""
+								cssClass="pano36">
+						</item>
+				
+				</group>
+				<group name="group_3"
+						titleID="panogroup48_title"
+						thumbnail=""
+						subMenu="false"
+						cssClass="panogroup48"> 
+
+				
+						<item name="group_3_item_1" 
+								titleID="pano38_title" 
+								action="invokeKrFunction('mainloadscene', 'pano38')"
+								thumbnail=""
+								cssClass="pano38">
+						</item>
+				
+				</group>
+				<group name="group_4"
+						titleID="panogroup49_title"
+						thumbnail=""
+						subMenu="false"
+						cssClass="panogroup49"> 
+
+				
+						<item name="group_4_item_1" 
+								titleID="pano39_title" 
+								action="invokeKrFunction('mainloadscene', 'pano39')"
+								thumbnail=""
+								cssClass="pano39">
+						</item>
+				
+				</group>
+				<group name="group_5"
+						titleID="panogroup50_title"
+						thumbnail=""
+						subMenu="false"
+						cssClass="panogroup50"> 
+
+				
+						<item name="group_5_item_1" 
+								titleID="pano40_title" 
+								action="invokeKrFunction('mainloadscene', 'pano40')"
+								thumbnail=""
+								cssClass="pano40">
+						</item>
+				
+				</group>
+				<group name="group_6"
+						titleID="panogroup51_title"
+						thumbnail=""
+						subMenu="false"
+						cssClass="panogroup51"> 
+
+				
+						<item name="group_6_item_1" 
+								titleID="pano41_title" 
+								action="invokeKrFunction('mainloadscene', 'pano41')"
+								thumbnail=""
+								cssClass="pano41">
+						</item>
+				
+				</group>
+				<group name="group_7"
+						titleID="panogroup52_title"
+						thumbnail=""
+						subMenu="false"
+						cssClass="panogroup52"> 
+
+				
+						<item name="group_7_item_1" 
+								titleID="pano42_title" 
+								action="invokeKrFunction('mainloadscene', 'pano42')"
+								thumbnail=""
+								cssClass="pano42">
+						</item>
+				
+				</group>
+				<group name="group_8"
+						titleID="panogroup53_title"
+						thumbnail=""
+						subMenu="false"
+						cssClass="panogroup53"> 
+
+				
+						<item name="group_8_item_1" 
+								titleID="pano43_title" 
+								action="invokeKrFunction('mainloadscene', 'pano43')"
+								thumbnail=""
+								cssClass="pano43">
+						</item>
+				
+				</group>
+				<group name="group_9"
+						titleID="panogroup54_title"
+						thumbnail=""
+						subMenu="false"
+						cssClass="panogroup54"> 
+
+				
+						<item name="group_9_item_1" 
+								titleID="pano44_title" 
+								action="invokeKrFunction('mainloadscene', 'pano44')"
+								thumbnail=""
+								cssClass="pano44">
+						</item>
+				
+				</group>
+				<group name="group_10"
+						titleID="panogroup55_title"
+						thumbnail=""
+						subMenu="false"
+						cssClass="panogroup55"> 
+
+				
+						<item name="group_10_item_1" 
+								titleID="pano45_title" 
+								action="invokeKrFunction('mainloadscene', 'pano45')"
+								thumbnail=""
+								cssClass="pano45">
+						</item>
+				
+				</group>
+	</internaldata>
+</ptplugin>
+
+<action name="kolorMenuJsReady-panoramaMenu">
+	set(ptplugin[panoramaMenu].jsready, true);
+</action>
+
+<action name="showKolorMenu-panoramaMenu">
+	
+	ifnot(ptplugin[panoramaMenu].isOpen,
+		set(ptplugin[panoramaMenu].isOpen, true);
+		js(openKolorMenu(panoramaMenu));
+	,
+		if(ptplugin[panoramaMenu].jsready,
+			js(invokePluginFunction(panoramaMenu, showKolorMenu));
+		);
+	);
+</action>
+
+<action name="hideKolorMenu-panoramaMenu">
+	if(ptplugin[panoramaMenu].jsready,
+		js(invokePluginFunction(panoramaMenu, hideKolorMenu));
+	);
+</action>
+
+<action name="changeSelectedItem-panoramaMenu">
+	js(invokePluginFunction(panoramaMenu, changeSelectedItem, get(xml.scene)));
+</action>
+
+<events name="kolorMenuEvents-panoramaMenu" 
+	keep="true"
+	
+	
+	onTourStart="showKolorMenu-panoramaMenu();"
+	hidetourcontrols="hideKolorMenu-panoramaMenu();"
+	showtourcontrols="showKolorMenu-panoramaMenu();"
+	onnewpano="changeSelectedItem-panoramaMenu();"
+/>
+
+</krpano>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano>
+
+<!-- ************************ -->
+<!--         Messages         -->
+<!-- ************************ -->
+
+  <data name="en_project_title"><![CDATA[Yeni proje]]></data>
+
+
+
+  <data name="en_pano9_title"><![CDATA[KORİDOR 1]]></data>
+  <data name="en_spotpoint27_tooltip"><![CDATA[MUTFAK]]></data>
+  <data name="en_spotpoint34_tooltip"><![CDATA[SALON]]></data>
+  <data name="en_spotpoint35_tooltip"><![CDATA[KORİDOR 2]]></data>
+
+
+  <data name="en_pano10_title"><![CDATA[MUTFAK]]></data>
+  <data name="en_spotpoint28_tooltip"><![CDATA[KORİDOR 1]]></data>
+  <data name="en_spotpoint29_tooltip"><![CDATA[BALKON 1]]></data>
+
+
+  <data name="en_pano11_title"><![CDATA[BALKON 1]]></data>
+  <data name="en_spotpoint30_tooltip"><![CDATA[MUTFAK]]></data>
+
+
+  <data name="en_pano12_title"><![CDATA[SALON]]></data>
+  <data name="en_spotpoint36_tooltip"><![CDATA[BALKON 2]]></data>
+  <data name="en_spotpoint37_tooltip"><![CDATA[KORİDOR 1]]></data>
+
+
+  <data name="en_pano13_title"><![CDATA[BALKON 2]]></data>
+  <data name="en_spotpoint38_tooltip"><![CDATA[SALON]]></data>
+
+
+  <data name="en_pano14_title"><![CDATA[ODA 1]]></data>
+  <data name="en_spotpoint39_tooltip"><![CDATA[KORİDOR 2]]></data>
+
+
+  <data name="en_pano15_title"><![CDATA[ODA 2]]></data>
+  <data name="en_spotpoint40_tooltip"><![CDATA[KORİDOR 2]]></data>
+
+
+  <data name="en_pano16_title"><![CDATA[BANYO]]></data>
+  <data name="en_spotpoint42_tooltip"><![CDATA[KORİDOR 2]]></data>
+
+
+  <data name="en_pano17_title"><![CDATA[KORİDOR 2]]></data>
+  <data name="en_spotpoint32_tooltip"><![CDATA[SALON]]></data>
+  <data name="en_spotpoint33_tooltip"><![CDATA[ODA 2]]></data>
+  <data name="en_spotpoint43_tooltip"><![CDATA[KORİDOR 1]]></data>
+  <data name="en_spotpoint44_tooltip"><![CDATA[ODA 1]]></data>
+  <data name="en_spotpoint45_tooltip"><![CDATA[BANYO]]></data>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</krpano>
