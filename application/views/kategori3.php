@@ -14,7 +14,8 @@
 
     .pagination a, .pagination strong{
 
-      padding: 5px;
+      text-align: center;
+        min-width: 25px;
       border: 1px solid #ccc;
       margin-left: 5px;
       text-decoration: none;
@@ -23,7 +24,7 @@
     }
     .pagination strong{
       background-color: #35a5f2;
-
+color:white;
     }
   </style>
   <script>
@@ -36,17 +37,21 @@
       $("#xdiv"+a).html('<a class="submenu_text" href="javascript:show(\''+a+'\');">Tümünü Göster</a>');
     }
   </script>
+
 </head>
-<body class="color_bg1">
+<body>
   <div class="se-pre-con"></div>
   <div class="main">
     <!-- HEADER START -->
     <?php $this->load->view('layout/header');?>
     <div class="container">
       <div class="row mt-60 mb-60" >
-        <div class="col-md-3">
+        <!-- <div class="col-12 text-center">
+          <iframe src="<?php echo base_url('panorama/tur2/panorama.html') ?>" width="90%" height="400px"></iframe>
+        </div> -->
+        <div class="col-md-2">
           <div class="sidebar-block">
-            <div class="sidebar-box listing-box mb-40">
+            <div class="sidebar-box listing-box mb-40" style="font-size: 14px">
               <span class="opener plus"></span>
               <div class="sidebar-title">
                 <h3><span>Arama Fİltresİ</span></h3>
@@ -209,7 +214,7 @@
                         Konum
                       </div>
                       <div class="col-12 mt-2">
-                        <select name="sehir" id="sehir" onchange="ilcegetir(this.options[selectedIndex].value);">
+                        <select name="sehir" id="sehir" onchange="filtre_il(this.options[selectedIndex].value);">
                           <option value="0">Seçiniz</option>
                           <?php
                           foreach($iller as $bolge){
@@ -219,7 +224,7 @@
                         </select>
                       </div>
                       <div class="col-12 mt-2">
-                        <select name="ilce" id="ilce" onchange="mahallegetir(this.options[selectedIndex].value);">
+                        <select name="ilce" id="ilce" onchange="filtre_ilce(this.options[selectedIndex].value);">
                             <option value="0">Seçiniz</option>
                             <?php if (isset($ilceler)): ?>
                               <?php foreach ($ilceler as $item): ?>
@@ -229,7 +234,7 @@
                         </select>
                       </div>
                       <div class="col-12 mt-2">
-                        <select name="mahalle" id="mahalle" onchange="yenisayfa(this.options[selectedIndex].value);">
+                        <select name="mahalle" id="mahalle" onchange="filtre_mah(this.options[selectedIndex].value);">
                             <option value="0">Seçiniz</option>
                             <?php if (isset($mahalleler)): ?>
                               <?php foreach ($mahalleler as $item): ?>
@@ -242,7 +247,7 @@
                   </div>
                   <div class=" col-12 searchSeperator"></div>
                   <div class="col-12">
-                    <form name="AdvancedSearchForm" id="AdvancedSearchForm" action="" method="post" >
+                    <form name="AdvancedSearchForm" id="AdvancedSearchForm" action="" method="get" >
                       <div class="row">
                         <div class="col-12 mt-2">
                           <label for="exampleFormControlSelect1">Fiyat</label>
@@ -379,9 +384,9 @@
                             <div class="form-group">
                               <div class="form-check">
                                 <!-- Default unchecked -->
-                                <div class="custom-control custom-checkbox">
+                                <div class="custom-control custom-checkbox" style="padding-left:0px; ">
                                   <input name="remember_me" type="checkbox" class="custom-control-input" id="defaultUnchecked" <?php echo (isset($member)) ? "checked" : ""; ?>>
-                                  <label class="custom-control-label" for="defaultUnchecked">Sadece Haritalı İlanlar</label>
+                                  <label class="custom-control-label" for="defaultUnchecked" style="font-size: 11px;padding-top: 5px;">Sadece Haritalı İlanlar</label>
                                 </div>
                               </div>
                             </div>
@@ -392,9 +397,9 @@
                             <div class="form-group">
                               <div class="form-check">
                                 <!-- Default unchecked -->
-                                <div class="custom-control custom-checkbox">
+                                <div class="custom-control custom-checkbox" style="padding-left:0px; ">
                                   <input name="remember_me" type="checkbox" class="custom-control-input" id="OnlyPhoto" <?php echo (isset($member)) ? "checked" : ""; ?>>
-                                  <label class="custom-control-label" for="OnlyPhoto">Sadece Fotoğraflı İlanlar</label>
+                                  <label class="custom-control-label" for="OnlyPhoto" style="font-size: 11px;padding-top:5px">Sadece Fotoğraflı İlanlar</label>
                                 </div>
                               </div>
                             </div>
@@ -404,7 +409,7 @@
                       <div class="col-12">
                         <button type="submit" class="btn color_bg3 text-light" style="width: 100%">Ara</button>
                       </div>
-                    </form>
+                    <!-- </form> -->
                   </div>
                 </div>
               <!-- Kategori Liste bitiş ........................................................-->
@@ -414,7 +419,41 @@
         </div>
       </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-10">
+      <?php if (count($ilanlar)==0): ?>
+        <div class="row">
+          <div class="col-12">
+            <div class="jumbotron text-center">
+              <h1 class="display-4">Üzgünüz!</h1>
+              <p class="lead">Aradığınız kiriterlere uygun ilan bulunamadı.</p>
+              <hr class="my-4">
+              <p>İlanınızın ücretsiz olarak burada yayınlanmasını istiyor musunuz?</p>
+              <p class="lead">
+                <a class="btn btn-primary btn-lg" href="<?php echo base_url('ilanekle') ?>" role="button">Hemen Tıklayın</a>
+              </p>
+            </div>
+          </div>
+
+        </div>
+      <?php else: ?>
+      <div class="row">
+        <!-- <form id="sort" class="" action="" method="get"> -->
+        <select name="order_type" onchange="order_by()" style="width:200px;font-size:9pt;">
+            <option value="descdate"<?php if($order_type=='descdate'){?> selected<?php }?>>Tarihe Göre (Yeniden Eskiye)</option>
+            <option value="ascdate"<?php if($order_type=='ascdate'){?> selected<?php }?>>Tarihe Göre (Eskiden Yeniye)</option>
+            <option value="ascprice"<?php if($order_type=='ascprice'){?> selected<?php }?>>Fiyata Göre (Artan)</option>
+            <option value="descprice"<?php if($order_type=='descprice'){?> selected<?php }?>>Fiyata Göre (Azalan)</option>
+            <option value="city"<?php if($order_type=='city'){?> selected<?php }?>>İle Göre</option>
+        </select>
+        <select name="limit" onchange="order_by();" style="width:50px;font-size:9pt;margin-left:5px;">
+          <option value="10"<?php if($limit=='10'){?> selected<?php }?>>10</option>
+          <option value="20"<?php if($limit=='20'){?> selected<?php }?>>20</option>
+          <option value="30"<?php if($limit=='30'){?> selected<?php }?>>30</option>
+          <option value="40"<?php if($limit=='40'){?> selected<?php }?>>40</option>
+          <option value="50"<?php if($limit=='50'){?> selected<?php }?>>50</option>
+        </select>
+      </form>
+      </div>
       <?php
       $list_field_title = array();
       $list_field_value = array();
@@ -440,112 +479,87 @@
         $ilan_no=$a->Id;
         $mahalle=$this->db->query("select * from tbl_mahalle where mahalle_id='".$a->mahalle."'")->row();
         ?>
-        <div class="row mt-1 border-bottom<?php if($i%2==0){ ?> color_bg-1<?php }else{ ?> color_bg-2<?php } ?>" onclick="window.location='<?php echo base_url();?><?php echo $seolink2;?>/<?php echo encode($ilan_no);?>';">
-          <div class="col-md-3">
+        <div class="row   p-1 mt-1 border-bottom<?php if($i%2==0){ ?> white-bg<?php }else{ ?> light-gray-bg<?php } ?>" onclick="window.location='<?php echo base_url();?><?php echo $seolink2;?>/<?php echo encode($ilan_no);?>';">
+          <div class="col-7 col-md-3 align-center" style="padding-left: 0px; padding-right: 0px;">
             <?php if($a->kucuk_fotograf==1 and ilk_resim($a->Id)!='' and file_exists('photos/thumbnail/'.ilk_resim($a->Id))){?>
-              <img src = "<?php echo base_url();?>photos/thumbnail/<?php echo ilk_resim($a->Id);?>" height = "110" width="178" border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
+              <img src = "<?php echo base_url();?>photos/thumbnail/<?php echo ilk_resim($a->Id);?>" height = "110"  border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
             <?php }else{?>
-              <img src = "<?php echo base_url();?>assets/images/yok_thumbnail.png" height = "110" width="178" border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
+              <img src = "<?php echo base_url();?>assets/images/yok_thumbnail.png" height = "110"  border = "0" alt="<?php echo $a->firma_adi;?>" title="<?php echo $a->firma_adi;?>">
             <?php }?>
           </div>
-          <div class="col-md-6">
-            <div class="row">
-              <div class="col-12"></div>
-              <a href="javascript:void(0);"><?php echo $firma_adi;?></a>
-              <br/>
-              <div class="col-6" style="font-size: 12px;">
-                İlan Tarihi:<?php yeni_tarih2($a->kayit_tarihi);?>
-              </div>
-              <div class="col-6 color_text4">
+            <div class="col-5 yanbaslik" style="padding-left:0px;padding-right: 0px;" >
+                <div class="mt-1"><a style="font-size:12px; " href="javascript:void(0);" style="font-weight: bold"><?php echo $firma_adi;?></a>
+            </div>
+                <div class="mt-1" style="color:blue">
+
+                        <b><?php echo number_format($a->fiyat,0, ',', '.').' '.$a->birim; ?></b>
+
+                </div>
+                <div class="mt-1" style="color:blue; font-size: 12px;">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <?php if ($il) { echo $il->il_ad;}?>
+                    <br/>
+                    <?php if($mahalle){echo $mahalle->mahalle_ad;}?>
+
+                </div>
+            </div>
+          <div class="col-sm-4 col-md-6"  >
+            <div class="row mt-3">
+              <div class="col-12 anabaslik">
+              <a href="javascript:void(0);" style="font-weight: bold;font-size: 14px;"><?php echo $firma_adi;?></a>
+            </div>
+
+              <div class="col-12 color_text4 mt-2 anabaslik"  >
                 <b><?php echo number_format($a->fiyat,0, ',', '.').' '.$a->birim; ?></b>
               </div>
             </div>
-            <div class="row">
+            <div class="row mt-2">
               <?php
               $t=0;
               foreach ($list_field_value as $list_field_val) {
-                echo '<div class="col-md-4">'. $list_field_title[$t].':'.get_ad_cat_show_detail($list_field_val,$ilan_no).'</div>';
+                echo '<div class="float-left mr-2 ml-2" style="font-size: 12px;">'. $list_field_title[$t].':'.get_ad_cat_show_detail($list_field_val,$ilan_no).'</div>';
                 $t++;
               }
               ?>
             </div>
           </div>
-          <div class="col-md-3 ">
-            <div class="col-12 font-weight-bold " style="font-size:12px;font-family: "Raleway", sans-serif">
+          <div class="locationdiv col-md-3 " >
+
+             <div class="row">
+            <div class="col-6 col-md-12 font-weight-bold  mt-3 " style="font-size:12px;">
               <i class="fas fa-map-marker-alt"></i>
               <?php if ($il) { echo $il->il_ad;}?>
               <br/>
               <?php if($mahalle){echo $mahalle->mahalle_ad;}?>
             </div>
+            <div class="col-6 col-md-12  mt-3" style="font-size: 11px;">
+                İlan Tarihi:<?php yeni_tarih2($a->kayit_tarihi);?>
+            </div>
+
+          </div>
           </div>
         </div>
         <?php
         $i++;
       }
       ?>
+      <?php endif; ?>
+      <?php $this->load->view('layout/listelink');?>
       <p class="pagination"><?php echo $links; ?></p>
     </div>
   </div>
 </div>
-  <?php $this->load->view('layout/footer2');?>
+  <?php $this->load->view('layout/footer');?>
 </div>
+<?php $this->load->view('layout/scripts');?>
     <script>
       function mesaj_gonder (uyeid,ilanid){alert('Mesaj gönderebilmek için giriş yapmalısınız.');}
       function favori (){alert('İlanı favorilerinize eklemeniz için üye girişi yapmanız gerekmektedir.');}
       function favorisil (){alert('İlanı favorilerden silebilmek için üye girişi yapmanız gerekmektedir.');}
     </script>
     <script type="text/javascript">
-    function ilcegetir(parametre) {
-      if (parametre > 0){
-        var il_id = parametre;
-        //ajax işlemi post ile yapılıyor
-        $.post('<?php echo base_url(); ?>ajax/get_ilceler', {il_id : il_id}, function(result){
-          //gelen cevapta hata yoksa listeleme yapılıyor..
-          if ( result && result.status != 'error' )
-          {
-            var ilceler = result.data;
-            var select = '<option value="0">Seçiniz</option>';
-            for( var i = 0; i < ilceler.length; i++)
-            {
-              select += '<option value="'+ ilceler[i].ilce_id +'">'+ ilceler[i].ilce_ad +'</option>';
-            }
-            select += '</select>';
-            $('#ilce').empty().html(select);
-          }
-          else
-          {
-            alert('Hata : ' + result.message );
-          }
-        });
-      }
-    }
-    function mahallegetir(parametre) {
-      if (parametre>0){
-        var ilce_id = parametre;
-        //ajax işlemi post ile yapılıyor
-      $.post('<?php echo base_url(); ?>ajax/get_mahalleler', {ilce_id : ilce_id}, function(result){
-          //gelen cevapta hata yoksa listeleme yapılıyor..
-          if ( result && result.status != 'error' )
-          {
-            var mahalleler = result.data;
-            var select = '<option value="0">Seçiniz</option>';
-            for( var i = 0; i < mahalleler.length; i++)
-            {
-              select += '<option value="'+ mahalleler[i].mahalle_id +'">'+ mahalleler[i].mahalle_ad +'</option>';
-            }
-            select += '</select>';
-
-            $('#mahalle').empty().html(select);
-          }
-          else
-          {
-            alert('Hata : ' + result.message );
-          }
-        });
-      }
-    }
     function order_by() {
-      $("#sort").submit();
+      $("#AdvancedSearchForm").submit();
     }
     </script>
     <script type="text/javascript">
@@ -570,13 +584,42 @@
       seo_kelime=seo_kelime.toLowerCase();
       return seo_kelime;
     }
-    function yenisayfa(parametre) {
+    function filtre_il(parametre) {
 
       if (parametre > 0) {
         var iller = document.getElementById("sehir");
         var il_ad = iller.options[iller.selectedIndex].text;
         var seo_il = "/" + seokelime(il_ad);
-        //alert(seo_il);
+        window.location.assign('<?php echo base_url().$linkkategori; ?>' + seo_il);
+      }else if (parametre == 0) {
+        window.location.assign('<?php echo base_url().$linkkategori; ?>');
+      }
+    }
+    function filtre_ilce(parametre) {
+
+      if (parametre > 0) {
+        var iller = document.getElementById("sehir");
+        var il_ad = iller.options[iller.selectedIndex].text;
+        var seo_il = "/" + seokelime(il_ad);
+        var ilceler = document.getElementById("ilce");
+        var ilce_ad = ilceler.options[ilceler.selectedIndex].text;
+        var seo_ilce = "/" + seokelime(ilce_ad);
+        window.location.assign('<?php echo base_url().$linkkategori; ?>' + seo_il + seo_ilce);
+      }else if (parametre == 0) {
+        var iller = document.getElementById("sehir");
+        if (iller.options[iller.selectedIndex].value > 0) {
+          var il_ad = iller.options[iller.selectedIndex].text;
+          var seo_il = "/" + seokelime(il_ad);
+          window.location.assign('<?php echo base_url().$linkkategori; ?>' + seo_il);
+        }
+      }
+    }
+    function filtre_mah(parametre) {
+
+      if (parametre > 0) {
+        var iller = document.getElementById("sehir");
+        var il_ad = iller.options[iller.selectedIndex].text;
+        var seo_il = "/" + seokelime(il_ad);
         var ilceler = document.getElementById("ilce");
         var ilce_ad = ilceler.options[ilceler.selectedIndex].text;
         var seo_ilce = "/" + seokelime(ilce_ad);
@@ -597,6 +640,5 @@
       }
     }
     </script>
-  <?php $this->load->view('layout/scripts');?>
 </body>
 </html>

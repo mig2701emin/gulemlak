@@ -213,36 +213,42 @@ color:white;
                       <div class="col-12 font-weight-bold" onclick="aramaGoster('1','<?php echo $kat1;?>');">
                         Konum
                       </div>
-                      <div class="col-12 mt-2">
-                        <select name="sehir" id="sehir" onchange="filtre_il(this.options[selectedIndex].value);">
-                          <option value="0">Seçiniz</option>
-                          <?php
-                          foreach($iller as $bolge){
-                            ?>
-                            <option value="<?php echo $bolge->il_id;?>"<?php if(isset($il) && $bolge->il_id==$il->il_id){?> selected<?php }?>><?php echo $bolge->il_ad;?></option>
-                          <?php }?>
-                        </select>
-                      </div>
-                      <div class="col-12 mt-2">
-                        <select name="ilce" id="ilce" onchange="filtre_ilce(this.options[selectedIndex].value);">
+                      <form class="" id="konumForm" action="" method="post">
+                        <div class="col-12 mt-2">
+                          <select name="sehir" id="sehir" onchange="filtre_il(this.options[selectedIndex].value);">
                             <option value="0">Seçiniz</option>
-                            <?php if (isset($ilceler)): ?>
-                              <?php foreach ($ilceler as $item): ?>
-                                <option value="<?php echo $item->ilce_id;?>"<?php if(isset($ilce) && $item->ilce_id==$ilce->ilce_id){?> selected<?php }?>><?php echo $item->ilce_ad;?></option>
-                              <?php endforeach; ?>
-                            <?php endif; ?>
-                        </select>
-                      </div>
-                      <div class="col-12 mt-2">
-                        <select name="mahalle" id="mahalle" onchange="filtre_mah(this.options[selectedIndex].value);">
-                            <option value="0">Seçiniz</option>
-                            <?php if (isset($mahalleler)): ?>
-                              <?php foreach ($mahalleler as $item): ?>
-                                <option value="<?php echo $item->mahalle_id;?>"<?php if(isset($mahalle) && $item->mahalle_id==$mahalle->mahalle_id){?> selected<?php }?>><?php echo $item->mahalle_ad;?></option>
-                              <?php endforeach; ?>
-                            <?php endif; ?>
-                        </select>
-                      </div>
+                            <?php
+                            foreach($iller as $bolge){
+                              ?>
+                              <option value="<?php echo $bolge->il_id;?>"<?php if(isset($il) && $bolge->il_id==$il->il_id){?> selected<?php }?>><?php echo $bolge->il_ad;?></option>
+                            <?php }?>
+                          </select>
+                        </div>
+                        <div class="col-12 mt-2">
+                          <select name="ilce" id="ilce" onchange="filtre_ilce(this.options[selectedIndex].value);">
+                              <option value="0">Seçiniz</option>
+                              <?php if (isset($ilceler)): ?>
+                                <?php foreach ($ilceler as $item): ?>
+                                  <option value="<?php echo $item->ilce_id;?>"<?php if(isset($ilce) && $item->ilce_id==$ilce->ilce_id){?> selected<?php }?>><?php echo $item->ilce_ad;?></option>
+                                <?php endforeach; ?>
+                              <?php endif; ?>
+                          </select>
+                        </div>
+                        <div class="col-12 mt-2">
+                          <select name="mahalle" id="mahalle" onchange="filtre_mah(this.options[selectedIndex].value);">
+                              <option value="0">Seçiniz</option>
+                              <?php if (isset($mahalleler)): ?>
+                                <?php foreach ($mahalleler as $item): ?>
+                                  <option value="<?php echo $item->mahalle_id;?>"<?php if(isset($mahalle) && $item->mahalle_id==$mahalle->mahalle_id){?> selected<?php }?>><?php echo $item->mahalle_ad;?></option>
+                                <?php endforeach; ?>
+                              <?php endif; ?>
+                          </select>
+                        </div>
+                        <div class="col-12">
+                          <button type="submit" class="btn color_bg3 text-light" style="width: 100%">Konumda Ara</button>
+                        </div>
+                      </form>
+
                     </div>
                   </div>
                   <div class=" col-12 searchSeperator"></div>
@@ -558,9 +564,9 @@ color:white;
       function favorisil (){alert('İlanı favorilerden silebilmek için üye girişi yapmanız gerekmektedir.');}
     </script>
     <script type="text/javascript">
-    function order_by() {
-      $("#AdvancedSearchForm").submit();
-    }
+      function order_by() {
+        $("#AdvancedSearchForm").submit();
+      }
     </script>
     <script type="text/javascript">
     function seokelime(kelime) {
@@ -585,32 +591,66 @@ color:white;
       return seo_kelime;
     }
     function filtre_il(parametre) {
-
-      if (parametre > 0) {
+      if (parametre>0){
+        var il_id = parametre;
+        $.post('<?php echo base_url(); ?>ajax/get_ilceler', {il_id : il_id}, function(result){
+          if ( result && result.status != 'error' )
+          {
+            var ilceler = result.data;
+            var select = '<option value="0">Seçiniz</option>';
+            for( var i = 0; i < ilceler.length; i++)
+            {
+              select += '<option value="'+ ilceler[i].ilce_id +'">'+ ilceler[i].ilce_ad +'</option>';
+            }
+            select += '</select>';
+            $('#ilce').empty().html(select);
+          }
+          else
+          {
+            alert('Hata : ' + result.message );
+          }
+        });
         var iller = document.getElementById("sehir");
         var il_ad = iller.options[iller.selectedIndex].text;
         var seo_il = "/" + seokelime(il_ad);
-        window.location.assign('<?php echo base_url().$linkkategori; ?>' + seo_il);
+        $("#konumForm").attr("action", "<?php echo base_url().$linkkategori; ?>" + seo_il);
       }else if (parametre == 0) {
-        window.location.assign('<?php echo base_url().$linkkategori; ?>');
+        $("#konumForm").attr("action", "<?php echo base_url().$linkkategori; ?>");
       }
     }
     function filtre_ilce(parametre) {
-
-      if (parametre > 0) {
-        var iller = document.getElementById("sehir");
-        var il_ad = iller.options[iller.selectedIndex].text;
-        var seo_il = "/" + seokelime(il_ad);
-        var ilceler = document.getElementById("ilce");
-        var ilce_ad = ilceler.options[ilceler.selectedIndex].text;
-        var seo_ilce = "/" + seokelime(ilce_ad);
-        window.location.assign('<?php echo base_url().$linkkategori; ?>' + seo_il + seo_ilce);
-      }else if (parametre == 0) {
+    if (parametre>0){
+      var ilce_id = parametre;
+      $.post('<?php echo base_url(); ?>ajax/get_mahalleler', {ilce_id : ilce_id}, function(result){
+        if ( result && result.status != 'error' )
+        {
+          var mahalleler = result.data;
+          var select = '<option value="0">Seçiniz</option>';
+          for( var i = 0; i < mahalleler.length; i++)
+          {
+            select += '<option value="'+ mahalleler[i].mahalle_id +'">'+ mahalleler[i].mahalle_ad +'</option>';
+          }
+          select += '</select>';
+          $('#mahalle').empty().html(select);
+        }
+        else
+        {
+          alert('Hata : ' + result.message );
+        }
+      });
+      var iller = document.getElementById("sehir");
+      var il_ad = iller.options[iller.selectedIndex].text;
+      var seo_il = "/" + seokelime(il_ad);
+      var ilceler = document.getElementById("ilce");
+      var ilce_ad = ilceler.options[ilceler.selectedIndex].text;
+      var seo_ilce = "/" + seokelime(ilce_ad);
+      $("#konumForm").attr("action", "<?php echo base_url().$linkkategori; ?>" + seo_il + seo_ilce);
+    }else if (parametre == 0) {
         var iller = document.getElementById("sehir");
         if (iller.options[iller.selectedIndex].value > 0) {
           var il_ad = iller.options[iller.selectedIndex].text;
           var seo_il = "/" + seokelime(il_ad);
-          window.location.assign('<?php echo base_url().$linkkategori; ?>' + seo_il);
+          $("#konumForm").attr("action", "<?php echo base_url().$linkkategori; ?>" + seo_il);
         }
       }
     }
@@ -626,7 +666,7 @@ color:white;
         var mahalleler = document.getElementById("mahalle");
         var mahalle_ad = mahalleler.options[mahalleler.selectedIndex].text;
         var seo_mahalle = "/" + seokelime(mahalle_ad);
-        window.location.assign('<?php echo base_url().$linkkategori; ?>' + seo_il + seo_ilce + seo_mahalle);
+        $("#konumForm").attr("action", "<?php echo base_url().$linkkategori; ?>" + seo_il + seo_ilce + seo_mahalle);
       }else if (parametre == 0) {
         var ilceler = document.getElementById("ilce");
         if (ilceler.options[ilceler.selectedIndex].value > 0) {
@@ -635,7 +675,7 @@ color:white;
           var iller = document.getElementById("sehir");
           var il_ad = iller.options[iller.selectedIndex].text;
           var seo_il = "/" + seokelime(il_ad);
-          window.location.assign('<?php echo base_url().$linkkategori; ?>' + seo_il + seo_ilce);
+          $("#konumForm").attr("action", "<?php echo base_url().$linkkategori; ?>" + seo_il + seo_ilce);
         }
       }
     }
