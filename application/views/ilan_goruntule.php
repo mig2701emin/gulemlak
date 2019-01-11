@@ -223,36 +223,22 @@
 				</div>
 			</div>
 			<?php if ($this->session->userdata("userData")["userID"] == $ilan->uyeId): ?>
-                <div class="row p-1">
-                    <div class="col-12 ">
-						<p class="text text-danger"><?php echo $ilan->ilan_notu; ?></p>
+	      <div class="row p-1">
+	          <div class="col-12 ">
+							<p class="text text-danger"><?php echo $ilan->ilan_notu; ?></p>
+						</div>
 					</div>
-				</div>
 			<?php endif; ?>
 
 
-                <div class="row pt-1 pb-1 pl-1">
-                    <div class="col-lg-9 col-md-12">
-						<div class="row">
-
-                            <div class="col-12 mb-1 mt-1">
-
-                                    <h3  style="    color: #1f1f2f;
-    font-size: 17px;
-    font-weight: 700;
-
-    line-height: 18px;
-    display: inline-block;
-    text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif"><?php echo $ilan->firma_adi; ?></h3>
-
-                            </div>
-						<div class="col-12 col-sm-12 col-md-8 col-lg-8 ">
-							<div class="row text-center">
-
-
-
-
+    <div class="row pt-1 pb-1 pl-1">
+    	<div class="col-lg-9 col-md-12">
+				<div class="row">
+					<div class="col-12 mb-1 mt-1">
+						<h3  style="color: #1f1f2f;font-size: 17px;font-weight: 700;line-height: 18px;display: inline-block;text-transform: uppercase;font-family: 'Montserrat', sans-serif"><?php echo $ilan->firma_adi; ?></h3>
+					</div>
+					<div class="col-12 col-sm-12 col-md-8 col-lg-8 ">
+						<div class="row text-center">
 								<div id="demo" class="carousel slide col-12" data-ride="carousel" style="    padding-left: 0px;padding-right: 0px;">
 									<!-- The slideshow -->
 									<div class="carousel-inner">
@@ -272,18 +258,14 @@
 											</div>
 										<?php endif; ?>
 									</div>
-                                    <div class="col-12" style="position:absolute;top: 0px;">
-
-                                            <div class="col-12 text-white " style="border-right:white 2px solid;">
-
-                                                <div class="float-right p-1" style="font-size: 12px;height:30px;background-color: #0040a5;">İlan No:   <?php echo $ilan->ilanId; ?></div>
-                                            </div>
-
-
-                                    </div>
-                                    <div class="col-12" style="position:absolute;bottom: 0px; left: 0; background-color:#e12222; width:170px;opacity: 0.7;z-index:6">
-                                        <b><a id="bigImage" style="font-weight: 600;font-size: 12px;color: white"><i class="fas fa-search-plus"></i> BÜYÜK RESİM</a></b>
-                                    </div>
+                  <div class="col-12" style="position:absolute;top: 0px;">
+                    <div class="col-12 text-white " style="border-right:white 2px solid;">
+                      <div class="float-right p-1" style="font-size: 12px;height:30px;background-color: #0040a5;">İlan No:   <?php echo $ilan->ilanId; ?></div>
+                    </div>
+                  </div>
+                  <div class="col-12" style="position:absolute;bottom: 0px; left: 0; background-color:#e12222; width:170px;opacity: 0.7;z-index:6">
+                      <b><a id="bigImage" style="font-weight: 600;font-size: 12px;color: white"><i class="fas fa-search-plus"></i> BÜYÜK RESİM</a></b>
+                  </div>
 									<!-- Left and right controls -->
 									<a class="carousel-control-prev" href="#demo" data-slide="prev" style="left:15px;">
 										<span class="carousel-control-prev-icon"></span>
@@ -333,15 +315,10 @@
 										<?php endif; ?>
 									</row>
 								</div>
-
 							</div>
 						</div>
 						<div id="genelBilgi" class="col-12 col-sm-12 col-md-4 col-lg-4 bg-light">
 							<div class="row">
-
-
-
-
 								<div class="col-12">
 									<div class="row " style="min-height:30px;">
 										<div class="col-6 " style="font-weight:600;background-color:#ff7e7e;color:white;border-right: white 1px solid">
@@ -352,64 +329,56 @@
 										</div>
 									</div>
 								</div>
-
 								<?php
 								echo $show_fields;
 								?>
-                                <div class="col-12 mar-bot">
-                                    <div class="row">
-                                        <div class="col-6 bilgibaslik">
-                                            İlan Tarihi
-                                        </div>
-                                        <div class="col-6 bilgiler">
-                                            <?php yeni_tarih($ilan->kayit_tarihi); ?>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 pt-3">
-                                    <!-- AddToAny BEGIN -->
-                                    <div class="a2a_kit a2a_kit_size_32 a2a_default_style text-center align-center">
-                                        <div style="    width: 200px;
-    height: 32px;
-    float: right;">
-                                            <a class="a2a_button_facebook"></a>
-                                            <a class="a2a_button_twitter"></a>
-                                            <a class="a2a_button_google_plus"></a>
-                                            <a class="a2a_button_pinterest"></a>
-                                            <a class="a2a_button_whatsapp"></a>
-                                        </div></div>
-                                    <script>
-                                        var a2a_config = a2a_config || {};
-                                        a2a_config.locale = "tr";
-                                    </script>
-                                    <script async src="https://static.addtoany.com/menu/page.js"></script>
-                                    <!-- AddToAny END -->
-                                </div>
-                                <div class="col-12" style="min-height:50px">
-                                    <div class="row  p-1">
-                                        <div class="col-5 text-center">
-                                            Favori
-                                            <p class="text-center"><span class="badge badge-pill color_bg3 text-light"><?php echo $this->db->query("select * from favoriler where ilanId='".$ilan->Id."'")->num_rows(); ?></span></p>
-                                        </div>
-                                        <div class="col-7 text-center">
-                                            Görüntülenme
-                                            <p class="text-center"><span class="badge badge-pill color_bg3 text-light"><?php echo $ilan->toplam_ziyaretci;?></span></p>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="col-12 mar-bot">
+                  <div class="row">
+                    <div class="col-6 bilgibaslik">
+                        İlan Tarihi
+                    </div>
+                    <div class="col-6 bilgiler">
+                        <?php yeni_tarih($ilan->kayit_tarihi); ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 pt-3">
+	                <!-- AddToAny BEGIN -->
+	                <div class="a2a_kit a2a_kit_size_32 a2a_default_style text-center align-center">
+                    <div style="width: 200px; height: 32px;float: right;">
+                      <a class="a2a_button_facebook"></a>
+                      <a class="a2a_button_twitter"></a>
+                      <a class="a2a_button_google_plus"></a>
+                      <a class="a2a_button_pinterest"></a>
+                      <a class="a2a_button_whatsapp"></a>
+                    </div>
+									</div>
+                  <script>
+                      var a2a_config = a2a_config || {};
+                      a2a_config.locale = "tr";
+                  </script>
+                  <script async src="https://static.addtoany.com/menu/page.js"></script>
+                  <!-- AddToAny END -->
+              	</div>
+                <div class="col-12" style="min-height:50px">
+                  <div class="row  p-1">
+                    <div class="col-5 text-center">
+                      Favori
+                      <p class="text-center"><span class="badge badge-pill color_bg3 text-light"><?php echo $this->db->query("select * from favoriler where ilanId='".$ilan->Id."'")->num_rows(); ?></span></p>
+                    </div>
+                    <div class="col-7 text-center">
+                      Görüntülenme
+                      <p class="text-center"><span class="badge badge-pill color_bg3 text-light"><?php echo $ilan->toplam_ziyaretci;?></span></p>
+                    </div>
+                  </div>
+                </div>
 							</div>
 						</div>
 					</div>
 					<div class="row " style="border-bottom: ghostwhite 1px solid;">
 						<div class="col-12">
 							<div class="row">
-								<div class="col-12 text-center  p-3 pt-5" style="    color: #1f1f2f;
-    font-size:15px;
-    font-weight: 700;
-
-    display: inline-block;
-
-    font-family: 'Montserrat', sans-serif;">
+								<div class="col-12 text-center  p-3 pt-5" style="color: #1f1f2f;font-size:15px;font-weight: 700;display: inline-block;font-family: 'Montserrat', sans-serif;">
 									<?php echo base64_decode($ilan->aciklama); ?>
 								</div>
 							</div>
@@ -417,13 +386,7 @@
 					</div>
 					<div class="row" style="border-bottom: ghostwhite 1px solid;">
 						<div class="col-12">
-							<div class="row p-3" style="    color: #1f1f2f;
-    font-size: 12px;
-    font-weight: 700;
-
-
-
-    font-family: 'Montserrat', sans-serif;">
+							<div class="row p-3" style="color: #1f1f2f;font-size: 12px;font-weight: 700;font-family: 'Montserrat', sans-serif;">
 								<?php
 								echo $show_additional_fields;
 								?>
