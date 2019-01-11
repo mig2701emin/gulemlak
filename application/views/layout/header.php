@@ -60,10 +60,10 @@
                                                         <a href="/Kurumsal/SanalTur"><span>Sanal Tur</span></a>
                                                                                                  </li>
 
-                                        <li class="level dropdown ">
+                                        <!-- <li class="level dropdown ">
                                             <span class="opener plus"></span>
                                             <a href="blog.html"><span>Destek</span></a>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="/kurumsal/iletisim"><span>İletİşİm</span></a>
                                         </li>
@@ -155,7 +155,7 @@
                     <div class="col-xl-6 col-lg-6 bottom-part col-lgmd-60per">
                         <div class="header-right-part">
                             <div class="category-dropdown2 select-dropdown">
-                                <a class="btn-sidebar-menu-dropdown2 color_text3" ><i class="fa fa-search" style="margin-right:5px;"></i>Detaylı Arama</a>
+                                <a href="<?php echo base_url().'emlak/45';?>" class="btn-sidebar-menu-dropdown2 color_text3" ><i class="fa fa-search" style="margin-right:5px;"></i>Detaylı Arama</a>
 
                             </div>
                             <div class="main-search">
