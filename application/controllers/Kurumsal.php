@@ -56,5 +56,9 @@ class Kurumsal extends CI_Controller{
         $data['title']='Emlak Meclisi | Anasayfa';
         $this->load->view('layout/iletisim', $data);
     }
+    function  SanalTur(){
 
+        $data['title']='Emlak Meclisi | Anasayfa';
+        $this->load->view('layout/sanal', $data);
+    }
 }
