@@ -238,7 +238,7 @@ font-weight: bold;
 				</div>
         <div class="col-md-3"></div>
         <div class="col-md-3">
-					<a  class="btn btn-primary btn-block w-100 " name="back" style="color: white" onclick="history.back();"><i class="fas fa-caret-left"></i>  Düzelt  </a>
+					<a  class="btn btn-primary btn-block w-100 " name="back" style="color: white"  href="<?php echo base_url('hesabim/ilanduzenle/'.$ilan->Id) ?>"><i class="fas fa-caret-left"></i>  Düzelt  </a>
         </div>
 				<div class="col-md-3">
 					<a  class="btn btn-primary btn-block w-100"  href="<?php echo base_url('doping/ilan/'.$ilan->Id) ?>">Devam Et  <i class="fas fa-caret-right"></i></a>

@@ -46,9 +46,9 @@ color:white;
     <?php $this->load->view('layout/header');?>
     <div class="container">
       <div class="row mt-60 mb-60" >
-        <div class="col-12 text-center">
+        <!-- <div class="col-12 text-center">
           <iframe src="<?php echo base_url('panorama/tur2/panorama.html') ?>" width="90%" height="400px"></iframe>
-        </div>
+        </div> -->
         <div class="col-md-2">
           <div class="sidebar-block">
             <div class="sidebar-box listing-box mb-40" style="font-size: 14px">
@@ -419,7 +419,23 @@ color:white;
         </div>
       </div>
     </div>
-        <div class="col-md-10">
+    <div class="col-md-10">
+      <?php if (count($ilanlar)==0): ?>
+        <div class="row">
+          <div class="col-12">
+            <div class="jumbotron text-center">
+              <h1 class="display-4">Üzgünüz!</h1>
+              <p class="lead">Aradığınız kiriterlere uygun ilan bulunamadı.</p>
+              <hr class="my-4">
+              <p>İlanınızın ücretsiz olarak burada yayınlanmasını istiyor musunuz?</p>
+              <p class="lead">
+                <a class="btn btn-primary btn-lg" href="<?php echo base_url('ilanekle') ?>" role="button">Hemen Tıklayın</a>
+              </p>
+            </div>
+          </div>
+
+        </div>
+      <?php else: ?>
       <div class="row">
         <!-- <form id="sort" class="" action="" method="get"> -->
         <select name="order_type" onchange="order_by()" style="width:200px;font-size:9pt;">
@@ -522,15 +538,12 @@ color:white;
 
           </div>
           </div>
-
-
-
-
         </div>
         <?php
         $i++;
       }
       ?>
+      <?php endif; ?>
       <?php $this->load->view('layout/listelink');?>
       <p class="pagination"><?php echo $links; ?></p>
     </div>
