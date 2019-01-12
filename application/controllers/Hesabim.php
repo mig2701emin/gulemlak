@@ -415,6 +415,7 @@ class Hesabim extends CI_Controller{
         $firmalar["birim"] = $this->security->xss_clean($this->input->post('birim'));
         $firmalar["kucuk_fotograf"] = $kucuk_fotograf;
         $firmalar["ilan_notu"] = $this->security->xss_clean($this->input->post('ilan_notu'));
+        $firmalar["panaroma"] = $this->security->xss_clean($this->input->post('panaroma'));
         $insert=$this->firmalar->update($ilanId,$firmalar);
         $field_values = array();
         foreach ($fields as $field) {

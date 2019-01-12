@@ -78,6 +78,17 @@
               <input class="form-control" type="text" name="ilan_notu" value="<?php echo set_value('ilan_notu', $ilan->ilan_notu); ?>"/>
             </div>
 
+            <div class="mb-3">
+              <label for="bitis_suresi">Panaromik Çekim</label>
+              <select class="custom-select d-block w-100" name="panaroma" required="">
+                  <option value="0">Varsa Seçiniz</option>
+                  <option value="gencpa"<?php if($ilan->panaroma=='gencpa'){?> selected<?php }?>>GENÇPA</option>
+                  <option value="birlik-insaat"<?php if($ilan->panaroma=='birlik-insaat'){?> selected<?php }?>>BİRLİK İNŞAAT</option>
+                  <option value="znr-cinar-evler"<?php if($ilan->panaroma=='znr-cinar-evler'){?> selected<?php }?>>ZNR ÇINAR EVLER</option>
+                  <option value="zrt-insaat"<?php if($ilan->panaroma=='zrt-insaat'){?> selected<?php }?>>ZRT İNŞAAT</option>
+                  <option value="meva-yunus-emre"<?php if($ilan->panaroma=='meva-yunus-emre'){?> selected<?php }?>>MEVA YUNUS EMRE</option>
+              </select>
+            </div>
               <!--başlık --------->
             <div class="mb-3">
                 <label for="ilanadi">İlan Başlığı</label>
