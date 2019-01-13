@@ -263,6 +263,9 @@
                       <div class="float-right p-1" style="font-size: 12px;height:30px;background-color: #0040a5;">İlan No:   <?php echo $ilan->ilanId; ?></div>
                     </div>
                   </div>
+                                    <div class="col-12" style="position:absolute;top: 0px; left: 0; background-color:#e12222; width:170px;opacity: 0.7;z-index:6">
+                                        <b><a id="sanalTur" href="/Kurumsal/SanalTur" style="font-weight: 600;font-size: 12px;color: white"><i class="fas fa-street-view"></i> SANAL TUR</a></b>
+                                    </div>
                   <div class="col-12" style="position:absolute;bottom: 0px; left: 0; background-color:#e12222; width:170px;opacity: 0.7;z-index:6">
                       <b><a id="bigImage" style="font-weight: 600;font-size: 12px;color: white"><i class="fas fa-search-plus"></i> BÜYÜK RESİM</a></b>
                   </div>
