@@ -40,6 +40,9 @@ color:white;
 
 </head>
 <body>
+
+
+
   <div class="se-pre-con"></div>
   <div class="main">
     <!-- HEADER START -->
@@ -526,7 +529,7 @@ color:white;
                 echo '<div class="float-left mr-2 ml-2" style="font-size: 12px;">'. $list_field_title[$t].':'.get_ad_cat_show_detail($list_field_val,$ilan_no).'</div>';
                 $t++;
               }
-              ?>
+              ?>   <div class="float-left mr-2 ml-2" style="font-size: 12px;color:blueviolet"><a href="#" target="_blank"><i class="fas fa-street-view"></i> Sanal Tur</a></div>
             </div>
           </div>
           <div class="locationdiv col-md-3 " >
