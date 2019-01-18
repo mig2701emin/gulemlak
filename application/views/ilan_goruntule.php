@@ -264,7 +264,7 @@
                     </div>
                   </div>
                                     <div class="col-12" style="position:absolute;top: 0px; left: 0; background-color:#e12222; width:170px;opacity: 0.7;z-index:6">
-                                        <b><a id="sanalTur" href="/Kurumsal/SanalTur" style="font-weight: 600;font-size: 12px;color: white"><i class="fas fa-street-view"></i> SANAL TUR</a></b>
+                                        <b><a id="sanalTur" href="<?php echo base_url() ?>panaroma/<?php echo $ilan->panaroma; ?>/panaroma.html" style="font-weight: 600;font-size: 12px;color: white"><i class="fas fa-street-view"></i> SANAL TUR</a></b>
                                     </div>
                   <div class="col-12" style="position:absolute;bottom: 0px; left: 0; background-color:#e12222; width:170px;opacity: 0.7;z-index:6">
                       <b><a id="bigImage" style="font-weight: 600;font-size: 12px;color: white"><i class="fas fa-search-plus"></i> BÜYÜK RESİM</a></b>

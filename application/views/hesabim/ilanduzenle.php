@@ -82,11 +82,11 @@
               <label for="bitis_suresi">Panaromik Çekim</label>
               <select class="custom-select d-block w-100" name="panaroma" required="">
                   <option value="0">Varsa Seçiniz</option>
-                  <option value="gencpa"<?php if($ilan->panaroma=='gencpa'){?> selected<?php }?>>GENÇPA</option>
                   <option value="birlik-insaat"<?php if($ilan->panaroma=='birlik-insaat'){?> selected<?php }?>>BİRLİK İNŞAAT</option>
+                  <option value="gencpa"<?php if($ilan->panaroma=='gencpa'){?> selected<?php }?>>GENÇPA</option>
+                  <option value="meva-yunus-emre"<?php if($ilan->panaroma=='meva-yunus-emre'){?> selected<?php }?>>MEVA YUNUS EMRE</option>
                   <option value="znr-cinar-evler"<?php if($ilan->panaroma=='znr-cinar-evler'){?> selected<?php }?>>ZNR ÇINAR EVLER</option>
                   <option value="zrt-insaat"<?php if($ilan->panaroma=='zrt-insaat'){?> selected<?php }?>>ZRT İNŞAAT</option>
-                  <option value="meva-yunus-emre"<?php if($ilan->panaroma=='meva-yunus-emre'){?> selected<?php }?>>MEVA YUNUS EMRE</option>
               </select>
             </div>
               <!--başlık --------->
@@ -154,7 +154,6 @@
                     <option value="1 Yıl">1 Yıl</option>
                 </select>
               </div>
-
               <!------------------------------------------------------------------------------>
               <hr class="mb-4"/>
               <?php
@@ -162,7 +161,6 @@
               foreach ($fields as $field) {
                 if($field->type=='text'){
                   ?>
-
                   <div class="mb-3">
                       <label for="<?php echo $field->seo_name; ?>"><?php echo $field->name; ?><?php if($field->required==1){?> <span style="color:#FF0000">*</span><?php }?></label>
                       <input type="text" class="form-control" name="<?php echo $field->seo_name; ?>" <?php if($field->name=='m²'){?> size="6"<?php }?>
@@ -199,10 +197,8 @@
                     <hr class="mb-4"/>
                     <?php
                   }
-
                 }elseif($field->type=='select'){
                   ?>
-
                   <div class="mb-3">
                       <label for="<?php echo $field->seo_name; ?>"><?php echo $field->name; ?><?php if($field->required==1){?> <span style="color:#FF0000">*</span><?php }?></label>
                       <?php if ($field->required==1): ?>
