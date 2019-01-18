@@ -263,7 +263,7 @@
                       <div class="float-right p-1" style="font-size: 12px;height:30px;background-color: #0040a5;">İlan No:   <?php echo $ilan->ilanId; ?></div>
                     </div>
                   </div>
-									<?php if ($ilan->panaroma!="" && $ilan->panaroma!=0){ ?>
+									<?php if ($ilan->panaroma!="" && $ilan->panaroma!="0"){ ?>
 										<div class="col-12" style="position:absolute;top: 0px; left: 0; background-color:#e12222; width:170px;opacity: 0.7;z-index:6">
 	                      <b><a id="sanalTur" href="<?php echo base_url() ?>panorama/<?php echo $ilan->panaroma; ?>/panorama.html" target="_blank" style="font-weight: 600;font-size: 12px;color: white"><i class="fas fa-street-view"></i> SANAL TUR</a></b>
 	                  </div>
