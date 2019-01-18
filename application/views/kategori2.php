@@ -531,7 +531,7 @@ color:white;
               }
               ?>
               <?php if ($a->panaroma!="" && $a->panaroma!="0"){ ?>
-                <div class="float-left mr-2 ml-2" style="font-size: 12px;color:blueviolet"><a><i class="fas fa-street-view"></i> Sanal Tur</a></div>
+                <div class="float-left mr-2 ml-2" style="font-size: 12px;color:blueviolet"><a  href="<?php echo base_url() ?>panorama/<?php echo $a->panaroma; ?>/panorama.html"><i class="fas fa-street-view"></i> Sanal Tur</a></div>
               <?php } ?>
             </div>
           </div>
