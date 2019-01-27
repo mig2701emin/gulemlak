@@ -103,15 +103,15 @@
                               <div class="carousel-item active">
                                   <img class="d-block w-100" src="<?php echo base_url('assets/');?>images/1slider.jpg" alt="First slide" style="height:300px;" />
                                   <div class="carousel-caption d-none d-md-block">
-                                      <h5>Gül Emlak</h5>
-                                      <p>Aradığınız herşey burada</p>
+                                      <h5></h5>
+                                      <p></p>
                                   </div>
                               </div>
                               <div class="carousel-item">
-                                  <img class="d-block w-100" style="height:300px;" src="<?php echo base_url('assets/');?>images/1slider.jpg" alt="Second slide">
+                                  <img class="d-block w-100" style="height:300px;" src="<?php echo base_url('assets/');?>images/2slider.jpg" alt="Second slide">
                               </div>
                               <div class="carousel-item">
-                                  <img class="d-block w-100" style="height:300px;" src="<?php echo base_url('assets/');?>images/10.jpg" alt="Third slide">
+                                  <img class="d-block w-100" style="height:300px;" src="<?php echo base_url('assets/');?>images/3slider.jpg" alt="Third slide">
                               </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
