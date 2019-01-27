@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="Webpixels">
 
-    <title>Purpose Website UI Kit - Professional Website UI Kit by Webpixels</title>
+    <title>Ticaret Meclisi</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/font-awesome.min.css" />
     <!-- Favicon -->
     <link rel="icon" href="/assets/img/brand/favicon.png" type="image/png">
@@ -48,10 +48,10 @@
                 </div>
             </form>
             <div class="navbar-search-suggestions">
-                <h6>Search Suggestions</h6>
+                <h6>Arama</h6>
                 <div class="row">
                     <div class="col-sm-6">
-                        <ul class="list-unstyled mb-0">
+                     <!--   <ul class="list-unstyled mb-0">
                             <li>
                                 <a class="list-link" href="#">
                                     <i class="fas fa-search"></i>
@@ -82,7 +82,7 @@
                                     <span>smasung galaxy 10</span> in Phones
                                 </a>
                             </li>
-                        </ul>
+                        </ul>-->
                     </div>
                 </div>
             </div>
@@ -120,7 +120,7 @@
                 <div class="ml-auto">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="../pages/support.html">Support</a>
+                            <a class="nav-link" href="../pages/support.html">Destek</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link" data-action="search-open" data-target="#search-main"><i class="fas fa-search"></i></a>
@@ -155,49 +155,7 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="/">Anasayfa</a>
                     </li>
-                    <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-arrow py-0">
-                            <div class="list-group">
-                                <a href="../pages/pages-landing.html" class="list-group-item list-group-item-action">
-                                    <div class="media d-flex align-items-center">
-                                        <img alt="Image placeholder" src="/assets/images/pages/browser-window.svg" class="img-saturate" style="width: 50px;">
-                                        <div class="media-body ml-3">
-                                            <h6 class="mb-1">Landing Pages</h6>
-                                            <p class="mb-0">A great point to start from.</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="../pages/pages-secondary.html" class="list-group-item list-group-item-action">
-                                    <div class="media d-flex align-items-center">
-                                        <img alt="Image placeholder" src="/assets/images/pages/ios-photos.svg" class="img-saturate" style="width: 50px;">
-                                        <div class="media-body ml-3">
-                                            <h6 class="mb-1">Secondary Pages</h6>
-                                            <p class="mb-0">Build your website with these demos.</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="../pages/pages-account.html" class="list-group-item list-group-item-action">
-                                    <div class="media d-flex align-items-center">
-                                        <img alt="Image placeholder" src="/assets/images/pages/maintenance.svg" class="img-saturate" style="width: 50px;">
-                                        <div class="media-body ml-3">
-                                            <h6 class="mb-1">Account Pages</h6>
-                                            <p class="mb-0">Account management made easy.</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="../pages/pages-shop.html" class="list-group-item list-group-item-action">
-                                    <div class="media d-flex align-items-center">
-                                        <img alt="Image placeholder" src="/assets/images/pages/in-progress.svg" class="img-saturate" style="width: 50px;">
-                                        <div class="media-body ml-3">
-                                            <h6 class="mb-1">Shop Pages</h6>
-                                            <p class="mb-0">Explore the full ecommerce website flow.</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="../docs/alerts.html" role="button">iletişim</a>
                     </li>
@@ -205,11 +163,9 @@
 
                 <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../docs/introduction.html" target="_blank">Docs</a>
+                        <a class="nav-link" href="../docs/introduction.html" target="_blank">Dökümanlar</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../docs/changelog.html" target="_blank">Changelog</a>
-                    </li>
+
                     <li class="nav-item mr-0">
                         <a href="https://themes.getbootstrap.com/product/purpose-website-ui-kit/" target="_blank" class="nav-link d-lg-none">40% OFF: Buy now</a>
                        <!-- <a href="https://themes.getbootstrap.com/product/purpose-website-ui-kit/" target="_blank" class="btn btn-sm btn-white btn-circle btn-icon d-none d-lg-inline-flex">
@@ -242,8 +198,8 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-lg-8">
-                    <h2 class="display-4 text-white">Faq</h2>
-                    <h5 class="mb-4 text-white">Frequently Asked Questions</h5>
+                    <h2 class="display-4 text-white">Destek</h2>
+                    <h5 class="mb-4 text-white">Sık Sorulan Sorular</h5>
                 </div>
             </div>
         </div>
@@ -396,10 +352,10 @@
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-8 text-center">
-                    <h3 class="font-weight-400">I am ready to start a new project with <span class="font-weight-700">Purpose</span> UI Kit.</h3>
+                    <h3 class="font-weight-400">Ticaret Meclisi <span class="font-weight-700">Com</span></h3>
                     <div class="mt-5">
-                        <a href="https://themes.getbootstrap.com/product/purpose-website-ui-kit/" target="_blank" class="btn btn-primary btn-circle btn-translate--hover px-4">Purchase now<span class="badge badge-pill badge-danger text-sm">$49 USD</span></a>
-                        <a href="mailto:support@webpixels.io" class="btn btn-link">Have an issue?</a>
+<!--                        <a href="https://themes.getbootstrap.com/product/purpose-website-ui-kit/" target="_blank" class="btn btn-primary btn-circle btn-translate--hover px-4">Purchase now<span class="badge badge-pill badge-danger text-sm">$49 USD</span></a>-->
+                        <a href="mailto:iletiism@ticaretmeclisi.com" class="btn btn-link">İletişime Geç</a>
                     </div>
                 </div>
             </div>
@@ -415,7 +371,7 @@
         <div class="row pt-md">
             <div class="col-lg-4 mb-5 mb-lg-0">
                 <a href="../index.html">
-                    <img src="/assets/images/pages/white.png" alt="Footer logo" style="height: 70px;">
+                    <img src="/assets/images/logo.png" alt="Footer logo" style="height: 70px;">
                 </a>
                 <p class="text-sm">A unique and beautiful collection of UI elements that are all flexible and modular. A complete and customizable solution to building the website of your dreams.</p>
             </div>
