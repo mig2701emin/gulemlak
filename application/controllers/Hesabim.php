@@ -690,7 +690,7 @@ class Hesabim extends CI_Controller{
         $content = curl_connect($url); // fonksiyon ile bağlandık
         $classifiedBreadCrumbs = curl_search('<div class="classifiedBreadCrumb">', '</div>', $content); // Gelen içerik içinde arama yaparak başlıkları ayıklıyoruz. Sonuç diziye aktarılacak.
         foreach ($classifiedBreadCrumbs as $classifiedBreadCrumb) {
-                $breadcrumbItems=curl_search('<li class="breadcrumbItem">', '</li>', $classifiedBreadCrumb);
+                $breadcrumbItems=curl_search('<li class="breadcrumbItem" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">', '</li>', $classifiedBreadCrumb);
                 foreach ($breadcrumbItems as $breadcrumbItem) {
                     $as=curl_search('">','</a>', $breadcrumbItem);
                     foreach ($as as $a) {
@@ -701,7 +701,7 @@ class Hesabim extends CI_Controller{
         if (seo_link($dizi[0])!="anasayfa") {
           $anaKategoriler=$this->db->where("ust_kategori","0")->get("kategoriler")->result();
           foreach ($anaKategoriler as $anaKategori) {
-            if (seo_link($dizi[0])===$anaKategori->seo) {
+            if (seo_link($dizi[0])==$anaKategori->seo) {
               //echo $anaKategori->Id.'<br/>';
               $kategori=$anaKategori->Id;
               $firstSubs=$this->db->where("ust_kategori",$anaKategori->Id)->get("kategoriler")->result();
@@ -859,7 +859,7 @@ class Hesabim extends CI_Controller{
 
       }*/
       $ilan_notu ="";
-      $usernameinfoarea = curl_search('<div class="username-info-area">', '<div class="getUserInfo noBorder">', $content);
+      $usernameinfoarea = curl_search('<div class="username-info-area" data-hj-suppress>', '<div class="getUserInfo noBorder">', $content);
       $prettyphonepart = curl_search('<span class="pretty-phone-part">', '</span>', $content);
       $ilan_notu.=" İlan Sahibi : ".curl_search('<h5>', '</h5>', $usernameinfoarea[0])[0].",";
       $ilan_notu.=" Telefon : ".$prettyphonepart[0].",";
