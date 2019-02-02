@@ -1,18 +1,18 @@
-<?php 	
+<?php
 	session_start();
 		ob_start();
 		include_once('config.php');
-		
+
 		if(!isset($_SESSION["login"])){
     header("location: login.php");
 }
-		
+
 	///////////////////////////////////////////////////////////////////
 	$uyeId=$_SESSION["uye_id"];
-	//////////////////////////////////////////////////////////////////		
-			
-	
-if($_SERVER['REQUEST_METHOD']=='POST'){	
+	//////////////////////////////////////////////////////////////////
+
+
+if($_SERVER['REQUEST_METHOD']=='POST'){
 		$mulkid				= $row["id"];
 		$kat				= $_POST['kat'];
 		$isim				= $_POST['isim'];
@@ -20,11 +20,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		$tel 				= $_POST['tel'];
 		$bolge 				= $_POST['bolge'];
 		$info				= $_POST['info'];
-		
-		
+
+
 		if(!empty($isim)){
-			
-			
+
+
 				$talep_ekle=mysql_query("INSERT INTO rehber SET
 								 kat				=	'$kat',
 								 isim				=	'$isim',
@@ -37,8 +37,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		}else{
 			echo "<script>alert('Lütfen tüm alanları doldurunuz...')</script>";
 		}
-		
-	  
+
+
 }
 
 ?>
@@ -61,13 +61,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
-    
+
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
-	
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="script.js"></script>
-	
+
   </head>
 
   <body class="nav-md">
@@ -120,7 +120,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    
+
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -148,7 +148,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                           <select name="kat" class="form-control col-md-7 col-xs-12">
 							<option value="0">Kategori Seçiniz</option>
 						  <?php
-							
+
 							$sorgu=mysql_query("select * from rehber_kat where id");
 							while($row=mysql_fetch_array($sorgu)){
 								echo'<option  value="'.$row['id'].'">'.$row['kat'].'</option>';
@@ -157,7 +157,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 						  </select>
                         </div>
                       </div>
-					  
+
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >İsim <span class="required">*</span>
                         </label>
@@ -190,11 +190,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <textarea  name="info"  rows="4" cols="50" class="form-control col-md-7 col-xs-12" ></textarea>
                         </div>
-                      </div>                 
+                      </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          
+
                           <input type="submit"  class="btn btn-success" value="Gönder">
                         </div>
                       </div>

@@ -1,20 +1,20 @@
-<?php 	
+<?php
 		session_start();
 		ob_start();
 		include_once('config.php');
-		
+
 			if(!isset($_SESSION["login"])){
     header("location: login.php");
 }
 
-	
-if($_SERVER['REQUEST_METHOD']=='POST'){	
-		
+
+if($_SERVER['REQUEST_METHOD']=='POST'){
+
 		$sira			= $_POST['sira'];
 		$grup			= $_POST['grup'];
-		
-		
-		if(!empty($sira)&&($grup)){		
+
+
+		if(!empty($sira)&&($grup)){
 				$grup_ekle=mysql_query("INSERT INTO gruplar SET
 								 sira			=	'$sira',
 								 grup			=	'$grup',
@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		}else{
 			echo "<script>alert('Lütfen Tüm Alanları Doldurunuz')</script>";
 		}
-		
+
 }
 
 ?>
@@ -45,13 +45,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
-    
+
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
-	
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="script.js"></script>
-	
+
   </head>
 
   <body class="nav-md">
@@ -104,7 +104,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    
+
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -126,10 +126,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
                     <form class="form-horizontal form-label-left" method="POST" action="" enctype="multipart/form-data">
 
-                      
 
-                     
-					  
+
+
+
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >Grup Sırası <span class="required">*</span>
                         </label>
@@ -144,11 +144,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                           <input type="text"  name="grup"   class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
-                      
+
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          
+
                           <input type="submit"  class="btn btn-success" value="Gönder">
                         </div>
                       </div>

@@ -53,10 +53,3 @@ $(document).ready(function () {
 		$('#Menuiki').toggle('medium');
 	});
 });
-
-
-
-
-
-
-

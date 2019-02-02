@@ -421,8 +421,9 @@ class Hesabim extends CI_Controller{
         foreach ($fields as $field) {
           if($field->type=='checkbox'){
             // hidden fields
-            $field_values[$field->seo_name]=implode($this->security->xss_clean($this->input->post($field->seo_name)),", ");
-
+            if (count($this->security->xss_clean($this->input->post($field->seo_name)))>0) {
+              $field_values[$field->seo_name]=implode(', ',(array)($this->security->xss_clean($this->input->post($field->seo_name))));
+            }
           }elseif($field->type=='multiple_select'){
             // hidden fields
             $field_values[$field->seo_name]=$this->security->xss_clean($this->input->post($field->seo_name));

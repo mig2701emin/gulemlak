@@ -2,14 +2,14 @@
 		session_start();
 		ob_start();
 		include_once('config.php');
-		
+
 		if(!isset($_SESSION["login"])){
     header("location: login.php");
 }
-		
-			
+
+
 if($_SERVER['REQUEST_METHOD']=='POST'){
-		
+
 		$gid		= $_POST['id'];
 		$grup	 	= $_POST['grup'];
 
@@ -18,8 +18,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
 		}else{
 			echo "<script>alert('Güncelleme Başarısız!')</script>";
-		}			
-	
+		}
+
 }
 
 ?>
@@ -42,13 +42,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
-    
+
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
-	
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="script.js"></script>
-	
+
   </head>
 
   <body class="nav-md">
@@ -101,7 +101,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    
+
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -134,7 +134,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 						}else{
 							$grup = mysql_query("SELECT * FROM gruplar WHERE uye_id='".$_SESSION["uye_id"]."' ORDER BY Sira");
 						}
-						
+
 							while($grup2 = mysql_fetch_array($grup)){
 					?>
 						<option value="<?php echo $grup2['id']?>"><?php echo $grup2["grup"]?></a></li>
@@ -149,7 +149,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                           <input  type="text" name="grup" class="form-control col-md-7 col-xs-12">
                         </div>
                 </div>
-					  
+
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">

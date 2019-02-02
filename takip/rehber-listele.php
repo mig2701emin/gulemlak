@@ -2,11 +2,11 @@
         session_start();
 		ob_start();
 		include_once('config.php');
-		
+
 		if(!isset($_SESSION["login"])){
     header("location: login.php");
 }
- 
+
 	$kat=$_GET["kat"];
 	///////////////////////////////////////////////////////////////////
 	$uyeId=$_SESSION["uye_id"];
@@ -37,8 +37,8 @@
     <link href="vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
     <link href="build/css/custom.min.css" rel="stylesheet" media="screen, print">
-	
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="script.js"></script>
 	<link rel="stylesheet" href="css/slider.css"/>
 	<style type="text/css">
@@ -47,11 +47,11 @@
 			#editt{display:none}
 			#salih{display:none}
 			.salih2{display:block}
-			
+
 		}
 	</style>
-	
-	
+
+
   </head>
 
   <body class="nav-md">
@@ -98,7 +98,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="clearfix"></div>
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
@@ -141,9 +141,9 @@
                         </tr>
                       </thead>
 
-						<tbody>				  
-						<?php  
-							if(empty($kat)){								
+						<tbody>
+						<?php
+							if(empty($kat)){
 								$sorgu=mysql_query("select rehber.ids,rehber.kat,rehber.isim,rehber.soyisim,rehber.tel,rehber.bolge,rehber.info,rehber_kat.id,rehber_kat.kat from rehber LEFT JOIN rehber_kat ON rehber_kat.id=rehber.kat where uye_id='".$uyeId."'");
 							}else{
 								$sorgu=mysql_query("select rehber.ids,rehber.kat,rehber.isim,rehber.soyisim,rehber.tel,rehber.bolge,rehber.info,rehber_kat.id,rehber_kat.kat from rehber LEFT JOIN rehber_kat ON rehber_kat.id=rehber.kat where rehber_kat.id='".$kat."' and uye_id='".$uyeId."'");
@@ -151,7 +151,7 @@
 									$sil=$_POST["sil"];
 										while($row=mysql_fetch_array($sorgu)){
 						?>
-						
+
 						<tr>
 						  <td><?php echo $row["kat"]?></td>
                           <td><?php echo $row["isim"]?></td>
@@ -165,9 +165,9 @@
 							<a href="sil.php?idrehber=<?php echo $row["ids"]; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Sil</a>
 						  </div>
                           </td>
-						  
+
                         </tr>
-						
+
 							<?php } ?>
                       </tbody>
                     </table>
@@ -220,15 +220,15 @@
 
     <!-- Datatables -->
     <script>
-						
+
 						$(document).ready(function () { $("div#fiyat").hide(100); });
 								function goster(){
-								$("div#fiyat").toggle(100); 
+								$("div#fiyat").toggle(100);
 							}
-							
+
 						$(document).ready(function () { $("div#sahip").hide(100); });
 								function sgoster(){
-								$("div#sahip").toggle(100); 
+								$("div#sahip").toggle(100);
 							}
       $(document).ready(function() {
         var handleDataTableButtons = function() {

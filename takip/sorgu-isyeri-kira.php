@@ -2,7 +2,7 @@
         session_start();
 		ob_start();
 		include_once('config.php');
-		
+
 			if(!isset($_SESSION["login"])){
     header("location: login.php");
 }
@@ -26,13 +26,13 @@
     <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
-    
+
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
-	
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="script.js"></script>
-	
+
   </head>
 
   <body class="nav-md">
@@ -93,7 +93,7 @@
 
                     <form class="form-horizontal form-label-left" method="post" action="sonuc-is-yeri-kira.php">
 
-                      
+
 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">İl <span class="required">*</span>
@@ -102,7 +102,7 @@
                           <select id="il" class="form-control col-md-7 col-xs-12"    >
 							<option value="0">İl Seçiniz</option>
 						  <?php
-							
+
 							$sorgu=mysql_query("select * from il where IL_ID");
 							while($row=mysql_fetch_array($sorgu)){
 								echo'<option  value="'.$row['IL_ID'].'">'.$row['IL_ADI'].'</option>';
@@ -117,7 +117,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <select  id="ilce"   class="form-control col-md-7 col-xs-12">
 								<option value="0">İlçe Seçiniz</option>
-								
+
 						  </select>
                         </div>
                       </div>
@@ -127,12 +127,12 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <select  id="semt" name="mahalle"  class="form-control col-md-7 col-xs-12">
 								<option value="0">Mahalle-Köy Seçiniz</option>
-								
+
 						  </select>
 						</div>
                       </div>
-                      
-                      
+
+
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">

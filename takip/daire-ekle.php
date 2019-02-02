@@ -1,24 +1,24 @@
-<?php 	
+<?php
 			session_start();
 		ob_start();
 		include_once('config.php');
-		
+
 		if(!isset($_SESSION["login"])){
     header("location: login.php");
 }
-		
-		
-	
+
+
+
 	$query = 'SHOW TABLE STATUS FROM uckan LIKE "satilik_daire"';
 	$res = mysql_query($query);
-	$bul = mysql_fetch_array($res); 
-	
+	$bul = mysql_fetch_array($res);
+
 	$query1 = 'SHOW TABLE STATUS FROM uckan LIKE "kiralik_daire"';
 	$res1 = mysql_query($query1);
 	$bul1 = mysql_fetch_array($res1);
-			
-	
-if($_SERVER['REQUEST_METHOD']=='POST'){	
+
+
+if($_SERVER['REQUEST_METHOD']=='POST'){
 		$mulkid				= $row["id"];
 		$mahalleid			= $_POST['mahalleid'];
 		$apartman			= $_POST['apartman'];
@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		$sahip_numara 		= $_POST['sahip_numara'];
 		$grup 				= $_POST['grup'];
 		$durum				= $_POST['durum'];
-		
+
 		$resim			= $_POST["resim"];
 		$resimadi		=	$_FILES["resim"]["name"];
 		$resimsize		=	$_FILES["resim"]["size"];
@@ -40,10 +40,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		$resimurl		=	$_FILES["resim"]["tmp_name"];
 		$hedef			=	"resimler/";
 		$tarih			=	date("d m y");
-		
+
 		if($durum==satilik){
 			$ilanid=$bul['Auto_increment'];
-			
+
 				$daire_ekle=mysql_query("INSERT INTO satilik_daire SET
 								 mahalle_id			=	'$mahalleid',
 								 apartman			=	'$apartman',
@@ -81,7 +81,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		}else{
 			echo "<script>alert('Lütfen Durum Seçiniz')</script>";
 		}
-		
+
 	if(empty($resimurl)){
 	}elseif( ($resimtype != ("image/jpeg")) && ($resimtype != ("image/gif")) && ($resimtype != ("image/png"))){
 		echo "<script>alert('Bu resim uzantısı uyumlu değil')</script>";
@@ -94,18 +94,18 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		$ekle = mysql_query("insert into fotograf set
 									kategori_id	=	'$ilanid',
 									kategori	=	'$durum',
-									resimadi	=	'$yeniresimadi',	
+									resimadi	=	'$yeniresimadi',
 									resimsize	=	'$resimsize',
 									resimturu	=	'$resimtype',
 									tarih		=	'$tarih'");
 		if($ekle){
-			
+
 			header("location:daire-ekle.php");
 		}else{
 			echo "<script>alert('Resim kaydedilemedi')</script>";
 			header("refresh:2;url=daire-ekle.php");
 		}
-	}   
+	}
 }
 
 ?>
@@ -128,13 +128,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
-    
+
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
-	
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="script.js"></script>
-	
+
   </head>
 
   <body class="nav-md">
@@ -187,7 +187,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    
+
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -209,7 +209,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
                     <form class="form-horizontal form-label-left" method="POST" action="" enctype="multipart/form-data">
 
-                      
+
 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >İl <span class="required">*</span>
@@ -218,7 +218,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                           <select id="il" class="form-control col-md-7 col-xs-12"    >
 							<option value="0">İl Seçiniz</option>
 						  <?php
-							
+
 							$sorgu=mysql_query("select * from il where IL_ID");
 							while($row=mysql_fetch_array($sorgu)){
 								echo'<option  value="'.$row['IL_ID'].'">'.$row['IL_ADI'].'</option>';
@@ -242,11 +242,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <select  id="semt" name="mahalleid"  class="form-control col-md-7 col-xs-12">
 								<option value="0">Mahalle-Köy Seçiniz</option>
-								
+
 						  </select>
 						</div>
                       </div>
-					  
+
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >Apartman Adı <span class="required">*</span>
                         </label>
@@ -269,7 +269,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 						?>
 								<option value="0">Üst Kat</option>
 							</select>
-                          
+
                         </div>
                       </div>
                       <div class="item form-group">
@@ -285,7 +285,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 						<?php	}
 						?>
 							</select>
-                          
+
                         </div>
                       </div>
                       <div class="item form-group">
@@ -300,7 +300,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 						<?php	}
 						?>
 							</select>
-                          
+
                         </div>
                       </div>
                       <div class="item form-group">
@@ -356,7 +356,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                            <select id="sahip_isim" class="form-control col-md-7 col-xs-12"    >
 							<option value="0">İsim Soyisim Seçiniz</option>
 						  <?php
-							
+
 							$sorgu=mysql_query("select * from rehber where uye_id=".$_SESSION['uye_id']." order by isim");
 							while($karvizit=mysql_fetch_array($sorgu)){
 								echo'<option  value="'.$karvizit['ids'].'">'.$karvizit['isim'].' '.$karvizit['soyisim'].'</option>';
@@ -396,14 +396,14 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 							while($grup2 = mysql_fetch_array($grup)){
 					?>
 						<option value="<?php echo $grup2["id"]?>"><?php echo $grup2["grup"]?></option>
-					<?php } ?>								
+					<?php } ?>
 						  </select>
                         </div>
                       </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          
+
                           <input type="submit"  class="btn btn-success" value="Gönder">
                         </div>
                       </div>
@@ -419,7 +419,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Kodlama ve Tasarım <a href="http://www.dsajans.com.tr">DS Ajans Bilişim</a>
+            Kodlama ve Tasarım <a href=""></a>
           </div>
           <div class="clearfix"></div>
         </footer>

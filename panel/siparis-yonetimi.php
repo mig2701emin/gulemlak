@@ -1,5 +1,5 @@
 <?
-include('header.php'); 
+include('header.php');
 $action=guvenlik($_GET['action']);
 ?>
 			<div>
@@ -21,7 +21,7 @@ $ilanbilgi=$mysqli->query("select kategoriId from firmalar where Id='$siparis_de
 $magazabilgi=$mysqli->query("select kategoriId from magazalar where Id='$siparis_detay[magaza]'")->fetch_assoc();
 $bugun=date("Y-m-d");
 $bitis=date("Y-m-d",strtotime("+".str_replace('m','',$siparis_detay[sure])." month"));
-if($siparis_detay[doping]=="Ana Sayfa Vitrini"){
+if($siparis_detay[doping]=="Anasayfa Vitrini"){
 $querys[]="insert into gvitrin (Id,firmaId,baslangic_tarihi,bitis_tarihi) VALUES(NULL,'$siparis_detay[firmaId]','$bugun','$bitis')";
 }elseif($siparis_detay[doping]=="Kategori Vitrini"){
 $querys[]="insert into kvitrin (Id,firmaId,baslangic_tarihi,bitis_tarihi,kategoriId) VALUES(NULL,'$siparis_detay[firmaId]','$bugun','$bitis','$ilanbilgi[kategoriId]')";
@@ -54,7 +54,7 @@ $querys[]="update siparis set durum='1' where Id='".$Id."'";
 process_mysql(implode("**",$querys),"siparis-yonetimi.html");
 }elseif($action=='pasiflestir'){
 $siparis_detay = $mysqli->query("SELECT * FROM siparis WHERE Id = '$Id'")->fetch_assoc();
-if($siparis_detay[doping]=="Ana Sayfa Vitrini"){
+if($siparis_detay[doping]=="Anasayfa Vitrini"){
 $querys[]="delete from gvitrin where firmaId='$siparis_detay[firmaId]'";
 }elseif($siparis_detay[doping]=="Kategori Vitrini"){
 $querys[]="delete from kvitrin where firmaId='$siparis_detay[firmaId]'";
@@ -87,7 +87,7 @@ $querys[]="update siparis set durum='0' where Id='".$Id."'";
 process_mysql(implode("**",$querys),"siparis-yonetimi.html");
 }
 ?>
-			<div class="row-fluid sortable">		
+			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
 						<h2><i class="icon-user"></i> Sipariş Yönetimi</h2>
@@ -95,7 +95,7 @@ process_mysql(implode("**",$querys),"siparis-yonetimi.html");
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 						</div>
 					</div>
-					
+
 					<div class="box-content">
 						<table class="table table-striped table-bordered bootstrap-datatable datatable dataTable">
 						  <thead>
@@ -111,7 +111,7 @@ process_mysql(implode("**",$querys),"siparis-yonetimi.html");
 								  <th>Durum</th>
 								  <th>İşlemler</th>
 							  </tr>
-						  </thead>   
+						  </thead>
 						  <tbody>
 						  <?
 						  $SQL=$mysqli->query("select * from siparis order by durum asc");
@@ -131,17 +131,17 @@ process_mysql(implode("**",$querys),"siparis-yonetimi.html");
 								<td class="center"><?=($siparis[durum]=='1'?"Ödenmiş":"Ödenmemiş");?></td>
 								<td class="center">
 									<a class="btn btn-warning" href="siparis-yonetimi.html?Id=<?=$siparis[Id];?>&action=sil" onclick="confirm_delete();">
-										<i class="icon-trash icon-white"></i> 
+										<i class="icon-trash icon-white"></i>
 										Sil
 									</a>
 									<?if($siparis[durum]=='1'){?>
 									<a class="btn btn-info" href="siparis-yonetimi.html?Id=<?=$siparis[Id];?>&action=pasiflestir">
-										<i class="icon-remove icon-white"></i> 
+										<i class="icon-remove icon-white"></i>
 										Pasifleştir
 									</a>
 									<?}else{?>
 									<a class="btn btn-success" href="siparis-yonetimi.html?Id=<?=$siparis[Id];?>&action=onayla">
-										<i class="icon-ok icon-white"></i> 
+										<i class="icon-ok icon-white"></i>
 										Onayla
 									</a>
 									<?}?>
@@ -149,7 +149,7 @@ process_mysql(implode("**",$querys),"siparis-yonetimi.html");
 							</tr>
 							<?}?>
 						  </tbody>
-					  </table>            
+					  </table>
 					</div>
 				</div>
 			</div>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 	session_start();
 	ob_start();
 include_once('config.php');
@@ -14,8 +14,8 @@ $idsat	= $_GET['id'];
 $sor=mysql_query("select * from satilik_daire where id='$idsat'");
 $getir=mysql_fetch_assoc($sor);
 
-if($_SERVER['REQUEST_METHOD']=='POST'){	
-		
+if($_SERVER['REQUEST_METHOD']=='POST'){
+
 		$mahalleid		= $_POST['mahalleid'];
 		$apartman		= $_POST['apartman'];
 		$kat 			= $_POST['kat'];
@@ -27,16 +27,16 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		$sahip_isim 		= $_POST['sahip_isim'];
 		$sahip_numara 		= $_POST['sahip_numara'];
 		$durum			= $_POST['durum'];
-		
+
 		$resim			= $_POST["resim"];
 		$resimadi		=	$_FILES["resim"]["name"];
 		$resimsize		=	$_FILES["resim"]["size"];
 		$resimtype		=	$_FILES["resim"]["type"];
 		$resimurl		=	$_FILES["resim"]["tmp_name"];
 		$hedef			=	"resimler/";
-		$tarih			=	date("d m y");   
+		$tarih			=	date("d m y");
 
-	
+
 		if(!empty($apartman)){
 				$daire_ekle=mysql_query("UPDATE satilik_daire SET
 								 mahalle_id			=	'$mahalleid',
@@ -51,8 +51,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 								 sahip_numara		=	'$sahip_numara' where id='$idsat'");
 		}else{
 				echo "<script>alert('İlan Güncellenemedi!')</script>";
-		}			 
-		
+		}
+
 		if(empty($resimurl)){
 	}elseif( ($resimtype != ("image/jpeg")) && ($resimtype != ("image/gif")) && ($resimtype != ("image/png"))){
 		echo "<script>alert('Bu resim uzantısı uyumlu değil')</script>";
@@ -65,24 +65,24 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		$ekle = mysql_query("update fotograf set
 									kategori_id	=	'$mahalleid',
 									kategori	=	'$durum',
-									resimadi	=	'$yeniresimadi',	
+									resimadi	=	'$yeniresimadi',
 									resimsize	=	'$resimsize',
 									resimturu	=	'$resimtype',
 									tarih		=	'$tarih' where id='$id'");
 		if($ekle){
-			
+
 			header("location:daire-guncelle-sat.php");
 		}else{
 			echo "<script>alert('Resim kaydedilemedi')</script>";
 			header("refresh:2;url=daire-guncelle-sat.php");
 		}
 	}
-		
-		
-		
-			
-		
-	
+
+
+
+
+
+
 }
 
 ?>
@@ -103,13 +103,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
-    
+
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
-	
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="script.js"></script>
-	
+
   </head>
 
   <body class="nav-md">
@@ -162,7 +162,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    
+
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -190,7 +190,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                           <select id="il" class="form-control col-md-7 col-xs-12"    >
 							<option value="0">İl Seçiniz</option>
 						  <?php
-							
+
 							$sorgu=mysql_query("select * from il where IL_ID");
 							while($row=mysql_fetch_array($sorgu)){
 								echo'<option  value="'.$row['IL_ID'].'">'.$row['IL_ADI'].'</option>';
@@ -214,11 +214,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <select  id="semt" name="mahalleid"  class="form-control col-md-7 col-xs-12">
 								<option value="<?php echo $getir['mahalle_id'];?>">Mahalle-Köy Seçiniz</option>
-								
+
 						  </select>
 						</div>
                       </div>
-					  
+
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >Apartman Adı <span class="required">*</span>
                         </label>
@@ -241,8 +241,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 						?>
 								<option value="0">Üst Kat</option>
 							</select>
-                          
-                          
+
+
                         </div>
                       </div>
                       <div class="item form-group">
@@ -258,7 +258,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 						<?php	}
 						?>
 							</select>
-                          
+
                         </div>
                       </div>
                       <div class="item form-group">
@@ -273,7 +273,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 						<?php	}
 						?>
 							</select>
-                          
+
                         </div>
                       </div>
                       <div class="item form-group">
@@ -287,7 +287,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 								<option value="4+1">4+1</option>
 								<option value="5+1">5+1</option>
 							</select>
-                          
+
                         </div>
                       </div>
                       <div class="item form-group">
@@ -305,7 +305,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 								<option value="Kuzeybatı">Kuzeybatı</option>
 								<option value="Güneybatı">Güneybatı</option>
 							</select>
-                          
+
                         </div>
                       </div>
 					  <div class="item form-group">
@@ -336,13 +336,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                           <input  type="text" name="sahip_numara" value="<?php echo $getir['sahip_numara'];?>" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
-					  
+
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          
+
                           <input type="submit"  class="btn btn-success" value="Gönder">
-					
+
                         </div>
                       </div>
                     </form>

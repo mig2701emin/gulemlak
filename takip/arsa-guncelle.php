@@ -109,7 +109,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
 	
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="script.js"></script>
 	
   </head>

@@ -1,24 +1,24 @@
-<?php 	
+<?php
 			session_start();
 		ob_start();
 		include_once('config.php');
-		
+
 		if(!isset($_SESSION["login"])){
     header("location: login.php");
 }
-		
-		
 
-		
+
+
+
 		$id				= $_GET['id'];
-		
+
 		$sor=mysql_query("SELECT * FROM yonetici WHERE yonetici_id='".$_SESSION['uye_id']."'");
 		$getir=mysql_fetch_assoc($sor);
-		
-		
-		
-if($_SERVER['REQUEST_METHOD']=='POST'){	
-		
+
+
+
+if($_SERVER['REQUEST_METHOD']=='POST'){
+
 		$isim_soyisim		= $_POST['uye_ad_soyad'];
 		$username			= $_POST['uye_kullanici'];
 		$password1			= $_POST['uye_eski_sifre'];
@@ -26,30 +26,30 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		$password3			= $_POST['sifre_tekrar'];
 		$email				= $_POST['uye_email'];
 		$telefon			= $_POST['uye_telefon'];
-		
-		
-		$tarih			=	date("d m y");
-		
-		
-		
-	
 
-	
+
+		$tarih			=	date("d m y");
+
+
+
+
+
+
 		if(!empty($isim_soyisim)){
 				$uye_guncelle=mysql_query("update yonetici SET
 								 yonetici_ad_soyad		=	'$isim_soyisim',
 								 yonetici_kullanici		=	'$username',
 								 yonetici_email			=	'$email',
 								 yonetici_telefon		=	'$telefon' where yonetici_id='".$_SESSION["uye_id"]."'");
-								 
+
 		}else{
 			echo "<script>alert('Güncelleme Başarısız!'); window.location='profil_guncelle.php';</script>";
-		}			
-		
-		
-		
-		
-		
+		}
+
+
+
+
+
 		if(!empty($password1) && !empty($password2) && !empty($password3)){
 			if($getir['yonetici_sifre'] == $password1){
 				if($password2 == $password3){
@@ -58,13 +58,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 				}else{
 					echo "<script>alert('Şifreler Birbiriyle Uyuşmuyor!'); window.location='profil_guncelle.php';</script>";
 				}
-				
+
 			}else{
 				echo "<script>alert('Eski Şifre Doğru Değil!')</script>";
 			}
-			
-		} 
-	
+
+		}
+
 }
 
 ?>
@@ -87,13 +87,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
-    
+
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
-	
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="script.js"></script>
-	
+
   </head>
 
   <body class="nav-md">
@@ -146,7 +146,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    
+
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -167,7 +167,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                   <div class="x_content">
 
                    <form class="form-horizontal form-label-left" method="POST" action="" >
-					
+
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" >İsim ve Soyisim <span class="required">*</span>
                         </label>
@@ -215,11 +215,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                           <input  type="text" name="uye_telefon"  value="<?php echo $getir['yonetici_telefon']; ?>" class="form-control col-md-7 col-xs-12" >
                         </div>
                       </div>
-					  
+
 					  <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          
+
                           <input type="submit" class="btn btn-success" value="Gönder">
                         </div>
                       </div>

@@ -9,6 +9,7 @@ class Kurumsal extends CI_Controller{
   {
     parent::__construct();
     $this->load->model('members');
+    $this->load->model('magazalar');
     if($this->session->userdata('userData')){
       $where = array("Id" => $this->session->userdata('userData')["userID"]);
       $this->user=$this->members->get($where);
@@ -57,7 +58,12 @@ class Kurumsal extends CI_Controller{
         $this->load->view('layout/iletisim', $data);
     }
     function  SanalTur(){
-
+      if ($this->user!=null) {
+        $data["user"]=$this->user;
+      }
+      if ($this->magaza!=null) {
+        $data["magaza"]=$this->magaza;
+      }
         $data['title']='Emlak Meclisi | Anasayfa';
         $this->load->view('layout/sanal', $data);
     }
